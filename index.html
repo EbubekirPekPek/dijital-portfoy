@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebubekir Sıddık Pekmez — Portföy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:  #0C1B2A;
+  --navy2: #142435;
+  --navy3: #1C3048;
+  --gold:  #C4973A;
+  --gold2: #D4A84A;
+  --ice:   #4A9CC2;
+  --white: #FFFFFF;
+  --muted: #7A93AA;
+  --dim:   #3A5570;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  cursor: none;
+}
+
+/* ── Custom cursor ── */
+.cursor {
+  position: fixed; width: 10px; height: 10px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: transform .15s ease, width .2s ease, height .2s ease;
+  mix-blend-mode: screen;
+}
+.cursor.big { width: 36px; height: 36px; opacity: .5; }
+
+/* ── Slide engine ── */
+.deck { position: relative; width: 100vw; height: 100vh; }
+
+.slide {
+  position: absolute; inset: 0;
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: opacity .7s cubic-bezier(.4,0,.2,1);
+}
+.slide.active { opacity: 1; pointer-events: all; }
+.slide.exit   { opacity: 0; }
+
+/* ── Nav ── */
+.nav {
+  position: fixed; bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: .6rem; z-index: 100;
+}
+.nav-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--dim); cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.nav-dot.active { background: var(--gold); transform: scale(1.5); }
+
+.arrow {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(196,151,58,.12); border: 1px solid rgba(196,151,58,.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 100; color: var(--gold);
+  font-size: 1.1rem; transition: background .2s, transform .2s;
+}
+.arrow:hover { background: rgba(196,151,58,.25); transform: translateY(-50%) scale(1.05); }
+.arrow.left  { left: 1.5rem; }
+.arrow.right { right: 1.5rem; }
+
+/* slide counter */
+.counter {
+  position: fixed; top: 1.5rem; right: 2rem;
+  font-size: .75rem; color: var(--dim); letter-spacing: .1em;
+  z-index: 100; font-family: 'DM Sans', sans-serif;
+}
+
+/* ──────────────────────────────────────────────
+   SLIDE ANIMATIONS (staggered on .active)
+────────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.slide.active .reveal { opacity: 1; transform: none; }
+
+/* stagger delays */
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .28s; }
+.d3 { transition-delay: .5s; }
+.d4 { transition-delay: .72s; }
+.d5 { transition-delay: .94s; }
+.d6 { transition-delay: 1.14s; }
+.d7 { transition-delay: 1.34s; }
+.d8 { transition-delay: 1.54s; }
+.d9 { transition-delay: 1.72s; }
+
+.reveal-left {
+  opacity: 0; transform: translateX(-28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.slide.active .reveal-left { opacity: 1; transform: none; }
+
+.reveal-scale {
+  opacity: 0; transform: scale(.92);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.slide.active .reveal-scale { opacity: 1; transform: scale(1); }
+
+/* gold line draw */
+.line-draw {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform .6s cubic-bezier(.4,0,.2,1);
+}
+.slide.active .line-draw { transform: scaleX(1); }
+.line-draw.d3 { transition-delay: .5s; }
+.line-draw.d4 { transition-delay: .7s; }
+
+/* ── Utility ── */
+.gold  { color: var(--gold); }
+.muted { color: var(--muted); }
+.ice   { color: var(--ice); }
+.white { color: var(--white); }
+
+/* ──────────────────────────────────────────────
+   SLIDE 1 — COVER
+────────────────────────────────────────────── */
+#s1 {
+  padding: 0;
+  overflow: hidden;
+}
+.s1-accent {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 5px; background: var(--gold);
+}
+.s1-circle {
+  position: absolute; right: -160px; top: -160px;
+  width: 560px; height: 560px; border-radius: 50%;
+  border: 1px solid rgba(196,151,58,.14);
+  background: rgba(20,36,53,.6);
+}
+.s1-circle2 {
+  position: absolute; right: 80px; top: 80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  border: 1px solid rgba(196,151,58,.08);
+}
+.s1-content {
+  position: relative; z-index: 2;
+  padding: 3.5rem 5rem;
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+}
+.s1-label {
+  font-size: .7rem; letter-spacing: .28em; color: var(--gold);
+  font-weight: 500; margin-bottom: 2rem;
+}
+.s1-name1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5rem,10vw,9rem); font-weight: 900;
+  line-height: .92; color: var(--white);
+  letter-spacing: -.02em;
+}
+.s1-name2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem,5vw,4rem); font-weight: 400;
+  color: var(--gold); letter-spacing: .04em; margin-top: .4rem;
+}
+.s1-divider {
+  height: 2px; width: 280px; background: var(--gold);
+  margin: 2.2rem 0 1.8rem;
+}
+.s1-tags {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.s1-tag {
+  font-size: .8rem; color: var(--muted); letter-spacing: .06em;
+}
+.s1-tag + .s1-tag::before { content: '·'; margin-right: 1rem; color: var(--dim); }
+.s1-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  margin-top: 2.6rem;
+}
+.s1-year {
+  background: var(--gold); color: var(--navy);
+  font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+  padding: .4rem 1rem;
+}
+.s1-platforms {
+  font-size: .78rem; color: var(--muted); letter-spacing: .04em;
+}
+
+/* ──────────────────────────────────────────────
+   SLIDE 2 — KPI DASHBOARD
+────────────────────────────────────────────── */
+#s2 { padding: 3.5rem 5rem; }
+
+.slide-label {
+  font-size: .65rem; letter-spacing: .28em; color: var(--gold);
+  font-weight: 600; margin-bottom: 1rem;
+}
+.slide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem,5vw,3.8rem); font-weight: 700;
+  line-height: 1.05; color: var(--white);
+}
+.slide-title .gold-line { display: block; color: var(--gold); }
+
+.gold-rule {
+  height: 2px; background: var(--gold);
+  width: 200px; margin: 1.4rem 0 1rem;
+}
+
+.s2-sub {
+  font-size: .85rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 600px;
+}
+
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(5,1fr); gap: .8rem;
+  flex: 1;
+}
+.kpi-card {
+  background: var(--navy2);
+  border: 1px solid rgba(196,151,58,.25);
+  border-top: 3px solid var(--gold);
+  padding: 1.4rem 1rem 1.2rem;
+  position: relative; overflow: hidden;
+}
+.kpi-card::before {
+  content: ''; position: absolute;
+  inset: 0; background: linear-gradient(135deg,rgba(196,151,58,.06) 0%, transparent 60%);
+}
+.kpi-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 700;
+  color: var(--white); line-height: 1;
+  margin-bottom: .5rem;
+}
+.kpi-label {
+  font-size: .72rem; color: var(--gold2); letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: .25rem;
+}
+.kpi-sub { font-size: .68rem; color: var(--muted); }
+
+/* ──────────────────────────────────────────────
+   SLIDE 3 — PLATFORM
+────────────────────────────────────────────── */
+#s3 { display: grid; grid-template-columns: 1fr 1fr; }
+
+.s3-left {
+  padding: 3.5rem 3rem 3.5rem 5rem;
+  border-right: 1px solid rgba(196,151,58,.15);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s3-right {
+  background: var(--navy2);
+  padding: 3.5rem 3.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.platform-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.2rem; }
+.platform-item { display: flex; align-items: flex-start; gap: .9rem; }
+.platform-bar { width: 3px; min-height: 36px; background: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.platform-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--white);
+}
+.platform-desc { font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+
+.ops-title {
+  font-size: .65rem; letter-spacing: .25em; color: var(--gold);
+  font-weight: 600; margin-bottom: 1.2rem;
+}
+.ops-divider { height: 1px; background: rgba(196,151,58,.25); margin-bottom: 1.5rem; }
+.ops-list { display: flex; flex-direction: column; gap: .9rem; }
+.ops-item { display: flex; align-items: center; gap: .9rem; }
+.ops-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.ops-text { font-size: .83rem; color: var(--white); }
+
+.s3-badge {
+  margin-top: 2rem;
+  border: 1px solid rgba(196,151,58,.3);
+  padding: .6rem 1.2rem; display: inline-flex;
+  font-size: .75rem; color: var(--gold); letter-spacing: .06em;
+}
+
+/* ──────────────────────────────────────────────
+   SLIDE 4 — PERFORMANCE
+────────────────────────────────────────────── */
+#s4 { display: grid; grid-template-columns: 1fr 1fr; }
+
+.s4-left {
+  padding: 3.5rem 3rem 3.5rem 5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.s4-right {
+  background: var(--navy2);
+  padding: 3.5rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.stat-cards { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-top: 2rem; }
+.stat-card {
+  padding: 1.5rem 1.2rem;
+  background: var(--navy3);
+  border: 1px solid rgba(196,151,58,.2);
+}
+.stat-card.gold-border { border-color: var(--gold); }
+.stat-card.ice-border  { border-color: var(--ice); }
+.stat-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem; font-weight: 700; color: var(--white); line-height: 1;
+}
+.stat-key {
+  font-size: .65rem; letter-spacing: .15em; margin: .5rem 0 .2rem;
+}
+.stat-desc { font-size: .72rem; color: var(--muted); }
+
+.skill-list { display: flex; flex-direction: column; gap: 1rem; }
+.skill-item { padding-left: 1rem; border-left: 2px solid var(--gold); }
+.skill-name { font-size: .88rem; font-weight: 500; color: var(--white); }
+.skill-desc { font-size: .72rem; color: var(--muted); margin-top: .15rem; }
+
+/* ──────────────────────────────────────────────
+   SLIDE 5 — CATEGORY
+────────────────────────────────────────────── */
+#s5 { padding: 3.5rem 5rem; display: flex; flex-direction: column; }
+
+.big-stats {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; margin: 1.5rem 0;
+  border-top: 1px solid rgba(196,151,58,.2);
+}
+.big-stat {
+  padding: 1.4rem 0 1.2rem;
+  border-right: 1px solid rgba(196,151,58,.1);
+}
+.big-stat:last-child { border-right: none; }
+.big-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem,4vw,3.2rem); font-weight: 700;
+  color: var(--white); line-height: 1;
+}
+.big-key { font-size: .65rem; letter-spacing: .15em; color: var(--gold); margin-top: .4rem; }
+
+.cat-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; flex: 1;
+  margin-top: 1.5rem;
+}
+.cat-left { display: flex; flex-direction: column; gap: .7rem; }
+.cat-row {
+  display: flex; align-items: center; gap: .8rem;
+  padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.cat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.cat-name { font-size: .83rem; color: var(--white); flex: 1; }
+.cat-amount { font-size: .83rem; font-weight: 600; color: var(--white); }
+.cat-pct { font-size: .78rem; color: var(--muted); min-width: 3rem; text-align: right; }
+
+/* donut chart */
+.cat-right { display: flex; align-items: center; justify-content: center; }
+.donut-wrap { position: relative; width: 220px; height: 220px; }
+.donut-wrap svg { transform: rotate(-90deg); }
+.donut-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.donut-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 700; color: var(--white);
+}
+.donut-lbl { font-size: .65rem; color: var(--muted); letter-spacing: .08em; margin-top: .2rem; }
+
+/* ──────────────────────────────────────────────
+   SLIDE 6 — TOOLS
+────────────────────────────────────────────── */
+#s6 { padding: 3rem 5rem; display: flex; flex-direction: column; }
+
+.tool-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: .7rem; margin-top: 1.8rem;
+}
+.tool-card {
+  background: var(--navy2);
+  border: 1px solid rgba(255,255,255,.06);
+  padding: .9rem 1rem;
+  transition: border-color .25s, background .25s;
+}
+.tool-card:hover { border-color: rgba(196,151,58,.4); background: var(--navy3); }
+.tool-cat { font-size: .6rem; letter-spacing: .2em; color: var(--gold); margin-bottom: .3rem; }
+.tool-name { font-size: .85rem; font-weight: 600; color: var(--white); }
+
+.cert-section { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid rgba(196,151,58,.2); }
+.cert-header { font-size: .65rem; letter-spacing: .25em; color: var(--gold); margin-bottom: .9rem; }
+.cert-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  column-gap: 2rem; row-gap: .4rem;
+}
+.cert-item { display: flex; align-items: center; gap: .5rem; }
+.cert-bullet { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.cert-text { font-size: .77rem; color: var(--white); }
+
+/* ──────────────────────────────────────────────
+   SLIDE 7 — CONTACT
+────────────────────────────────────────────── */
+#s7 { padding: 0; overflow: hidden; }
+
+.s7-circle {
+  position: absolute; left: -200px; bottom: -180px;
+  width: 600px; height: 600px; border-radius: 50%;
+  border: 1px solid rgba(196,151,58,.1);
+  background: rgba(20,36,53,.4);
+}
+.s7-accent {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 5px; background: var(--gold);
+}
+.s7-content {
+  position: relative; z-index: 2;
+  padding: 3.5rem 5rem;
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+}
+.s7-label {
+  font-size: .65rem; letter-spacing: .28em; color: var(--gold);
+  font-weight: 600; margin-bottom: 1.5rem;
+}
+.s7-cta {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem,7vw,6rem); font-weight: 900;
+  color: var(--white); line-height: .95;
+  letter-spacing: -.02em; margin-bottom: 2.5rem;
+}
+.s7-divider {
+  height: 2px; width: 220px; background: var(--gold); margin-bottom: 2rem;
+}
+.contact-list { display: flex; flex-direction: column; gap: 1rem; }
+.contact-row { display: flex; align-items: baseline; gap: 1.2rem; }
+.contact-key {
+  font-size: .62rem; letter-spacing: .2em; color: var(--gold);
+  min-width: 80px; font-weight: 600;
+}
+.contact-val { font-size: 1rem; font-weight: 600; color: var(--white); }
+.s7-note {
+  margin-top: 2.5rem; font-size: .7rem; color: var(--dim);
+}
+
+/* ── Progress bar ── */
+.progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--ice));
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+  z-index: 200;
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="progress" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active" id="s1">
+    <div class="s1-accent"></div>
+    <div class="s1-circle"></div>
+    <div class="s1-circle2"></div>
+    <div class="s1-content">
+      <div class="s1-label reveal d1">DİJİTAL PAZARLAMA &amp; E-TİCARET PORTFÖYÜ</div>
+      <div class="s1-name1 reveal d2">EBUBEKİR</div>
+      <div class="s1-name2 reveal d3">SIDDIK PEKMEZ</div>
+      <div class="s1-divider line-draw d4"></div>
+      <div class="s1-tags reveal d5">
+        <span class="s1-tag">E-Ticaret Girişimcisi</span>
+        <span class="s1-tag">Performans Pazarlamacısı</span>
+        <span class="s1-tag">Veri Odaklı Yönetici</span>
+      </div>
+      <div class="s1-badge reveal d6">
+        <span class="s1-year">2022 — 2026</span>
+        <span class="s1-platforms">Trendyol · Hepsiburada · Shopify · Amazon TR</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: KPI DASHBOARD -->
+  <div class="slide" id="s2">
+    <div class="slide-label reveal d1">TRENDYOL + SHOPİFY — KONSOLİDE ÖZET</div>
+    <div class="slide-title reveal d2">Rakamlarla <span class="gold-line">Performansım</span></div>
+    <div class="gold-rule line-draw d3"></div>
+    <div class="s2-sub reveal d3">5 dönemlik raporun konsolide verisi · Tüm rakamlar resmi platform panellerinden alınmıştır.</div>
+    <div class="kpi-grid">
+      <div class="kpi-card reveal-scale d4">
+        <div class="kpi-val">₺1.6M+</div>
+        <div class="kpi-label">Toplam Ciro</div>
+        <div class="kpi-sub">Trendyol ₺770K + Shopify ₺840K</div>
+      </div>
+      <div class="kpi-card reveal-scale d5">
+        <div class="kpi-val">2.477</div>
+        <div class="kpi-label">Toplam Sipariş</div>
+        <div class="kpi-sub">Platform geneli toplam</div>
+      </div>
+      <div class="kpi-card reveal-scale d6">
+        <div class="kpi-val">408</div>
+        <div class="kpi-label">Ürün Çeşidi</div>
+        <div class="kpi-sub">98 Trendyol + 310 Shopify</div>
+      </div>
+      <div class="kpi-card reveal-scale d7">
+        <div class="kpi-val">56</div>
+        <div class="kpi-label">İl Kapsama</div>
+        <div class="kpi-sub">Türkiye geneli</div>
+      </div>
+      <div class="kpi-card reveal-scale d8">
+        <div class="kpi-val">4</div>
+        <div class="kpi-label">Platform</div>
+        <div class="kpi-sub">Eş zamanlı yönetim</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: PLATFORM -->
+  <div class="slide" id="s3">
+    <div class="s3-left">
+      <div class="slide-label reveal d1">KANAL &amp; OPERASYON YÖNETİMİ</div>
+      <div class="slide-title reveal d2">Çok Kanallı <span class="gold-line">Pazaryeri</span></div>
+      <div class="gold-rule line-draw d3" style="width:160px"></div>
+      <div class="platform-list">
+        <div class="platform-item reveal d4">
+          <div class="platform-bar"></div>
+          <div>
+            <div class="platform-name">Trendyol</div>
+            <div class="platform-desc">Ana satış kanalı · ₺770K+ brüt ciro · Bebek &amp; Hijyen kategorisi</div>
+          </div>
+        </div>
+        <div class="platform-item reveal d5">
+          <div class="platform-bar"></div>
+          <div>
+            <div class="platform-name">Shopify — arikovanistore.com</div>
+            <div class="platform-desc">Öz marka · ₺840K gelir · 1.009 sipariş · 56 il</div>
+          </div>
+        </div>
+        <div class="platform-item reveal d6">
+          <div class="platform-bar"></div>
+          <div>
+            <div class="platform-name">Hepsiburada</div>
+            <div class="platform-desc">Çok kategorili satış operasyonu</div>
+          </div>
+        </div>
+        <div class="platform-item reveal d7">
+          <div class="platform-bar"></div>
+          <div>
+            <div class="platform-name">Amazon TR</div>
+            <div class="platform-desc">Pazaryeri genişleme kanalı</div>
+          </div>
+        </div>
+      </div>
+      <div class="s3-badge reveal d8">NET REALİZASYON: %93,9 &nbsp;·&nbsp; 6 MARKA PORTFÖYÜ</div>
+    </div>
+    <div class="s3-right">
+      <div class="ops-title reveal d1">OPERASYONEl YETKİNLİKLER</div>
+      <div class="ops-divider reveal d2"></div>
+      <div class="ops-list">
+        <div class="ops-item reveal d3"><div class="ops-dot"></div><div class="ops-text">Ürün listeleme &amp; SEO optimizasyonu</div></div>
+        <div class="ops-item reveal d4"><div class="ops-dot"></div><div class="ops-text">Dinamik fiyatlandırma stratejisi</div></div>
+        <div class="ops-item reveal d5"><div class="ops-dot"></div><div class="ops-text">Kampanya &amp; indirim yönetimi</div></div>
+        <div class="ops-item reveal d6"><div class="ops-dot"></div><div class="ops-text">İptal / iade operasyon takibi</div></div>
+        <div class="ops-item reveal d7"><div class="ops-dot"></div><div class="ops-text">Stok &amp; lojistik koordinasyonu</div></div>
+        <div class="ops-item reveal d8"><div class="ops-dot"></div><div class="ops-text">Müşteri iletişimi &amp; değerlendirme</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: PERFORMANCE -->
+  <div class="slide" id="s4">
+    <div class="s4-left">
+      <div class="slide-label reveal d1">META ADS · GOOGLE ADS · AMAZON ADS</div>
+      <div class="slide-title reveal d2">Performans <span class="gold-line">Pazarlaması</span></div>
+      <div class="gold-rule line-draw d3" style="width:160px"></div>
+      <div style="font-size:.83rem;color:var(--muted);margin-bottom:1rem;max-width:400px" class="reveal d3">
+        Reklam bütçelerini doğrudan yönetip ölçümleyerek hedef ROAS'a ulaşma üzerine kurulu veri odaklı yaklaşım.
+      </div>
+      <div class="stat-cards">
+        <div class="stat-card gold-border reveal-scale d4">
+          <div class="stat-val">≈6.7×</div>
+          <div class="stat-key gold">ROAS</div>
+          <div class="stat-desc">₺150K bütçe → ₺1M+ ciro</div>
+        </div>
+        <div class="stat-card ice-border reveal-scale d5">
+          <div class="stat-val" style="color:var(--ice)">₺150K</div>
+          <div class="stat-key ice">REKLAM BÜTÇESI</div>
+          <div class="stat-desc">Bağımsız yönetim</div>
+        </div>
+      </div>
+    </div>
+    <div class="s4-right">
+      <div class="ops-title reveal d1">YETKİNLİK ALANLARI</div>
+      <div class="ops-divider reveal d2"></div>
+      <div class="skill-list">
+        <div class="skill-item reveal d3">
+          <div class="skill-name">Meta Business Suite</div>
+          <div class="skill-desc">Kampanya yapısı, hedef kitle, A/B test</div>
+        </div>
+        <div class="skill-item reveal d4">
+          <div class="skill-name">Hedef Kitle Yönetimi</div>
+          <div class="skill-desc">Demografik, ilgi &amp; lookalike segmentasyon</div>
+        </div>
+        <div class="skill-item reveal d5">
+          <div class="skill-name">Bütçe Optimizasyonu</div>
+          <div class="skill-desc">CBO/ABO, günlük &amp; toplam bütçe kontrolü</div>
+        </div>
+        <div class="skill-item reveal d6">
+          <div class="skill-name">Google Ads</div>
+          <div class="skill-desc">Performans maks &amp; dönüşüm odaklı kampanya</div>
+        </div>
+        <div class="skill-item reveal d7">
+          <div class="skill-name">Amazon Ads</div>
+          <div class="skill-desc">Sponsorlu ürün &amp; marka kampanyaları</div>
+        </div>
+        <div class="skill-item reveal d8">
+          <div class="skill-name">Dönüşüm Takibi</div>
+          <div class="skill-desc">Pixel kurulumu, event optimizasyonu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: CATEGORY -->
+  <div class="slide" id="s5">
+    <div class="slide-label reveal d1">ÜRÜN PORTFÖYÜ · KATEGORİ ANALİZİ · MARKA</div>
+    <div class="slide-title reveal d2">Ürün &amp; <span class="gold-line">Kategori Yönetimi</span></div>
+    <div class="big-stats">
+      <div class="big-stat reveal d3"><div class="big-val">408</div><div class="big-key">ÜRÜN ÇEŞİDİ</div></div>
+      <div class="big-stat reveal d4"><div class="big-val">14</div><div class="big-key">KATEGORİ</div></div>
+      <div class="big-stat reveal d5"><div class="big-val">6</div><div class="big-key">MARKA</div></div>
+      <div class="big-stat reveal d6"><div class="big-val">₺832</div><div class="big-key">ORT. SEPET (Shopify)</div></div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-left">
+        <div style="font-size:.65rem;letter-spacing:.25em;color:var(--gold);margin-bottom:.5rem" class="reveal d4">KATEGORİ BAZLI CİRO (Trendyol)</div>
+        <div class="cat-row reveal d5">
+          <div class="cat-dot" style="background:var(--gold)"></div>
+          <div class="cat-name">Bebek Bezi</div>
+          <div class="cat-amount">₺645.705</div>
+          <div class="cat-pct muted">%83,8</div>
+        </div>
+        <div class="cat-row reveal d6">
+          <div class="cat-dot" style="background:var(--ice)"></div>
+          <div class="cat-name">Bebek Islak Mendil</div>
+          <div class="cat-amount">₺82.518</div>
+          <div class="cat-pct muted">%10,7</div>
+        </div>
+        <div class="cat-row reveal d7">
+          <div class="cat-dot" style="background:var(--muted)"></div>
+          <div class="cat-name">Hasta Bezi</div>
+          <div class="cat-amount">₺16.925</div>
+          <div class="cat-pct muted">%2,2</div>
+        </div>
+        <div class="cat-row reveal d8">
+          <div class="cat-dot" style="background:var(--dim)"></div>
+          <div class="cat-name">Diğer 11 Kategori</div>
+          <div class="cat-amount">₺25.374</div>
+          <div class="cat-pct muted">%3,3</div>
+        </div>
+      </div>
+      <div class="cat-right reveal-scale d5">
+        <div class="donut-wrap">
+          <svg viewBox="0 0 100 100" width="220" height="220">
+            <!-- Donut segments: r=38, circumference=238.76 -->
+            <!-- Bebek Bezi %83.8 → 200.1 -->
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#1C3048" stroke-width="18"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#C4973A" stroke-width="18"
+              stroke-dasharray="200 239" stroke-dashoffset="0"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#4A9CC2" stroke-width="18"
+              stroke-dasharray="25.5 239" stroke-dashoffset="-200"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#7A93AA" stroke-width="18"
+              stroke-dasharray="5.3 239" stroke-dashoffset="-225.5"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#1C3048" stroke-width="18"
+              stroke-dasharray="8.2 239" stroke-dashoffset="-230.8"/>
+          </svg>
+          <div class="donut-center">
+            <div class="donut-val">₺770K</div>
+            <div class="donut-lbl">TRENDYOL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: TOOLS -->
+  <div class="slide" id="s6">
+    <div class="slide-label reveal d1">ARAÇ EKOSİSTEMİ &amp; SERTİFİKALAR</div>
+    <div class="slide-title reveal d2">Araçlar &amp; <span class="gold-line">Sertifikalar</span></div>
+    <div class="tool-grid">
+      <div class="tool-card reveal d3"><div class="tool-cat">PAZARYERI</div><div class="tool-name">Trendyol Partner</div></div>
+      <div class="tool-card reveal d4"><div class="tool-cat">REKLAM</div><div class="tool-name">Meta Business Suite</div></div>
+      <div class="tool-card reveal d4"><div class="tool-cat">ANALİTİK</div><div class="tool-name">Google Analytics 4</div></div>
+      <div class="tool-card reveal d4"><div class="tool-cat">E-TİCARET</div><div class="tool-name">Shopify Admin</div></div>
+      <div class="tool-card reveal d5"><div class="tool-cat">REKLAM</div><div class="tool-name">Google Ads</div></div>
+      <div class="tool-card reveal d5"><div class="tool-cat">REKLAM</div><div class="tool-name">Amazon Ads</div></div>
+      <div class="tool-card reveal d5"><div class="tool-cat">İÇERİK</div><div class="tool-name">Canva / CapCut</div></div>
+      <div class="tool-card reveal d5"><div class="tool-cat">ANALİZ</div><div class="tool-name">Excel &amp; G-Sheets</div></div>
+    </div>
+    <div class="cert-section reveal d6">
+      <div class="cert-header">SERTİFİKALAR</div>
+      <div class="cert-grid">
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">HubSpot — Digital Marketing</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">Google — Analytics Sertifikasyonu</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">Google — Dönüşüm Optimizasyonu</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">Google — Yapay Zeka Destekli Reklamlar</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">Amazon — Ads Temel Bilgiler</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">Bilgeiş — Çevrimiçi Reklamcılık (ODTÜ)</div></div>
+        <div class="cert-item"><div class="cert-bullet"></div><div class="cert-text">LinkedIn Learning — 4 Sertifika</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: CONTACT -->
+  <div class="slide" id="s7">
+    <div class="s7-circle"></div>
+    <div class="s7-accent"></div>
+    <div class="s7-content">
+      <div class="s7-label reveal d1">İLETİŞİME GEÇ</div>
+      <div class="s7-cta reveal d2">Birlikte<br>Çalışalım.</div>
+      <div class="s7-divider line-draw d3"></div>
+      <div class="contact-list">
+        <div class="contact-row reveal d4">
+          <div class="contact-key">TELEFON</div>
+          <div class="contact-val">+90 533 199 09 27</div>
+        </div>
+        <div class="contact-row reveal d5">
+          <div class="contact-key">E-POSTA</div>
+          <div class="contact-val">ebubekirpekmez@gmail.com</div>
+        </div>
+        <div class="contact-row reveal d6">
+          <div class="contact-key">WEB</div>
+          <div class="contact-val">www.arikovanistore.com</div>
+        </div>
+        <div class="contact-row reveal d7">
+          <div class="contact-key">KONUM</div>
+          <div class="contact-val">Bursa, Nilüfer Görükle</div>
+        </div>
+      </div>
+      <div class="s7-note reveal d8">
+        Bu portföydeki veriler Trendyol Partner paneli ve Shopify raporlarından alınmıştır.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav" id="nav"></div>
+<div class="arrow left" id="prev">&#8592;</div>
+<div class="arrow right" id="next">&#8594;</div>
+<div class="counter" id="counter"></div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const navEl  = document.getElementById('nav');
+const prog   = document.getElementById('progress');
+const cursor = document.getElementById('cursor');
+let current  = 0;
+
+// Build nav dots
+slides.forEach((_,i) => {
+  const d = document.createElement('div');
+  d.className = 'nav-dot' + (i===0?' active':'');
+  d.onclick = () => go(i);
+  navEl.appendChild(d);
+});
+
+function updateCounter() {
+  document.getElementById('counter').textContent =
+    `${String(current+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+}
+
+function go(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[current].classList.remove('active');
+  slides[current].classList.add('exit');
+  setTimeout(() => slides[current < n ? current : n + (current - n)].classList.remove('exit'), 700);
+  current = n;
+  slides[current].classList.add('active');
+  // nav dots
+  document.querySelectorAll('.nav-dot').forEach((d,i) =>
+    d.classList.toggle('active', i === current));
+  // progress
+  prog.style.width = ((current+1)/slides.length*100) + '%';
+  updateCounter();
+}
+
+document.getElementById('next').onclick = () => go(current + 1);
+document.getElementById('prev').onclick = () => go(current - 1);
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') go(current + 1);
+  if (e.key === 'ArrowLeft')  go(current - 1);
+});
+
+// Touch/swipe
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (dx < -50) go(current + 1);
+  if (dx >  50) go(current - 1);
+});
+
+// Custom cursor
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a, button, .arrow, .nav-dot, .tool-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+// Init
+prog.style.width = (1/slides.length*100) + '%';
+updateCounter();
+</script>
+</body>
+</html>
