@@ -48,10 +48,15 @@ html, body {
   background: var(--navy);
   display: flex; flex-direction: column;
   opacity: 0; pointer-events: none;
-  transition: opacity .7s cubic-bezier(.4,0,.2,1);
+  transform: translateX(0);
+  transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
 }
-.slide.active { opacity: 1; pointer-events: all; }
-.slide.exit   { opacity: 0; }
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.exit             { opacity: 0; }
+.slide.exit.exit-left   { transform: translateX(-28px); }
+.slide.exit.exit-right  { transform: translateX(28px); }
+.slide.from-right       { transform: translateX(32px); }
+.slide.from-left        { transform: translateX(-32px); }
 
 /* ── Nav ── */
 .nav {
@@ -142,7 +147,12 @@ html, body {
 }
 .s1-accent {
   position: absolute; left: 0; top: 0; bottom: 0;
-  width: 5px; background: var(--gold);
+  width: 9px;
+  background: linear-gradient(to bottom,
+    rgba(196,151,58,.1) 0%,
+    var(--gold) 20%,
+    var(--gold2) 55%,
+    rgba(196,151,58,.15) 100%);
 }
 .s1-circle {
   position: absolute; right: -160px; top: -160px;
@@ -198,6 +208,18 @@ html, body {
   display: flex; flex-wrap: wrap; gap: 0.7rem;
   font-size: clamp(0.7rem, 1.3vw, 0.88rem);
   color: var(--muted); letter-spacing: .04em;
+}
+
+.s1-tagline {
+  margin-top: 1.4rem;
+  font-size: clamp(.78rem, 1.3vw, .98rem);
+  color: rgba(255,255,255,.48);
+  font-style: italic;
+  letter-spacing: .01em;
+  line-height: 1.65;
+  border-left: 2px solid rgba(196,151,58,.38);
+  padding-left: .9rem;
+  max-width: 480px;
 }
 
 .s1-plat {
@@ -264,9 +286,16 @@ html, body {
   aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--navy2);
-  border: 2px solid rgba(196,151,58,.2);
-  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  /* Gradient border: padding-box fills inside, border-box shows gradient ring */
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--navy2), var(--navy2)) padding-box,
+    linear-gradient(135deg,
+      rgba(196,151,58,.85) 0%,
+      rgba(74,156,194,.5)  45%,
+      rgba(196,151,58,.35) 100%
+    ) border-box;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 30px rgba(196,151,58,.08);
   margin: 0 auto;
   opacity: 0;
   transform: scale(.94);
@@ -400,8 +429,9 @@ html, body {
   100% { text-shadow: 0 0 0 rgba(196,151,58,0); }
 }
 .tl-year {
-  font-size: .62rem;
-  color: var(--gold);
+  font-size: .71rem;
+  color: var(--gold2);
+  font-weight: 700;
   letter-spacing: .15em;
   font-weight: 700;
   text-transform: uppercase;
@@ -700,6 +730,39 @@ html, body {
 .contact-val { font-size: 1rem; font-weight: 600; color: var(--white); }
 .s7-note {
   margin-top: 2.5rem; font-size: .7rem; color: var(--dim);
+}
+.s7-btn-row {
+  display: flex; gap: .9rem; margin-top: 2rem; flex-wrap: wrap;
+}
+.s7-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.4rem;
+  border-radius: 6px;
+  font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+  text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  cursor: pointer;
+}
+.s7-btn.primary {
+  background: var(--gold);
+  color: #0C1B2A;
+  box-shadow: 0 4px 16px rgba(196,151,58,.3);
+}
+.s7-btn.primary:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196,151,58,.45);
+}
+.s7-btn.outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(196,151,58,.45);
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.s7-btn.outline:hover {
+  background: rgba(196,151,58,.1);
+  border-color: var(--gold);
+  transform: translateY(-2px);
 }
 
 /* ──────────────────────────────────────────────
@@ -1096,11 +1159,52 @@ html, body {
 .meta-acc-card.ari .mac-stat-val { color:var(--gold); }
 .meta-acc-card.kubra .mac-stat-val { color:var(--dim); }
 
-/* ── KPI Kart Hover Efekti ── */
-.s4-kpi:hover, .sp-kpi:hover, .meta-kpi:hover, .hb-kpi:hover, .sum-kpi:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 8px 25px rgba(0,0,0,.3);
-  transition: transform .25s ease, box-shadow .25s ease, opacity .45s ease !important;
+/* ── KPI Kart Hover Efekti — renkli glow + sayı büyütme ── */
+.s4-kpi, .sp-kpi, .hb-kpi, .meta-kpi, .sum-kpi {
+  transition: transform .25s ease, box-shadow .25s ease !important;
+}
+
+/* Trendyol — turuncu */
+.s4-kpi:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 0 0 1px rgba(242,122,26,.4),
+              0 8px 28px rgba(242,122,26,.25),
+              0 4px 12px rgba(0,0,0,.3) !important;
+}
+.s4-kpi:hover .s4-kpi-val {
+  transform: scale(1.08);
+  display: inline-block;
+}
+
+/* Hepsiburada — mor */
+.hb-kpi:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 0 0 1px rgba(124,58,237,.45),
+              0 8px 28px rgba(124,58,237,.28),
+              0 4px 12px rgba(0,0,0,.3) !important;
+}
+.hb-kpi:hover .hb-kpi-val {
+  transform: scale(1.08);
+  display: inline-block;
+}
+
+/* Arı Kovanı, Meta, Özet — altın */
+.sp-kpi:hover, .meta-kpi:hover, .sum-kpi:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 0 0 1px rgba(196,151,58,.45),
+              0 8px 28px rgba(196,151,58,.22),
+              0 4px 12px rgba(0,0,0,.3) !important;
+}
+.sp-kpi:hover .sp-kpi-val,
+.meta-kpi:hover .meta-kpi-val,
+.sum-kpi:hover .sum-kpi-val {
+  transform: scale(1.08);
+  display: inline-block;
+}
+
+/* Sayı scale için transition */
+.s4-kpi-val, .hb-kpi-val, .sp-kpi-val, .meta-kpi-val, .sum-kpi-val {
+  transition: transform .2s ease;
 }
 .meta-acc-card:hover {
   transform: translateY(-2px);
@@ -1744,7 +1848,8 @@ html, body {
 #s-skills.active .sk-certs-panel { opacity:1; transform:none; transition-delay:.2s; }
 
 .sk-panel-label {
-  font-size: .56rem; letter-spacing: .2em; color: var(--gold); font-weight: 700; flex-shrink:0;
+  font-size: .65rem; letter-spacing: .16em; color: var(--gold); font-weight: 700; flex-shrink:0;
+  margin-bottom: .15rem;
 }
 
 .sk-cert-grid {
@@ -1760,12 +1865,31 @@ html, body {
 .sk-cert-grid::-webkit-scrollbar-thumb { background: rgba(196,151,58,.3); border-radius: 2px; }
 
 .sk-cert-card {
+  position: relative;
+  overflow: hidden;
   background: rgba(255,255,255,.03);
   border: 1px solid rgba(196,151,58,.18);
   border-radius: 5px;
   overflow: hidden;
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
   cursor: pointer;
+}
+.sk-cert-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(196,151,58,.13),
+    rgba(255,255,255,.06),
+    transparent);
+  transform: skewX(-15deg);
+  transition: left .55s ease;
+  pointer-events: none;
+}
+.sk-cert-card:hover::after {
+  left: 140%;
 }
 .sk-cert-card:hover {
   transform: translateY(-3px);
@@ -1809,20 +1933,21 @@ html, body {
 .sk-tools-panel::-webkit-scrollbar-thumb { background: rgba(196,151,58,.3); border-radius: 2px; }
 #s-skills.active .sk-tools-panel { opacity:1; transform:none; transition-delay:.3s; }
 
-.sk-tool-group { display: flex; flex-direction: column; gap: .32rem; }
+.sk-tool-group { display: flex; flex-direction: column; gap: .45rem; }
 
 .sk-tool-cat {
-  font-size: .56rem; letter-spacing: .16em; color: var(--gold);
+  font-size: .64rem; letter-spacing: .12em; color: var(--gold);
   font-weight: 700; text-transform: uppercase;
+  margin-bottom: .1rem;
 }
 
-.sk-pills { display: flex; flex-wrap: wrap; gap: .3rem; }
+.sk-pills { display: flex; flex-wrap: wrap; gap: .38rem; }
 
 .sk-pill {
   display: inline-flex; align-items: center;
   background: rgba(255,255,255,.04); border: 1px solid rgba(196,151,58,.18);
-  padding: .2rem .6rem; border-radius: 3px;
-  font-size: .62rem; color: rgba(255,255,255,.82); letter-spacing: .02em;
+  padding: .28rem .75rem; border-radius: 4px;
+  font-size: .72rem; color: rgba(255,255,255,.88); letter-spacing: .02em;
   transition: background .18s ease, border-color .18s ease, transform .15s ease;
 }
 .sk-pill:hover {
@@ -2898,6 +3023,11 @@ html, body {
           <div class="contact-val">Bursa, Nilüfer Görükle</div>
         </div>
       </div>
+      <div class="s7-btn-row reveal d8">
+        <a class="s7-btn primary" href="mailto:ebubekirpekmez@gmail.com">✉ E-Posta Gönder</a>
+        <a class="s7-btn outline" href="https://www.linkedin.com/in/ebubekir-pekmez-b37828148" target="_blank">in LinkedIn</a>
+        <a class="s7-btn outline" href="tel:+905331990927">📞 Ara</a>
+      </div>
       <div class="s7-note reveal d8">
         Bu portföydeki veriler Trendyol Partner paneli, Hepsiburada Satıcı Paneli, Shopify raporları ve Meta Ads Manager'dan alınmıştır.
       </div>
@@ -2944,11 +3074,13 @@ function initTimeline() {
 
 function showNextTlItem() {
   if (tlStep < tlItems.length) {
-    tlItems[tlStep].classList.add('tl-visible');
+    const item = tlItems[tlStep];
+    item.classList.add('tl-visible');
+    // scrollHeight tüm gizli öğeleri de sayar — yanlış alta kaydırır.
+    // Bunun yerine görünür kılınan maddeyi doğrudan görüntüle.
     setTimeout(() => {
-      const container = document.querySelector('.tl-container');
-      if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
-    }, 100);
+      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 150);
     tlStep++;
     updateTlCounter();
     return true;
@@ -2962,6 +3094,9 @@ function resetTimeline() {
   tlLocked = false;
   const counter = document.getElementById('tlCounter');
   if (counter) { counter.classList.remove('visible'); }
+  // Scroll başa al — önceki ziyaretten kalan pozisyon ilk maddeleri gizliyordu
+  const container = document.querySelector('.tl-container');
+  if (container) container.scrollTop = 0;
 }
 
 function enterTimeline() {
@@ -3082,19 +3217,28 @@ function goSlide(n) {
   // Sayaçları sıfırla → sayfadan ayrılınca tekrar animasyon hazır olsun
   if (slides[current].id === 's4-hb')     hbCounted  = false;
   if (slides[current].id === 's-summary') sumCounted = false;
+
+  const forward = n > current; // yön tespiti
+
   slides[current].classList.remove('active');
-  slides[current].classList.add('exit');
+  slides[current].classList.add('exit', forward ? 'exit-left' : 'exit-right');
   const old = current;
-  setTimeout(() => slides[old].classList.remove('exit'), 700);
+  setTimeout(() => slides[old].classList.remove('exit','exit-left','exit-right'), 700);
+
   current = n;
-  slides[current].classList.add('active');
-  if (current === TL_SLIDE) enterTimeline();
-  if (slides[current].id === 's4-hb')     setTimeout(runHBCountUp,  350);
-  if (slides[current].id === 's-summary') setTimeout(runSumCountUp, 350);
-  document.querySelectorAll('.nav-dot').forEach((d,i) =>
-    d.classList.toggle('active', i === current));
-  prog.style.width = ((current+1)/slides.length*100) + '%';
-  updateCounter();
+  // Giren slaytı önceden konumlandır, sonra active ile animate et
+  slides[current].classList.add(forward ? 'from-right' : 'from-left');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    slides[current].classList.remove('from-right','from-left');
+    slides[current].classList.add('active');
+    if (current === TL_SLIDE) enterTimeline();
+    if (slides[current].id === 's4-hb')     setTimeout(runHBCountUp,  350);
+    if (slides[current].id === 's-summary') setTimeout(runSumCountUp, 350);
+    document.querySelectorAll('.nav-dot').forEach((d,i) =>
+      d.classList.toggle('active', i === current));
+    prog.style.width = ((current+1)/slides.length*100) + '%';
+    updateCounter();
+  }));
 }
 
 function go(n) {
