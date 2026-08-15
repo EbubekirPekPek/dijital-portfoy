@@ -145,14 +145,25 @@ html, body {
 .white { color: var(--white); }
 
 
+
 /* ──────────────────────────────────────────────
-   SLIDE 1 — COVER HERO & DYNAMIC EFFECTS
+   SLIDE 1 — COVER HERO & DYNAMIC EFFECTS (ROBUST & HIGH CONTRAST)
 ────────────────────────────────────────────── */
 #s1 {
   padding: 0;
   overflow: hidden;
   position: relative;
   background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure Slide 1 content is ALWAYS visible on initial load */
+#s1 .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 .s1-glow-orb {
@@ -167,7 +178,7 @@ html, body {
   height: 450px;
   top: -100px;
   right: -50px;
-  background: radial-gradient(circle, rgba(196, 151, 58, 0.15) 0%, rgba(74, 156, 194, 0.08) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 151, 58, 0.18) 0%, rgba(74, 156, 194, 0.08) 50%, transparent 70%);
   animation: glow-pulse 6s ease-in-out infinite alternate;
 }
 .s1-glow-2 {
@@ -175,7 +186,7 @@ html, body {
   height: 380px;
   bottom: -80px;
   left: 15%;
-  background: radial-gradient(circle, rgba(74, 156, 194, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(74, 156, 194, 0.14) 0%, transparent 70%);
   animation: glow-pulse 8s ease-in-out infinite alternate-reverse;
 }
 @keyframes glow-pulse {
@@ -191,62 +202,62 @@ html, body {
     var(--gold) 25%,
     var(--gold2) 60%,
     rgba(196,151,58,0.2) 100%);
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
-}
-.slide.active .s1-accent {
-  transform: scaleY(1);
 }
 
 .s1-content {
   position: relative;
-  z-index: 5;
+  z-index: 10;
   padding: 3.5rem 5rem;
-  height: 100%;
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
 }
 
+/* Super label badge */
 .s1-label {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 .s1-label-badge {
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
   color: var(--gold);
   font-weight: 700;
   background: rgba(196, 151, 58, 0.12);
   border: 1px solid rgba(196, 151, 58, 0.35);
-  padding: 0.3rem 0.85rem;
+  padding: 0.32rem 0.85rem;
   border-radius: 20px;
 }
 .s1-label-year {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   color: var(--muted);
   font-weight: 600;
 }
 
+/* Grand Hero Name — Solid White & Gold (Zero transparency bugs) */
 .s1-name1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 6.5vw, 6rem);
+  font-size: clamp(3.2rem, 6.5vw, 5.8rem);
   font-weight: 900;
-  line-height: 1.02;
-  color: var(--white);
+  line-height: 1.04;
+  color: #FFFFFF !important;
   letter-spacing: -0.015em;
   margin-bottom: 1.2rem;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .s1-gold-surname {
-  color: var(--gold);
-  text-shadow: 0 0 35px rgba(196, 151, 58, 0.3);
+  color: var(--gold) !important;
+  text-shadow: 0 0 30px rgba(196, 151, 58, 0.35);
 }
 
+/* Dynamic Rotating Ticker */
 .s1-ticker-wrap {
   display: flex;
   align-items: center;
@@ -255,18 +266,18 @@ html, body {
   flex-wrap: wrap;
 }
 .s1-ticker-prefix {
-  font-size: 0.75rem;
+  font-size: 0.76rem;
   letter-spacing: 0.14em;
-  color: var(--muted);
+  color: var(--gold);
   font-weight: 700;
   text-transform: uppercase;
 }
 .s1-ticker-window {
-  height: 38px;
+  height: 40px;
   overflow: hidden;
   position: relative;
-  background: rgba(20, 36, 53, 0.7);
-  border: 1px solid rgba(196, 151, 58, 0.25);
+  background: rgba(20, 36, 53, 0.85);
+  border: 1px solid rgba(196, 151, 58, 0.3);
   border-radius: 8px;
   padding: 0 1rem;
   display: flex;
@@ -278,13 +289,13 @@ html, body {
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .s1-ticker-item {
-  height: 38px;
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.95rem;
+  gap: 0.65rem;
+  font-size: 0.96rem;
   font-weight: 600;
-  color: var(--white);
+  color: #FFFFFF;
   white-space: nowrap;
 }
 .s1-t-dot {
@@ -300,19 +311,20 @@ html, body {
 
 .s1-divider {
   height: 2px;
-  width: 260px;
+  width: 240px;
   background: linear-gradient(90deg, var(--gold), rgba(196,151,58,0.2));
-  margin: 1.2rem 0 1.4rem;
+  margin: 1.1rem 0 1.3rem;
 }
 
+/* Interactive Platform Jump Buttons */
 .s1-platforms-section {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 }
 .s1-plat-title {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   letter-spacing: 0.16em;
   color: var(--muted);
   font-weight: 700;
@@ -327,12 +339,12 @@ html, body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(20, 36, 53, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.45rem 0.9rem;
+  background: rgba(20, 36, 53, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 0.95rem;
   border-radius: 20px;
-  color: var(--white);
-  font-size: 0.8rem;
+  color: #FFFFFF;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   cursor: pointer;
@@ -341,7 +353,7 @@ html, body {
 }
 .s1-plat-btn:hover {
   transform: translateY(-2px);
-  background: rgba(28, 48, 72, 0.9);
+  background: rgba(28, 48, 72, 0.95);
 }
 .plat-dot {
   width: 6px;
@@ -365,19 +377,19 @@ html, body {
 
 .plat-arr {
   font-size: 0.75rem;
-  color: var(--muted);
-  transition: transform 0.2s, color 0.2s;
+  color: var(--gold);
+  transition: transform 0.2s;
 }
 .s1-plat-btn:hover .plat-arr {
   transform: translate(2px, -2px);
-  color: var(--white);
 }
 
+/* Explore CTA Row */
 .s1-cta-row {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
+  gap: 1.4rem;
+  margin-top: 0.4rem;
   flex-wrap: wrap;
 }
 .s1-explore-btn {
@@ -1431,18 +1443,8 @@ html, body {
   0%, 100% { background-position: 0% 0; }
   50%      { background-position: -30% 0; }
 }
-#typewriter-target {
-  background: linear-gradient(90deg, var(--gold) 0%, var(--gold2) 40%, rgba(255,255,255,.9) 48%, var(--gold) 55%, var(--dim) 60%, var(--dim) 100%);
-  background-size: 250% 100%;
-  background-position: 200% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.slide.active #typewriter-target {
-  animation: gold-sweep 2s cubic-bezier(.25,.46,.45,.94) .5s forwards,
-             gold-shimmer 4s ease-in-out 3s infinite;
-}
+
+.slide.active 
 
 /* ──────────────────────────────────────────────
    SLIDE 4 — TRENDYOL CASE STUDY
@@ -2644,69 +2646,87 @@ html, body, .deck {
     min-width: 42px !important;
   }
 
-    /* ══ SLIDE 1: COVER SPECIFICS ══ */
+      /* ══ SLIDE 1: COVER SPECIFICS (MOBILE) ══ */
   #s1 {
-    padding: 2.8rem 1.15rem 5.5rem 1.15rem !important;
+    padding: 3rem 1.25rem 5.5rem 1.25rem !important;
     justify-content: flex-start !important;
+    overflow-y: auto !important;
   }
-  .s1-content {
+  #s1 .s1-content {
     padding: 0 !important;
     justify-content: flex-start !important;
+    max-width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  #s1 .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
   }
   .s1-label {
-    margin-bottom: 0.9rem !important;
+    margin-bottom: 1rem !important;
     flex-wrap: wrap !important;
     gap: 0.5rem !important;
   }
   .s1-label-badge {
-    font-size: 0.68rem !important;
-    padding: 0.25rem 0.7rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.28rem 0.75rem !important;
   }
   .s1-label-year {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
   }
   .s1-name1 {
-    font-size: clamp(2.3rem, 9.5vw, 3.4rem) !important;
-    line-height: 1.08 !important;
+    font-size: clamp(2.2rem, 9.2vw, 3.2rem) !important;
+    line-height: 1.1 !important;
     margin-bottom: 1rem !important;
+    color: #FFFFFF !important;
   }
   .s1-ticker-wrap {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 0.4rem !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 1.1rem !important;
+    width: 100% !important;
+  }
+  .s1-ticker-prefix {
+    font-size: 0.72rem !important;
   }
   .s1-ticker-window {
     width: 100% !important;
     box-sizing: border-box !important;
-    height: 36px !important;
+    height: 38px !important;
   }
   .s1-ticker-item {
-    font-size: 0.85rem !important;
-    height: 36px !important;
+    font-size: 0.88rem !important;
+    height: 38px !important;
+    color: #FFFFFF !important;
   }
   .s1-divider {
     width: 140px !important;
-    margin: 0.8rem 0 1rem !important;
+    margin: 0.9rem 0 1.1rem !important;
   }
   .s1-platforms-section {
     margin-bottom: 1.4rem !important;
+    width: 100% !important;
   }
   .s1-plat-title {
-    font-size: 0.68rem !important;
+    font-size: 0.7rem !important;
   }
   .s1-platforms-list {
-    gap: 0.45rem !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
   }
   .s1-plat-btn {
-    padding: 0.38rem 0.75rem !important;
-    font-size: 0.76rem !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.78rem !important;
   }
   .s1-cta-row {
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 0.8rem !important;
     margin-top: 0.8rem !important;
+    width: 100% !important;
   }
   .s1-explore-btn {
     width: 100% !important;
@@ -2716,7 +2736,7 @@ html, body, .deck {
   }
   .s1-swipe-hint {
     justify-content: center !important;
-    font-size: 0.74rem !important;
+    font-size: 0.75rem !important;
   }
 
   /* ══ SLIDE 2: KARİYER YOLCULUĞUM ══ */
