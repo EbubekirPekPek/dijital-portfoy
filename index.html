@@ -2205,11 +2205,12 @@ html, body {
 #s-summary.active .sum-desc { opacity:1; transform:none; transition-delay:1.28s; }
 
 
+
 /* ══════════════════════════════════════════════════════════════════
-   COMPREHENSIVE MOBILE & TABLET RESPONSIVE ENGINE
+   PREMIUM MOBILE-FIRST RESPONSIVE DESIGN SYSTEM
    ══════════════════════════════════════════════════════════════════ */
 
-/* Dynamic viewport height for modern mobile browsers */
+/* Dynamic Viewport for modern mobile browsers */
 html, body {
   height: 100%;
   height: 100dvh;
@@ -2225,7 +2226,7 @@ html, body {
   html, body, * { cursor: auto !important; }
 }
 
-/* Tablet & Mobile Slide Overflows */
+/* General Tablet/Mobile slide scrolling & layout */
 @media (max-width: 900px) {
   .slide {
     overflow-y: auto !important;
@@ -2234,144 +2235,215 @@ html, body {
     touch-action: pan-y;
   }
   .slide::-webkit-scrollbar {
-    width: 3px;
+    width: 4px;
   }
   .slide::-webkit-scrollbar-track {
     background: transparent;
   }
   .slide::-webkit-scrollbar-thumb {
-    background: rgba(196, 151, 58, 0.35);
-    border-radius: 3px;
+    background: rgba(196, 151, 58, 0.4);
+    border-radius: 4px;
   }
   
-  /* Hide side arrows on tablet/mobile so they don't cover cards */
+  /* Hide side arrows on mobile so they never obscure cards or text */
   .arrow {
     display: none !important;
   }
   
-  /* Compact top counter */
+  /* Floating glassmorphism slide counter (Top Right) */
   .counter {
-    top: 0.8rem !important;
-    right: 0.9rem !important;
-    font-size: 0.65rem !important;
-    background: rgba(12, 27, 42, 0.85);
-    border: 1px solid rgba(196, 151, 58, 0.25);
-    padding: 0.2rem 0.55rem;
-    border-radius: 12px;
-    backdrop-filter: blur(6px);
+    top: 0.85rem !important;
+    right: 1rem !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    color: var(--gold) !important;
+    background: rgba(12, 27, 42, 0.88) !important;
+    border: 1px solid rgba(196, 151, 58, 0.3) !important;
+    padding: 0.28rem 0.75rem !important;
+    border-radius: 16px !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
   }
   
-  /* Compact floating bottom dot navigation */
+  /* Floating glassmorphism bottom dot navigation */
   .nav {
-    bottom: 0.8rem !important;
-    gap: 0.45rem !important;
-    background: rgba(12, 27, 42, 0.85);
-    border: 1px solid rgba(196, 151, 58, 0.25);
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    backdrop-filter: blur(6px);
+    bottom: 0.9rem !important;
+    gap: 0.55rem !important;
+    background: rgba(12, 27, 42, 0.9) !important;
+    border: 1px solid rgba(196, 151, 58, 0.3) !important;
+    padding: 0.45rem 0.9rem !important;
+    border-radius: 24px !important;
+    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
   }
   .nav-dot {
-    width: 6px !important;
-    height: 6px !important;
+    width: 7px !important;
+    height: 7px !important;
+  }
+  .nav-dot.active {
+    transform: scale(1.6) !important;
   }
 }
 
-/* Mobile Screens (<= 768px) */
+/* ──────────────────────────────────────────────────────────────────
+   SMARTPHONE VIEWPORT (<= 768px) — READABLE, SPACIOUS & PROPORTIONED
+   ────────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* ── Slide 1: Cover ── */
+  /* ══ SLIDE 1: COVER (KAPAK) ══ */
   #s1 {
     padding: 0 !important;
-    justify-content: center;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
   .s1-content {
-    padding: 2.2rem 1.25rem 4.5rem !important;
-    justify-content: center;
+    padding: 3rem 1.4rem 5.5rem !important;
+    justify-content: center !important;
+    max-width: 100% !important;
   }
   .s1-label {
-    font-size: 0.62rem !important;
-    letter-spacing: 0.2em !important;
-    margin-bottom: 0.8rem !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.22em !important;
+    margin-bottom: 1.2rem !important;
+    font-weight: 700 !important;
   }
   .s1-name1 {
-    font-size: clamp(2.4rem, 9.5vw, 3.6rem) !important;
-    line-height: 1.05 !important;
-    margin-bottom: 0.8rem !important;
-    letter-spacing: -0.01em !important;
+    font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
+    line-height: 1.06 !important;
+    margin-bottom: 1.2rem !important;
+    letter-spacing: -0.015em !important;
   }
   .s1-titles {
-    gap: 0.35rem !important;
-    margin-bottom: 1.1rem !important;
+    gap: 0.55rem !important;
+    margin-bottom: 1.4rem !important;
   }
   .s1-title-item {
-    font-size: clamp(0.85rem, 3.8vw, 1.05rem) !important;
-    line-height: 1.35 !important;
+    font-size: clamp(0.95rem, 4.2vw, 1.2rem) !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+    color: var(--white) !important;
   }
   .s1-divider {
-    width: 140px !important;
-    margin: 0.9rem 0 0.75rem !important;
+    width: 180px !important;
+    height: 3px !important;
+    margin: 1.2rem 0 1rem !important;
   }
   .s1-timeline {
-    font-size: 0.8rem !important;
-    margin-bottom: 0.6rem !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.16em !important;
+    margin-bottom: 0.9rem !important;
+    font-weight: 700 !important;
   }
   .s1-platforms-list {
-    gap: 0.4rem !important;
-    font-size: 0.74rem !important;
-    line-height: 1.4 !important;
+    gap: 0.6rem !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    color: var(--muted) !important;
   }
-  .s1-circle, .s1-circle2 {
-    opacity: 0.3 !important;
+  .s1-plat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(196,151,58,0.22);
+    padding: 0.22rem 0.65rem;
+    border-radius: 12px;
+    display: inline-block;
+  }
+  .s1-plat + .s1-plat::before {
+    display: none !important;
+  }
+  .s1-tagline {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin-top: 1.4rem !important;
+    padding-left: 1rem !important;
   }
 
-  /* ── Slide 2: Kariyer ── */
+  /* ══ SLIDE 2: KARİYER YOLCULUĞUM ══ */
   #s2 {
-    padding: 1.5rem 1.1rem 4.5rem !important;
+    padding: 2.2rem 1.25rem 5.5rem !important;
   }
   .s2-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 1.2rem !important;
+    gap: 1.5rem !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
   }
   .s2-photo {
-    width: 110px !important;
-    max-width: 110px !important;
+    width: 130px !important;
+    max-width: 130px !important;
     margin: 0 auto !important;
-    border-width: 2px !important;
+    border-width: 3px !important;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 20px rgba(196,151,58,0.2) !important;
   }
   .s2-right {
     width: 100% !important;
     height: auto !important;
   }
   .s2-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 0.8rem !important;
+    font-size: 1.8rem !important;
+    margin-bottom: 1.4rem !important;
     text-align: center !important;
+    line-height: 1.2 !important;
   }
   .tl-container {
     max-height: none !important;
     overflow-y: visible !important;
-    padding-left: 1.2rem !important;
+    padding-left: 1.6rem !important;
     padding-right: 0 !important;
   }
+  .tl-container::before {
+    left: 0 !important;
+    width: 2px !important;
+  }
   .tl-item {
-    padding: 0 0 0.7rem 0.8rem !important;
+    position: relative !important;
+    padding: 0.8rem 1rem !important;
+    margin-bottom: 0.9rem !important;
+    background: rgba(20, 36, 53, 0.6) !important;
+    border: 1px solid rgba(196, 151, 58, 0.2) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25) !important;
   }
   .tl-item::before {
-    left: calc(-1.2rem - 3px) !important;
+    left: -1.6rem !important;
+    top: 1.1rem !important;
+    width: 9px !important;
+    height: 9px !important;
+  }
+  .tl-year {
+    font-size: 0.82rem !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.3rem !important;
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+  }
+  .tl-name {
+    font-size: 0.98rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.35rem !important;
+    color: var(--white) !important;
+    line-height: 1.35 !important;
+  }
+  .tl-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+    color: rgba(255,255,255,0.75) !important;
+  }
+  .tl-counter {
+    font-size: 0.75rem !important;
+    text-align: center !important;
+    margin-top: 1rem !important;
   }
 
-  /* ── Slide 3: Trendyol ── */
+  /* ══ SLIDE 3: TRENDYOL CASE STUDY ══ */
   #s4-ty {
-    padding: 1.5rem 1.1rem 4.5rem !important;
+    padding: 2rem 1.25rem 5.5rem !important;
   }
   .s4-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 1.1rem !important;
+    gap: 1.4rem !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
@@ -2380,41 +2452,98 @@ html, body {
     border-right: none !important;
     border-bottom: 1px solid rgba(242,122,26,.25) !important;
     padding-right: 0 !important;
-    padding-bottom: 1rem !important;
-    gap: 0.6rem !important;
+    padding-bottom: 1.2rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1.2rem !important;
   }
   .s4-logo {
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 14px !important;
+    width: 75px !important;
+    height: 75px !important;
+    border-radius: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  .s4-since {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.14em !important;
+    text-align: left !important;
+  }
+  .s4-status {
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.85rem !important;
+    border-radius: 16px !important;
+  }
+  .s4-right {
+    gap: 1.2rem !important;
+  }
+  .s4-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
   }
   .s4-title {
-    font-size: 1.5rem !important;
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important;
   }
   .s4-kpi-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.45rem !important;
+    gap: 0.65rem !important;
   }
   .s4-kpi {
-    padding: 0.7rem 0.6rem !important;
+    padding: 0.9rem 0.8rem !important;
+    border-radius: 10px !important;
+    background: rgba(242,122,26,.08) !important;
+    border: 1px solid rgba(242,122,26,.25) !important;
+    border-top: 3px solid var(--ty-orange) !important;
   }
   .s4-kpi-val {
-    font-size: 1.45rem !important;
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .s4-kpi-key {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    margin: 0.3rem 0 0.15rem !important;
+  }
+  .s4-kpi-sub {
+    font-size: 0.76rem !important;
+    color: rgba(255,255,255,0.65) !important;
+  }
+  .s4-cat-label {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .s4-cat-row {
+    gap: 0.8rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .s4-cat-name {
+    font-size: 0.82rem !important;
+    min-width: 105px !important;
+  }
+  .s4-cat-bar-wrap {
+    height: 6px !important;
+  }
+  .s4-cat-pct {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
   }
   .s4-summary {
-    font-size: 0.74rem !important;
-    line-height: 1.6 !important;
-    padding-left: 0.75rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.4rem !important;
   }
 
-  /* ── Slide 4: Hepsiburada ── */
+  /* ══ SLIDE 4: HEPSİBURADA CASE STUDY ══ */
   #s4-hb {
-    padding: 1.5rem 1.1rem 4.5rem !important;
+    padding: 2rem 1.25rem 5.5rem !important;
   }
   .hb-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 1.1rem !important;
+    gap: 1.4rem !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
@@ -2423,41 +2552,98 @@ html, body {
     border-right: none !important;
     border-bottom: 1px solid rgba(124,58,237,.25) !important;
     padding-right: 0 !important;
-    padding-bottom: 1rem !important;
-    gap: 0.6rem !important;
+    padding-bottom: 1.2rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1.2rem !important;
   }
   .hb-logo {
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 14px !important;
+    width: 75px !important;
+    height: 75px !important;
+    border-radius: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  .hb-since {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.14em !important;
+    text-align: left !important;
+  }
+  .hb-status {
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.85rem !important;
+    border-radius: 16px !important;
+  }
+  .hb-right {
+    gap: 1.2rem !important;
+  }
+  .hb-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
   }
   .hb-title {
-    font-size: 1.5rem !important;
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
     margin-top: 0 !important;
   }
   .hb-kpi-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.45rem !important;
+    gap: 0.65rem !important;
   }
   .hb-kpi {
-    padding: 0.7rem 0.6rem !important;
+    padding: 0.9rem 0.8rem !important;
+    border-radius: 10px !important;
+    background: rgba(124,58,237,.08) !important;
+    border: 1px solid rgba(124,58,237,.25) !important;
+    border-top: 3px solid var(--hb-purple) !important;
   }
   .hb-kpi-val {
-    font-size: 1.45rem !important;
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .hb-kpi-key {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    margin: 0.3rem 0 0.15rem !important;
+  }
+  .hb-kpi-sub {
+    font-size: 0.76rem !important;
+    color: rgba(255,255,255,0.65) !important;
+  }
+  .hb-cat-label {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .hb-cat-row {
+    gap: 0.8rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .hb-cat-name {
+    font-size: 0.82rem !important;
+    min-width: 105px !important;
+  }
+  .hb-cat-bar-wrap {
+    height: 6px !important;
+  }
+  .hb-cat-pct {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
   }
   .hb-summary {
-    font-size: 0.74rem !important;
-    line-height: 1.6 !important;
-    padding-left: 0.75rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.4rem !important;
   }
 
-  /* ── Slide 5: Shopify ── */
+  /* ══ SLIDE 5: SHOPIFY (ARI KOVANI) ══ */
   #s4-sp {
-    padding: 1.5rem 1.1rem 4.5rem !important;
+    padding: 2rem 1.25rem 5.5rem !important;
   }
   .sp-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 1.1rem !important;
+    gap: 1.4rem !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
@@ -2466,159 +2652,316 @@ html, body {
     border-right: none !important;
     border-bottom: 1px solid rgba(150,191,72,.25) !important;
     padding-right: 0 !important;
-    padding-bottom: 1rem !important;
-    gap: 0.6rem !important;
+    padding-bottom: 1.2rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1.2rem !important;
   }
   .sp-logo {
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 14px !important;
-    padding: 8px !important;
+    width: 75px !important;
+    height: 75px !important;
+    border-radius: 16px !important;
+    padding: 10px !important;
+    flex-shrink: 0 !important;
+  }
+  .sp-since {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.14em !important;
+    text-align: left !important;
+  }
+  .sp-status {
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.85rem !important;
+    border-radius: 16px !important;
+  }
+  .sp-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
   }
   .sp-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 0.8rem !important;
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
   }
   .sp-kpi-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.45rem !important;
+    gap: 0.65rem !important;
+    margin-bottom: 1.2rem !important;
   }
   .sp-kpi {
-    padding: 0.7rem 0.6rem !important;
+    padding: 0.9rem 0.8rem !important;
+    border-radius: 10px !important;
+    background: rgba(150,191,72,.08) !important;
+    border: 1px solid rgba(150,191,72,.25) !important;
+    border-top: 3px solid var(--sp-green) !important;
   }
   .sp-kpi-val {
-    font-size: 1.45rem !important;
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .sp-kpi-key {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    margin: 0.3rem 0 0.15rem !important;
+  }
+  .sp-kpi-sub {
+    font-size: 0.76rem !important;
+    color: rgba(255,255,255,0.65) !important;
+  }
+  .sp-cat-label {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .sp-cat-row {
+    gap: 0.8rem !important;
+    margin-bottom: 0.45rem !important;
   }
   .sp-cat-name {
-    min-width: 90px !important;
-    font-size: 0.64rem !important;
+    font-size: 0.82rem !important;
+    min-width: 105px !important;
+  }
+  .sp-cat-bar-wrap {
+    height: 6px !important;
+  }
+  .sp-cat-pct {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
   }
   .sp-summary {
-    font-size: 0.74rem !important;
-    line-height: 1.6 !important;
-    padding-left: 0.75rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.6rem !important;
   }
 
-  /* ── Slide 6: Meta Ads ── */
+  /* ══ SLIDE 6: META ADS CASE STUDY ══ */
   #s5-meta {
-    padding: 1.5rem 1.1rem 4.5rem !important;
+    padding: 2rem 1.25rem 5.5rem !important;
   }
   .meta-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 1.1rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .meta-left {
-    gap: 0.6rem !important;
-    width: 100% !important;
-  }
-  .meta-logo {
-    width: 100px !important;
-    height: 60px !important;
-    padding: 8px !important;
-  }
-  .meta-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 0.8rem !important;
-  }
-  .meta-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.4rem !important;
-  }
-  .meta-kpi {
-    padding: 0.55rem 0.5rem !important;
-  }
-  .meta-kpi-val {
-    font-size: 1.3rem !important;
-  }
-  .meta-kpi-key {
-    font-size: 0.52rem !important;
-  }
-  .meta-kpi-sub {
-    font-size: 0.52rem !important;
-  }
-  .meta-camp-name {
-    min-width: 80px !important;
-    font-size: 0.6rem !important;
-  }
-  .meta-accounts {
-    gap: 0.4rem !important;
-  }
-  .meta-acc-card {
-    padding: 0.45rem 0.6rem !important;
-  }
-  .meta-summary {
-    font-size: 0.74rem !important;
-    line-height: 1.6 !important;
-    padding-left: 0.75rem !important;
-  }
-
-  /* ── Slide 7: Konsolide Özet ── */
-  #s-summary {
-    padding: 1.5rem 1.1rem 4.5rem !important;
-    align-items: flex-start !important;
-  }
-  .sum-container {
-    gap: 1.1rem !important;
-  }
-  .sum-header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 0.8rem !important;
-  }
-  .sum-logo-ring {
-    width: 75px !important;
-    height: 75px !important;
-    border-width: 2px !important;
-  }
-  .sum-title {
-    font-size: 1.5rem !important;
-  }
-  .sum-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.45rem !important;
-  }
-  .sum-kpi {
-    padding: 0.7rem 0.6rem !important;
-  }
-  .sum-kpi-val {
-    font-size: 1.45rem !important;
-  }
-  .sum-platforms {
-    gap: 0.35rem !important;
-  }
-  .sum-plat-pill {
-    padding: 0.2rem 0.55rem !important;
-    font-size: 0.62rem !important;
-  }
-  .sum-desc {
-    font-size: 0.74rem !important;
-    line-height: 1.6 !important;
-    padding-left: 0.75rem !important;
-  }
-
-  /* ── Slide 8: Sertifikalar & Yetkinlikler ── */
-  #s-skills {
-    padding: 1.5rem 1.1rem 4.5rem !important;
-  }
-  .sk-wrapper {
-    height: auto !important;
-    gap: 1.1rem !important;
-  }
-  .sk-header {
-    gap: 0.8rem !important;
-  }
-  .sk-main-title {
-    font-size: 1.3rem !important;
-  }
-  .sk-body {
     grid-template-columns: 1fr !important;
     gap: 1.4rem !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
+  }
+  .meta-left {
+    gap: 1rem !important;
+    width: 100% !important;
+    align-items: stretch !important;
+  }
+  .meta-logo {
+    width: 100% !important;
+    max-width: 140px !important;
+    height: 70px !important;
+    margin: 0 auto !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+  }
+  .meta-status {
+    align-self: center !important;
+    font-size: 0.76rem !important;
+    padding: 0.35rem 0.9rem !important;
+  }
+  .meta-accounts {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+  .meta-acc-card {
+    border-radius: 8px !important;
+    padding: 0.75rem 0.9rem !important;
+  }
+  .mac-name {
+    font-size: 0.88rem !important;
+  }
+  .mac-badge {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+  .mac-period {
+    font-size: 0.74rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .mac-note {
+    font-size: 0.74rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .mac-stat-val {
+    font-size: 0.95rem !important;
+  }
+  .mac-stat-key {
+    font-size: 0.68rem !important;
+  }
+  .meta-right {
+    gap: 1.2rem !important;
+  }
+  .meta-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
+  }
+  .meta-title {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+  }
+  .meta-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .meta-kpi {
+    padding: 0.85rem 0.75rem !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(66,168,255,.3) !important;
+    border-top: 3px solid var(--meta-blue) !important;
+  }
+  .meta-kpi-val {
+    font-size: clamp(1.5rem, 5.5vw, 1.9rem) !important;
+    margin-bottom: 0.3rem !important;
+  }
+  .meta-kpi-key {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 0.15rem !important;
+  }
+  .meta-kpi-sub {
+    font-size: 0.75rem !important;
+    color: rgba(255,255,255,0.65) !important;
+  }
+  .meta-camp-title {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.16em !important;
+    margin-bottom: 0.6rem !important;
+  }
+  .meta-camp-row {
+    gap: 0.7rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .meta-camp-name {
+    font-size: 0.8rem !important;
+    min-width: 95px !important;
+  }
+  .meta-camp-bar-wrap {
+    height: 6px !important;
+  }
+  .meta-camp-roas {
+    font-size: 0.82rem !important;
+  }
+  .meta-camp-badge {
+    font-size: 0.65rem !important;
+    padding: 0.18rem 0.5rem !important;
+  }
+  .meta-summary {
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.8rem !important;
+  }
+
+  /* ══ SLIDE 7: KONSOLİDE ÖZET ══ */
+  #s-summary {
+    padding: 2rem 1.25rem 5.5rem !important;
+    align-items: flex-start !important;
+  }
+  .sum-container {
+    gap: 1.4rem !important;
+  }
+  .sum-header {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 1.2rem !important;
+  }
+  .sum-logo-ring {
+    width: 80px !important;
+    height: 80px !important;
+    border-width: 2.5px !important;
+    flex-shrink: 0 !important;
+  }
+  .sum-super-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .sum-title {
+    font-size: 1.65rem !important;
+    line-height: 1.18 !important;
+  }
+  .sum-header-divider {
+    width: 140px !important;
+    margin-top: 0.6rem !important;
+  }
+  .sum-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+  .sum-kpi {
+    padding: 0.9rem 0.8rem !important;
+    border-radius: 10px !important;
+  }
+  .sum-kpi-val {
+    font-size: clamp(1.6rem, 6vw, 2rem) !important;
+    margin-bottom: 0.35rem !important;
+  }
+  .sum-kpi-key {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    margin: 0.3rem 0 0.15rem !important;
+  }
+  .sum-kpi-sub {
+    font-size: 0.76rem !important;
+  }
+  .sum-platforms {
+    gap: 0.5rem !important;
+  }
+  .sum-plat-label {
+    font-size: 0.74rem !important;
+    width: 100% !important;
+    margin-bottom: 0.2rem !important;
+  }
+  .sum-plat-pill {
+    padding: 0.3rem 0.75rem !important;
+    font-size: 0.78rem !important;
+    border-radius: 14px !important;
+  }
+  .sum-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    padding-left: 1rem !important;
+    margin-top: 0.4rem !important;
+  }
+
+  /* ══ SLIDE 8: SERTİFİKALAR & YETKİNLİKLER ══ */
+  #s-skills {
+    padding: 2rem 1.25rem 5.5rem !important;
+  }
+  .sk-wrapper {
+    height: auto !important;
+    gap: 1.4rem !important;
+  }
+  .sk-header {
+    gap: 1rem !important;
+  }
+  .sk-sup-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.2em !important;
+  }
+  .sk-main-title {
+    font-size: 1.6rem !important;
+  }
+  .sk-body {
+    grid-template-columns: 1fr !important;
+    gap: 1.8rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .sk-panel-label {
+    font-size: 0.76rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 0.6rem !important;
   }
   .sk-certs-panel, .sk-tools-panel {
     overflow-y: visible !important;
@@ -2627,62 +2970,95 @@ html, body {
   }
   .sk-cert-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.5rem !important;
+    gap: 0.75rem !important;
     max-height: none !important;
     overflow-y: visible !important;
   }
+  .sk-cert-card {
+    border-radius: 8px !important;
+    border: 1px solid rgba(196,151,58,0.28) !important;
+    background: rgba(255,255,255,0.04) !important;
+  }
+  .sk-cert-info {
+    padding: 0.5rem 0.6rem !important;
+  }
+  .sk-cert-issuer {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.08em !important;
+    margin-bottom: 0.2rem !important;
+  }
   .sk-cert-name {
-    font-size: 0.52rem !important;
+    font-size: 0.78rem !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+  }
+  .sk-tool-group {
+    margin-bottom: 0.8rem !important;
+  }
+  .sk-tool-cat {
+    font-size: 0.75rem !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.4rem !important;
   }
   .sk-pills {
-    gap: 0.28rem !important;
+    gap: 0.45rem !important;
   }
   .sk-pill {
-    font-size: 0.65rem !important;
-    padding: 0.22rem 0.55rem !important;
+    font-size: 0.82rem !important;
+    padding: 0.38rem 0.85rem !important;
+    border-radius: 6px !important;
   }
 
-  /* ── Slide 9: İletişim ── */
+  /* ══ SLIDE 9: İLETİŞİM & CTA ══ */
   #s8 {
     padding: 0 !important;
   }
   .s7-content {
-    padding: 2.2rem 1.2rem 4.5rem !important;
+    padding: 3rem 1.3rem 5.5rem !important;
     justify-content: flex-start !important;
   }
   .s7-label {
-    font-size: 0.62rem !important;
-    margin-bottom: 0.8rem !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.22em !important;
+    margin-bottom: 1.2rem !important;
   }
   .s7-cta {
-    font-size: clamp(2rem, 7.5vw, 3rem) !important;
-    margin-bottom: 1.2rem !important;
-    line-height: 1.05 !important;
+    font-size: clamp(2.2rem, 8.5vw, 3.4rem) !important;
+    margin-bottom: 1.6rem !important;
+    line-height: 1.08 !important;
   }
   .s7-divider {
-    width: 140px !important;
-    margin-bottom: 1.2rem !important;
+    width: 180px !important;
+    margin-bottom: 1.6rem !important;
+  }
+  .contact-list {
+    gap: 1.2rem !important;
   }
   .contact-row {
-    gap: 0.8rem !important;
+    gap: 1rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
   .contact-key {
-    font-size: 0.55rem !important;
-    min-width: 65px !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.18em !important;
+    color: var(--gold) !important;
   }
   .contact-val {
-    font-size: 0.85rem !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
   }
   .s7-btn-row {
     flex-direction: column !important;
-    gap: 0.5rem !important;
-    margin-top: 1.4rem !important;
+    gap: 0.75rem !important;
+    margin-top: 2rem !important;
   }
   .s7-btn {
     width: 100% !important;
     justify-content: center !important;
-    padding: 0.65rem 1rem !important;
-    font-size: 0.74rem !important;
+    padding: 0.85rem 1.2rem !important;
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
   }
 }
 
