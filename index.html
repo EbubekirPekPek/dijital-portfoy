@@ -3275,6 +3275,95 @@ html, body, .deck {
   }
 }
 
+@media (max-width: 768px) {
+  /* Scroll-led motion states. The page stays readable before JS is ready. */
+  #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 0; transform: translateY(26px); }
+  #mobile-portfolio.mpp-motion-ready .mpp-reveal.is-visible { opacity: 1; transform: translateY(0); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.75,.25,1); }
+  .mpp-hero-title { max-width: 10ch; }
+  .mpp-hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .5rem; margin-top: 1.2rem; padding-top: .85rem; border-top: 1px solid rgba(242,122,26,.36); }
+  .mpp-hero-stats span { color: rgba(247,244,238,.48); font-size: .61rem; line-height: 1.25; text-transform: uppercase; }
+  .mpp-hero-stats strong { display: block; color: #f7f4ee; font: 700 1.25rem/1 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.02em; }
+
+  .mpp-about-intro { display: grid; gap: 1rem; }
+  .mpp-about-intro .mpp-copy { margin-top: .15rem; }
+  .mpp-timeline { position: relative; margin-top: 2.6rem; padding-left: 1.35rem; }
+  .mpp-timeline-line { position: absolute; left: .2rem; top: .4rem; bottom: .8rem; width: 1px; background: rgba(242,122,26,.22); }
+  .mpp-timeline-line span { display: block; width: 100%; height: 18%; background: #f27a1a; transform-origin: top; transition: height .45s ease; }
+  .mpp-timeline-item { position: relative; padding: 0 0 1.7rem 1.05rem; opacity: .36; transform: translateX(0); transition: opacity .45s ease, transform .45s ease; }
+  .mpp-timeline-item::before { content: ''; position: absolute; left: -1.27rem; top: .18rem; width: .46rem; height: .46rem; border: 1px solid #f27a1a; border-radius: 50%; background: #070a0b; box-shadow: 0 0 0 4px rgba(242,122,26,.05); }
+  .mpp-timeline-item.is-active { opacity: 1; transform: translateX(.25rem); }
+  .mpp-timeline-item.is-active::before { background: #f27a1a; box-shadow: 0 0 0 5px rgba(242,122,26,.12), 0 0 18px rgba(242,122,26,.65); }
+  .mpp-timeline-item time { display: block; color: #f27a1a; font-size: .64rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .mpp-timeline-item strong { display: block; margin-top: .35rem; color: #f7f4ee; font-size: .85rem; line-height: 1.25; }
+  .mpp-timeline-item p { margin: .35rem 0 0; color: rgba(247,244,238,.54); font-size: .72rem; line-height: 1.45; }
+
+  .mpp-case { min-height: 238svh; padding-top: 2.5rem; padding-bottom: 2.5rem; background: #080c0f; }
+  .mpp-case-shell { position: relative; }
+  .mpp-case-stage { position: sticky; top: 0; z-index: 3; min-height: 62svh; display: flex; flex-direction: column; justify-content: center; padding: 2.4rem 0 1.2rem; background: linear-gradient(180deg, rgba(8,12,15,.98) 73%, rgba(8,12,15,.84)); }
+  .mpp-case-stage::after { content: ''; position: absolute; z-index: -1; left: -20%; right: -20%; top: 20%; height: 40%; background: radial-gradient(circle, color-mix(in srgb, var(--mpp-accent, #f27a1a) 16%, transparent), transparent 70%); opacity: .7; pointer-events: none; }
+  .mpp-case-head { position: relative; }
+  .mpp-case-head .mpp-title { max-width: 10ch; }
+  .mpp-case-media { margin: .85rem 0 .7rem; min-height: 104px; border-color: color-mix(in srgb, var(--mpp-accent, #f27a1a) 38%, rgba(255,255,255,.12)); }
+  .mpp-case-media img { height: 112px; padding: .55rem 1rem; }
+  .mpp-case-live { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: .1rem .8rem; padding: .62rem .75rem .7rem; border-left: 2px solid var(--mpp-accent, #f27a1a); background: rgba(255,255,255,.035); }
+  .mpp-case-live span { grid-column: 1 / -1; color: var(--mpp-accent, #f27a1a); font-size: .55rem; font-weight: 700; letter-spacing: .12em; }
+  .mpp-case-live b { color: #a9df82; font: 700 1.8rem/1 'Barlow Condensed','DM Sans',sans-serif; }
+  .mpp-case-live small { align-self: end; color: rgba(247,244,238,.5); font-size: .6rem; }
+  .mpp-case-dots { display: flex; gap: .35rem; margin-top: .75rem; }
+  .mpp-case-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: rgba(247,244,238,.22); transition: transform .35s ease, background .35s ease; }
+  .mpp-case-dots i.is-active { background: var(--mpp-accent, #f27a1a); transform: scale(1.35); }
+  .mpp-case-beats { position: relative; z-index: 2; margin-top: -.2rem; }
+  .mpp-beat { min-height: 57svh; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0 3.2rem; border-top: 1px solid color-mix(in srgb, var(--mpp-accent, #f27a1a) 32%, transparent); opacity: .34; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
+  .mpp-beat.is-active { opacity: 1; transform: translateY(0); }
+  .mpp-beat > small { color: var(--mpp-accent, #f27a1a); font-size: .62rem; font-weight: 700; letter-spacing: .17em; }
+  .mpp-beat h3 { max-width: 18ch; margin: .65rem 0 0; color: #f7f4ee; font: 700 clamp(1.65rem, 8vw, 2.8rem)/1.02 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.02em; text-transform: uppercase; }
+  .mpp-beat p { max-width: 36ch; margin: .85rem 0 0; color: rgba(247,244,238,.68); font-size: .86rem; line-height: 1.6; }
+  .mpp-kpis { margin-top: 1rem; }
+  .mpp-kpi { border-left-color: var(--mpp-accent, #f27a1a); }
+  .mpp-kpi-value { transform-origin: left center; }
+  .mpp-bars { display: grid; gap: .95rem; margin-top: 1rem; }
+  .mpp-bars > div { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .35rem .65rem; align-items: center; }
+  .mpp-bars span { color: rgba(247,244,238,.78); font-size: .68rem; }
+  .mpp-bars em { color: var(--mpp-accent, #f27a1a); font-size: .68rem; font-style: normal; font-weight: 700; }
+  .mpp-bars b { grid-column: 1 / -1; display: block; height: 5px; overflow: hidden; background: rgba(255,255,255,.1); }
+  .mpp-bars b i { display: block; width: var(--bar); height: 100%; background: var(--mpp-accent, #f27a1a); transform-origin: left; transform: scaleX(.1); transition: transform .9s cubic-bezier(.2,.75,.25,1); }
+  .mpp-beat.is-active .mpp-bars b i { transform: scaleX(1); }
+  .mpp-account-strip { display: grid; gap: .55rem; margin-top: 1.15rem; }
+  .mpp-account-strip span { padding: .65rem .7rem; border-left: 1px solid var(--mpp-accent, #55a8ff); background: rgba(255,255,255,.035); }
+  .mpp-account-strip b { display: block; color: #f7f4ee; font-size: .72rem; }
+  .mpp-account-strip small { display: block; margin-top: .25rem; color: rgba(247,244,238,.55); font-size: .62rem; }
+  .mpp-case--ty { --mpp-accent: #f27a1a; }
+  .mpp-case--hb { --mpp-accent: #8b5cf6; }
+  .mpp-case--shopify { --mpp-accent: #96bf48; }
+  .mpp-case--meta { --mpp-accent: #55a8ff; }
+
+  .mpp-summary { background: radial-gradient(circle at 85% 22%, rgba(196,151,58,.16), transparent 42%), #080c0f; }
+  .mpp-summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .65rem; margin-top: 1.5rem; }
+  .mpp-summary-grid > div { min-height: 102px; padding: .85rem .7rem; border-top: 1px solid rgba(196,151,58,.6); background: rgba(255,255,255,.03); }
+  .mpp-summary-grid strong { display: block; color: #d4a84a; font: 700 1.65rem/1 'Barlow Condensed','DM Sans',sans-serif; }
+  .mpp-summary-grid span { display: block; margin-top: .45rem; color: #f7f4ee; font-size: .62rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .mpp-summary-grid small { display: block; margin-top: .3rem; color: rgba(247,244,238,.45); font-size: .61rem; line-height: 1.35; }
+  .mpp-skills-section { background: #080c0f; }
+  .mpp-cert-strip, .mpp-tools { margin-top: 1.8rem; }
+  .mpp-cert-heading { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: .6rem; border-bottom: 1px solid rgba(242,122,26,.35); }
+  .mpp-cert-heading span { color: #f27a1a; font-size: .62rem; font-weight: 700; letter-spacing: .14em; }
+  .mpp-cert-heading strong { color: rgba(247,244,238,.5); font-size: .64rem; font-weight: 400; }
+  .mpp-cert-list { display: flex; gap: .45rem; overflow-x: auto; padding: .8rem 0 .2rem; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .mpp-cert-list::-webkit-scrollbar { display: none; }
+  .mpp-cert-list span { flex: 0 0 auto; max-width: 170px; padding: .62rem .7rem; border: 1px solid rgba(255,255,255,.13); color: rgba(247,244,238,.7); font-size: .65rem; line-height: 1.25; scroll-snap-align: start; }
+  .mpp-tool-lane { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+  .mpp-tool-lane span { padding: .46rem .55rem; border: 1px solid rgba(85,168,255,.34); color: rgba(247,244,238,.68); font-size: .62rem; line-height: 1.2; }
+  .mpp-contact-grid { display: grid; gap: .5rem; margin-top: 1.8rem; }
+  .mpp-contact-grid a { display: grid; grid-template-columns: 5.2rem 1fr; gap: .4rem; padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,.12); color: #f7f4ee; text-decoration: none; }
+  .mpp-contact-grid small { color: #f27a1a; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .mpp-contact-grid strong { font-size: .78rem; font-weight: 500; overflow-wrap: anywhere; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 1; transform: none; transition: none; }
+    .mpp-beat, .mpp-timeline-item, .mpp-bars b i { transition: none; }
+  }
+}
+
 @media (min-width: 769px) {
   #mobile-portfolio { display: none !important; }
 }
@@ -4171,111 +4260,92 @@ html, body, .deck {
 
 </div>
 
-<!-- Mobile editorial portfolio: one continuous long-scroll story. -->
+<!-- Mobile motion portfolio: a data-rich, scroll-led chapter experience. -->
 <main id="mobile-portfolio" aria-label="Mobil dijital portföy">
-  <section class="mpp-section mpp-hero" id="mpp-hero">
+  <section class="mpp-section mpp-hero" id="mpp-hero" data-mpp-section="hero">
     <div class="mpp-inner">
-      <div class="mpp-brand"><strong>EBU BEKİR PEKPEK</strong><span>PORTFÖY / 2026</span></div>
-      <div class="mpp-index">01 / 07 · HERO</div>
-      <p class="mpp-kicker">PERFORMANCE MARKETING · E-COMMERCE</p>
-      <h1 class="mpp-title">Performance marketing <span>&amp; e-commerce</span> specialist</h1>
-      <p class="mpp-copy">Veriyi, kreatifi ve stratejiyi ölçülebilir büyümeye dönüştürüyorum.</p>
-      <figure class="mpp-hero-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
+      <div class="mpp-brand mpp-reveal"><strong>EBU BEKİR PEKPEK</strong><span>PORTFÖY / 2026</span></div>
+      <div class="mpp-index mpp-reveal">01 / 09 · HERO</div>
+      <p class="mpp-kicker mpp-reveal">PERFORMANCE MARKETING · E-COMMERCE</p>
+      <h1 class="mpp-title mpp-hero-title mpp-reveal">Performance marketing <span>&amp; e-commerce</span> specialist</h1>
+      <p class="mpp-copy mpp-reveal">Veriyi, kreatifi ve stratejiyi ölçülebilir büyümeye dönüştürüyorum.</p>
+      <figure class="mpp-hero-portrait mpp-reveal" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
         <img data-mobile-source="portrait" alt="Ebubekir Sıddık Pekmez">
       </figure>
-      <a class="mpp-hero-cta" href="#mpp-trendyol">Projeleri incele <span aria-hidden="true">↗</span></a>
-      <div class="mpp-scroll-note">Aşağı kaydır</div>
+      <div class="mpp-hero-stats mpp-reveal" aria-label="Portföy özeti">
+        <span><strong>6 yıl</strong> deneyim</span><span><strong>3+</strong> satış kanalı</span><span><strong>26</strong> araç</span>
+      </div>
+      <a class="mpp-hero-cta mpp-reveal" href="#mpp-trendyol">Projeleri incele <span aria-hidden="true">↗</span></a>
+      <div class="mpp-scroll-note mpp-reveal">Aşağı kaydır</div>
     </div>
   </section>
 
-  <section class="mpp-section" id="mpp-who">
+  <section class="mpp-section mpp-about" id="mpp-who" data-mpp-section="about">
     <div class="mpp-inner">
-      <div class="mpp-index">02 / 07 · KİMİM?</div>
-      <p class="mpp-kicker">Büyüme odaklı bir çalışma biçimi</p>
-      <h2 class="mpp-title">Markalara <span>netlik</span> kazandırıyorum.</h2>
-      <p class="mpp-copy">Dijital pazarlama ve e-ticaret alanında markalara büyüme odaklı çözümler üretiyorum. Stratejiyi, veriyi ve üretimi aynı masada buluşturuyorum.</p>
-      <div class="mpp-expertise">
+      <div class="mpp-index">02 / 09 · KİMİM?</div>
+      <div class="mpp-about-intro">
+        <div><p class="mpp-kicker">Büyüme odaklı bir çalışma biçimi</p><h2 class="mpp-title">Markalara <span>netlik</span> kazandırıyorum.</h2></div>
+        <p class="mpp-copy">Dijital pazarlama ve e-ticaret alanında markalara büyüme odaklı çözümler üretiyorum. Stratejiyi, veriyi ve üretimi aynı masada buluşturuyorum.</p>
+      </div>
+      <div class="mpp-expertise mpp-reveal">
         <div class="mpp-expertise-item"><strong>Performans<br>odaklı</strong><small>Veriye dayalı karar</small></div>
         <div class="mpp-expertise-item"><strong>Veri<br>analitiği</strong><small>Ölçülebilir sistem</small></div>
         <div class="mpp-expertise-item"><strong>Yaratıcı<br>strateji</strong><small>İşe yarayan kreatif</small></div>
       </div>
-    </div>
-  </section>
-
-  <section class="mpp-section mpp-case" id="mpp-trendyol">
-    <div class="mpp-inner">
-      <div class="mpp-index">03 / 07 · CASE STUDY</div>
-      <div class="mpp-case-head"><h2 class="mpp-title">Trendyol<br><span>vaka analizi</span></h2><span class="mpp-case-tag">Pazaryeri</span></div>
-      <p class="mpp-copy">Problem → strateji → uygulama → sonuç. Ürün, içerik ve kampanya verilerini aynı akışta okuyarak büyüme fırsatlarını görünür kılıyorum.</p>
-      <div class="mpp-case-media"><img data-mobile-source="trendyol" alt="Trendyol vaka analizi görseli"></div>
-      <p class="mpp-case-flow">Mağaza optimizasyonu · Kampanya yönetimi · Raporlama</p>
-      <div class="mpp-kpis">
-        <div class="mpp-kpi"><span class="mpp-kpi-value">3.84×</span><span class="mpp-kpi-label">ROAS</span><span class="mpp-kpi-note">Tasarım örneği metriği</span></div>
-        <div class="mpp-kpi"><span class="mpp-kpi-value">+%218</span><span class="mpp-kpi-label">Revenue</span><span class="mpp-kpi-note">Kendi verinle güncellenebilir</span></div>
-      </div>
-      <p class="mpp-placeholder">Bu mobil tasarımda gösterilen KPI'lar yerleşim örneğidir; gerçek sonuçlar proje verileriyle doğrulanır.</p>
-    </div>
-  </section>
-
-  <section class="mpp-section mpp-case" id="mpp-meta">
-    <div class="mpp-inner">
-      <div class="mpp-index">04 / 07 · CASE STUDY</div>
-      <div class="mpp-case-head"><h2 class="mpp-title">Meta Ads<br><span>vaka analizi</span></h2><span class="mpp-case-tag">Performans</span></div>
-      <p class="mpp-copy">Kampanya yapısı, kreatif yaklaşım ve hedefleme birlikte çalışır. Öğrenmeyi hızlandıran testler, daha anlamlı bir optimizasyon döngüsü kurar.</p>
-      <div class="mpp-case-media"><img data-mobile-source="meta" alt="Meta Ads performans analizi görseli"></div>
-      <p class="mpp-case-flow">Kreatif test · Funnel kurgusu · Meta Ads Manager</p>
-      <div class="mpp-kpis">
-        <div class="mpp-kpi"><span class="mpp-kpi-value">−%34</span><span class="mpp-kpi-label">CPA</span><span class="mpp-kpi-note">Tasarım örneği metriği</span></div>
-        <div class="mpp-kpi"><span class="mpp-kpi-value">+%160</span><span class="mpp-kpi-label">Satış</span><span class="mpp-kpi-note">Kendi verinle güncellenebilir</span></div>
-      </div>
-      <p class="mpp-placeholder">Kampanya çıktıları, erişim ve dönüşüm verileriyle birlikte değerlendirilir; örnek KPI'lar gerçek başarı iddiası değildir.</p>
-    </div>
-  </section>
-
-  <section class="mpp-section mpp-case" id="mpp-shopify">
-    <div class="mpp-inner">
-      <div class="mpp-index">05 / 07 · CASE STUDY</div>
-      <div class="mpp-case-head"><h2 class="mpp-title">Shopify<br><span>vaka analizi</span></h2><span class="mpp-case-tag">D2C</span></div>
-      <p class="mpp-copy">Mağaza deneyimini, teklif yapısını ve dönüşüm noktalarını uçtan uca ele alıyorum. Öncesi ve sonrası arasındaki farkı görünür kılan bir sistem kuruyorum.</p>
-      <div class="mpp-case-media"><img data-mobile-source="shopify" alt="Shopify mağaza performansı görseli"></div>
-      <p class="mpp-case-flow">Mağaza optimizasyonu · CRO · Dönüşüm takibi</p>
-      <div class="mpp-kpis">
-        <div class="mpp-kpi"><span class="mpp-kpi-value">+%243</span><span class="mpp-kpi-label">Dönüşüm</span><span class="mpp-kpi-note">Tasarım örneği metriği</span></div>
-        <div class="mpp-kpi"><span class="mpp-kpi-value">+%187</span><span class="mpp-kpi-label">Gelir</span><span class="mpp-kpi-note">Kendi verinle güncellenebilir</span></div>
-      </div>
-      <p class="mpp-placeholder">Öncesi → sonrası karşılaştırması, mağaza analitiği ve doğrulanmış raporlarla tamamlanır.</p>
-    </div>
-  </section>
-
-  <section class="mpp-section" id="mpp-skills">
-    <div class="mpp-inner">
-      <div class="mpp-index">06 / 07 · YETKİNLİKLER</div>
-      <p class="mpp-kicker">Stratejiden uygulamaya</p>
-      <h2 class="mpp-title">Doğru araç, <span>doğru bağlam.</span></h2>
-      <div class="mpp-skills-grid">
-        <article class="mpp-skill"><h3>Performance</h3><p>Meta Ads<br>Google Ads<br>GA4 · Pixel / CAPI</p></article>
-        <article class="mpp-skill"><h3>E-commerce</h3><p>Shopify<br>Trendyol<br>Amazon · E-ticaret stratejisi</p></article>
-        <article class="mpp-skill"><h3>Analytics</h3><p>GA4<br>Pixel / CAPI<br>Looker Studio · Raporlama</p></article>
-        <article class="mpp-skill"><h3>Creative</h3><p>Creative Strategy<br>UGC<br>Photoshop · Canva</p></article>
+      <div class="mpp-timeline" aria-label="Kariyer yolculuğu">
+        <div class="mpp-timeline-line"><span></span></div>
+        <div class="mpp-timeline-item is-active"><time>2015 – 2019</time><strong>Lise · Gaziantep Kolej Vakfı</strong><p>Disiplin ve hedef belirlemenin gücünü öğrendiğim ilk dönem.</p></div>
+        <div class="mpp-timeline-item"><time>2020</time><strong>İlk e-ticaret adımı · Trendyol</strong><p>Predo Baby ve Vita Margarin ile ilk mağaza deneyimi.</p></div>
+        <div class="mpp-timeline-item"><time>2022</time><strong>Pazaryeri genişlemesi</strong><p>Hepsiburada ve Amazon TR ile çok kanallı yapıya geçiş.</p></div>
+        <div class="mpp-timeline-item"><time>2023</time><strong>Konsolidasyon ve operasyonel güç</strong><p>Çift pazaryeri yönetimi ve kriz anlarında operasyon disiplini.</p></div>
+        <div class="mpp-timeline-item"><time>2024</time><strong>Dijital dönüşüm · Meta Ads + Shopify</strong><p>Yoğun eğitim ve D2C modelinin ilk adımları.</p></div>
+        <div class="mpp-timeline-item"><time>Ocak 2025</time><strong>Kendi marka ekosistemi · arikovanistore.com</strong><p>E-posta, WhatsApp ve Instagram ile 360° müşteri ekosistemi.</p></div>
+        <div class="mpp-timeline-item"><time>Eylül 2025</time><strong>JTI · Saha &amp; kurumsal tecrübe</strong><p>Tüketici davranışı analizi ve kurumsal disiplin.</p></div>
+        <div class="mpp-timeline-item"><time>Kasım 2025 – Ocak 2026</time><strong>Sosyal medya yöneticiliği · Vita Margarin</strong><p>İçerik üretimi ve marka kimliği yönetimi.</p></div>
+        <div class="mpp-timeline-item"><time>Nisan 2026</time><strong>3. pazaryeri · Temu Türkiye</strong><p>3 pazaryeri + öz site + ithalat operasyonunu entegre sistemle yönetme.</p></div>
+        <div class="mpp-timeline-item"><time>Mayıs – Haziran 2026</time><strong>Satış &amp; pazarlama stajı · TNC Group</strong><p>B2B satış, müşteri ilişkileri ve pazarlama operasyonlarında pratik.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="mpp-section mpp-contact" id="mpp-contact">
-    <div class="mpp-inner">
-      <div class="mpp-index">07 / 07 · İLETİŞİM</div>
-      <p class="mpp-kicker">Birlikte büyüyelim</p>
-      <h2 class="mpp-contact-title">Benimle <span>çalışmak</span> ister misin?</h2>
-      <p class="mpp-copy">Bir fikrin, büyütmek istediğin bir marka ya da birlikte çözmek istediğin bir problem varsa konuşalım.</p>
-      <div class="mpp-contact-links">
-        <a href="mailto:ebubekirpekmez@gmail.com">İletişime geç ↗</a>
-        <a href="https://www.instagram.com/ebubekirpekmez/" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://www.linkedin.com/in/ebubekir-pekmez-b37828148" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="mailto:ebubekirpekmez@gmail.com">Mail</a>
+  <section class="mpp-section mpp-case mpp-case--ty" id="mpp-trendyol" data-mpp-section="case" data-case-accent="#f27a1a">
+    <div class="mpp-inner mpp-case-shell">
+      <div class="mpp-case-stage">
+        <div class="mpp-index">03 / 09 · CASE STUDY</div>
+        <div class="mpp-case-head"><h2 class="mpp-title">Trendyol<br><span>performans analizi</span></h2><span class="mpp-case-tag">Pazaryeri</span></div>
+        <div class="mpp-case-media"><img data-mobile-source="trendyol" alt="Trendyol vaka analizi görseli"></div>
+        <div class="mpp-case-live"><span>VERİ ODAKLI MAĞAZA OPTİMİZASYONU</span><b>₺786K</b><small>Brüt ciro · 6 dönem toplam</small></div>
+        <div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
       </div>
-      <div class="mpp-footer">EBUBEKİR SIDDIK PEKMEZ · BURSA / TÜRKİYE</div>
+      <div class="mpp-case-beats">
+        <article class="mpp-beat is-active"><small>01 · PROBLEM</small><h3>Mağaza verisini tek bir büyüme akışında okumak.</h3><p>Ürün, içerik, kampanya ve teslimat sinyallerini aynı karar döngüsünde topladım.</p></article>
+        <article class="mpp-beat"><small>02 · YAKLAŞIM</small><h3>Net ciroyu, siparişi ve gerçekleşme oranını birlikte izlemek.</h3><p>Brüt → net geçişi görünür tutarak performansı sadece ciroya indirgemedim.</p></article>
+        <article class="mpp-beat"><small>03 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value" data-count-value="786">₺786K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">6 dönem toplam</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺740K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İndirim sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.544</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%94.1</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">84</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif listeleme</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺94K</span><span class="mpp-kpi-label">Komisyon</span><span class="mpp-kpi-note">Platform payı</span></div></div></article>
+        <article class="mpp-beat"><small>04 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:83.8%"><i></i></b><em>%83.8</em></div><div><span>Bebek Islak Mendil</span><b style="--bar:10.7%"><i></i></b><em>%10.7</em></div><div><span>Hasta Bezi</span><b style="--bar:2.2%"><i></i></b><em>%2.2</em></div><div><span>Diğer Kategoriler</span><b style="--bar:3.3%"><i></i></b><em>%3.3</em></div></div></article>
+      </div>
     </div>
   </section>
+
+  <section class="mpp-section mpp-case mpp-case--hb" id="mpp-hepsiburada" data-mpp-section="case" data-case-accent="#8b5cf6">
+    <div class="mpp-inner mpp-case-shell">
+      <div class="mpp-case-stage"><div class="mpp-index">04 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Hepsiburada<br><span>performans analizi</span></h2><span class="mpp-case-tag">Pazaryeri</span></div><div class="mpp-case-media"><img data-mobile-source="hepsiburada" alt="Hepsiburada vaka analizi görseli"></div><div class="mpp-case-live"><span>PREZİSYONLU OPERASYON</span><b>₺139K</b><small>Brüt ciro · toplam dönem</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div>
+      <div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · YAKLAŞIM</small><h3>İptal ve iade sonrasını görünür kılan operasyon disiplini.</h3><p>2021'de açılan mağazada Predo Baby ürünlerini; teslimat, netleşme ve ürün satışlarıyla birlikte takip ettim.</p></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">₺139K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">Toplam dönem</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺128K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İptal + iade sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">486</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%91.9</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">570</span><span class="mpp-kpi-label">Net Ürün Satışı</span><span class="mpp-kpi-note">621 brüt satıştan</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺264</span><span class="mpp-kpi-label">Ort. Sipariş</span><span class="mpp-kpi-note">Sipariş başına</span></div></div></article><article class="mpp-beat"><small>03 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:64.8%"><i></i></b><em>%64.8</em></div><div><span>Islak Mendil</span><b style="--bar:14%"><i></i></b><em>%14.0</em></div><div><span>Doğal Gıda</span><b style="--bar:13.4%"><i></i></b><em>%13.4</em></div><div><span>Diğer Kategoriler</span><b style="--bar:7.8%"><i></i></b><em>%7.8</em></div></div></article></div>
+    </div>
+  </section>
+
+  <section class="mpp-section mpp-case mpp-case--shopify" id="mpp-shopify" data-mpp-section="case" data-case-accent="#96bf48">
+    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">05 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Shopify<br><span>performans analizi</span></h2><span class="mpp-case-tag">D2C</span></div><div class="mpp-case-media"><img data-mobile-source="shopify" alt="Shopify mağaza performansı görseli"></div><div class="mpp-case-live"><span>ARIKOVANISTORE.COM · 17+ AYLIK VERİ</span><b>839.6K ₺</b><small>Brüt ciro · 5 Ara 2024 – 7 May 2026</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · D2C SİSTEMİ</small><h3>Mağaza deneyimini verinin merkezine taşıdım.</h3><p>Teklif, ürün çeşitliliği, sepet değeri ve il kapsamasını aynı büyüme sistemi içinde izledim.</p></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">839.6K ₺</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">17+ aylık konsolide veri</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.009</span><span class="mpp-kpi-label">Toplam Sipariş</span><span class="mpp-kpi-note">Tekil sipariş</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">832 ₺</span><span class="mpp-kpi-label">Ort. Sepet</span><span class="mpp-kpi-note">Premium konumlanma</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">310</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif varyasyon</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">56 / 81</span><span class="mpp-kpi-label">İl Kapsama</span><span class="mpp-kpi-note">Türkiye geneli</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%80.1</span><span class="mpp-kpi-label">Reçel Ciro Payı</span><span class="mpp-kpi-note">Lider kategori</span></div></div></article><article class="mpp-beat"><small>03 · CİRO DAĞILIMI</small><div class="mpp-bars"><div><span>Reçel &amp; Marmelat</span><b style="--bar:100%"><i></i></b><em>%80.1</em></div><div><span>Salça &amp; Meze</span><b style="--bar:55%"><i></i></b><em>%4.4</em></div><div><span>Bebek &amp; Hasta Bezi</span><b style="--bar:37%"><i></i></b><em>%3.0</em></div><div><span>Peynir Çeşitleri</span><b style="--bar:30%"><i></i></b><em>%2.4</em></div><div><span>Zeytin &amp; Yağlar</span><b style="--bar:22%"><i></i></b><em>%1.8</em></div></div></article></div></div>
+  </section>
+
+  <section class="mpp-section mpp-case mpp-case--meta" id="mpp-meta" data-mpp-section="case" data-case-accent="#55a8ff">
+    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">06 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Meta Ads<br><span>performans analizi</span></h2><span class="mpp-case-tag">Performance</span></div><div class="mpp-case-media"><img data-mobile-source="meta" alt="Meta Ads performans analizi görseli"></div><div class="mpp-case-live"><span>ARI KOVANI STORE · OCA 2025 – MAY 2026</span><b>4.05×</b><small>Genel ROAS · ~₺768K tahmini gelir</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · FUNNEL</small><h3>Facebook, Instagram ve WhatsApp kanallarını aynı funnel’da birleştirdim.</h3><p>Farkındalıktan dönüşüme kadar her aşamayı veri odaklı optimize eden bir kampanya sistemi kurdum.</p><div class="mpp-account-strip"><span><b>Vanilora</b><small>4.68× ROAS · ₺9.598 harcama · 22 sipariş</small></span><span><b>Arı Kovanı Store</b><small>4.05× ROAS · ₺189K harcama · 903 sipariş</small></span><span><b>Kübra Müzik</b><small>₺21.337 harcama · 407 mesajlaşma</small></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">4.05×</span><span class="mpp-kpi-label">Genel ROAS</span><span class="mpp-kpi-note">~₺768K tahmini gelir</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">6.69×</span><span class="mpp-kpi-label">En yüksek ROAS</span><span class="mpp-kpi-note">CBO / mesaj kampanyası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">903</span><span class="mpp-kpi-label">Toplam alışveriş</span><span class="mpp-kpi-note">Ort. sipariş ₺789,69</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.45M</span><span class="mpp-kpi-label">Gösterim</span><span class="mpp-kpi-note">Erişim: 476.912</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%5.38</span><span class="mpp-kpi-label">CTR</span><span class="mpp-kpi-note">48.451 tıklama</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺3,91</span><span class="mpp-kpi-label">CPC</span><span class="mpp-kpi-note">CPM: ₺130,89</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">5.606</span><span class="mpp-kpi-label">Sepete ekleme</span><span class="mpp-kpi-note">₺33,81 / adet</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%16.1</span><span class="mpp-kpi-label">Sepet → satış</span><span class="mpp-kpi-note">Dönüşüm oranı</span></div></div></article></div></div>
+  </section>
+
+  <section class="mpp-section mpp-summary" id="mpp-summary" data-mpp-section="summary"><div class="mpp-inner"><div class="mpp-index">07 / 09 · KONSOLİDE ÖZET</div><p class="mpp-kicker">2020 — 2026 · platformlar arası görünüm</p><h2 class="mpp-title">6 yıllık <span>dijital yolculuk.</span></h2><p class="mpp-copy">Pazaryeri, D2C ve performans pazarlamasını aynı operasyonel bakışta birleştiren ölçülebilir bir sistem.</p><div class="mpp-summary-grid"><div><strong>₺1.76M</strong><span>Toplam brüt ciro</span><small>3 platform · 6 yıl toplam</small></div><div><strong>3.039</strong><span>Toplam sipariş</span><small>Trendyol + HB + Shopify</small></div><div><strong>6 yıl</strong><span>E-ticaret deneyimi</span><small>2020'den bugüne</small></div><div><strong>4+</strong><span>Aktif platform</span><small>TY · HB · Shopify · Temu</small></div><div><strong>400+</strong><span>Ürün çeşidi</span><small>Aktif SKU portföyü</small></div><div><strong>₺220K+</strong><span>Meta reklam bütçesi</span><small>Yönetilen kampanyalar</small></div></div></div></section>
+
+  <section class="mpp-section mpp-skills-section" id="mpp-skills" data-mpp-section="skills"><div class="mpp-inner"><div class="mpp-index">08 / 09 · YETKİNLİKLER</div><p class="mpp-kicker">Eğitim · sertifika · araç ekosistemi</p><h2 class="mpp-title">Doğru araç, <span>doğru bağlam.</span></h2><div class="mpp-skills-grid"><article class="mpp-skill"><h3>Performance</h3><p>Meta Ads · Google Ads<br>GA4 · Pixel / CAPI<br>Google Search Console</p></article><article class="mpp-skill"><h3>E-commerce</h3><p>Shopify · Trendyol<br>Hepsiburada · Temu<br>Marketplace Growth</p></article><article class="mpp-skill"><h3>Analytics</h3><p>GA4 · Meta CAPI<br>Looker Studio<br>Raporlama</p></article><article class="mpp-skill"><h3>Creative</h3><p>Creative Strategy · UGC<br>CapCut · Canva<br>Photoshop · YouTube Studio</p></article></div><div class="mpp-cert-strip"><div class="mpp-cert-heading"><span>SERTİFİKALAR</span><strong>12 adet</strong></div><div class="mpp-cert-list"><span>Digital Marketing Certified</span><span>Performanslı YZ Reklamlar</span><span>Google Analytics Sertifikası</span><span>Dönüşüm Optimizasyonu</span><span>Çevrim İçi Reklamcılık</span><span>İşinizi İnternete Taşıyın</span><span>İşiniz İçin Sosyal Medya</span><span>Amazon Ads Temel Bilgiler</span><span>Dijital Pazarlama Esasları</span><span>İkna Edici Satış</span><span>Ekipleri Yönetmek</span><span>Sosyal Medya Pazarlaması</span></div></div><div class="mpp-tools"><div class="mpp-cert-heading"><span>ARAÇ &amp; PLATFORM</span><strong>26 araç</strong></div><div class="mpp-tool-lane"><span>Meta Ads Manager</span><span>Google Analytics GA4</span><span>Google Search Console</span><span>Meta CAPI</span><span>Shopify CAPI</span><span>Facebook Business Manager</span><span>Shopify</span><span>Temu Seller Central</span><span>Hepsiburada Satıcı Paneli</span><span>Trendyol Satıcı Paneli</span><span>Kling AI</span><span>Higgsfield AI</span><span>Flow</span><span>AntiGravity</span><span>Claude Cowork</span><span>Gemini Pro</span><span>ChatGPT</span><span>CapCut</span><span>Canva</span><span>YouTube Studio</span><span>Microsoft Excel</span><span>Microsoft PowerPoint</span><span>Microsoft Word</span><span>LinkedIn</span><span>Instagram</span><span>WhatsApp Business</span></div></div></div></section>
+
+  <section class="mpp-section mpp-contact" id="mpp-contact" data-mpp-section="contact"><div class="mpp-inner"><div class="mpp-index">09 / 09 · İLETİŞİM</div><p class="mpp-kicker">Birlikte büyüyelim</p><h2 class="mpp-contact-title">Benimle <span>çalışmak</span> ister misin?</h2><p class="mpp-copy">Bir fikrin, büyütmek istediğin bir marka ya da birlikte çözmek istediğin bir problem varsa konuşalım.</p><div class="mpp-contact-grid"><a href="tel:+905331990927"><small>Telefon</small><strong>+90 533 199 09 27</strong></a><a href="mailto:ebubekirpekmez@gmail.com"><small>E-posta</small><strong>ebubekirpekmez@gmail.com</strong></a><a href="https://www.arikovanistore.com" target="_blank" rel="noreferrer"><small>Web</small><strong>arikovanistore.com</strong></a><a href="#mpp-contact"><small>Konum</small><strong>Bursa · Nilüfer Görükle</strong></a></div><div class="mpp-contact-links"><a href="mailto:ebubekirpekmez@gmail.com">İletişime geç ↗</a><a href="https://www.instagram.com/ebubekirpekmez/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.linkedin.com/in/ebubekir-pekmez-b37828148" target="_blank" rel="noreferrer">LinkedIn</a></div><div class="mpp-footer">EBUBEKİR SIDDIK PEKMEZ · BURSA / TÜRKİYE</div></div></section>
 </main>
 
 <!-- Collage image — gizli, canvas kırpma için; helper bu src'yi base64'e çevirir -->
@@ -4307,6 +4377,7 @@ let current  = 0;
   const sources = {
     portrait: '#s2 .s2-photo img',
     trendyol: '#s4-ty .s4-logo img',
+    hepsiburada: '#s4-hb .hb-logo img',
     meta: '#s5-meta .meta-logo img',
     shopify: '#s4-sp .sp-logo img'
   };
@@ -4315,6 +4386,110 @@ let current  = 0;
     const target = document.querySelector(`[data-mobile-source="${name}"]`);
     if (source && target && source.getAttribute('src')) target.src = source.getAttribute('src');
   });
+})();
+
+// Mobile motion layer: native observers keep the experience resilient, while
+// GSAP/ScrollTrigger enhances the pinned chapters when the network allows it.
+(function initMobileMotion() {
+  const root = document.getElementById('mobile-portfolio');
+  if (!root || !window.matchMedia('(max-width: 768px)').matches) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.add('mpp-motion-ready');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+  root.querySelectorAll('.mpp-reveal').forEach((el) => revealObserver.observe(el));
+
+  const timeline = root.querySelector('.mpp-timeline');
+  const timelineItems = Array.from(root.querySelectorAll('.mpp-timeline-item'));
+  const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      timelineItems.forEach((item) => item.classList.toggle('is-active', item === entry.target));
+      const index = timelineItems.indexOf(entry.target);
+      const progress = timelineItems.length > 1 ? ((index + 1) / timelineItems.length) * 100 : 100;
+      const line = timeline?.querySelector('.mpp-timeline-line span');
+      if (line) line.style.height = `${progress}%`;
+    });
+  }, { threshold: 0.55, rootMargin: '-20% 0px -28% 0px' });
+  timelineItems.forEach((item) => timelineObserver.observe(item));
+
+  const animateMetric = (el) => {
+    if (!el || el.dataset.motionPlayed === '1' || reduceMotion) return;
+    const raw = el.textContent.trim();
+    const match = raw.match(/^(.*?)(-?\d[\d.,]*)(.*)$/);
+    if (!match) return;
+    const prefix = match[1];
+    const token = match[2];
+    const suffix = match[3];
+    if (token.includes('/') || token.length > 8) return;
+    const commaDecimal = token.includes(',');
+    const dotParts = token.split('.');
+    const dotThousands = !commaDecimal && dotParts.length === 2 && dotParts[1].length === 3;
+    const normalizedToken = commaDecimal ? token.replace(/\./g, '').replace(',', '.') : (dotThousands ? token.replace('.', '') : token);
+    const numeric = Number(normalizedToken);
+    if (!Number.isFinite(numeric)) return;
+    const decimalPlaces = commaDecimal ? token.split(',')[1].length : (dotThousands ? 0 : (dotParts.length === 2 ? dotParts[1].length : 0));
+    el.dataset.motionPlayed = '1';
+    const start = performance.now();
+    const duration = 820;
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const value = numeric * eased;
+      const formatted = decimalPlaces ? value.toFixed(decimalPlaces).replace('.', ',') : Math.round(value).toLocaleString('tr-TR');
+      el.textContent = `${prefix}${formatted}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = raw;
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const caseSections = Array.from(root.querySelectorAll('[data-mpp-section="case"]'));
+  caseSections.forEach((section) => {
+    const beats = Array.from(section.querySelectorAll('.mpp-beat'));
+    const dots = Array.from(section.querySelectorAll('.mpp-case-dots i'));
+    const beatObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        beats.forEach((beat) => beat.classList.toggle('is-active', beat === entry.target));
+        const index = beats.indexOf(entry.target);
+        dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === Math.min(index, dots.length - 1)));
+        entry.target.querySelectorAll('.mpp-kpi-value').forEach(animateMetric);
+      });
+    }, { threshold: 0.42, rootMargin: '-8% 0px -18% 0px' });
+    beats.forEach((beat) => beatObserver.observe(beat));
+  });
+
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  if (!reduceMotion) {
+    Promise.all([
+      loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js'),
+      loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js')
+    ]).then(() => {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      window.gsap.registerPlugin(window.ScrollTrigger);
+      window.gsap.utils.toArray('.mpp-case').forEach((section) => {
+        const stage = section.querySelector('.mpp-case-stage');
+        const media = section.querySelector('.mpp-case-media img');
+        if (stage) window.gsap.to(stage, { opacity: .92, scrollTrigger: { trigger: section, start: 'top top', end: 'bottom bottom', scrub: true } });
+        if (media) window.gsap.to(media, { yPercent: -8, scale: 1.06, ease: 'none', scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+      window.gsap.to('.mpp-hero-portrait img', { yPercent: -5, scale: 1.04, ease: 'none', scrollTrigger: { trigger: '#mpp-hero', start: 'top top', end: 'bottom top', scrub: true } });
+    }).catch(() => {
+      // Native observers above remain the intentional offline/performance fallback.
+    });
+  }
 })();
 
 // ── Timeline step logic ──
