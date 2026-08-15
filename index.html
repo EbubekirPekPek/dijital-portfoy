@@ -547,17 +547,23 @@ html, body {
 
 .tl-item {
   position: relative;
-  padding: 0 0 .8rem 1rem;
+  max-height: 0;
+  padding: 0 0 0 1rem;
+  overflow: hidden;
   opacity: 0;
   transform: translateX(-10px);
-  transition: opacity .4s ease, transform .4s ease, background .25s ease, box-shadow .25s ease;
+  pointer-events: none;
+  transition: max-height .35s ease, padding-bottom .35s ease, opacity .4s ease, transform .4s ease, background .25s ease, box-shadow .25s ease;
   border-radius: 6px;
   cursor: default;
 }
 
 .tl-item.tl-visible {
+  max-height: 150px;
+  padding-bottom: .8rem;
   opacity: 1;
   transform: none;
+  pointer-events: auto;
 }
 
 .tl-item:hover {
@@ -4655,17 +4661,26 @@ const TL_SLIDE = 1; // index of s2 (0-based)
 let tlItems    = [];
 let tlStep     = 0;
 let tlLocked   = false; // blocks user clicks during auto-show window
+let tlWheelLocked = false;
+let tlWheelDirection = 0;
+let tlWheelTimer = null;
 
 function initTimeline() {
   tlItems = Array.from(document.querySelectorAll('#s2 .tl-item'));
+  const container = document.querySelector('.tl-container');
+  if (container) {
+    // A single wheel gesture reveals exactly one career item. The native
+    // scroll is intentionally blocked while there are hidden items so the
+    // timeline cannot jump over the next step.
+    container.addEventListener('wheel', handleTimelineWheel, { passive: false });
+  }
 }
 
 function showNextTlItem() {
   if (tlStep < tlItems.length) {
     const item = tlItems[tlStep];
     item.classList.add('tl-visible');
-    // scrollHeight tüm gizli öğeleri de sayar — yanlış alta kaydırır.
-    // Bunun yerine görünür kılınan maddeyi doğrudan görüntüle.
+    // Scroll the newly revealed item into view without jumping past it.
     setTimeout(() => {
       item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 150);
@@ -4676,10 +4691,57 @@ function showNextTlItem() {
   return false;
 }
 
+function showPreviousTlItem() {
+  // Keep the first career milestone as the anchor; upward gestures then
+  // step back through the already revealed list one item at a time.
+  if (tlStep <= 1) return false;
+  tlStep--;
+  const item = tlItems[tlStep];
+  item.classList.remove('tl-visible');
+  updateTlCounter();
+  setTimeout(() => {
+    const previous = tlItems[tlStep - 1];
+    if (previous) previous.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 150);
+  return true;
+}
+
+function handleTimelineWheel(event) {
+  if (current !== TL_SLIDE || !document.querySelector('#s2.slide.active')) return;
+  const direction = event.deltaY > 0 ? 1 : event.deltaY < 0 ? -1 : 0;
+  if (!direction) return;
+  const canStep = direction > 0 ? tlStep < tlItems.length : tlStep > 1;
+  if (!canStep) return;
+
+  event.preventDefault();
+  if (tlLocked) return;
+
+  // Trackpads emit a burst of wheel events for one gesture. Consume only the
+  // first event, then unlock after the burst so one gesture equals one step.
+  if (tlWheelLocked && direction !== tlWheelDirection) {
+    window.clearTimeout(tlWheelTimer);
+    tlWheelLocked = false;
+  }
+  if (tlWheelLocked) return;
+
+  tlWheelLocked = true;
+  tlWheelDirection = direction;
+  if (direction > 0) showNextTlItem();
+  else showPreviousTlItem();
+  window.clearTimeout(tlWheelTimer);
+  tlWheelTimer = window.setTimeout(() => {
+    tlWheelLocked = false;
+    tlWheelDirection = 0;
+  }, 480);
+}
+
 function resetTimeline() {
   tlItems.forEach(i => i.classList.remove('tl-visible'));
   tlStep = 0;
   tlLocked = false;
+  tlWheelLocked = false;
+  tlWheelDirection = 0;
+  window.clearTimeout(tlWheelTimer);
   const counter = document.getElementById('tlCounter');
   if (counter) { counter.classList.remove('visible'); }
   // Scroll başa al — önceki ziyaretten kalan pozisyon ilk maddeleri gizliyordu
@@ -4704,10 +4766,9 @@ function updateTlCounter() {
   if (tlStep >= tlItems.length) {
     counter.innerHTML = '✓ Tümü görüntülendi &nbsp;→ devam için tıklayın';
   } else {
-    counter.innerHTML = `${tlStep} / ${tlItems.length} &nbsp;→ devam için tıklayın`;
+    counter.innerHTML = `${tlStep} / ${tlItems.length} &nbsp;→ aşağı kaydırın veya tıklayın`;
   }
 }
-
 // Build nav dots
 slides.forEach((_,i) => {
   const d = document.createElement('button');

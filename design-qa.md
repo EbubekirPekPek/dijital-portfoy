@@ -31,6 +31,7 @@
 - Motion no longer depends on a third-party runtime bundle; scroll parallax runs through a passive scroll listener and a single `requestAnimationFrame` loop.
 - Reduced-motion mode passed with `?motion=reduce`: all hero lines/scenes are visible, transforms and beat transitions are disabled, and vertical scrolling remains intact.
 - Desktop regression passed at 1280 × 720: original deck active (`s1`), `#mobile-portfolio` hidden, 18 desktop images present, 1280 × 720 deck geometry, and body overflow remains hidden.
+- Desktop career timeline now consumes one wheel gesture per milestone: after the automatic first item, downward gestures advance `01 → 02 → 03`, rapid wheel bursts are debounced, and upward gestures step back one item without jumping.
 - Regression root causes fixed: `overflow:auto` on `html/body` was creating an intermediate scroll context, the mobile root had competing overflow behavior, and threshold-only beat observers could leave stale active content during fast/upward scroll.
 - Browser console check returned no warnings or errors during the mobile and desktop passes.
 
