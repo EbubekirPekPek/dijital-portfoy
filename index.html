@@ -3,7 +3,13 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="description" content="Ebubekir Sıddık Pekmez — Dijital Pazarlama ve E-Ticaret Uzmanı Portföyü. Trendyol, Hepsiburada, Shopify, Meta Ads ve E-Ticaret Performans Analizleri.">
+<meta property="og:title" content="Ebubekir Sıddık Pekmez — Dijital Portföy">
+<meta property="og:description" content="6 Yıllık E-Ticaret ve Dijital Pazarlama Yolculuğu. Vaka Analizleri ve Performans Metrikleri.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ebubekirpekpek.github.io/dijital-portfoy/">
+<meta name="theme-color" content="#0C1B2A">
 <title>Ebubekir Sıddık Pekmez — Portföy</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2198,6 +2204,488 @@ html, body {
 }
 #s-summary.active .sum-desc { opacity:1; transform:none; transition-delay:1.28s; }
 
+
+/* ══════════════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVE ENGINE
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Dynamic viewport height for modern mobile browsers */
+html, body {
+  height: 100%;
+  height: 100dvh;
+}
+.deck {
+  height: 100%;
+  height: 100dvh;
+}
+
+/* Touch & Cursor handling */
+@media (pointer: coarse), (max-width: 900px) {
+  .cursor { display: none !important; }
+  html, body, * { cursor: auto !important; }
+}
+
+/* Tablet & Mobile Slide Overflows */
+@media (max-width: 900px) {
+  .slide {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+  .slide::-webkit-scrollbar {
+    width: 3px;
+  }
+  .slide::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .slide::-webkit-scrollbar-thumb {
+    background: rgba(196, 151, 58, 0.35);
+    border-radius: 3px;
+  }
+  
+  /* Hide side arrows on tablet/mobile so they don't cover cards */
+  .arrow {
+    display: none !important;
+  }
+  
+  /* Compact top counter */
+  .counter {
+    top: 0.8rem !important;
+    right: 0.9rem !important;
+    font-size: 0.65rem !important;
+    background: rgba(12, 27, 42, 0.85);
+    border: 1px solid rgba(196, 151, 58, 0.25);
+    padding: 0.2rem 0.55rem;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+  }
+  
+  /* Compact floating bottom dot navigation */
+  .nav {
+    bottom: 0.8rem !important;
+    gap: 0.45rem !important;
+    background: rgba(12, 27, 42, 0.85);
+    border: 1px solid rgba(196, 151, 58, 0.25);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .nav-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+
+  /* ── Slide 1: Cover ── */
+  #s1 {
+    padding: 0 !important;
+    justify-content: center;
+  }
+  .s1-content {
+    padding: 2.2rem 1.25rem 4.5rem !important;
+    justify-content: center;
+  }
+  .s1-label {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.2em !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .s1-name1 {
+    font-size: clamp(2.4rem, 9.5vw, 3.6rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.8rem !important;
+    letter-spacing: -0.01em !important;
+  }
+  .s1-titles {
+    gap: 0.35rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+  .s1-title-item {
+    font-size: clamp(0.85rem, 3.8vw, 1.05rem) !important;
+    line-height: 1.35 !important;
+  }
+  .s1-divider {
+    width: 140px !important;
+    margin: 0.9rem 0 0.75rem !important;
+  }
+  .s1-timeline {
+    font-size: 0.8rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+  .s1-platforms-list {
+    gap: 0.4rem !important;
+    font-size: 0.74rem !important;
+    line-height: 1.4 !important;
+  }
+  .s1-circle, .s1-circle2 {
+    opacity: 0.3 !important;
+  }
+
+  /* ── Slide 2: Kariyer ── */
+  #s2 {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .s2-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .s2-photo {
+    width: 110px !important;
+    max-width: 110px !important;
+    margin: 0 auto !important;
+    border-width: 2px !important;
+  }
+  .s2-right {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .s2-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.8rem !important;
+    text-align: center !important;
+  }
+  .tl-container {
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-left: 1.2rem !important;
+    padding-right: 0 !important;
+  }
+  .tl-item {
+    padding: 0 0 0.7rem 0.8rem !important;
+  }
+  .tl-item::before {
+    left: calc(-1.2rem - 3px) !important;
+  }
+
+  /* ── Slide 3: Trendyol ── */
+  #s4-ty {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .s4-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .s4-left {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(242,122,26,.25) !important;
+    padding-right: 0 !important;
+    padding-bottom: 1rem !important;
+    gap: 0.6rem !important;
+  }
+  .s4-logo {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 14px !important;
+  }
+  .s4-title {
+    font-size: 1.5rem !important;
+    margin-top: 0 !important;
+  }
+  .s4-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+  .s4-kpi {
+    padding: 0.7rem 0.6rem !important;
+  }
+  .s4-kpi-val {
+    font-size: 1.45rem !important;
+  }
+  .s4-summary {
+    font-size: 0.74rem !important;
+    line-height: 1.6 !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* ── Slide 4: Hepsiburada ── */
+  #s4-hb {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .hb-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .hb-left {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(124,58,237,.25) !important;
+    padding-right: 0 !important;
+    padding-bottom: 1rem !important;
+    gap: 0.6rem !important;
+  }
+  .hb-logo {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 14px !important;
+  }
+  .hb-title {
+    font-size: 1.5rem !important;
+    margin-top: 0 !important;
+  }
+  .hb-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+  .hb-kpi {
+    padding: 0.7rem 0.6rem !important;
+  }
+  .hb-kpi-val {
+    font-size: 1.45rem !important;
+  }
+  .hb-summary {
+    font-size: 0.74rem !important;
+    line-height: 1.6 !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* ── Slide 5: Shopify ── */
+  #s4-sp {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .sp-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .sp-left {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(150,191,72,.25) !important;
+    padding-right: 0 !important;
+    padding-bottom: 1rem !important;
+    gap: 0.6rem !important;
+  }
+  .sp-logo {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 14px !important;
+    padding: 8px !important;
+  }
+  .sp-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .sp-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+  .sp-kpi {
+    padding: 0.7rem 0.6rem !important;
+  }
+  .sp-kpi-val {
+    font-size: 1.45rem !important;
+  }
+  .sp-cat-name {
+    min-width: 90px !important;
+    font-size: 0.64rem !important;
+  }
+  .sp-summary {
+    font-size: 0.74rem !important;
+    line-height: 1.6 !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* ── Slide 6: Meta Ads ── */
+  #s5-meta {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .meta-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .meta-left {
+    gap: 0.6rem !important;
+    width: 100% !important;
+  }
+  .meta-logo {
+    width: 100px !important;
+    height: 60px !important;
+    padding: 8px !important;
+  }
+  .meta-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .meta-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.4rem !important;
+  }
+  .meta-kpi {
+    padding: 0.55rem 0.5rem !important;
+  }
+  .meta-kpi-val {
+    font-size: 1.3rem !important;
+  }
+  .meta-kpi-key {
+    font-size: 0.52rem !important;
+  }
+  .meta-kpi-sub {
+    font-size: 0.52rem !important;
+  }
+  .meta-camp-name {
+    min-width: 80px !important;
+    font-size: 0.6rem !important;
+  }
+  .meta-accounts {
+    gap: 0.4rem !important;
+  }
+  .meta-acc-card {
+    padding: 0.45rem 0.6rem !important;
+  }
+  .meta-summary {
+    font-size: 0.74rem !important;
+    line-height: 1.6 !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* ── Slide 7: Konsolide Özet ── */
+  #s-summary {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+    align-items: flex-start !important;
+  }
+  .sum-container {
+    gap: 1.1rem !important;
+  }
+  .sum-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.8rem !important;
+  }
+  .sum-logo-ring {
+    width: 75px !important;
+    height: 75px !important;
+    border-width: 2px !important;
+  }
+  .sum-title {
+    font-size: 1.5rem !important;
+  }
+  .sum-kpi-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.45rem !important;
+  }
+  .sum-kpi {
+    padding: 0.7rem 0.6rem !important;
+  }
+  .sum-kpi-val {
+    font-size: 1.45rem !important;
+  }
+  .sum-platforms {
+    gap: 0.35rem !important;
+  }
+  .sum-plat-pill {
+    padding: 0.2rem 0.55rem !important;
+    font-size: 0.62rem !important;
+  }
+  .sum-desc {
+    font-size: 0.74rem !important;
+    line-height: 1.6 !important;
+    padding-left: 0.75rem !important;
+  }
+
+  /* ── Slide 8: Sertifikalar & Yetkinlikler ── */
+  #s-skills {
+    padding: 1.5rem 1.1rem 4.5rem !important;
+  }
+  .sk-wrapper {
+    height: auto !important;
+    gap: 1.1rem !important;
+  }
+  .sk-header {
+    gap: 0.8rem !important;
+  }
+  .sk-main-title {
+    font-size: 1.3rem !important;
+  }
+  .sk-body {
+    grid-template-columns: 1fr !important;
+    gap: 1.4rem !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .sk-certs-panel, .sk-tools-panel {
+    overflow-y: visible !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  .sk-cert-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+  .sk-cert-name {
+    font-size: 0.52rem !important;
+  }
+  .sk-pills {
+    gap: 0.28rem !important;
+  }
+  .sk-pill {
+    font-size: 0.65rem !important;
+    padding: 0.22rem 0.55rem !important;
+  }
+
+  /* ── Slide 9: İletişim ── */
+  #s8 {
+    padding: 0 !important;
+  }
+  .s7-content {
+    padding: 2.2rem 1.2rem 4.5rem !important;
+    justify-content: flex-start !important;
+  }
+  .s7-label {
+    font-size: 0.62rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .s7-cta {
+    font-size: clamp(2rem, 7.5vw, 3rem) !important;
+    margin-bottom: 1.2rem !important;
+    line-height: 1.05 !important;
+  }
+  .s7-divider {
+    width: 140px !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .contact-row {
+    gap: 0.8rem !important;
+  }
+  .contact-key {
+    font-size: 0.55rem !important;
+    min-width: 65px !important;
+  }
+  .contact-val {
+    font-size: 0.85rem !important;
+  }
+  .s7-btn-row {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    margin-top: 1.4rem !important;
+  }
+  .s7-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.65rem 1rem !important;
+    font-size: 0.74rem !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3260,13 +3748,93 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft')  go(current - 1);
 });
 
-let tx = 0;
-document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+// ── Optimized Touch & Gesture Navigation (Velocity + Direction Lock) ──
+(function() {
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchStartTime = 0;
+  let isMultiTouch = false;
+
+  const SWIPE_THRESHOLD_X = 55;
+  const SWIPE_RATIO = 1.4;
+  const MAX_SWIPE_TIME = 600;
+  const MIN_VELOCITY = 0.35;
+
+  document.addEventListener('touchstart', function(e) {
+    if (e.touches.length > 1) {
+      isMultiTouch = true;
+      return;
+    }
+    isMultiTouch = false;
+
+    const lightbox = document.getElementById('sk-lb');
+    if (lightbox && lightbox.classList.contains('open')) return;
+
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchStartTime = performance.now();
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (e.touches.length > 1) {
+      isMultiTouch = true;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (isMultiTouch || e.changedTouches.length === 0) return;
+
+    const lightbox = document.getElementById('sk-lb');
+    if (lightbox && lightbox.classList.contains('open')) return;
+
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - touchStartX;
+    const dy = touch.clientY - touchStartY;
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+    const elapsed = performance.now() - touchStartTime;
+    const velocityX = absX / Math.max(elapsed, 1);
+
+    const isHorizontalSwipe = absX >= SWIPE_THRESHOLD_X && absX > (absY * SWIPE_RATIO);
+    const isValidSpeed = elapsed <= MAX_SWIPE_TIME || velocityX >= MIN_VELOCITY;
+
+    if (isHorizontalSwipe && isValidSpeed) {
+      if (dx < 0) {
+        go(current + 1); // Swipe left -> Next slide
+      } else {
+        go(current - 1); // Swipe right -> Previous slide
+      }
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchcancel', function() {
+    isMultiTouch = false;
+    touchStartX = 0;
+    touchStartY = 0;
+    touchStartTime = 0;
+  }, { passive: true });
+})();
+
 document.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - tx;
-  if (dx < -50) go(current + 1);
-  if (dx >  50)  go(current - 1);
-});
+  if (e.changedTouches.length !== 1) return;
+  if (e.target.closest('#sk-lb.open')) return;
+
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  const dt = Date.now() - touchStartTime;
+  const absX = Math.abs(dx);
+  const absY = Math.abs(dy);
+
+  // Intentional horizontal swipe detection
+  if (absX > 50 && absX > 1.4 * absY && dt < 650) {
+    if (dx < 0) {
+      go(current + 1);
+    } else {
+      go(current - 1);
+    }
+  }
+}, { passive: true });
 
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
