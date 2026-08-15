@@ -3063,17 +3063,32 @@ html, body, .deck {
   min-height: 0 !important;
 }
 
+/* Keep the cover decoration out of the content flow so the hero can sit
+   around the visual center instead of being pushed toward the bottom. */
+#s1 > .s1-accent,
+#s1 > .s1-glow-orb,
+#s1 > .s1-circle,
+#s1 > .s1-circle2 {
+  position: absolute !important;
+}
+
 @media (min-width: 901px) {
   #s1 {
-    justify-content: flex-start !important;
+    justify-content: center !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    padding: clamp(3rem, 12vh, 8rem) 5rem 4rem !important;
+    padding: clamp(2rem, 6vh, 4.5rem) 5rem 4rem !important;
   }
 
   #s1 .s1-content {
     padding: 0 !important;
     max-width: 1100px !important;
+    transform: translateY(-1.5rem) !important;
+  }
+
+  /* Center the tools list against the taller certificate column. */
+  #s-skills .sk-tools-panel {
+    justify-content: center !important;
   }
 }
 
