@@ -3,7 +3,7 @@
 ## Evidence
 
 - Reference: `C:\Users\ebube\Downloads\ChatGPT Image 15 Ağu 2026 13_58_38.png`
-- Prototype capture: `design-qa-mobile-v2.png`
+- Prototype capture: `design-qa-mobile-v3.png`
 - Viewport: 393 × 852 CSS pixels
 
 ## Comparison
@@ -13,7 +13,7 @@
 - Expanded the sequence to nine data-rich beats: Hero, Kimim/Kariyer, Trendyol, Hepsiburada, Shopify, Meta Ads, Konsolide Özet, Yetkinlikler, and İletişim / CTA.
 - Restored desktop-backed values: 10 career milestones, 6 Trendyol KPIs, 6 Hepsiburada KPIs, 6 Shopify KPIs, 8 Meta Ads KPIs, 6 consolidated KPIs, 12 certificates, and 26 tools.
 - Replaced the prior placeholder KPI treatment with the existing portfolio data and period/source labels.
-- Added sticky case-study stages, beat-based reveals, active timeline states, KPI count-up, data bars, image parallax, and a native reduced-motion/offline fallback.
+- Added sticky case-study stages, beat-based reveals, active timeline states, KPI count-up, data bars, image parallax, and a self-contained reduced-motion/performance-safe scrub controller.
 
 ## Functional checks
 
@@ -21,6 +21,8 @@
 - Contact links expose the existing phone, email, web, location, LinkedIn, and Instagram destinations.
 - Existing desktop deck remains active at the default viewport; `#mobile-portfolio` is hidden above 768px.
 - At 393px width, the page becomes vertically scrollable (`body.scrollHeight` 13748px), all five mobile image targets receive source images, and no horizontal overflow is introduced.
+- Sticky case stages were verified inside their active section ranges; the mobile root no longer clips sticky descendants.
+- Motion no longer depends on a third-party runtime bundle; scroll parallax runs through a passive scroll listener and a single `requestAnimationFrame` loop.
 - Browser console check returned no warnings or errors during the mobile and desktop passes.
 
 ## Result

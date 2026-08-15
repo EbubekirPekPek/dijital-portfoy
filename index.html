@@ -3190,7 +3190,8 @@ html, body, .deck {
   #mobile-portfolio {
     display: block !important;
     width: 100%;
-    overflow: hidden;
+    /* Keep the document flow visible so nested sticky case stages can pin. */
+    overflow: visible;
     color: #f7f4ee;
     background: #070a0b;
     font-family: 'DM Sans', sans-serif;
@@ -4388,8 +4389,8 @@ let current  = 0;
   });
 })();
 
-// Mobile motion layer: native observers keep the experience resilient, while
-// GSAP/ScrollTrigger enhances the pinned chapters when the network allows it.
+// Mobile motion layer: native observers and a local scrub loop keep the
+// experience resilient without making the page depend on a third-party bundle.
 (function initMobileMotion() {
   const root = document.getElementById('mobile-portfolio');
   if (!root || !window.matchMedia('(max-width: 768px)').matches) return;
@@ -4464,31 +4465,37 @@ let current  = 0;
     beats.forEach((beat) => beatObserver.observe(beat));
   });
 
-  const loadScript = (src) => new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-
+  // Self-contained scrub controller. Keeping the motion layer local avoids a
+  // blocked third-party bundle turning a mobile visit into a partially-live page.
   if (!reduceMotion) {
-    Promise.all([
-      loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js'),
-      loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js')
-    ]).then(() => {
-      if (!window.gsap || !window.ScrollTrigger) return;
-      window.gsap.registerPlugin(window.ScrollTrigger);
-      window.gsap.utils.toArray('.mpp-case').forEach((section) => {
+    let framePending = false;
+    const updateScrubMotion = () => {
+      framePending = false;
+      const viewport = window.innerHeight || 1;
+      root.querySelectorAll('.mpp-case').forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const span = Math.max(rect.height - viewport, 1);
+        const progress = Math.max(0, Math.min(1, -rect.top / span));
         const stage = section.querySelector('.mpp-case-stage');
         const media = section.querySelector('.mpp-case-media img');
-        if (stage) window.gsap.to(stage, { opacity: .92, scrollTrigger: { trigger: section, start: 'top top', end: 'bottom bottom', scrub: true } });
-        if (media) window.gsap.to(media, { yPercent: -8, scale: 1.06, ease: 'none', scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: true } });
+        if (stage) stage.style.opacity = String(1 - (progress * .08));
+        if (media) media.style.transform = `translate3d(0, ${progress * -10}px, 0) scale(${1 + (progress * .045)})`;
       });
-      window.gsap.to('.mpp-hero-portrait img', { yPercent: -5, scale: 1.04, ease: 'none', scrollTrigger: { trigger: '#mpp-hero', start: 'top top', end: 'bottom top', scrub: true } });
-    }).catch(() => {
-      // Native observers above remain the intentional offline/performance fallback.
-    });
+      const hero = root.querySelector('#mpp-hero');
+      const portrait = root.querySelector('.mpp-hero-portrait img');
+      if (hero && portrait) {
+        const heroProgress = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight, viewport)));
+        portrait.style.transform = `translate3d(0, ${heroProgress * -12}px, 0) scale(${1 + heroProgress * .035})`;
+      }
+    };
+    const requestScrubFrame = () => {
+      if (framePending) return;
+      framePending = true;
+      window.requestAnimationFrame(updateScrubMotion);
+    };
+    window.addEventListener('scroll', requestScrubFrame, { passive: true });
+    window.addEventListener('resize', requestScrubFrame, { passive: true });
+    requestScrubFrame();
   }
 })();
 
