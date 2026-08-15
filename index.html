@@ -152,7 +152,7 @@ html, body {
 
 
 /* ──────────────────────────────────────────────
-   SLIDE 1 — COVER HERO (PERFECT DESKTOP & MOBILE FIT)
+   SLIDE 1 — COVER HERO (DEFINITIVE ZERO-ERROR LAYOUT)
 ────────────────────────────────────────────── */
 #s1 {
   padding: 0;
@@ -162,10 +162,11 @@ html, body {
   flex-direction: column !important;
   justify-content: center !important;
   align-items: flex-start !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* Ensure Slide 1 content is ALWAYS 100% visible */
 #s1 .reveal {
   opacity: 1 !important;
   transform: none !important;
@@ -210,13 +211,12 @@ html, body {
 .s1-content {
   position: relative;
   z-index: 10;
-  padding: 2.5rem 5rem;
+  padding: 0 5rem;
   width: 100%;
-  max-width: 1200px;
-  margin: auto 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 1100px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
   box-sizing: border-box;
 }
 
@@ -225,34 +225,34 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.75rem;
 }
 .s1-label-badge {
   font-size: 0.72rem;
   letter-spacing: 0.2em;
   color: var(--gold);
   font-weight: 700;
-  background: rgba(196, 151, 58, 0.12);
-  border: 1px solid rgba(196, 151, 58, 0.35);
+  background: rgba(196, 151, 58, 0.14);
+  border: 1px solid rgba(196, 151, 58, 0.4);
   padding: 0.28rem 0.8rem;
   border-radius: 20px;
 }
 .s1-label-year {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   letter-spacing: 0.14em;
   color: var(--muted);
   font-weight: 600;
 }
 
-/* Grand Hero Name — Solid, Proportioned, 100% Visible */
+/* Grand Hero Name — Solid, Proportioned, 100% Visible (No Transparency) */
 .s1-name1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.6rem, 5.2vw, 4.6rem);
+  font-size: clamp(2.4rem, 4.8vw, 4.2rem);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.06;
   color: #FFFFFF !important;
   letter-spacing: -0.015em;
-  margin-bottom: 0.9rem;
+  margin: 0 0 0.85rem 0;
   text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 .s1-gold-surname {
@@ -265,7 +265,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.85rem;
   flex-wrap: wrap;
 }
 .s1-ticker-prefix {
@@ -280,7 +280,7 @@ html, body {
   overflow: hidden;
   position: relative;
   background: rgba(20, 36, 53, 0.85);
-  border: 1px solid rgba(196, 151, 58, 0.3);
+  border: 1px solid rgba(196, 151, 58, 0.35);
   border-radius: 8px;
   padding: 0 0.9rem;
   display: flex;
@@ -298,7 +298,7 @@ html, body {
   gap: 0.6rem;
   font-size: 0.92rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   white-space: nowrap;
 }
 .s1-t-dot {
@@ -316,15 +316,15 @@ html, body {
   height: 2px;
   width: 220px;
   background: linear-gradient(90deg, var(--gold), rgba(196,151,58,0.2));
-  margin: 0.8rem 0 1.1rem;
+  margin: 0.6rem 0 1rem;
 }
 
 /* Interactive Platform Jump Buttons */
 .s1-platforms-section {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.3rem;
+  gap: 0.45rem;
+  margin-bottom: 1.1rem;
 }
 .s1-plat-title {
   font-size: 0.68rem;
@@ -336,17 +336,17 @@ html, body {
 .s1-platforms-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 .s1-plat-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(20, 36, 53, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.4rem 0.85rem;
+  background: rgba(20, 36, 53, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.38rem 0.8rem;
   border-radius: 20px;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -371,12 +371,12 @@ html, body {
 .plat-dot.gold { background: var(--gold); }
 .plat-dot.ice { background: var(--ice); }
 
-.s1-plat-btn.ty-btn:hover { border-color: var(--ty-orange); box-shadow: 0 4px 14px rgba(242,122,26,0.3); }
-.s1-plat-btn.hb-btn:hover { border-color: var(--hb-purple); box-shadow: 0 4px 14px rgba(124,58,237,0.3); }
-.s1-plat-btn.sp-btn:hover { border-color: var(--sp-green); box-shadow: 0 4px 14px rgba(150,191,72,0.3); }
-.s1-plat-btn.meta-btn:hover { border-color: var(--meta-blue); box-shadow: 0 4px 14px rgba(66,168,255,0.3); }
-.s1-plat-btn.gold-btn:hover { border-color: var(--gold); box-shadow: 0 4px 14px rgba(196,151,58,0.3); }
-.s1-plat-btn.ice-btn:hover { border-color: var(--ice); box-shadow: 0 4px 14px rgba(74,156,194,0.3); }
+.s1-plat-btn.ty-btn:hover { border-color: var(--ty-orange); box-shadow: 0 4px 14px rgba(242,122,26,0.35); }
+.s1-plat-btn.hb-btn:hover { border-color: var(--hb-purple); box-shadow: 0 4px 14px rgba(124,58,237,0.35); }
+.s1-plat-btn.sp-btn:hover { border-color: var(--sp-green); box-shadow: 0 4px 14px rgba(150,191,72,0.35); }
+.s1-plat-btn.meta-btn:hover { border-color: var(--meta-blue); box-shadow: 0 4px 14px rgba(66,168,255,0.35); }
+.s1-plat-btn.gold-btn:hover { border-color: var(--gold); box-shadow: 0 4px 14px rgba(196,151,58,0.35); }
+.s1-plat-btn.ice-btn:hover { border-color: var(--ice); box-shadow: 0 4px 14px rgba(74,156,194,0.35); }
 
 .plat-arr {
   font-size: 0.75rem;
@@ -391,20 +391,20 @@ html, body {
 .s1-cta-row {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
-  margin-top: 0.3rem;
+  gap: 1.3rem;
+  margin-top: 0.2rem;
   flex-wrap: wrap;
 }
 .s1-explore-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.65rem;
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
-  color: #0C1B2A;
+  color: #0C1B2A !important;
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
-  padding: 0.7rem 1.5rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -423,7 +423,7 @@ html, body {
   transform: translateX(4px);
 }
 .s1-swipe-hint {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--muted);
   letter-spacing: 0.05em;
 }
@@ -2646,18 +2646,23 @@ html, body, .deck {
     min-width: 42px !important;
   }
 
-      /* ══ SLIDE 1: COVER SPECIFICS (MOBILE) ══ */
+        /* ══ SLIDE 1: COVER SPECIFICS (MOBILE) ══ */
   #s1 {
-    padding: 3rem 1.25rem 5.5rem 1.25rem !important;
+    padding: 2.8rem 1.15rem 5.5rem 1.15rem !important;
     justify-content: flex-start !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
   #s1 .s1-content {
     padding: 0 !important;
-    justify-content: flex-start !important;
+    width: 100% !important;
     max-width: 100% !important;
+    justify-content: flex-start !important;
     opacity: 1 !important;
     visibility: visible !important;
+    margin: 0 !important;
   }
   #s1 .reveal {
     opacity: 1 !important;
@@ -2665,28 +2670,28 @@ html, body, .deck {
     visibility: visible !important;
   }
   .s1-label {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.85rem !important;
     flex-wrap: wrap !important;
-    gap: 0.5rem !important;
+    gap: 0.45rem !important;
   }
   .s1-label-badge {
-    font-size: 0.7rem !important;
-    padding: 0.28rem 0.75rem !important;
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.7rem !important;
   }
   .s1-label-year {
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
   }
   .s1-name1 {
     font-size: clamp(2.2rem, 9.2vw, 3.2rem) !important;
     line-height: 1.1 !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.9rem !important;
     color: #FFFFFF !important;
   }
   .s1-ticker-wrap {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 0.4rem !important;
-    margin-bottom: 1.1rem !important;
+    gap: 0.35rem !important;
+    margin-bottom: 0.95rem !important;
     width: 100% !important;
   }
   .s1-ticker-prefix {
@@ -2695,37 +2700,37 @@ html, body, .deck {
   .s1-ticker-window {
     width: 100% !important;
     box-sizing: border-box !important;
-    height: 38px !important;
+    height: 36px !important;
   }
   .s1-ticker-item {
-    font-size: 0.88rem !important;
-    height: 38px !important;
+    font-size: 0.85rem !important;
+    height: 36px !important;
     color: #FFFFFF !important;
   }
   .s1-divider {
-    width: 140px !important;
-    margin: 0.9rem 0 1.1rem !important;
+    width: 130px !important;
+    margin: 0.7rem 0 0.95rem !important;
   }
   .s1-platforms-section {
-    margin-bottom: 1.4rem !important;
+    margin-bottom: 1.2rem !important;
     width: 100% !important;
   }
   .s1-plat-title {
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
   }
   .s1-platforms-list {
-    gap: 0.5rem !important;
+    gap: 0.45rem !important;
     width: 100% !important;
   }
   .s1-plat-btn {
-    padding: 0.4rem 0.8rem !important;
-    font-size: 0.78rem !important;
+    padding: 0.38rem 0.75rem !important;
+    font-size: 0.76rem !important;
   }
   .s1-cta-row {
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 0.8rem !important;
-    margin-top: 0.8rem !important;
+    gap: 0.75rem !important;
+    margin-top: 0.6rem !important;
     width: 100% !important;
   }
   .s1-explore-btn {
@@ -2736,7 +2741,8 @@ html, body, .deck {
   }
   .s1-swipe-hint {
     justify-content: center !important;
-    font-size: 0.75rem !important;
+    font-size: 0.74rem !important;
+    text-align: center !important;
   }
 
   /* ══ SLIDE 2: KARİYER YOLCULUĞUM ══ */
@@ -4218,25 +4224,7 @@ document.addEventListener('keydown', e => {
   }, { passive: true });
 })();
 
-document.addEventListener('touchend', e => {
-  if (e.changedTouches.length !== 1) return;
-  if (e.target.closest('#sk-lb.open')) return;
 
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  const dt = Date.now() - touchStartTime;
-  const absX = Math.abs(dx);
-  const absY = Math.abs(dy);
-
-  // Intentional horizontal swipe detection
-  if (absX > 50 && absX > 1.4 * absY && dt < 650) {
-    if (dx < 0) {
-      go(current + 1);
-    } else {
-      go(current - 1);
-    }
-  }
-}, { passive: true });
 
 document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
