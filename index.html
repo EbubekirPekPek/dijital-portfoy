@@ -3180,8 +3180,11 @@ html, body, .deck {
     width: 100% !important;
     min-height: 100% !important;
     height: auto !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+    /* Keep the document as the scroll container so nested sticky stages pin
+       to the viewport in both directions. */
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    overscroll-behavior-y: auto !important;
     background: #070a0b !important;
   }
 
@@ -3191,7 +3194,10 @@ html, body, .deck {
     display: block !important;
     width: 100%;
     /* Keep the document flow visible so nested sticky case stages can pin. */
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
+    touch-action: pan-y;
+    overscroll-behavior-y: auto;
     color: #f7f4ee;
     background: #070a0b;
     font-family: 'DM Sans', sans-serif;
@@ -3300,12 +3306,12 @@ html, body, .deck {
 
   .mpp-case { min-height: 238svh; padding-top: 2.5rem; padding-bottom: 2.5rem; background: #080c0f; }
   .mpp-case-shell { position: relative; }
-  .mpp-case-stage { position: sticky; top: 0; z-index: 3; min-height: 62svh; display: flex; flex-direction: column; justify-content: center; padding: 2.4rem 0 1.2rem; background: linear-gradient(180deg, rgba(8,12,15,.98) 73%, rgba(8,12,15,.84)); }
+  .mpp-case-stage { position: sticky; top: 0; z-index: 3; min-height: 62svh; display: flex; flex-direction: column; justify-content: center; padding: 2.4rem 0 1.2rem; overflow: clip; background: linear-gradient(180deg, rgba(8,12,15,.98) 73%, rgba(8,12,15,.84)); }
   .mpp-case-stage::after { content: ''; position: absolute; z-index: -1; left: -20%; right: -20%; top: 20%; height: 40%; background: radial-gradient(circle, color-mix(in srgb, var(--mpp-accent, #f27a1a) 16%, transparent), transparent 70%); opacity: .7; pointer-events: none; }
   .mpp-case-head { position: relative; }
   .mpp-case-head .mpp-title { max-width: 10ch; }
   .mpp-case-media { margin: .85rem 0 .7rem; min-height: 104px; border-color: color-mix(in srgb, var(--mpp-accent, #f27a1a) 38%, rgba(255,255,255,.12)); }
-  .mpp-case-media img { height: 112px; padding: .55rem 1rem; }
+  .mpp-case-media img { box-sizing: border-box; max-width: 100%; height: 112px; padding: .55rem 1rem; }
   .mpp-case-live { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: .1rem .8rem; padding: .62rem .75rem .7rem; border-left: 2px solid var(--mpp-accent, #f27a1a); background: rgba(255,255,255,.035); }
   .mpp-case-live span { grid-column: 1 / -1; color: var(--mpp-accent, #f27a1a); font-size: .55rem; font-weight: 700; letter-spacing: .12em; }
   .mpp-case-live b { color: #a9df82; font: 700 1.8rem/1 'Barlow Condensed','DM Sans',sans-serif; }
@@ -3314,7 +3320,7 @@ html, body, .deck {
   .mpp-case-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: rgba(247,244,238,.22); transition: transform .35s ease, background .35s ease; }
   .mpp-case-dots i.is-active { background: var(--mpp-accent, #f27a1a); transform: scale(1.35); }
   .mpp-case-beats { position: relative; z-index: 2; margin-top: -.2rem; }
-  .mpp-beat { min-height: 57svh; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0 3.2rem; border-top: 1px solid color-mix(in srgb, var(--mpp-accent, #f27a1a) 32%, transparent); opacity: .34; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
+  .mpp-beat { min-height: 62svh; display: flex; flex-direction: column; justify-content: center; padding: 2rem 0 3.2rem; border-top: 1px solid color-mix(in srgb, var(--mpp-accent, #f27a1a) 32%, transparent); opacity: .34; transform: translateY(10px); transition: opacity .55s ease, transform .55s ease; }
   .mpp-beat.is-active { opacity: 1; transform: translateY(0); }
   .mpp-beat > small { color: var(--mpp-accent, #f27a1a); font-size: .62rem; font-weight: 700; letter-spacing: .17em; }
   .mpp-beat h3 { max-width: 18ch; margin: .65rem 0 0; color: #f7f4ee; font: 700 clamp(1.65rem, 8vw, 2.8rem)/1.02 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.02em; text-transform: uppercase; }
@@ -4449,20 +4455,55 @@ let current  = 0;
     requestAnimationFrame(tick);
   };
 
+  const caseBeatStates = [];
+  const setActiveBeat = (state, index) => {
+    if (!state.beats.length) return;
+    const nextIndex = Math.max(0, Math.min(index, state.beats.length - 1));
+    if (state.activeIndex === nextIndex) return;
+    state.activeIndex = nextIndex;
+    state.beats.forEach((beat, beatIndex) => beat.classList.toggle('is-active', beatIndex === nextIndex));
+    state.dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === Math.min(nextIndex, state.dots.length - 1)));
+    state.beats[nextIndex].querySelectorAll('.mpp-kpi-value').forEach(animateMetric);
+  };
+
+  // Pick the beat nearest the reading line instead of relying only on an
+  // observer threshold. This keeps fast downward swipes and upward reversals
+  // deterministic, so content cannot remain stuck on the last beat visited.
+  const syncCaseBeats = (viewport = window.innerHeight || 1) => {
+    const readingLine = viewport * .68;
+    caseBeatStates.forEach((state) => {
+      const sectionRect = state.section.getBoundingClientRect();
+      if (sectionRect.bottom <= 0) return;
+      if (sectionRect.top >= viewport) {
+        setActiveBeat(state, 0);
+        return;
+      }
+      let bestIndex = state.activeIndex < 0 ? 0 : state.activeIndex;
+      let bestScore = -Infinity;
+      state.beats.forEach((beat, index) => {
+        const rect = beat.getBoundingClientRect();
+        const visible = Math.max(0, Math.min(rect.bottom, viewport) - Math.max(rect.top, 0));
+        const distance = Math.abs(((rect.top + rect.bottom) / 2) - readingLine);
+        const score = visible > 0 ? (visible * 2) - distance : -distance;
+        if (score > bestScore) {
+          bestScore = score;
+          bestIndex = index;
+        }
+      });
+      setActiveBeat(state, bestIndex);
+    });
+  };
+
   const caseSections = Array.from(root.querySelectorAll('[data-mpp-section="case"]'));
   caseSections.forEach((section) => {
-    const beats = Array.from(section.querySelectorAll('.mpp-beat'));
-    const dots = Array.from(section.querySelectorAll('.mpp-case-dots i'));
-    const beatObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        beats.forEach((beat) => beat.classList.toggle('is-active', beat === entry.target));
-        const index = beats.indexOf(entry.target);
-        dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === Math.min(index, dots.length - 1)));
-        entry.target.querySelectorAll('.mpp-kpi-value').forEach(animateMetric);
-      });
-    }, { threshold: 0.42, rootMargin: '-8% 0px -18% 0px' });
-    beats.forEach((beat) => beatObserver.observe(beat));
+    const state = {
+      section,
+      beats: Array.from(section.querySelectorAll('.mpp-beat')),
+      dots: Array.from(section.querySelectorAll('.mpp-case-dots i')),
+      activeIndex: -1
+    };
+    caseBeatStates.push(state);
+    setActiveBeat(state, 0);
   });
 
   // Self-contained scrub controller. Keeping the motion layer local avoids a
@@ -4481,6 +4522,7 @@ let current  = 0;
         if (stage) stage.style.opacity = String(1 - (progress * .08));
         if (media) media.style.transform = `translate3d(0, ${progress * -10}px, 0) scale(${1 + (progress * .045)})`;
       });
+      syncCaseBeats(viewport);
       const hero = root.querySelector('#mpp-hero');
       const portrait = root.querySelector('.mpp-hero-portrait img');
       if (hero && portrait) {
@@ -4496,6 +4538,11 @@ let current  = 0;
     window.addEventListener('scroll', requestScrubFrame, { passive: true });
     window.addEventListener('resize', requestScrubFrame, { passive: true });
     requestScrubFrame();
+  } else {
+    const syncReducedMotionBeats = () => syncCaseBeats(window.innerHeight || 1);
+    window.addEventListener('scroll', syncReducedMotionBeats, { passive: true });
+    window.addEventListener('resize', syncReducedMotionBeats, { passive: true });
+    syncReducedMotionBeats();
   }
 })();
 
