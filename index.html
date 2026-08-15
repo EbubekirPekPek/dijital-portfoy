@@ -2206,27 +2206,23 @@ html, body {
 
 
 
+
 /* ══════════════════════════════════════════════════════════════════
-   PREMIUM MOBILE-FIRST RESPONSIVE DESIGN SYSTEM
+   UNIFIED HARMONIOUS MOBILE-FIRST ARCHITECTURE (PREMIUM LUXURY)
    ══════════════════════════════════════════════════════════════════ */
 
-/* Dynamic Viewport for modern mobile browsers */
-html, body {
-  height: 100%;
-  height: 100dvh;
-}
-.deck {
+/* Dynamic Viewport */
+html, body, .deck {
   height: 100%;
   height: 100dvh;
 }
 
-/* Touch & Cursor handling */
+/* Touch & Cursor */
 @media (pointer: coarse), (max-width: 900px) {
   .cursor { display: none !important; }
   html, body, * { cursor: auto !important; }
 }
 
-/* General Tablet/Mobile slide scrolling & layout */
 @media (max-width: 900px) {
   .slide {
     overflow-y: auto !important;
@@ -2235,820 +2231,572 @@ html, body {
     touch-action: pan-y;
   }
   .slide::-webkit-scrollbar {
-    width: 4px;
+    width: 3px;
   }
   .slide::-webkit-scrollbar-track {
     background: transparent;
   }
   .slide::-webkit-scrollbar-thumb {
     background: rgba(196, 151, 58, 0.4);
-    border-radius: 4px;
+    border-radius: 3px;
   }
-  
-  /* Hide side arrows on mobile so they never obscure cards or text */
   .arrow {
     display: none !important;
   }
   
-  /* Floating glassmorphism slide counter (Top Right) */
+  /* Top Counter Badge */
   .counter {
-    top: 0.85rem !important;
-    right: 1rem !important;
+    top: 0.75rem !important;
+    right: 0.85rem !important;
     font-size: 0.72rem !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     color: var(--gold) !important;
-    background: rgba(12, 27, 42, 0.88) !important;
-    border: 1px solid rgba(196, 151, 58, 0.3) !important;
-    padding: 0.28rem 0.75rem !important;
-    border-radius: 16px !important;
-    backdrop-filter: blur(8px) !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
-  }
-  
-  /* Floating glassmorphism bottom dot navigation */
-  .nav {
-    bottom: 0.9rem !important;
-    gap: 0.55rem !important;
     background: rgba(12, 27, 42, 0.9) !important;
     border: 1px solid rgba(196, 151, 58, 0.3) !important;
-    padding: 0.45rem 0.9rem !important;
-    border-radius: 24px !important;
+    padding: 0.25rem 0.7rem !important;
+    border-radius: 14px !important;
     backdrop-filter: blur(8px) !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+    z-index: 150 !important;
+  }
+  
+  /* Bottom Dot Nav */
+  .nav {
+    bottom: 0.85rem !important;
+    gap: 0.5rem !important;
+    background: rgba(12, 27, 42, 0.92) !important;
+    border: 1px solid rgba(196, 151, 58, 0.3) !important;
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 20px !important;
+    backdrop-filter: blur(8px) !important;
+    z-index: 150 !important;
   }
   .nav-dot {
-    width: 7px !important;
-    height: 7px !important;
+    width: 6.5px !important;
+    height: 6.5px !important;
   }
   .nav-dot.active {
-    transform: scale(1.6) !important;
+    transform: scale(1.5) !important;
   }
 }
 
 /* ──────────────────────────────────────────────────────────────────
-   SMARTPHONE VIEWPORT (<= 768px) — READABLE, SPACIOUS & PROPORTIONED
+   MOBILE VIEWPORT (<= 768px) — HARMONIOUS LOGOS, PROPORTIONS & TYPE
    ────────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* ══ SLIDE 1: COVER (KAPAK) ══ */
-  #s1 {
-    padding: 0 !important;
+  /* ══ UNIFIED SLIDE CONTAINER ══ */
+  .slide {
+    padding: 2.2rem 1.15rem 5.5rem 1.15rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ══ UNIFIED TYPOGRAPHY TOKENS ══ */
+  .s1-label, .s4-label, .hb-label, .sp-label, .meta-label, 
+  .sum-super-label, .sk-sup-label, .s7-label, .sk-panel-label {
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .s2-title, .s4-title, .hb-title, .sp-title, .meta-title, .sum-title, .sk-main-title {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    line-height: 1.18 !important;
+    color: var(--white) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* ══ UNIFIED BRAND HEADER BANNER (Slides 3, 4, 5, 6, 7) ══ */
+  .s4-wrapper, .hb-wrapper, .sp-wrapper, .meta-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
+  }
+
+  .s4-left, .hb-left, .sp-left, .meta-left {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1rem !important;
+    padding: 0.85rem 1rem !important;
+    background: rgba(20, 36, 53, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    border-right: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .s4-left  { border-left: 3px solid var(--ty-orange) !important; }
+  .hb-left  { border-left: 3px solid var(--hb-purple) !important; }
+  .sp-left  { border-left: 3px solid var(--sp-green) !important; }
+  .meta-left { border-left: 3px solid var(--meta-blue) !important; flex-direction: column !important; align-items: stretch !important; }
+
+  /* Uniform Logo Dimensions across all brand slides */
+  .s4-logo, .hb-logo, .sp-logo {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 12px !important;
+    background: #fff !important;
+    padding: 6px !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3) !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .s4-logo img, .hb-logo img, .sp-logo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Meta logo inside header */
+  .meta-logo {
+    width: 90px !important;
+    height: 52px !important;
+    border-radius: 10px !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+  }
+  .meta-logo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Brand Header Metadata */
+  .s4-since, .hb-since, .sp-since, .meta-period {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.1em !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .s4-status, .hb-status, .sp-status, .meta-status {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    padding: 0.25rem 0.7rem !important;
+    border-radius: 14px !important;
+    width: fit-content !important;
+  }
+
+  /* ══ UNIFIED KPI CARD SYSTEM (2-COLUMN GRID) ══ */
+  .s4-kpi-grid, .hb-kpi-grid, .sp-kpi-grid, .meta-kpi-grid, .sum-kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem !important;
+    margin-bottom: 1.1rem !important;
+    width: 100% !important;
+  }
+
+  .s4-kpi, .hb-kpi, .sp-kpi, .meta-kpi, .sum-kpi {
+    padding: 0.85rem 0.8rem !important;
+    background: rgba(20, 36, 53, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .s4-kpi   { border-top: 3px solid var(--ty-orange) !important; }
+  .hb-kpi   { border-top: 3px solid var(--hb-purple) !important; }
+  .sp-kpi   { border-top: 3px solid var(--sp-green) !important; }
+  .meta-kpi { border-top: 3px solid var(--meta-blue) !important; }
+  .sum-kpi  { border-top: 3px solid var(--gold) !important; }
+
+  .s4-kpi-val, .hb-kpi-val, .sp-kpi-val, .meta-kpi-val, .sum-kpi-val {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.3rem !important;
+  }
+  .s4-kpi-val { color: var(--ty-orange) !important; }
+  .hb-kpi-val { color: var(--hb-purple) !important; }
+  .sp-kpi-val { color: var(--sp-green) !important; }
+  .meta-kpi-val { color: var(--meta-blue) !important; }
+  .sum-kpi-val { color: var(--gold) !important; }
+
+  .s4-kpi-key, .hb-kpi-key, .sp-kpi-key, .meta-kpi-key, .sum-kpi-key {
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.07em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 0.2rem !important;
+  }
+  .s4-kpi-key { color: var(--ty-orange) !important; }
+  .hb-kpi-key { color: var(--hb-purple) !important; }
+  .sp-kpi-key { color: var(--sp-green) !important; }
+  .meta-kpi-key { color: var(--meta-blue) !important; }
+  .sum-kpi-key { color: var(--gold2) !important; }
+
+  .s4-kpi-sub, .hb-kpi-sub, .sp-kpi-sub, .meta-kpi-sub, .sum-kpi-sub {
+    font-size: 0.76rem !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.3 !important;
+  }
+
+  /* ══ UNIFIED SUMMARY & TAKEAWAY CARDS ══ */
+  .s4-summary, .hb-summary, .sp-summary, .meta-summary, .sum-desc {
+    background: rgba(14, 28, 44, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    padding: 0.95rem 1rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.68 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-top: 0.6rem !important;
+  }
+  .s4-summary   { border-left: 3.5px solid var(--ty-orange) !important; }
+  .hb-summary   { border-left: 3.5px solid var(--hb-purple) !important; }
+  .sp-summary   { border-left: 3.5px solid var(--sp-green) !important; }
+  .meta-summary { border-left: 3.5px solid var(--meta-blue) !important; }
+  .sum-desc     { border-left: 3.5px solid var(--gold) !important; }
+
+  /* ══ CATEGORY & PROGRESS BARS ══ */
+  .s4-cats, .hb-cats, .sp-cats {
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .s4-cat-label, .hb-cat-label, .sp-cat-label, .meta-camp-title {
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .s4-cat-row, .hb-cat-row, .sp-cat-row, .meta-camp-row {
+    gap: 0.75rem !important;
+    margin-bottom: 0.45rem !important;
+  }
+  .s4-cat-name, .hb-cat-name, .sp-cat-name, .meta-camp-name {
+    font-size: 0.82rem !important;
+    min-width: 100px !important;
+    font-weight: 500 !important;
+  }
+  .s4-cat-bar-wrap, .hb-cat-bar-wrap, .sp-cat-bar-wrap, .meta-camp-bar-wrap {
+    height: 6px !important;
+    border-radius: 3px !important;
+  }
+  .s4-cat-pct, .hb-cat-pct, .sp-cat-pct, .meta-camp-roas {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    min-width: 42px !important;
+  }
+
+  /* ══ SLIDE 1: COVER SPECIFICS ══ */
+  #s1 {
+    padding: 0 !important;
     justify-content: center !important;
   }
   .s1-content {
-    padding: 3rem 1.4rem 5.5rem !important;
-    justify-content: center !important;
-    max-width: 100% !important;
-  }
-  .s1-label {
-    font-size: 0.75rem !important;
-    letter-spacing: 0.22em !important;
-    margin-bottom: 1.2rem !important;
-    font-weight: 700 !important;
+    padding: 3rem 1.35rem 5.5rem !important;
   }
   .s1-name1 {
-    font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
-    line-height: 1.06 !important;
-    margin-bottom: 1.2rem !important;
-    letter-spacing: -0.015em !important;
+    font-size: clamp(2.4rem, 10.5vw, 3.8rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 1.1rem !important;
   }
   .s1-titles {
-    gap: 0.55rem !important;
-    margin-bottom: 1.4rem !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1.3rem !important;
   }
   .s1-title-item {
-    font-size: clamp(0.95rem, 4.2vw, 1.2rem) !important;
-    line-height: 1.4 !important;
+    font-size: clamp(0.95rem, 4.2vw, 1.15rem) !important;
     font-weight: 600 !important;
-    color: var(--white) !important;
+    line-height: 1.35 !important;
   }
   .s1-divider {
-    width: 180px !important;
-    height: 3px !important;
-    margin: 1.2rem 0 1rem !important;
+    width: 160px !important;
+    height: 2.5px !important;
+    margin: 1.1rem 0 0.9rem !important;
   }
   .s1-timeline {
-    font-size: 0.95rem !important;
-    letter-spacing: 0.16em !important;
-    margin-bottom: 0.9rem !important;
-    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0.15em !important;
+    margin-bottom: 0.8rem !important;
   }
   .s1-platforms-list {
-    gap: 0.6rem !important;
-    font-size: 0.85rem !important;
-    line-height: 1.6 !important;
-    color: var(--muted) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    margin-top: 0.4rem !important;
   }
   .s1-plat {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(196,151,58,0.22);
-    padding: 0.22rem 0.65rem;
-    border-radius: 12px;
-    display: inline-block;
-  }
-  .s1-plat + .s1-plat::before {
-    display: none !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(196, 151, 58, 0.3) !important;
+    padding: 0.3rem 0.75rem !important;
+    border-radius: 14px !important;
+    font-size: 0.8rem !important;
+    color: var(--white) !important;
+    font-weight: 500 !important;
   }
   .s1-tagline {
-    font-size: 0.88rem !important;
+    font-size: 0.86rem !important;
     line-height: 1.65 !important;
-    margin-top: 1.4rem !important;
-    padding-left: 1rem !important;
+    margin-top: 1.3rem !important;
   }
 
   /* ══ SLIDE 2: KARİYER YOLCULUĞUM ══ */
-  #s2 {
-    padding: 2.2rem 1.25rem 5.5rem !important;
-  }
   .s2-wrapper {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    gap: 1.4rem !important;
   }
   .s2-photo {
-    width: 130px !important;
-    max-width: 130px !important;
-    margin: 0 auto !important;
+    width: 120px !important;
+    height: 120px !important;
+    max-width: 120px !important;
     border-width: 3px !important;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 20px rgba(196,151,58,0.2) !important;
-  }
-  .s2-right {
-    width: 100% !important;
-    height: auto !important;
-  }
-  .s2-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 1.4rem !important;
-    text-align: center !important;
-    line-height: 1.2 !important;
+    margin: 0 auto 0.5rem auto !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(196,151,58,0.25) !important;
   }
   .tl-container {
     max-height: none !important;
     overflow-y: visible !important;
-    padding-left: 1.6rem !important;
+    padding-left: 1.5rem !important;
     padding-right: 0 !important;
   }
-  .tl-container::before {
-    left: 0 !important;
-    width: 2px !important;
-  }
   .tl-item {
-    position: relative !important;
-    padding: 0.8rem 1rem !important;
-    margin-bottom: 0.9rem !important;
-    background: rgba(20, 36, 53, 0.6) !important;
-    border: 1px solid rgba(196, 151, 58, 0.2) !important;
-    border-radius: 10px !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25) !important;
+    padding: 0.85rem 1rem !important;
+    margin-bottom: 0.85rem !important;
+    background: rgba(20, 36, 53, 0.7) !important;
+    border: 1px solid rgba(196, 151, 58, 0.25) !important;
+    border-radius: 12px !important;
   }
   .tl-item::before {
-    left: -1.6rem !important;
+    left: -1.5rem !important;
     top: 1.1rem !important;
-    width: 9px !important;
-    height: 9px !important;
+    width: 8px !important;
+    height: 8px !important;
   }
   .tl-year {
     font-size: 0.82rem !important;
-    letter-spacing: 0.12em !important;
-    margin-bottom: 0.3rem !important;
-    color: var(--gold) !important;
     font-weight: 700 !important;
+    color: var(--gold) !important;
+    margin-bottom: 0.25rem !important;
   }
   .tl-name {
     font-size: 0.98rem !important;
     font-weight: 700 !important;
-    margin-bottom: 0.35rem !important;
     color: var(--white) !important;
-    line-height: 1.35 !important;
+    margin-bottom: 0.3rem !important;
   }
   .tl-desc {
-    font-size: 0.85rem !important;
+    font-size: 0.86rem !important;
     line-height: 1.6 !important;
-    color: rgba(255,255,255,0.75) !important;
-  }
-  .tl-counter {
-    font-size: 0.75rem !important;
-    text-align: center !important;
-    margin-top: 1rem !important;
+    color: rgba(255, 255, 255, 0.78) !important;
   }
 
-  /* ══ SLIDE 3: TRENDYOL CASE STUDY ══ */
-  #s4-ty {
-    padding: 2rem 1.25rem 5.5rem !important;
-  }
-  .s4-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 1.4rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .s4-left {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(242,122,26,.25) !important;
-    padding-right: 0 !important;
-    padding-bottom: 1.2rem !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 1.2rem !important;
-  }
-  .s4-logo {
-    width: 75px !important;
-    height: 75px !important;
-    border-radius: 16px !important;
-    flex-shrink: 0 !important;
-  }
-  .s4-since {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.14em !important;
-    text-align: left !important;
-  }
-  .s4-status {
-    font-size: 0.76rem !important;
-    padding: 0.35rem 0.85rem !important;
-    border-radius: 16px !important;
-  }
-  .s4-right {
-    gap: 1.2rem !important;
-  }
-  .s4-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  .s4-title {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-top: 0 !important;
-  }
-  .s4-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-  }
-  .s4-kpi {
-    padding: 0.9rem 0.8rem !important;
-    border-radius: 10px !important;
-    background: rgba(242,122,26,.08) !important;
-    border: 1px solid rgba(242,122,26,.25) !important;
-    border-top: 3px solid var(--ty-orange) !important;
-  }
-  .s4-kpi-val {
-    font-size: clamp(1.6rem, 6vw, 2rem) !important;
-    margin-bottom: 0.35rem !important;
-  }
-  .s4-kpi-key {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
-    margin: 0.3rem 0 0.15rem !important;
-  }
-  .s4-kpi-sub {
-    font-size: 0.76rem !important;
-    color: rgba(255,255,255,0.65) !important;
-  }
-  .s4-cat-label {
-    font-size: 0.74rem !important;
-    letter-spacing: 0.14em !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .s4-cat-row {
-    gap: 0.8rem !important;
-    margin-bottom: 0.45rem !important;
-  }
-  .s4-cat-name {
-    font-size: 0.82rem !important;
-    min-width: 105px !important;
-  }
-  .s4-cat-bar-wrap {
-    height: 6px !important;
-  }
-  .s4-cat-pct {
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-  }
-  .s4-summary {
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-    padding-left: 1rem !important;
-    margin-top: 0.4rem !important;
-  }
-
-  /* ══ SLIDE 4: HEPSİBURADA CASE STUDY ══ */
-  #s4-hb {
-    padding: 2rem 1.25rem 5.5rem !important;
-  }
-  .hb-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 1.4rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .hb-left {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(124,58,237,.25) !important;
-    padding-right: 0 !important;
-    padding-bottom: 1.2rem !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 1.2rem !important;
-  }
-  .hb-logo {
-    width: 75px !important;
-    height: 75px !important;
-    border-radius: 16px !important;
-    flex-shrink: 0 !important;
-  }
-  .hb-since {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.14em !important;
-    text-align: left !important;
-  }
-  .hb-status {
-    font-size: 0.76rem !important;
-    padding: 0.35rem 0.85rem !important;
-    border-radius: 16px !important;
-  }
-  .hb-right {
-    gap: 1.2rem !important;
-  }
-  .hb-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  .hb-title {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-top: 0 !important;
-  }
-  .hb-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-  }
-  .hb-kpi {
-    padding: 0.9rem 0.8rem !important;
-    border-radius: 10px !important;
-    background: rgba(124,58,237,.08) !important;
-    border: 1px solid rgba(124,58,237,.25) !important;
-    border-top: 3px solid var(--hb-purple) !important;
-  }
-  .hb-kpi-val {
-    font-size: clamp(1.6rem, 6vw, 2rem) !important;
-    margin-bottom: 0.35rem !important;
-  }
-  .hb-kpi-key {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
-    margin: 0.3rem 0 0.15rem !important;
-  }
-  .hb-kpi-sub {
-    font-size: 0.76rem !important;
-    color: rgba(255,255,255,0.65) !important;
-  }
-  .hb-cat-label {
-    font-size: 0.74rem !important;
-    letter-spacing: 0.14em !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .hb-cat-row {
-    gap: 0.8rem !important;
-    margin-bottom: 0.45rem !important;
-  }
-  .hb-cat-name {
-    font-size: 0.82rem !important;
-    min-width: 105px !important;
-  }
-  .hb-cat-bar-wrap {
-    height: 6px !important;
-  }
-  .hb-cat-pct {
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-  }
-  .hb-summary {
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-    padding-left: 1rem !important;
-    margin-top: 0.4rem !important;
-  }
-
-  /* ══ SLIDE 5: SHOPIFY (ARI KOVANI) ══ */
-  #s4-sp {
-    padding: 2rem 1.25rem 5.5rem !important;
-  }
-  .sp-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 1.4rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .sp-left {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(150,191,72,.25) !important;
-    padding-right: 0 !important;
-    padding-bottom: 1.2rem !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 1.2rem !important;
-  }
-  .sp-logo {
-    width: 75px !important;
-    height: 75px !important;
-    border-radius: 16px !important;
-    padding: 10px !important;
-    flex-shrink: 0 !important;
-  }
-  .sp-since {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.14em !important;
-    text-align: left !important;
-  }
-  .sp-status {
-    font-size: 0.76rem !important;
-    padding: 0.35rem 0.85rem !important;
-    border-radius: 16px !important;
-  }
-  .sp-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  .sp-title {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1rem !important;
-  }
-  .sp-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-    margin-bottom: 1.2rem !important;
-  }
-  .sp-kpi {
-    padding: 0.9rem 0.8rem !important;
-    border-radius: 10px !important;
-    background: rgba(150,191,72,.08) !important;
-    border: 1px solid rgba(150,191,72,.25) !important;
-    border-top: 3px solid var(--sp-green) !important;
-  }
-  .sp-kpi-val {
-    font-size: clamp(1.6rem, 6vw, 2rem) !important;
-    margin-bottom: 0.35rem !important;
-  }
-  .sp-kpi-key {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
-    margin: 0.3rem 0 0.15rem !important;
-  }
-  .sp-kpi-sub {
-    font-size: 0.76rem !important;
-    color: rgba(255,255,255,0.65) !important;
-  }
-  .sp-cat-label {
-    font-size: 0.74rem !important;
-    letter-spacing: 0.14em !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .sp-cat-row {
-    gap: 0.8rem !important;
-    margin-bottom: 0.45rem !important;
-  }
-  .sp-cat-name {
-    font-size: 0.82rem !important;
-    min-width: 105px !important;
-  }
-  .sp-cat-bar-wrap {
-    height: 6px !important;
-  }
-  .sp-cat-pct {
-    font-size: 0.82rem !important;
-    font-weight: 700 !important;
-  }
-  .sp-summary {
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-    padding-left: 1rem !important;
-    margin-top: 0.6rem !important;
-  }
-
-  /* ══ SLIDE 6: META ADS CASE STUDY ══ */
-  #s5-meta {
-    padding: 2rem 1.25rem 5.5rem !important;
-  }
-  .meta-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 1.4rem !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .meta-left {
-    gap: 1rem !important;
-    width: 100% !important;
-    align-items: stretch !important;
-  }
-  .meta-logo {
-    width: 100% !important;
-    max-width: 140px !important;
-    height: 70px !important;
-    margin: 0 auto !important;
-    border-radius: 12px !important;
-    padding: 10px !important;
-  }
-  .meta-status {
-    align-self: center !important;
-    font-size: 0.76rem !important;
-    padding: 0.35rem 0.9rem !important;
-  }
+  /* ══ SLIDE 6: META ADS ACCOUNT CARDS ══ */
   .meta-accounts {
     display: flex !important;
     flex-direction: column !important;
-    gap: 0.65rem !important;
+    gap: 0.7rem !important;
+    margin-top: 0.6rem !important;
   }
   .meta-acc-card {
-    border-radius: 8px !important;
-    padding: 0.75rem 0.9rem !important;
+    background: rgba(66,168,255,.07) !important;
+    border: 1px solid rgba(66,168,255,.3) !important;
+    border-left: 4px solid var(--meta-blue) !important;
+    border-radius: 10px !important;
+    padding: 0.8rem 0.9rem !important;
   }
+  .meta-acc-card.ari { border-left-color: var(--gold) !important; background: rgba(196,151,58,.08) !important; }
+  .meta-acc-card.kubra { border-left-color: var(--dim) !important; }
   .mac-name {
-    font-size: 0.88rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
   }
   .mac-badge {
-    font-size: 0.65rem !important;
-    padding: 0.15rem 0.5rem !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    padding: 0.18rem 0.55rem !important;
+    border-radius: 10px !important;
   }
   .mac-period {
-    font-size: 0.74rem !important;
-    margin-bottom: 0.45rem !important;
+    font-size: 0.76rem !important;
+    margin-bottom: 0.4rem !important;
   }
   .mac-note {
-    font-size: 0.74rem !important;
-    margin-bottom: 0.45rem !important;
+    font-size: 0.76rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  .mac-stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.4rem !important;
+    margin-top: 0.3rem !important;
   }
   .mac-stat-val {
-    font-size: 0.95rem !important;
+    font-size: 0.98rem !important;
+    font-weight: 700 !important;
   }
   .mac-stat-key {
     font-size: 0.68rem !important;
   }
-  .meta-right {
-    gap: 1.2rem !important;
-  }
-  .meta-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  .meta-title {
-    font-size: 1.75rem !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1rem !important;
-  }
-  .meta-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-    margin-bottom: 1.2rem !important;
-  }
-  .meta-kpi {
-    padding: 0.85rem 0.75rem !important;
-    border-radius: 10px !important;
-    border: 1px solid rgba(66,168,255,.3) !important;
-    border-top: 3px solid var(--meta-blue) !important;
-  }
-  .meta-kpi-val {
-    font-size: clamp(1.5rem, 5.5vw, 1.9rem) !important;
-    margin-bottom: 0.3rem !important;
-  }
-  .meta-kpi-key {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
-    margin-bottom: 0.15rem !important;
-  }
-  .meta-kpi-sub {
-    font-size: 0.75rem !important;
-    color: rgba(255,255,255,0.65) !important;
-  }
-  .meta-camp-title {
-    font-size: 0.74rem !important;
-    letter-spacing: 0.16em !important;
-    margin-bottom: 0.6rem !important;
-  }
-  .meta-camp-row {
-    gap: 0.7rem !important;
-    margin-bottom: 0.45rem !important;
-  }
-  .meta-camp-name {
-    font-size: 0.8rem !important;
-    min-width: 95px !important;
-  }
-  .meta-camp-bar-wrap {
-    height: 6px !important;
-  }
-  .meta-camp-roas {
-    font-size: 0.82rem !important;
-  }
-  .meta-camp-badge {
-    font-size: 0.65rem !important;
-    padding: 0.18rem 0.5rem !important;
-  }
-  .meta-summary {
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-    padding-left: 1rem !important;
-    margin-top: 0.8rem !important;
-  }
 
   /* ══ SLIDE 7: KONSOLİDE ÖZET ══ */
-  #s-summary {
-    padding: 2rem 1.25rem 5.5rem !important;
-    align-items: flex-start !important;
-  }
   .sum-container {
-    gap: 1.4rem !important;
-  }
-  .sum-header {
-    flex-direction: row !important;
-    align-items: center !important;
     gap: 1.2rem !important;
   }
+  .sum-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 1.1rem !important;
+    background: rgba(20, 36, 53, 0.5) !important;
+    border: 1px solid rgba(196, 151, 58, 0.25) !important;
+    border-radius: 14px !important;
+    padding: 0.9rem 1rem !important;
+  }
   .sum-logo-ring {
-    width: 80px !important;
-    height: 80px !important;
+    width: 65px !important;
+    height: 65px !important;
     border-width: 2.5px !important;
     flex-shrink: 0 !important;
   }
-  .sum-super-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-    margin-bottom: 0.35rem !important;
-  }
   .sum-title {
-    font-size: 1.65rem !important;
-    line-height: 1.18 !important;
+    font-size: 1.55rem !important;
+    margin-bottom: 0 !important;
   }
   .sum-header-divider {
-    width: 140px !important;
-    margin-top: 0.6rem !important;
-  }
-  .sum-kpi-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.65rem !important;
-  }
-  .sum-kpi {
-    padding: 0.9rem 0.8rem !important;
-    border-radius: 10px !important;
-  }
-  .sum-kpi-val {
-    font-size: clamp(1.6rem, 6vw, 2rem) !important;
-    margin-bottom: 0.35rem !important;
-  }
-  .sum-kpi-key {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.08em !important;
-    margin: 0.3rem 0 0.15rem !important;
-  }
-  .sum-kpi-sub {
-    font-size: 0.76rem !important;
+    display: none !important;
   }
   .sum-platforms {
-    gap: 0.5rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.45rem !important;
+    margin-top: 0.2rem !important;
   }
   .sum-plat-label {
-    font-size: 0.74rem !important;
     width: 100% !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
     margin-bottom: 0.2rem !important;
   }
   .sum-plat-pill {
-    padding: 0.3rem 0.75rem !important;
+    padding: 0.32rem 0.8rem !important;
     font-size: 0.78rem !important;
     border-radius: 14px !important;
-  }
-  .sum-desc {
-    font-size: 0.88rem !important;
-    line-height: 1.7 !important;
-    padding-left: 1rem !important;
-    margin-top: 0.4rem !important;
+    font-weight: 600 !important;
   }
 
   /* ══ SLIDE 8: SERTİFİKALAR & YETKİNLİKLER ══ */
-  #s-skills {
-    padding: 2rem 1.25rem 5.5rem !important;
-  }
   .sk-wrapper {
     height: auto !important;
     gap: 1.4rem !important;
   }
-  .sk-header {
-    gap: 1rem !important;
-  }
-  .sk-sup-label {
-    font-size: 0.72rem !important;
-    letter-spacing: 0.2em !important;
-  }
-  .sk-main-title {
-    font-size: 1.6rem !important;
-  }
   .sk-body {
     grid-template-columns: 1fr !important;
     gap: 1.8rem !important;
-    height: auto !important;
     display: flex !important;
     flex-direction: column !important;
   }
-  .sk-panel-label {
-    font-size: 0.76rem !important;
-    letter-spacing: 0.14em !important;
-    margin-bottom: 0.6rem !important;
-  }
   .sk-certs-panel, .sk-tools-panel {
-    overflow-y: visible !important;
-    min-height: auto !important;
     width: 100% !important;
+    min-height: auto !important;
+    overflow-y: visible !important;
   }
   .sk-cert-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 0.75rem !important;
     max-height: none !important;
     overflow-y: visible !important;
   }
   .sk-cert-card {
-    border-radius: 8px !important;
-    border: 1px solid rgba(196,151,58,0.28) !important;
-    background: rgba(255,255,255,0.04) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(196,151,58,0.3) !important;
+    background: rgba(20, 36, 53, 0.7) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
   }
   .sk-cert-info {
-    padding: 0.5rem 0.6rem !important;
+    padding: 0.55rem 0.65rem !important;
   }
   .sk-cert-issuer {
-    font-size: 0.68rem !important;
+    font-size: 0.7rem !important;
     letter-spacing: 0.08em !important;
+    color: var(--gold) !important;
     margin-bottom: 0.2rem !important;
-  }
-  .sk-cert-name {
-    font-size: 0.78rem !important;
-    line-height: 1.35 !important;
     font-weight: 600 !important;
   }
+  .sk-cert-name {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    font-weight: 600 !important;
+    color: var(--white) !important;
+  }
   .sk-tool-group {
-    margin-bottom: 0.8rem !important;
+    margin-bottom: 0.9rem !important;
   }
   .sk-tool-cat {
-    font-size: 0.75rem !important;
+    font-size: 0.78rem !important;
     letter-spacing: 0.12em !important;
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.45rem !important;
+    font-weight: 700 !important;
   }
   .sk-pills {
+    display: flex !important;
+    flex-wrap: wrap !important;
     gap: 0.45rem !important;
   }
   .sk-pill {
     font-size: 0.82rem !important;
-    padding: 0.38rem 0.85rem !important;
-    border-radius: 6px !important;
+    font-weight: 600 !important;
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
   }
 
   /* ══ SLIDE 9: İLETİŞİM & CTA ══ */
   #s8 {
     padding: 0 !important;
-  }
-  .s7-content {
-    padding: 3rem 1.3rem 5.5rem !important;
     justify-content: flex-start !important;
   }
-  .s7-label {
-    font-size: 0.75rem !important;
-    letter-spacing: 0.22em !important;
-    margin-bottom: 1.2rem !important;
+  .s7-content {
+    padding: 3rem 1.35rem 5.5rem !important;
   }
   .s7-cta {
     font-size: clamp(2.2rem, 8.5vw, 3.4rem) !important;
-    margin-bottom: 1.6rem !important;
     line-height: 1.08 !important;
+    margin-bottom: 1.6rem !important;
   }
   .s7-divider {
     width: 180px !important;
+    height: 2.5px !important;
     margin-bottom: 1.6rem !important;
   }
   .contact-list {
     gap: 1.2rem !important;
   }
   .contact-row {
-    gap: 1rem !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
+    gap: 0.3rem !important;
   }
   .contact-key {
-    font-size: 0.7rem !important;
+    font-size: 0.72rem !important;
     letter-spacing: 0.18em !important;
     color: var(--gold) !important;
-  }
-  .contact-val {
-    font-size: 1.05rem !important;
     font-weight: 700 !important;
   }
+  .contact-val {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: var(--white) !important;
+  }
   .s7-btn-row {
+    display: flex !important;
     flex-direction: column !important;
     gap: 0.75rem !important;
     margin-top: 2rem !important;
@@ -3056,9 +2804,10 @@ html, body {
   .s7-btn {
     width: 100% !important;
     justify-content: center !important;
-    padding: 0.85rem 1.2rem !important;
-    font-size: 0.88rem !important;
-    border-radius: 8px !important;
+    padding: 0.9rem 1.2rem !important;
+    font-size: 0.92rem !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -3378,7 +3127,7 @@ html, body {
 
         <div class="sp-kpi-grid">
           <div class="sp-kpi">
-            <div class="sp-kpi-val" style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;color:var(--sp-green)">839.6K ₺</div>
+            <div class="sp-kpi-val" >839.6K ₺</div>
             <div class="sp-kpi-key">Brüt Ciro</div>
             <div class="sp-kpi-sub">5 Ara 2024 – 7 May 2026</div>
           </div>
@@ -3454,10 +3203,10 @@ html, body {
 
       <!-- Sol: Logo + Hesap Kartları -->
       <div class="meta-left">
-        <div class="meta-logo" style="width:160px;height:100px;margin-bottom:.4rem;">
+        <div class="meta-logo" >
           <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCALQAtADASIAAhEBAxEB/8QAHAABAQACAwEBAAAAAAAAAAAAAAgGBwMEBQEC/8QAUxABAAEDAwAHAwgHBQMICAcAAAECAwQFBhEHEiExQVFhCCJxEzJCUmKBkaEUFSNygrHBFjNDkqIkY7IlNDdEU1VzoxcYNlRks8PSdHWTldHj8P/EABwBAQACAwEBAQAAAAAAAAAAAAAGBwMEBQIBCP/EADwRAQABAgMEBwgABAYDAQEAAAABAgMEBREGITFREkFhcYGxwRMUIpGh0eHwIzJCchUkM1Ji8RY0UyWi/9oADAMBAAIRAxEAPwCywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAceVkWMXHryMm9bsWbcdau5cqimmmPOZnsh9iJ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" alt="Meta">
         </div>
-        <div class="meta-status" style="margin-bottom:.5rem;">META ADS YÖNETİMİ</div>
+        <div class="meta-status" >META ADS YÖNETİMİ</div>
 
         <div class="meta-accounts">
 
@@ -3582,7 +3331,7 @@ html, body {
           </div>
         </div>
 
-        <div class="meta-summary" style="font-size:.8rem; color:rgba(255,255,255,.7); line-height:1.7; border-left:2px solid var(--meta-blue); padding-left:1rem; margin-top:.8rem;">
+        <div class="meta-summary">
           Eylül 2024'ten bu yana kendi markalarım için <strong style="color:var(--white);">200.000+ ₺</strong>, danışmanlık hizmetlerinde ise <strong style="color:var(--white);">20.000+ ₺</strong> reklam bütçesi yönettim.
           Facebook & Instagram kampanyaları ile WhatsApp Marketing kanallarını entegre ederek uçtan uca <strong style="color:var(--meta-blue);">funnel sistemleri</strong> kurdum — farkındalıktan dönüşüme kadar her aşamayı veri odaklı optimize ettim.
         </div>
