@@ -3,7 +3,7 @@
 ## Evidence
 
 - Reference: `C:\Users\ebube\Downloads\ChatGPT Image 15 Ağu 2026 13_58_38.png`
-- Prototype capture: `design-qa-mobile-v3.png`
+- Prototype capture: `design-qa-mobile-v4.png`
 - Viewport: 393 × 852 CSS pixels
 
 ## Comparison
@@ -23,6 +23,7 @@
 - At 393px width, the page becomes vertically scrollable (`body.scrollHeight` 13748px), all five mobile image targets receive source images, and no horizontal overflow is introduced.
 - Sticky case stages were verified inside their active section ranges; the mobile root no longer clips sticky descendants.
 - Motion no longer depends on a third-party runtime bundle; scroll parallax runs through a passive scroll listener and a single `requestAnimationFrame` loop.
+- Regression root cause fixed: `overflow:hidden` on the mobile root was preventing descendant `position:sticky` stages from pinning during scroll.
 - Browser console check returned no warnings or errors during the mobile and desktop passes.
 
 ## Result
