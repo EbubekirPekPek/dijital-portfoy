@@ -4342,7 +4342,12 @@ function animateCounters(slideEl) {
     if (!match) return;
 
     const numStr = match[1];
-    const numClean = numStr.replace(/\./g, '').replace(',', '.');
+    // A dot is a thousands separator only when it groups exactly three digits
+    // (1.544); otherwise it is a decimal separator (94.1 / 4.05).
+    const dotThousands = /^\d{1,3}(\.\d{3})+$/.test(numStr);
+    const numClean = dotThousands
+      ? numStr.replace(/\./g, '')
+      : numStr.replace(',', '.');
     const target = parseFloat(numClean);
     if (isNaN(target)) return;
 
@@ -4365,7 +4370,7 @@ function animateCounters(slideEl) {
       if (hasDecimal) {
         // Turkish decimal: 3,91
         display = current.toFixed(2).replace('.', ',');
-      } else if (hasDot && target >= 1000) {
+      } else if (dotThousands) {
         // Turkish thousands: 21.337
         display = Math.round(current).toLocaleString('tr-TR');
       } else if (hasDot && target < 1000) {
