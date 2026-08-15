@@ -3365,9 +3365,57 @@ html, body, .deck {
   .mpp-contact-grid small { color: #f27a1a; font-size: .6rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
   .mpp-contact-grid strong { font-size: .78rem; font-weight: 500; overflow-wrap: anywhere; }
 
+  .mpp-scroll-progress { position: fixed; top: 50%; right: .78rem; z-index: 12; display: flex; flex-direction: column; align-items: center; gap: .22rem; color: rgba(247,244,238,.55); pointer-events: none; transform: translateY(-50%); }
+  .mpp-scroll-progress::before, .mpp-scroll-progress::after { content: ''; width: 1px; height: 26px; background: rgba(242,122,26,.28); }
+  .mpp-scroll-progress-line { width: 2px; height: 74px; overflow: hidden; background: rgba(255,255,255,.1); transform-origin: top; }
+  .mpp-scroll-progress-line::after { content: ''; display: block; width: 100%; height: 100%; background: #f27a1a; transform: scaleY(var(--mpp-progress, .08)); transform-origin: top; transition: transform .25s ease; }
+  .mpp-scroll-progress b { color: #f27a1a; font: 700 .66rem/1 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: .08em; }
+  .mpp-scroll-progress small { font-size: .52rem; letter-spacing: .12em; }
+  .mpp-section[data-mpp-section]::after { content: attr(data-mpp-section); position: absolute; right: -.06em; bottom: -.18em; z-index: 0; color: rgba(247,244,238,.035); font: 700 clamp(7rem, 31vw, 13rem)/.8 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.08em; text-transform: uppercase; pointer-events: none; user-select: none; }
+  .mpp-hero { min-height: 116svh; }
+  .mpp-hero-name { margin: .15rem 0 .65rem; color: rgba(247,244,238,.56); font-size: .61rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+  .mpp-hero-title { max-width: 12ch; }
+  .mpp-hero-line { display: block; color: #fbfaf7; transform: translate3d(0, var(--line-y, 0), 0); opacity: var(--line-opacity, 1); will-change: transform, opacity; }
+  .mpp-title .mpp-hero-line { color: #fbfaf7; }
+  .mpp-title .mpp-hero-line.accent { color: #f27a1a; }
+  #mobile-portfolio.mpp-motion-ready .mpp-hero-line { --line-y: 22px; --line-opacity: 0; }
+  #mobile-portfolio.mpp-motion-ready .mpp-hero-title.is-visible .mpp-hero-line { --line-y: 0px; --line-opacity: 1; transition: transform .7s cubic-bezier(.2,.75,.25,1), opacity .7s ease; }
+  #mobile-portfolio.mpp-motion-ready .mpp-hero-title.is-visible .mpp-hero-line:nth-child(2) { transition-delay: .07s; }
+  #mobile-portfolio.mpp-motion-ready .mpp-hero-title.is-visible .mpp-hero-line:nth-child(3) { transition-delay: .14s; }
+  #mobile-portfolio.mpp-motion-ready .mpp-hero-title.is-visible .mpp-hero-line:nth-child(4) { transition-delay: .21s; }
+  .mpp-relation { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; gap: .28rem; margin-top: 1.45rem; padding: .72rem .65rem; border: 1px solid rgba(242,122,26,.26); background: rgba(255,255,255,.025); }
+  .mpp-relation span { color: rgba(247,244,238,.74); font-size: .52rem; font-weight: 700; letter-spacing: .08em; text-align: center; }
+  .mpp-relation i { color: #f27a1a; font-size: .78rem; font-style: normal; }
+  .mpp-data-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; align-items: center; gap: .35rem; margin-top: 1.2rem; padding: .8rem .65rem; border: 1px solid color-mix(in srgb, var(--mpp-accent, #f27a1a) 32%, transparent); background: rgba(255,255,255,.025); }
+  .mpp-data-flow span { color: rgba(247,244,238,.58); font-size: .5rem; font-weight: 700; letter-spacing: .08em; text-align: center; }
+  .mpp-data-flow strong { display: block; margin-top: .25rem; color: var(--mpp-accent, #f27a1a); font: 700 .98rem/1 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.02em; }
+  .mpp-data-flow i { color: var(--mpp-accent, #f27a1a); font-size: .72rem; font-style: normal; }
+  .mpp-result { margin: 1rem 0 0; padding: .75rem .8rem; border-left: 2px solid var(--mpp-accent, #f27a1a); color: rgba(247,244,238,.62); font-size: .74rem; line-height: 1.55; background: rgba(255,255,255,.025); }
+  .mpp-result strong { color: #f7f4ee; }
+  .mpp-before-after { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .45rem; margin-top: 1.25rem; }
+  .mpp-before-after span { padding: .8rem .65rem; border-top: 1px solid var(--mpp-accent, #96bf48); background: rgba(255,255,255,.035); }
+  .mpp-before-after small, .mpp-before-after em { display: block; color: rgba(247,244,238,.5); font-size: .55rem; font-style: normal; letter-spacing: .08em; text-transform: uppercase; }
+  .mpp-before-after b { display: block; margin: .25rem 0; color: var(--mpp-accent, #96bf48); font: 700 1.55rem/1 'Barlow Condensed','DM Sans',sans-serif; }
+  .mpp-before-after > i { color: var(--mpp-accent, #96bf48); font-size: 1rem; font-style: normal; }
+  .mpp-meta-fan { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .45rem; margin: 0 0 1rem; }
+  .mpp-meta-fan span { min-height: 78px; padding: .62rem .5rem; border-top: 1px solid var(--mpp-accent, #55a8ff); background: rgba(255,255,255,.035); transform: translateY(var(--fan-y, 0)) rotate(var(--fan-r, 0deg)); transition: transform .55s cubic-bezier(.2,.75,.25,1), opacity .55s ease; }
+  .mpp-meta-fan b, .mpp-meta-fan em, .mpp-meta-fan small { display: block; }
+  .mpp-meta-fan b { color: #f7f4ee; font-size: .62rem; }
+  .mpp-meta-fan em { margin-top: .35rem; color: var(--mpp-accent, #55a8ff); font-size: .66rem; font-style: normal; font-weight: 700; }
+  .mpp-meta-fan small { margin-top: .2rem; color: rgba(247,244,238,.47); font-size: .53rem; }
+  .mpp-channel-map { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.3rem; }
+  .mpp-channel-map span { padding: .5rem .62rem; border: 1px solid rgba(196,151,58,.36); color: rgba(247,244,238,.72); font-size: .61rem; letter-spacing: .04em; }
+  .mpp-source-note { margin: 1.8rem 0 0; color: rgba(247,244,238,.46); font-size: .68rem; line-height: 1.5; }
+  .mpp-kpi-value { transition: transform .35s ease, color .35s ease; }
+  .mpp-beat.is-active .mpp-kpi-value { color: var(--mpp-accent, #a9df82); }
+  .mpp-case-stage, .mpp-case-media img, .mpp-hero-portrait img { will-change: transform, opacity; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-reveal { opacity: 1; transform: none; transition: none; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i { transition: none; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-hero-line, #mobile-portfolio.mpp-reduced-motion .mpp-data-flow, #mobile-portfolio.mpp-reduced-motion .mpp-before-after, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
     #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 1; transform: none; transition: none; }
-    .mpp-beat, .mpp-timeline-item, .mpp-bars b i { transition: none; }
+    .mpp-beat, .mpp-timeline-item, .mpp-bars b i, .mpp-scroll-progress-line::after, .mpp-kpi-value { transition: none; }
+    .mpp-hero-line, .mpp-data-flow, .mpp-before-after, .mpp-meta-fan, .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 }
 
@@ -4269,12 +4317,17 @@ html, body, .deck {
 
 <!-- Mobile motion portfolio: a data-rich, scroll-led chapter experience. -->
 <main id="mobile-portfolio" aria-label="Mobil dijital portföy">
+  <div class="mpp-scroll-progress" aria-hidden="true">
+    <span class="mpp-scroll-progress-line"></span>
+    <b>01</b><small>/09</small>
+  </div>
   <section class="mpp-section mpp-hero" id="mpp-hero" data-mpp-section="hero">
     <div class="mpp-inner">
       <div class="mpp-brand mpp-reveal"><strong>EBU BEKİR PEKPEK</strong><span>PORTFÖY / 2026</span></div>
       <div class="mpp-index mpp-reveal">01 / 09 · HERO</div>
       <p class="mpp-kicker mpp-reveal">PERFORMANCE MARKETING · E-COMMERCE</p>
-      <h1 class="mpp-title mpp-hero-title mpp-reveal">Performance marketing <span>&amp; e-commerce</span> specialist</h1>
+      <p class="mpp-hero-name mpp-reveal">EBUBEKİR SIDDIK PEKMEZ</p>
+      <h1 class="mpp-title mpp-hero-title mpp-reveal"><span class="mpp-hero-line">Performance</span><span class="mpp-hero-line">marketing</span><span class="mpp-hero-line accent">&amp; e-commerce</span><span class="mpp-hero-line">specialist</span></h1>
       <p class="mpp-copy mpp-reveal">Veriyi, kreatifi ve stratejiyi ölçülebilir büyümeye dönüştürüyorum.</p>
       <figure class="mpp-hero-portrait mpp-reveal" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
         <img data-mobile-source="portrait" alt="Ebubekir Sıddık Pekmez">
@@ -4298,6 +4351,9 @@ html, body, .deck {
         <div class="mpp-expertise-item"><strong>Performans<br>odaklı</strong><small>Veriye dayalı karar</small></div>
         <div class="mpp-expertise-item"><strong>Veri<br>analitiği</strong><small>Ölçülebilir sistem</small></div>
         <div class="mpp-expertise-item"><strong>Yaratıcı<br>strateji</strong><small>İşe yarayan kreatif</small></div>
+      </div>
+      <div class="mpp-relation mpp-reveal" aria-label="Çalışma ilişkisinin özeti">
+        <span>PERFORMANCE</span><i>↘</i><span>STRATEGY</span><i>→</i><span>GROWTH</span><i>↗</i><span>E-COMMERCE</span>
       </div>
       <div class="mpp-timeline" aria-label="Kariyer yolculuğu">
         <div class="mpp-timeline-line"><span></span></div>
@@ -4326,9 +4382,9 @@ html, body, .deck {
       </div>
       <div class="mpp-case-beats">
         <article class="mpp-beat is-active"><small>01 · PROBLEM</small><h3>Mağaza verisini tek bir büyüme akışında okumak.</h3><p>Ürün, içerik, kampanya ve teslimat sinyallerini aynı karar döngüsünde topladım.</p></article>
-        <article class="mpp-beat"><small>02 · YAKLAŞIM</small><h3>Net ciroyu, siparişi ve gerçekleşme oranını birlikte izlemek.</h3><p>Brüt → net geçişi görünür tutarak performansı sadece ciroya indirgemedim.</p></article>
+        <article class="mpp-beat"><small>02 · YAKLAŞIM</small><h3>Net ciroyu, siparişi ve gerçekleşme oranını birlikte izlemek.</h3><p>Brüt → net geçişi görünür tutarak performansı sadece ciroya indirgemedim.</p><div class="mpp-data-flow" aria-label="Trendyol veri akışı"><span>BRÜT CİRO<strong>₺786K</strong></span><i>→</i><span>NET CİRO<strong>₺740K</strong></span><i>→</i><span>NET SİPARİŞ<strong>1.544</strong></span><i>→</i><span>REALİZASYON<strong>%94.1</strong></span></div></article>
         <article class="mpp-beat"><small>03 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value" data-count-value="786">₺786K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">6 dönem toplam</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺740K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İndirim sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.544</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%94.1</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">84</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif listeleme</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺94K</span><span class="mpp-kpi-label">Komisyon</span><span class="mpp-kpi-note">Platform payı</span></div></div></article>
-        <article class="mpp-beat"><small>04 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:83.8%"><i></i></b><em>%83.8</em></div><div><span>Bebek Islak Mendil</span><b style="--bar:10.7%"><i></i></b><em>%10.7</em></div><div><span>Hasta Bezi</span><b style="--bar:2.2%"><i></i></b><em>%2.2</em></div><div><span>Diğer Kategoriler</span><b style="--bar:3.3%"><i></i></b><em>%3.3</em></div></div></article>
+        <article class="mpp-beat"><small>04 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:83.8%"><i></i></b><em>%83.8</em></div><div><span>Bebek Islak Mendil</span><b style="--bar:10.7%"><i></i></b><em>%10.7</em></div><div><span>Hasta Bezi</span><b style="--bar:2.2%"><i></i></b><em>%2.2</em></div><div><span>Diğer Kategoriler</span><b style="--bar:3.3%"><i></i></b><em>%3.3</em></div></div><p class="mpp-result">2020'de Trendyol'da ilk mağazamı açarak <strong>Predo Baby ve Vita Margarin gibi köklü markaların e-ticaret ekosistemindeki ilk satışlarını gerçekleştirdim.</strong> Bebek bezi ve hijyen ürünleri odağında büyüyen bu kanal, bugün hâlâ aktif olarak yönettiğim temel gelir kaynaklarımdan biridir.</p></article>
       </div>
     </div>
   </section>
@@ -4336,23 +4392,23 @@ html, body, .deck {
   <section class="mpp-section mpp-case mpp-case--hb" id="mpp-hepsiburada" data-mpp-section="case" data-case-accent="#8b5cf6">
     <div class="mpp-inner mpp-case-shell">
       <div class="mpp-case-stage"><div class="mpp-index">04 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Hepsiburada<br><span>performans analizi</span></h2><span class="mpp-case-tag">Pazaryeri</span></div><div class="mpp-case-media"><img data-mobile-source="hepsiburada" alt="Hepsiburada vaka analizi görseli"></div><div class="mpp-case-live"><span>PREZİSYONLU OPERASYON</span><b>₺139K</b><small>Brüt ciro · toplam dönem</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div>
-      <div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · YAKLAŞIM</small><h3>İptal ve iade sonrasını görünür kılan operasyon disiplini.</h3><p>2021'de açılan mağazada Predo Baby ürünlerini; teslimat, netleşme ve ürün satışlarıyla birlikte takip ettim.</p></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">₺139K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">Toplam dönem</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺128K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İptal + iade sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">486</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%91.9</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">570</span><span class="mpp-kpi-label">Net Ürün Satışı</span><span class="mpp-kpi-note">621 brüt satıştan</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺264</span><span class="mpp-kpi-label">Ort. Sipariş</span><span class="mpp-kpi-note">Sipariş başına</span></div></div></article><article class="mpp-beat"><small>03 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:64.8%"><i></i></b><em>%64.8</em></div><div><span>Islak Mendil</span><b style="--bar:14%"><i></i></b><em>%14.0</em></div><div><span>Doğal Gıda</span><b style="--bar:13.4%"><i></i></b><em>%13.4</em></div><div><span>Diğer Kategoriler</span><b style="--bar:7.8%"><i></i></b><em>%7.8</em></div></div></article></div>
+      <div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · YAKLAŞIM</small><h3>İptal ve iade sonrasını görünür kılan operasyon disiplini.</h3><p>2021'de açılan mağazada Predo Baby ürünlerini; teslimat, netleşme ve ürün satışlarıyla birlikte takip ettim.</p><div class="mpp-data-flow" aria-label="Hepsiburada veri akışı"><span>BRÜT<strong>₺139K</strong></span><i>→</i><span>NET<strong>₺128K</strong></span><i>→</i><span>REALİZASYON<strong>%91.9</strong></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">₺139K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">Toplam dönem</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺128K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İptal + iade sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">486</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%91.9</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">570</span><span class="mpp-kpi-label">Net Ürün Satışı</span><span class="mpp-kpi-note">621 brüt satıştan</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺264</span><span class="mpp-kpi-label">Ort. Sipariş</span><span class="mpp-kpi-note">Sipariş başına</span></div></div></article><article class="mpp-beat"><small>03 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:64.8%"><i></i></b><em>%64.8</em></div><div><span>Islak Mendil</span><b style="--bar:14%"><i></i></b><em>%14.0</em></div><div><span>Doğal Gıda</span><b style="--bar:13.4%"><i></i></b><em>%13.4</em></div><div><span>Diğer Kategoriler</span><b style="--bar:7.8%"><i></i></b><em>%7.8</em></div></div><p class="mpp-result">2021'de Hepsiburada'da mağazamı açarak <strong>Predo Baby bebek ürünleri ve Arıkovanı Gıda markasıyla 5 yıla yakın kesintisiz satış geçmişi</strong> oluşturdum. Bebek bezi, ıslak mendil ve doğal gıda odağında büyüyen bu kanal hâlâ aktif olarak yönettiğim temel gelir kaynaklarımdan biridir.</p></article></div>
     </div>
   </section>
 
   <section class="mpp-section mpp-case mpp-case--shopify" id="mpp-shopify" data-mpp-section="case" data-case-accent="#96bf48">
-    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">05 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Shopify<br><span>performans analizi</span></h2><span class="mpp-case-tag">D2C</span></div><div class="mpp-case-media"><img data-mobile-source="shopify" alt="Shopify mağaza performansı görseli"></div><div class="mpp-case-live"><span>ARIKOVANISTORE.COM · 17+ AYLIK VERİ</span><b>839.6K ₺</b><small>Brüt ciro · 5 Ara 2024 – 7 May 2026</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · D2C SİSTEMİ</small><h3>Mağaza deneyimini verinin merkezine taşıdım.</h3><p>Teklif, ürün çeşitliliği, sepet değeri ve il kapsamasını aynı büyüme sistemi içinde izledim.</p></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">839.6K ₺</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">17+ aylık konsolide veri</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.009</span><span class="mpp-kpi-label">Toplam Sipariş</span><span class="mpp-kpi-note">Tekil sipariş</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">832 ₺</span><span class="mpp-kpi-label">Ort. Sepet</span><span class="mpp-kpi-note">Premium konumlanma</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">310</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif varyasyon</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">56 / 81</span><span class="mpp-kpi-label">İl Kapsama</span><span class="mpp-kpi-note">Türkiye geneli</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%80.1</span><span class="mpp-kpi-label">Reçel Ciro Payı</span><span class="mpp-kpi-note">Lider kategori</span></div></div></article><article class="mpp-beat"><small>03 · CİRO DAĞILIMI</small><div class="mpp-bars"><div><span>Reçel &amp; Marmelat</span><b style="--bar:100%"><i></i></b><em>%80.1</em></div><div><span>Salça &amp; Meze</span><b style="--bar:55%"><i></i></b><em>%4.4</em></div><div><span>Bebek &amp; Hasta Bezi</span><b style="--bar:37%"><i></i></b><em>%3.0</em></div><div><span>Peynir Çeşitleri</span><b style="--bar:30%"><i></i></b><em>%2.4</em></div><div><span>Zeytin &amp; Yağlar</span><b style="--bar:22%"><i></i></b><em>%1.8</em></div></div></article></div></div>
+    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">05 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Shopify<br><span>performans analizi</span></h2><span class="mpp-case-tag">D2C</span></div><div class="mpp-case-media"><img data-mobile-source="shopify" alt="Shopify mağaza performansı görseli"></div><div class="mpp-case-live"><span>ARIKOVANISTORE.COM · 17+ AYLIK VERİ</span><b>839.6K ₺</b><small>Brüt ciro · 5 Ara 2024 – 7 May 2026</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · D2C SİSTEMİ</small><h3>Mağaza deneyimini verinin merkezine taşıdım.</h3><p>Teklif, ürün çeşitliliği, sepet değeri ve il kapsamasını aynı büyüme sistemi içinde izledim.</p><div class="mpp-before-after" aria-label="Shopify D2C dönüşüm özeti"><span><small>ÖNCE</small><b>%1.12</b><em>Sepet dönüşümü</em></span><i>→</i><span><small>SONRA</small><b>%3.84</b><em>Sepet dönüşümü</em></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">839.6K ₺</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">17+ aylık konsolide veri</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.009</span><span class="mpp-kpi-label">Toplam Sipariş</span><span class="mpp-kpi-note">Tekil sipariş</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">832 ₺</span><span class="mpp-kpi-label">Ort. Sepet</span><span class="mpp-kpi-note">Premium konumlanma</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">310</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif varyasyon</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">56 / 81</span><span class="mpp-kpi-label">İl Kapsama</span><span class="mpp-kpi-note">Türkiye geneli</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%80.1</span><span class="mpp-kpi-label">Reçel Ciro Payı</span><span class="mpp-kpi-note">Lider kategori</span></div></div></article><article class="mpp-beat"><small>03 · CİRO DAĞILIMI</small><div class="mpp-bars"><div><span>Reçel &amp; Marmelat</span><b style="--bar:100%"><i></i></b><em>%80.1</em></div><div><span>Salça &amp; Meze</span><b style="--bar:55%"><i></i></b><em>%4.4</em></div><div><span>Bebek &amp; Hasta Bezi</span><b style="--bar:37%"><i></i></b><em>%3.0</em></div><div><span>Peynir Çeşitleri</span><b style="--bar:30%"><i></i></b><em>%2.4</em></div><div><span>Zeytin &amp; Yağlar</span><b style="--bar:22%"><i></i></b><em>%1.8</em></div></div><p class="mpp-result">Ocak 2025'te başlattığım arikovanistore.com, <strong>17+ ayda 56 ile ulaşarak 839.6K ₺ ciro elde etti.</strong> Reçel kategorisi gelirin %80.1'ini oluşturuyor; 310 ürün varyasyonu ile geniş portföy yönetimi. Hâlâ aktif olarak büyümeye devam eden bu kanal, D2C modelimin temel direğidir.</p></article></div></div>
   </section>
 
   <section class="mpp-section mpp-case mpp-case--meta" id="mpp-meta" data-mpp-section="case" data-case-accent="#55a8ff">
-    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">06 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Meta Ads<br><span>performans analizi</span></h2><span class="mpp-case-tag">Performance</span></div><div class="mpp-case-media"><img data-mobile-source="meta" alt="Meta Ads performans analizi görseli"></div><div class="mpp-case-live"><span>ARI KOVANI STORE · OCA 2025 – MAY 2026</span><b>4.05×</b><small>Genel ROAS · ~₺768K tahmini gelir</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · FUNNEL</small><h3>Facebook, Instagram ve WhatsApp kanallarını aynı funnel’da birleştirdim.</h3><p>Farkındalıktan dönüşüme kadar her aşamayı veri odaklı optimize eden bir kampanya sistemi kurdum.</p><div class="mpp-account-strip"><span><b>Vanilora</b><small>4.68× ROAS · ₺9.598 harcama · 22 sipariş</small></span><span><b>Arı Kovanı Store</b><small>4.05× ROAS · ₺189K harcama · 903 sipariş</small></span><span><b>Kübra Müzik</b><small>₺21.337 harcama · 407 mesajlaşma</small></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">4.05×</span><span class="mpp-kpi-label">Genel ROAS</span><span class="mpp-kpi-note">~₺768K tahmini gelir</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">6.69×</span><span class="mpp-kpi-label">En yüksek ROAS</span><span class="mpp-kpi-note">CBO / mesaj kampanyası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">903</span><span class="mpp-kpi-label">Toplam alışveriş</span><span class="mpp-kpi-note">Ort. sipariş ₺789,69</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.45M</span><span class="mpp-kpi-label">Gösterim</span><span class="mpp-kpi-note">Erişim: 476.912</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%5.38</span><span class="mpp-kpi-label">CTR</span><span class="mpp-kpi-note">48.451 tıklama</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺3,91</span><span class="mpp-kpi-label">CPC</span><span class="mpp-kpi-note">CPM: ₺130,89</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">5.606</span><span class="mpp-kpi-label">Sepete ekleme</span><span class="mpp-kpi-note">₺33,81 / adet</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%16.1</span><span class="mpp-kpi-label">Sepet → satış</span><span class="mpp-kpi-note">Dönüşüm oranı</span></div></div></article></div></div>
+    <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">06 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Meta Ads<br><span>performans analizi</span></h2><span class="mpp-case-tag">Performance</span></div><div class="mpp-case-media"><img data-mobile-source="meta" alt="Meta Ads performans analizi görseli"></div><div class="mpp-case-live"><span>ARI KOVANI STORE · OCA 2025 – MAY 2026</span><b>4.05×</b><small>Genel ROAS · ~₺768K tahmini gelir</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · FUNNEL</small><h3>Facebook, Instagram ve WhatsApp kanallarını aynı funnel’da birleştirdim.</h3><p>Farkındalıktan dönüşüme kadar her aşamayı veri odaklı optimize eden bir kampanya sistemi kurdum.</p><div class="mpp-account-strip"><span><b>Vanilora</b><small>4.68× ROAS · ₺9.598 harcama · 22 sipariş</small></span><span><b>Arı Kovanı Store</b><small>4.05× ROAS · ₺189K harcama · 903 sipariş</small></span><span><b>Kübra Müzik</b><small>₺21.337 harcama · 407 mesajlaşma · 6.045 profil ziyareti</small></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-meta-fan" aria-label="Meta hesap hikayeleri"><span><b>Vanilora</b><em>4.68× ROAS</em><small>22 sipariş</small></span><span><b>Arı Kovanı Store</b><em>4.05× ROAS</em><small>903 alışveriş</small></span><span><b>Kübra Müzik</b><em>407 mesaj</em><small>6.045 profil ziyareti</small></span></div><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">4.05×</span><span class="mpp-kpi-label">Genel ROAS</span><span class="mpp-kpi-note">~₺768K tahmini gelir</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">6.69×</span><span class="mpp-kpi-label">En yüksek ROAS</span><span class="mpp-kpi-note">CBO / mesaj kampanyası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">903</span><span class="mpp-kpi-label">Toplam alışveriş</span><span class="mpp-kpi-note">Ort. sipariş ₺789,69</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.45M</span><span class="mpp-kpi-label">Gösterim</span><span class="mpp-kpi-note">Erişim: 476.912</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%5.38</span><span class="mpp-kpi-label">CTR</span><span class="mpp-kpi-note">48.451 tıklama</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺3,91</span><span class="mpp-kpi-label">CPC</span><span class="mpp-kpi-note">CPM: ₺130,89</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">5.606</span><span class="mpp-kpi-label">Sepete ekleme</span><span class="mpp-kpi-note">₺33,81 / adet</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%16.1</span><span class="mpp-kpi-label">Sepet → satış</span><span class="mpp-kpi-note">Dönüşüm oranı</span></div></div></article><article class="mpp-beat"><small>03 · SONUÇ</small><h3>Funnel'ı farkındalıktan dönüşüme kadar tek akışta yönettim.</h3><p class="mpp-result">Eylül 2024'ten bu yana kendi markalarım için <strong>200.000+ ₺</strong>, danışmanlık hizmetlerinde ise <strong>20.000+ ₺</strong> reklam bütçesi yönettim. Facebook &amp; Instagram kampanyaları ile WhatsApp Marketing kanallarını entegre ederek uçtan uca <strong>funnel sistemleri</strong> kurdum; her aşamayı veri odaklı optimize ettim.</p></article></div></div>
   </section>
 
-  <section class="mpp-section mpp-summary" id="mpp-summary" data-mpp-section="summary"><div class="mpp-inner"><div class="mpp-index">07 / 09 · KONSOLİDE ÖZET</div><p class="mpp-kicker">2020 — 2026 · platformlar arası görünüm</p><h2 class="mpp-title">6 yıllık <span>dijital yolculuk.</span></h2><p class="mpp-copy">Pazaryeri, D2C ve performans pazarlamasını aynı operasyonel bakışta birleştiren ölçülebilir bir sistem.</p><div class="mpp-summary-grid"><div><strong>₺1.76M</strong><span>Toplam brüt ciro</span><small>3 platform · 6 yıl toplam</small></div><div><strong>3.039</strong><span>Toplam sipariş</span><small>Trendyol + HB + Shopify</small></div><div><strong>6 yıl</strong><span>E-ticaret deneyimi</span><small>2020'den bugüne</small></div><div><strong>4+</strong><span>Aktif platform</span><small>TY · HB · Shopify · Temu</small></div><div><strong>400+</strong><span>Ürün çeşidi</span><small>Aktif SKU portföyü</small></div><div><strong>₺220K+</strong><span>Meta reklam bütçesi</span><small>Yönetilen kampanyalar</small></div></div></div></section>
+  <section class="mpp-section mpp-summary" id="mpp-summary" data-mpp-section="summary"><div class="mpp-inner"><div class="mpp-index">07 / 09 · KONSOLİDE ÖZET</div><p class="mpp-kicker">2020 — 2026 · platformlar arası görünüm</p><h2 class="mpp-title">6 yıllık <span>dijital yolculuk.</span></h2><p class="mpp-copy">Pazaryeri, D2C ve performans pazarlamasını aynı operasyonel bakışta birleştiren ölçülebilir bir sistem.</p><div class="mpp-summary-grid"><div><strong>₺1.76M</strong><span>Toplam brüt ciro</span><small>3 platform · 6 yıl toplam</small></div><div><strong>3.039</strong><span>Toplam sipariş</span><small>Trendyol + HB + Shopify</small></div><div><strong>6 yıl</strong><span>E-ticaret deneyimi</span><small>2020'den bugüne</small></div><div><strong>4+</strong><span>Aktif platform</span><small>TY · HB · Shopify · Temu</small></div><div><strong>400+</strong><span>Ürün çeşidi</span><small>Aktif SKU portföyü</small></div><div><strong>₺220K+</strong><span>Meta reklam bütçesi</span><small>Yönetilen kampanyalar</small></div></div><div class="mpp-channel-map" aria-label="Aktif kanallar"><span>Trendyol</span><span>Hepsiburada</span><span>Shopify D2C</span><span>Temu</span><span>Ozon (RU)</span></div><p class="mpp-result">Yakın dönemde <strong>Temu</strong> mağazamı kurarak küresel pazaryeri deneyimimi genişlettim. Rusya'nın lider e-ticaret platformu <strong>Ozon</strong> ile uluslararası pazara açılma altyapı ve operasyon çalışmalarımı sürdürüyorum.</p></div></section>
 
-  <section class="mpp-section mpp-skills-section" id="mpp-skills" data-mpp-section="skills"><div class="mpp-inner"><div class="mpp-index">08 / 09 · YETKİNLİKLER</div><p class="mpp-kicker">Eğitim · sertifika · araç ekosistemi</p><h2 class="mpp-title">Doğru araç, <span>doğru bağlam.</span></h2><div class="mpp-skills-grid"><article class="mpp-skill"><h3>Performance</h3><p>Meta Ads · Google Ads<br>GA4 · Pixel / CAPI<br>Google Search Console</p></article><article class="mpp-skill"><h3>E-commerce</h3><p>Shopify · Trendyol<br>Hepsiburada · Temu<br>Marketplace Growth</p></article><article class="mpp-skill"><h3>Analytics</h3><p>GA4 · Meta CAPI<br>Looker Studio<br>Raporlama</p></article><article class="mpp-skill"><h3>Creative</h3><p>Creative Strategy · UGC<br>CapCut · Canva<br>Photoshop · YouTube Studio</p></article></div><div class="mpp-cert-strip"><div class="mpp-cert-heading"><span>SERTİFİKALAR</span><strong>12 adet</strong></div><div class="mpp-cert-list"><span>Digital Marketing Certified</span><span>Performanslı YZ Reklamlar</span><span>Google Analytics Sertifikası</span><span>Dönüşüm Optimizasyonu</span><span>Çevrim İçi Reklamcılık</span><span>İşinizi İnternete Taşıyın</span><span>İşiniz İçin Sosyal Medya</span><span>Amazon Ads Temel Bilgiler</span><span>Dijital Pazarlama Esasları</span><span>İkna Edici Satış</span><span>Ekipleri Yönetmek</span><span>Sosyal Medya Pazarlaması</span></div></div><div class="mpp-tools"><div class="mpp-cert-heading"><span>ARAÇ &amp; PLATFORM</span><strong>26 araç</strong></div><div class="mpp-tool-lane"><span>Meta Ads Manager</span><span>Google Analytics GA4</span><span>Google Search Console</span><span>Meta CAPI</span><span>Shopify CAPI</span><span>Facebook Business Manager</span><span>Shopify</span><span>Temu Seller Central</span><span>Hepsiburada Satıcı Paneli</span><span>Trendyol Satıcı Paneli</span><span>Kling AI</span><span>Higgsfield AI</span><span>Flow</span><span>AntiGravity</span><span>Claude Cowork</span><span>Gemini Pro</span><span>ChatGPT</span><span>CapCut</span><span>Canva</span><span>YouTube Studio</span><span>Microsoft Excel</span><span>Microsoft PowerPoint</span><span>Microsoft Word</span><span>LinkedIn</span><span>Instagram</span><span>WhatsApp Business</span></div></div></div></section>
+  <section class="mpp-section mpp-skills-section" id="mpp-skills" data-mpp-section="skills"><div class="mpp-inner"><div class="mpp-index">08 / 09 · YETKİNLİKLER</div><p class="mpp-kicker">Eğitim · sertifika · araç ekosistemi</p><h2 class="mpp-title">Doğru araç, <span>doğru bağlam.</span></h2><div class="mpp-skills-grid"><article class="mpp-skill"><h3>Performance</h3><p>Meta Ads · Google Ads<br>GA4 · Pixel / CAPI<br>Google Search Console</p></article><article class="mpp-skill"><h3>E-commerce</h3><p>Shopify · Trendyol<br>Hepsiburada · Temu<br>Marketplace Growth</p></article><article class="mpp-skill"><h3>Analytics</h3><p>GA4 · Meta CAPI<br>Looker Studio<br>Raporlama</p></article><article class="mpp-skill"><h3>Creative</h3><p>Creative Strategy · UGC<br>CapCut · Canva<br>Photoshop · YouTube Studio</p></article></div><div class="mpp-cert-strip"><div class="mpp-cert-heading"><span>SERTİFİKALAR</span><strong>12 adet</strong></div><div class="mpp-cert-list"><span>Digital Marketing Certified</span><span>Performanslı YZ Reklamlar</span><span>Google Analytics Sertifikası</span><span>Dönüşüm Optimizasyonu</span><span>Çevrim İçi Reklamcılık</span><span>İşinizi İnternete Taşıyın</span><span>İşiniz İçin Sosyal Medya</span><span>Amazon Ads Temel Bilgiler</span><span>Dijital Pazarlama Esasları</span><span>İkna Edici Satış</span><span>Ekipleri Yönetmek</span><span>Sosyal Medya Pazarlaması</span></div></div><div class="mpp-tools"><div class="mpp-cert-heading"><span>ARAÇ &amp; PLATFORM</span><strong>29 araç</strong></div><div class="mpp-tool-lane"><span>Meta Ads Manager</span><span>Google Analytics GA4</span><span>Google Search Console</span><span>Meta CAPI</span><span>Shopify CAPI</span><span>Facebook Business Manager</span><span>TradingView</span><span>Shopify</span><span>Temu Seller Central</span><span>Hepsiburada Satıcı Paneli</span><span>Trendyol Satıcı Paneli</span><span>Kling AI</span><span>Higgsfield AI</span><span>Flow</span><span>AntiGravity</span><span>Claude Cowork</span><span>Gemini Pro</span><span>ChatGPT</span><span>CapCut</span><span>Canva</span><span>YouTube Studio</span><span>Microsoft Excel</span><span>Microsoft PowerPoint</span><span>Microsoft Word</span><span>LinkedIn</span><span>Instagram</span><span>Facebook</span><span>TikTok</span><span>WhatsApp Business</span></div></div></div></section>
 
-  <section class="mpp-section mpp-contact" id="mpp-contact" data-mpp-section="contact"><div class="mpp-inner"><div class="mpp-index">09 / 09 · İLETİŞİM</div><p class="mpp-kicker">Birlikte büyüyelim</p><h2 class="mpp-contact-title">Benimle <span>çalışmak</span> ister misin?</h2><p class="mpp-copy">Bir fikrin, büyütmek istediğin bir marka ya da birlikte çözmek istediğin bir problem varsa konuşalım.</p><div class="mpp-contact-grid"><a href="tel:+905331990927"><small>Telefon</small><strong>+90 533 199 09 27</strong></a><a href="mailto:ebubekirpekmez@gmail.com"><small>E-posta</small><strong>ebubekirpekmez@gmail.com</strong></a><a href="https://www.arikovanistore.com" target="_blank" rel="noreferrer"><small>Web</small><strong>arikovanistore.com</strong></a><a href="#mpp-contact"><small>Konum</small><strong>Bursa · Nilüfer Görükle</strong></a></div><div class="mpp-contact-links"><a href="mailto:ebubekirpekmez@gmail.com">İletişime geç ↗</a><a href="https://www.instagram.com/ebubekirpekmez/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.linkedin.com/in/ebubekir-pekmez-b37828148" target="_blank" rel="noreferrer">LinkedIn</a></div><div class="mpp-footer">EBUBEKİR SIDDIK PEKMEZ · BURSA / TÜRKİYE</div></div></section>
+  <section class="mpp-section mpp-contact" id="mpp-contact" data-mpp-section="contact"><div class="mpp-inner"><div class="mpp-index">09 / 09 · İLETİŞİM</div><p class="mpp-kicker">Birlikte büyüyelim</p><h2 class="mpp-contact-title">Benimle <span>çalışmak</span> ister misin?</h2><p class="mpp-copy">Bir fikrin, büyütmek istediğin bir marka ya da birlikte çözmek istediğin bir problem varsa konuşalım.</p><div class="mpp-contact-grid"><a href="tel:+905331990927"><small>Telefon</small><strong>+90 533 199 09 27</strong></a><a href="mailto:ebubekirpekmez@gmail.com"><small>E-posta</small><strong>ebubekirpekmez@gmail.com</strong></a><a href="https://www.arikovanistore.com" target="_blank" rel="noreferrer"><small>Web</small><strong>arikovanistore.com</strong></a><a href="#mpp-contact"><small>Konum</small><strong>Bursa · Nilüfer Görükle</strong></a></div><p class="mpp-source-note">Bu portföydeki veriler Trendyol Partner paneli, Hepsiburada Satıcı Paneli, Shopify raporları ve Meta Ads Manager'dan alınmıştır.</p><div class="mpp-contact-links"><a href="mailto:ebubekirpekmez@gmail.com">İletişime geç ↗</a><a href="https://www.instagram.com/ebubekirpekmez/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.linkedin.com/in/ebubekir-pekmez-b37828148" target="_blank" rel="noreferrer">LinkedIn</a></div><div class="mpp-footer">EBUBEKİR SIDDIK PEKMEZ · BURSA / TÜRKİYE</div></div></section>
 </main>
 
 <!-- Collage image — gizli, canvas kırpma için; helper bu src'yi base64'e çevirir -->
@@ -4400,8 +4456,9 @@ let current  = 0;
 (function initMobileMotion() {
   const root = document.getElementById('mobile-portfolio');
   if (!root || !window.matchMedia('(max-width: 768px)').matches) return;
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(window.location.search).get('motion') === 'reduce';
   root.classList.add('mpp-motion-ready');
+  if (reduceMotion) root.classList.add('mpp-reduced-motion');
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -4506,6 +4563,30 @@ let current  = 0;
     setActiveBeat(state, 0);
   });
 
+  const progressRail = root.querySelector('.mpp-scroll-progress');
+  const progressLine = root.querySelector('.mpp-scroll-progress-line');
+  const progressCurrent = progressRail?.querySelector('b');
+  const mobileSections = Array.from(root.querySelectorAll('.mpp-section[data-mpp-section]'));
+  const heroTitle = root.querySelector('.mpp-hero-title');
+  const heroLines = Array.from(root.querySelectorAll('.mpp-hero-line'));
+  const updateProgressRail = (viewport) => {
+    if (!progressRail || !mobileSections.length) return;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - viewport, 1);
+    const pageProgress = Math.max(0, Math.min(1, window.scrollY / maxScroll));
+    if (progressLine) progressLine.style.setProperty('--mpp-progress', pageProgress.toFixed(3));
+    let activeIndex = 0;
+    let bestDistance = Infinity;
+    const readingLine = viewport * .46;
+    mobileSections.forEach((section, index) => {
+      const rect = section.getBoundingClientRect();
+      const distance = Math.abs((rect.top + Math.min(rect.height, viewport)) * .5 - readingLine);
+      if (rect.bottom > 0 && rect.top < viewport && distance < bestDistance) {
+        bestDistance = distance;
+        activeIndex = index;
+      }
+    });
+    if (progressCurrent) progressCurrent.textContent = String(activeIndex + 1).padStart(2, '0');
+  };
   // Self-contained scrub controller. Keeping the motion layer local avoids a
   // blocked third-party bundle turning a mobile visit into a partially-live page.
   if (!reduceMotion) {
@@ -4513,6 +4594,8 @@ let current  = 0;
     const updateScrubMotion = () => {
       framePending = false;
       const viewport = window.innerHeight || 1;
+      updateProgressRail(viewport);
+      syncCaseBeats(viewport);
       root.querySelectorAll('.mpp-case').forEach((section) => {
         const rect = section.getBoundingClientRect();
         const span = Math.max(rect.height - viewport, 1);
@@ -4520,15 +4603,36 @@ let current  = 0;
         const stage = section.querySelector('.mpp-case-stage');
         const media = section.querySelector('.mpp-case-media img');
         if (stage) stage.style.opacity = String(1 - (progress * .08));
-        if (media) media.style.transform = `translate3d(0, ${progress * -10}px, 0) scale(${1 + (progress * .045)})`;
+        if (media) media.style.transform = 'translate3d(0, ' + (progress * -10) + 'px, 0) scale(' + (1 + progress * .045) + ')';
+        const activeBeat = section.querySelector('.mpp-beat.is-active');
+        if (activeBeat) {
+          const beatRect = activeBeat.getBoundingClientRect();
+          const focus = Math.max(0, Math.min(1, 1 - Math.abs(((beatRect.top + beatRect.bottom) / 2) - viewport * .68) / (viewport * .72)));
+          activeBeat.querySelectorAll('.mpp-kpi-value').forEach((metric) => {
+            metric.style.transform = 'scale(' + (1 + focus * .08) + ')';
+          });
+          activeBeat.querySelectorAll('.mpp-data-flow, .mpp-before-after, .mpp-meta-fan').forEach((scene) => {
+            scene.style.transform = 'translate3d(0, ' + ((1 - focus) * 8) + 'px, 0) scale(' + (.96 + focus * .04) + ')';
+            scene.style.opacity = String(.62 + focus * .38);
+          });
+        }
       });
-      syncCaseBeats(viewport);
       const hero = root.querySelector('#mpp-hero');
       const portrait = root.querySelector('.mpp-hero-portrait img');
-      if (hero && portrait) {
+      if (hero) {
         const heroProgress = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight, viewport)));
-        portrait.style.transform = `translate3d(0, ${heroProgress * -12}px, 0) scale(${1 + heroProgress * .035})`;
+        if (portrait) portrait.style.transform = 'translate3d(0, ' + (heroProgress * -12) + 'px, 0) scale(' + (1 + heroProgress * .035) + ')';
+        if (heroTitle?.classList.contains('is-visible')) {
+          heroLines.forEach((line, index) => {
+            line.style.setProperty('--line-y', (heroProgress * (index + 1) * -3) + 'px');
+          });
+        }
       }
+      const fanCards = root.querySelectorAll('.mpp-meta-fan span');
+      fanCards.forEach((card, index) => {
+        card.style.setProperty('--fan-y', (Math.sin((window.scrollY / 180) + index) * 3) + 'px');
+        card.style.setProperty('--fan-r', (Math.sin((window.scrollY / 260) + index) * 1.2) + 'deg');
+      });
     };
     const requestScrubFrame = () => {
       if (framePending) return;
@@ -4539,7 +4643,7 @@ let current  = 0;
     window.addEventListener('resize', requestScrubFrame, { passive: true });
     requestScrubFrame();
   } else {
-    const syncReducedMotionBeats = () => syncCaseBeats(window.innerHeight || 1);
+    const syncReducedMotionBeats = () => { const viewport = window.innerHeight || 1; syncCaseBeats(viewport); updateProgressRail(viewport); };
     window.addEventListener('scroll', syncReducedMotionBeats, { passive: true });
     window.addEventListener('resize', syncReducedMotionBeats, { passive: true });
     syncReducedMotionBeats();
