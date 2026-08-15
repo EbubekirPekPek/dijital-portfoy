@@ -77,6 +77,7 @@ html, body {
 .nav-dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--dim); cursor: pointer;
+  border: 0; padding: 0; appearance: none;
   transition: background .3s, transform .3s;
 }
 .nav-dot.active { background: var(--gold); transform: scale(1.5); }
@@ -3043,6 +3044,78 @@ html, body, .deck {
   }
 }
 
+/* ──────────────────────────────────────────────
+   RESPONSIVE HOTFIX — keep the deck viewport-bound
+   while allowing each slide to scroll internally
+────────────────────────────────────────────── */
+#s1 {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+}
+
+@media (min-width: 901px) {
+  #s1 {
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: clamp(3rem, 12vh, 8rem) 5rem 4rem !important;
+  }
+
+  #s1 .s1-content {
+    padding: 0 !important;
+    max-width: 1100px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .slide {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  #s1 {
+    justify-content: flex-start !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 3.5rem 1.15rem 5.5rem !important;
+  }
+
+  #s1 .s1-content {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Ensure the case-study metrics remain legible on the navy canvas. */
+.s4-kpi-val, .s4-kpi-key { color: #F27A1A !important; }
+.s4-kpi-sub { color: rgba(255,255,255,.72) !important; }
+.s1-ticker-track { align-self: flex-start; }
+
+/* Keyboard and assistive-technology affordances for deck controls. */
+.arrow:focus-visible, .nav-dot:focus-visible,
+.s1-plat-btn:focus-visible, .s1-explore-btn:focus-visible,
+.s7-btn:focus-visible, #sk-lb-close:focus-visible {
+  outline: 2px solid var(--gold2);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3946,9 +4019,9 @@ html, body, .deck {
 </div>
 
 <!-- Navigation -->
-<div class="nav" id="nav"></div>
-<div class="arrow left" id="prev">&#8592;</div>
-<div class="arrow right" id="next">&#8594;</div>
+<nav class="nav" id="nav" aria-label="Slayt gezinmesi"></nav>
+<button class="arrow left" id="prev" type="button" aria-label="Önceki slayt">&#8592;</button>
+<button class="arrow right" id="next" type="button" aria-label="Sonraki slayt">&#8594;</button>
 <div class="counter" id="counter"></div>
 
 <script>
@@ -4018,8 +4091,11 @@ function updateTlCounter() {
 
 // Build nav dots
 slides.forEach((_,i) => {
-  const d = document.createElement('div');
+  const d = document.createElement('button');
+  d.type = 'button';
   d.className = 'nav-dot' + (i===0?' active':'');
+  d.setAttribute('aria-label', `${i+1}. slayta git`);
+  d.setAttribute('aria-current', i===0 ? 'true' : 'false');
   d.onclick = () => {
     if (i !== current) goSlide(i);
   };
@@ -4130,8 +4206,10 @@ function goSlide(n) {
     if (current === TL_SLIDE) enterTimeline();
     if (slides[current].id === 's4-hb')     setTimeout(runHBCountUp,  350);
     if (slides[current].id === 's-summary') setTimeout(runSumCountUp, 350);
-    document.querySelectorAll('.nav-dot').forEach((d,i) =>
-      d.classList.toggle('active', i === current));
+    document.querySelectorAll('.nav-dot').forEach((d,i) => {
+      d.classList.toggle('active', i === current);
+      d.setAttribute('aria-current', i === current ? 'true' : 'false');
+    });
     prog.style.width = ((current+1)/slides.length*100) + '%';
     updateCounter();
   }));
