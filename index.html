@@ -3292,6 +3292,8 @@ html, body, .deck {
   }
 }
 
+/* CINEMATIC_MOBILE_V1 */
+
 /* Mobile long-scroll portfolio — a single editorial canvas that complements
    the existing desktop slide deck. */
 #mobile-portfolio { display: none; }
@@ -3496,7 +3498,8 @@ html, body, .deck {
   .mpp-hero { min-height: 116svh; }
   .mpp-hero-name { margin: .15rem 0 .65rem; color: rgba(247,244,238,.56); font-size: .61rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
   .mpp-hero-title { max-width: 12ch; }
-  .mpp-hero-line { display: block; color: #fbfaf7; transform: translate3d(0, var(--line-y, 0), 0); opacity: var(--line-opacity, 1); will-change: transform, opacity; }
+  .mpp-hero-line { display: block; color: #fbfaf7; transform: translate3d(var(--line-x, 0), var(--line-y, 0), 0) scale(var(--line-scale, 1)); letter-spacing: var(--line-track, normal); opacity: var(--line-opacity, 1); will-change: transform, opacity; }
+  .mpp-hero-line--transition { position: relative; z-index: 2; transform-origin: left center; }
   .mpp-title .mpp-hero-line { color: #fbfaf7; }
   .mpp-title .mpp-hero-line.accent { color: #f27a1a; }
   #mobile-portfolio.mpp-motion-ready .mpp-hero-line { --line-y: 22px; --line-opacity: 0; }
@@ -4449,7 +4452,7 @@ html, body, .deck {
       <div class="mpp-index mpp-reveal">01 / 09 · HERO</div>
       <p class="mpp-kicker mpp-reveal">PERFORMANCE MARKETING · E-COMMERCE</p>
       <p class="mpp-hero-name mpp-reveal">EBUBEKİR SIDDIK PEKMEZ</p>
-      <h1 class="mpp-title mpp-hero-title mpp-reveal"><span class="mpp-hero-line">Performance</span><span class="mpp-hero-line">marketing</span><span class="mpp-hero-line accent">&amp; e-commerce</span><span class="mpp-hero-line">specialist</span></h1>
+      <h1 class="mpp-title mpp-hero-title mpp-reveal"><span class="mpp-hero-line">Performance</span><span class="mpp-hero-line mpp-hero-line--transition">marketing</span><span class="mpp-hero-line accent">&amp; e-commerce</span><span class="mpp-hero-line">specialist</span></h1>
       <p class="mpp-copy mpp-reveal">Veriyi, kreatifi ve stratejiyi ölçülebilir büyümeye dönüştürüyorum.</p>
       <figure class="mpp-hero-portrait mpp-reveal" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
         <img data-mobile-source="portrait" alt="Ebubekir Sıddık Pekmez">
@@ -4753,7 +4756,12 @@ let current  = 0;
         if (portrait) portrait.style.transform = 'translate3d(0, ' + (heroProgress * -12) + 'px, 0) scale(' + (1 + heroProgress * .035) + ')';
         if (heroTitle?.classList.contains('is-visible')) {
           heroLines.forEach((line, index) => {
-            line.style.setProperty('--line-y', (heroProgress * (index + 1) * -3) + 'px');
+            const isTransition = line.classList.contains('mpp-hero-line--transition');
+            const depth = heroProgress * (index + 1);
+            line.style.setProperty('--line-x', (isTransition ? heroProgress * 18 : heroProgress * (index - 1) * 2) + 'px');
+            line.style.setProperty('--line-y', (depth * (isTransition ? -12 : -5)) + 'px');
+            line.style.setProperty('--line-scale', (1 + heroProgress * (isTransition ? .8 : .08)).toFixed(3));
+            line.style.setProperty('--line-track', (heroProgress * (isTransition ? -.045 : -.012)) + 'em');
           });
         }
       }
