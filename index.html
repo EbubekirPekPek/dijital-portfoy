@@ -4784,10 +4784,12 @@ let tlContainer = null;
 function initTimeline() {
   tlItems = Array.from(document.querySelectorAll('#s2 .tl-item'));
   tlContainer = document.querySelector('.tl-container');
+  const timelineSlide = document.querySelector('#s2');
   if (tlContainer) {
-    // Desktop uses a pinned 3D wheel; the mobile portfolio has its own flow.
+    // Desktop uses a pinned 3D wheel; listen on the whole slide so the
+    // animation responds even when the pointer is over the copy/photo area.
     tlContainer.classList.toggle('tl-wheel-mode', window.innerWidth > 768);
-    tlContainer.addEventListener('wheel', handleTimelineWheel, { passive: false });
+    (timelineSlide || tlContainer).addEventListener('wheel', handleTimelineWheel, { passive: false });
     renderTimelineWheel();
   }
 }
