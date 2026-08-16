@@ -15,6 +15,7 @@
 - Replaced the prior placeholder KPI treatment with the existing portfolio data and period/source labels.
 - Added a relationship infographic (performance → strategy → growth → e-commerce), Trendyol/Hepsiburada data-flow scenes, a Shopify before/after scene, Meta account fan cards, active-channel map, and the source disclaimer.
 - Added sticky case-study stages, beat-based reveals, line-by-line hero typography, active timeline states, KPI count-up/zoom, data bars, image parallax, a persistent section progress rail, and a self-contained reduced-motion/performance-safe scrub controller.
+- Reworked the desktop career timeline into a circular 3D wheel: the active milestone sits in the foreground, adjacent milestones orbit above/below with depth blur, and the gold ring rotates as the wheel advances.
 - Reworked mobile scrolling so `html/body` and the mobile root no longer create an intermediate `auto` scroll context; sticky stages now pin to the viewport in both directions.
 - Replaced threshold-only case beat activation with a viewport reading-line sync, preventing fast swipes and upward reversals from leaving the last beat active or skipping state updates.
 - Increased case beat dwell to `62svh` and clipped the case glow/media overflow; measured document, body, root, and case widths now match the 393px viewport content width.
@@ -32,6 +33,7 @@
 - Reduced-motion mode passed with `?motion=reduce`: all hero lines/scenes are visible, transforms and beat transitions are disabled, and vertical scrolling remains intact.
 - Desktop regression passed at 1280 × 720: original deck active (`s1`), `#mobile-portfolio` hidden, 18 desktop images present, 1280 × 720 deck geometry, and body overflow remains hidden.
 - Desktop career timeline now consumes one wheel gesture per milestone: after the automatic first item, downward gestures advance `01 → 02 → 03`, rapid wheel bursts are debounced, and upward gestures step back one item without jumping.
+- Desktop wheel motion passed at 1280 × 720: downward sequence `01 → 02 → 03 → 04`, upward reversal `04 → 03`, container overflow remains clipped, and no console warnings/errors were emitted.
 - Regression root causes fixed: `overflow:auto` on `html/body` was creating an intermediate scroll context, the mobile root had competing overflow behavior, and threshold-only beat observers could leave stale active content during fast/upward scroll.
 - Browser console check returned no warnings or errors during the mobile and desktop passes.
 

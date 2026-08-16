@@ -639,6 +639,121 @@ html, body {
   transition: opacity .3s ease;
 }
 .tl-counter.visible { opacity: 1; }
+/* Cinematic circular career wheel (desktop) */
+.tl-container.tl-wheel-mode {
+  height: min(62vh, 540px);
+  min-height: 390px;
+  max-height: calc(100vh - 11rem);
+  overflow: hidden;
+  padding: 0 .5rem 0 1rem;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+.tl-container.tl-wheel-mode::before {
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  width: min(72%, 360px);
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid rgba(196,151,58,.34);
+  border-top: 2px solid rgba(196,151,58,.82);
+  border-right-color: rgba(74,156,194,.44);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,151,58,.08) 0%, rgba(8,20,31,0) 63%);
+  opacity: .8;
+  transform: translate(-50%, -50%) rotate(var(--wheel-ring-rotation, 0deg));
+  transition: transform .9s cubic-bezier(.22,.8,.25,1), opacity .5s ease;
+  box-shadow: 0 0 36px rgba(196,151,58,.12), inset 0 0 24px rgba(196,151,58,.06);
+  z-index: -1;
+}
+
+.tl-container.tl-wheel-mode::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(196,151,58,.9);
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 7px rgba(196,151,58,.08), 0 0 24px rgba(196,151,58,.42);
+  transform: translate(-50%, -50%);
+  opacity: .75;
+  z-index: 0;
+}
+
+.tl-container.tl-wheel-mode .tl-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% - 1rem);
+  max-height: none;
+  min-height: 72px;
+  padding: .95rem 1.25rem 1rem 1.25rem;
+  overflow: visible;
+  border: 1px solid rgba(196,151,58,.14);
+  background: linear-gradient(105deg, rgba(9,23,35,.96), rgba(13,31,45,.72));
+  box-shadow: 0 14px 38px rgba(0,0,0,.28);
+  opacity: var(--wheel-opacity, 0);
+  transform: var(--wheel-transform);
+  transform-origin: 50% 50%;
+  filter: blur(var(--wheel-blur, 0px));
+  pointer-events: none;
+  will-change: transform, opacity, filter;
+  transition: transform .82s cubic-bezier(.22,.8,.25,1), opacity .62s ease, filter .62s ease, border-color .55s ease, box-shadow .55s ease;
+  z-index: var(--wheel-z, 1);
+}
+
+.tl-container.tl-wheel-mode .tl-item::before {
+  left: .72rem;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%) scale(var(--wheel-dot-scale, .85));
+  opacity: var(--wheel-dot-opacity, .55);
+  transition: transform .7s cubic-bezier(.22,.8,.25,1), opacity .5s ease;
+}
+
+.tl-container.tl-wheel-mode .tl-item.tl-wheel-active {
+  border-color: rgba(196,151,58,.72);
+  background: linear-gradient(105deg, rgba(17,38,53,.98), rgba(22,43,57,.9));
+  box-shadow: 0 22px 62px rgba(0,0,0,.48), 0 0 32px rgba(196,151,58,.13);
+  pointer-events: auto;
+}
+
+.tl-container.tl-wheel-mode .tl-item.tl-wheel-active::before {
+  transform: translateY(-50%) scale(1.35);
+  opacity: 1;
+}
+
+.tl-container.tl-wheel-mode .tl-item:hover {
+  transform: var(--wheel-transform) !important;
+}
+
+.tl-container.tl-wheel-mode .tl-item.tl-wheel-active .tl-year {
+  color: var(--gold);
+  animation: year-glow 2s ease-out;
+}
+
+.tl-container.tl-wheel-mode .tl-item.tl-wheel-active .tl-name {
+  color: var(--white);
+  font-size: .96rem;
+  transition: font-size .5s ease, color .5s ease;
+}
+
+.tl-container.tl-wheel-mode .tl-item:not(.tl-wheel-active) .tl-desc {
+  opacity: .66;
+}
+
+.tl-container.tl-wheel-mode + .tl-counter {
+  position: relative;
+  z-index: 2;
+}
 
 @media (max-width: 1024px) {
   .s2-wrapper { grid-template-columns: 1fr; gap: 2rem; }
@@ -4664,33 +4779,34 @@ let tlLocked   = false; // blocks user clicks during auto-show window
 let tlWheelLocked = false;
 let tlWheelDirection = 0;
 let tlWheelTimer = null;
+let tlContainer = null;
 
 function initTimeline() {
   tlItems = Array.from(document.querySelectorAll('#s2 .tl-item'));
-  const container = document.querySelector('.tl-container');
-  if (container) {
-    // A single wheel gesture reveals exactly one career item. The native
-    // scroll is intentionally blocked while there are hidden items so the
-    // timeline cannot jump over the next step.
-    container.addEventListener('wheel', handleTimelineWheel, { passive: false });
+  tlContainer = document.querySelector('.tl-container');
+  if (tlContainer) {
+    // Desktop uses a pinned 3D wheel; the mobile portfolio has its own flow.
+    tlContainer.classList.toggle('tl-wheel-mode', window.innerWidth > 768);
+    tlContainer.addEventListener('wheel', handleTimelineWheel, { passive: false });
+    renderTimelineWheel();
   }
 }
-
 function showNextTlItem() {
   if (tlStep < tlItems.length) {
     const item = tlItems[tlStep];
     item.classList.add('tl-visible');
-    // Scroll the newly revealed item into view without jumping past it.
-    setTimeout(() => {
-      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 150);
     tlStep++;
+    renderTimelineWheel();
     updateTlCounter();
+    if (!tlContainer?.classList.contains('tl-wheel-mode')) {
+      setTimeout(() => {
+        item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 150);
+    }
     return true;
   }
   return false;
 }
-
 function showPreviousTlItem() {
   // Keep the first career milestone as the anchor; upward gestures then
   // step back through the already revealed list one item at a time.
@@ -4698,14 +4814,45 @@ function showPreviousTlItem() {
   tlStep--;
   const item = tlItems[tlStep];
   item.classList.remove('tl-visible');
+  renderTimelineWheel();
   updateTlCounter();
-  setTimeout(() => {
-    const previous = tlItems[tlStep - 1];
-    if (previous) previous.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }, 150);
+  if (!tlContainer?.classList.contains('tl-wheel-mode')) {
+    setTimeout(() => {
+      const previous = tlItems[tlStep - 1];
+      if (previous) previous.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 150);
+  }
   return true;
 }
 
+function renderTimelineWheel() {
+  if (!tlContainer?.classList.contains('tl-wheel-mode') || !tlItems.length) return;
+  const activeIndex = tlStep > 0 ? Math.min(tlStep - 1, tlItems.length - 1) : 0;
+  const radius = Math.max(165, Math.min((tlContainer.clientHeight || 440) * .48, 245));
+  const stepAngle = .46;
+  tlContainer.style.setProperty('--wheel-ring-rotation', `${activeIndex * -24}deg`);
+
+  tlItems.forEach((item, index) => {
+    const offset = index - activeIndex;
+    const absOffset = Math.abs(offset);
+    const theta = offset * stepAngle;
+    const y = Math.sin(theta) * radius * 1.04;
+    const z = (Math.cos(theta) - 1) * radius * 1.55;
+    const x = Math.sin(theta * .55) * 28;
+    const scale = Math.max(.68, 1.05 + (z / (radius * 9)));
+    const opacity = tlStep === 0 ? 0 : absOffset === 0 ? 1 : absOffset === 1 ? .5 : absOffset === 2 ? .2 : .035;
+    const blur = absOffset === 0 ? 0 : absOffset === 1 ? .35 : absOffset === 2 ? 1.4 : 3;
+    const rotateX = offset * -10;
+    const transform = `translate3d(-50%, -50%, 0) translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, ${z.toFixed(1)}px) rotateX(${rotateX.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
+    item.style.setProperty('--wheel-transform', transform);
+    item.style.setProperty('--wheel-opacity', String(opacity));
+    item.style.setProperty('--wheel-blur', `${blur}px`);
+    item.style.setProperty('--wheel-z', String(30 - Math.min(absOffset, 20)));
+    item.classList.toggle('tl-wheel-active', tlStep > 0 && index === activeIndex);
+    item.classList.toggle('tl-wheel-near', absOffset === 1);
+    item.classList.toggle('tl-wheel-far', absOffset > 1);
+  });
+}
 function handleTimelineWheel(event) {
   if (current !== TL_SLIDE || !document.querySelector('#s2.slide.active')) return;
   const direction = event.deltaY > 0 ? 1 : event.deltaY < 0 ? -1 : 0;
@@ -4766,7 +4913,7 @@ function updateTlCounter() {
   if (tlStep >= tlItems.length) {
     counter.innerHTML = '✓ Tümü görüntülendi &nbsp;→ devam için tıklayın';
   } else {
-    counter.innerHTML = `${tlStep} / ${tlItems.length} &nbsp;→ aşağı kaydırın veya tıklayın`;
+    counter.innerHTML = `${tlStep} / ${tlItems.length} &nbsp;→ çarkı döndürün veya tıklayın`;
   }
 }
 // Build nav dots
