@@ -16,6 +16,11 @@
 <meta name="build-version" content="1786786674">
 <title>Ebubekir Sıddık Pekmez — Portföy</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- Local fallback keeps the static portfolio testable when a browser blocks third-party CDNs. -->
+<script src="gsap.min.js"></script>
+<script src="ScrollTrigger.min.js"></script>
 <style>
 :root {
   --navy:  #0C1B2A;
@@ -3354,8 +3359,8 @@ html, body, .deck {
   .mpp-copy { margin: 1.1rem 0 0; color: rgba(247,244,238,.76); font-size: .97rem; line-height: 1.65; }
   .mpp-rule { width: 100%; height: 1px; margin: 1.65rem 0; background: linear-gradient(90deg, rgba(242,122,26,.8), transparent); }
 
-  .mpp-hero { min-height: 100svh; display: flex; align-items: center; padding-top: 4.8rem; padding-bottom: 3.2rem; border-top: 0; background: radial-gradient(circle at 86% 15%, rgba(242,122,26,.18), transparent 35%), #070a0b; }
-  .mpp-hero .mpp-inner { width: 100%; }
+  .mpp-hero { min-height: 190svh; display: flex; align-items: flex-start; padding-top: 4.8rem; padding-bottom: 3.2rem; border-top: 0; background: radial-gradient(circle at 86% 15%, rgba(242,122,26,.18), transparent 35%), #070a0b; }
+  .mpp-hero .mpp-inner { width: 100%; position: sticky; top: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; }
   .mpp-brand { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3.1rem; color: rgba(247,244,238,.62); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; }
   .mpp-brand strong { color: #f27a1a; font-weight: 700; }
   .mpp-hero-portrait { position: relative; width: min(62vw, 238px); margin: 2.3rem auto 2rem; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(242,122,26,.65); background: #121719; box-shadow: 0 0 0 7px rgba(242,122,26,.05), 0 18px 55px rgba(0,0,0,.5); }
@@ -3495,7 +3500,7 @@ html, body, .deck {
   .mpp-scroll-progress b { color: #f27a1a; font: 700 .66rem/1 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: .08em; }
   .mpp-scroll-progress small { font-size: .52rem; letter-spacing: .12em; }
   .mpp-section[data-mpp-section]::after { content: attr(data-mpp-section); position: absolute; right: -.06em; bottom: -.18em; z-index: 0; color: rgba(247,244,238,.035); font: 700 clamp(7rem, 31vw, 13rem)/.8 'Barlow Condensed','DM Sans',sans-serif; letter-spacing: -.08em; text-transform: uppercase; pointer-events: none; user-select: none; }
-  .mpp-hero { min-height: 116svh; }
+  .mpp-hero { min-height: 190svh; }
   .mpp-hero-name { margin: .15rem 0 .65rem; color: rgba(247,244,238,.56); font-size: .61rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
   .mpp-hero-title { max-width: 12ch; }
   .mpp-hero-line { display: block; color: #fbfaf7; transform: translate3d(var(--line-x, 0), var(--line-y, 0), 0) scale(var(--line-scale, 1)); letter-spacing: var(--line-track, normal); opacity: var(--line-opacity, 1); will-change: transform, opacity; }
@@ -3536,6 +3541,8 @@ html, body, .deck {
   #mobile-portfolio.mpp-reduced-motion .mpp-reveal { opacity: 1; transform: none; transition: none; }
   #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i, #mobile-portfolio.mpp-reduced-motion .mpp-case-live b { opacity: 1 !important; transform: none !important; transition: none !important; }
   #mobile-portfolio.mpp-reduced-motion .mpp-hero-line, #mobile-portfolio.mpp-reduced-motion .mpp-data-flow, #mobile-portfolio.mpp-reduced-motion .mpp-before-after, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-hero { min-height: 116svh; align-items: center; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-hero .mpp-inner { position: relative; min-height: auto; display: block; }
   @media (prefers-reduced-motion: reduce) {
     #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 1; transform: none; transition: none; }
     .mpp-beat, .mpp-timeline-item, .mpp-bars b i { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -4582,6 +4589,12 @@ let current  = 0;
   const root = document.getElementById('mobile-portfolio');
   if (!root || !window.matchMedia('(max-width: 768px)').matches) return;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(window.location.search).get('motion') === 'reduce';
+  const gsapRuntime = !!window.gsap && typeof window.gsap.timeline === 'function';
+  const scrollTriggerRuntime = !!window.ScrollTrigger && typeof window.ScrollTrigger.create === 'function';
+  const canUseGsapHero = gsapRuntime && scrollTriggerRuntime && !reduceMotion;
+  root.dataset.gsapRuntime = gsapRuntime ? 'yes' : 'no';
+  root.dataset.scrolltriggerRuntime = scrollTriggerRuntime ? 'yes' : 'no';
+  if (canUseGsapHero) window.gsap.registerPlugin(window.ScrollTrigger);
   root.classList.add('mpp-motion-ready');
   if (reduceMotion) root.classList.add('mpp-reduced-motion');
 
@@ -4694,6 +4707,53 @@ let current  = 0;
   const mobileSections = Array.from(root.querySelectorAll('.mpp-section[data-mpp-section]'));
   const heroTitle = root.querySelector('.mpp-hero-title');
   const heroLines = Array.from(root.querySelectorAll('.mpp-hero-line'));
+  const hero = root.querySelector('#mpp-hero');
+  const heroPortrait = hero?.querySelector('.mpp-hero-portrait');
+  const heroPortraitImage = hero?.querySelector('.mpp-hero-portrait img');
+  const heroCopy = hero?.querySelector('.mpp-copy');
+  const heroStats = hero?.querySelector('.mpp-hero-stats');
+  const heroCta = hero?.querySelector('.mpp-hero-cta');
+  const performanceLine = hero?.querySelector('.mpp-hero-line:nth-child(1)');
+  const marketingLine = hero?.querySelector('.mpp-hero-line--transition');
+  const ecommerceLine = hero?.querySelector('.mpp-hero-line:nth-child(3)');
+  const specialistLine = hero?.querySelector('.mpp-hero-line:nth-child(4)');
+  let heroUsesGsap = false;
+
+  // Scene 01 only: the sticky hero is the playback surface and the timeline
+  // is scrubbed by ScrollTrigger, so every depth plane reverses naturally.
+  if (canUseGsapHero && hero && heroLines.length) {
+    const motionGsap = window.gsap;
+    hero.querySelectorAll('.mpp-reveal').forEach((el) => { el.classList.add('is-visible'); el.style.opacity = '1'; });
+    hero.offsetHeight;
+    heroLines.forEach((line) => { line.style.transition = 'none'; line.style.setProperty('--line-y', '0px'); line.style.setProperty('--line-opacity', '1'); });
+    motionGsap.set(heroLines, { transformOrigin: 'left center' });
+    const heroTimeline = motionGsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: hero,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.15,
+        invalidateOnRefresh: true
+      }
+    });
+    const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
+    addTween(performanceLine, { xPercent: -4, yPercent: -18, scale: .84, opacity: .74, letterSpacing: '-.04em', duration: .28 }, .12);
+    addTween(marketingLine, { xPercent: 7, yPercent: -10, scale: 1.35, letterSpacing: '-.06em', duration: .38 }, .18);
+    addTween(ecommerceLine, { xPercent: -4, yPercent: 10, scale: 1.12, opacity: .82, letterSpacing: '-.03em', duration: .38 }, .26);
+    addTween(specialistLine, { xPercent: 3, yPercent: 22, scale: .96, opacity: .58, duration: .32 }, .34);
+    addTween(heroPortrait, { yPercent: 7, scale: 1.08, opacity: .92, duration: .62 }, .2);
+    addTween(heroPortraitImage, { yPercent: -4, scale: 1.05, duration: .62 }, .2);
+    addTween(heroCopy, { yPercent: -14, opacity: .62, duration: .42 }, .28);
+    addTween(heroStats, { yPercent: -10, opacity: .55, duration: .42 }, .32);
+    addTween(heroCta, { yPercent: -8, opacity: .42, duration: .38 }, .36);
+    addTween(marketingLine, { xPercent: 28, yPercent: -35, scale: 2.75, opacity: .92, letterSpacing: '-.09em', duration: .34 }, .72);
+    addTween(marketingLine, { xPercent: 54, yPercent: -50, scale: 4.2, opacity: .78, duration: .3 }, .98);
+    root.dataset.gsapHero = 'true';
+    heroUsesGsap = true;
+    window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
+  }
+
   const updateProgressRail = (viewport) => {
     if (!progressRail || !mobileSections.length) return;
     const maxScroll = Math.max(document.documentElement.scrollHeight - viewport, 1);
@@ -4751,8 +4811,8 @@ let current  = 0;
       });
       const hero = root.querySelector('#mpp-hero');
       const portrait = root.querySelector('.mpp-hero-portrait img');
-      if (hero) {
-        const heroProgress = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight, viewport)));
+      if (hero && !heroUsesGsap) {
+        const heroProgress = Math.max(0, Math.min(1, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight - viewport, 1)));
         if (portrait) portrait.style.transform = 'translate3d(0, ' + (heroProgress * -12) + 'px, 0) scale(' + (1 + heroProgress * .035) + ')';
         if (heroTitle?.classList.contains('is-visible')) {
           heroLines.forEach((line, index) => {
