@@ -3435,7 +3435,7 @@ html, body, .deck {
   .mpp-case-media img { box-sizing: border-box; max-width: 100%; height: 112px; padding: .55rem 1rem; }
   .mpp-case-live { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: .1rem .8rem; padding: .62rem .75rem .7rem; border-left: 2px solid var(--mpp-accent, #f27a1a); background: rgba(255,255,255,.035); }
   .mpp-case-live span { grid-column: 1 / -1; color: var(--mpp-accent, #f27a1a); font-size: .55rem; font-weight: 700; letter-spacing: .12em; }
-  .mpp-case-live b { color: #a9df82; font: 700 1.8rem/1 'Barlow Condensed','DM Sans',sans-serif; }
+  .mpp-case-live b { color: #a9df82; font: 700 1.8rem/1 'Barlow Condensed','DM Sans',sans-serif; transform: scale(var(--mpp-kpi-scale, .92)); transform-origin: left bottom; will-change: transform; }
   .mpp-case-live small { align-self: end; color: rgba(247,244,238,.5); font-size: .6rem; }
   .mpp-case-dots { display: flex; gap: .35rem; margin-top: .75rem; }
   .mpp-case-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: rgba(247,244,238,.22); transition: transform .35s ease, background .35s ease; }
@@ -3531,7 +3531,7 @@ html, body, .deck {
   .mpp-beat.is-active .mpp-kpi-value { color: var(--mpp-accent, #a9df82); }
   .mpp-case-stage, .mpp-case-media img, .mpp-hero-portrait img { will-change: transform, opacity; }
   #mobile-portfolio.mpp-reduced-motion .mpp-reveal { opacity: 1; transform: none; transition: none; }
-  #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i { opacity: 1 !important; transform: none !important; transition: none !important; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i, #mobile-portfolio.mpp-reduced-motion .mpp-case-live b { opacity: 1 !important; transform: none !important; transition: none !important; }
   #mobile-portfolio.mpp-reduced-motion .mpp-hero-line, #mobile-portfolio.mpp-reduced-motion .mpp-data-flow, #mobile-portfolio.mpp-reduced-motion .mpp-before-after, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
     #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 1; transform: none; transition: none; }
@@ -4724,8 +4724,15 @@ let current  = 0;
         const progress = Math.max(0, Math.min(1, -rect.top / span));
         const stage = section.querySelector('.mpp-case-stage');
         const media = section.querySelector('.mpp-case-media img');
+        const liveKpi = section.querySelector('.mpp-case-live b');
         if (stage) stage.style.opacity = String(1 - (progress * .08));
         if (media) media.style.transform = 'translate3d(0, ' + (progress * -10) + 'px, 0) scale(' + (1 + progress * .045) + ')';
+        if (liveKpi) {
+          const approach = Math.max(0, Math.min(1, (progress - .06) / .42));
+          const retreat = Math.max(0, Math.min(1, (progress - .65) / .3));
+          const kpiScale = .92 + (approach * .2) - (retreat * .1);
+          liveKpi.style.setProperty('--mpp-kpi-scale', kpiScale.toFixed(3));
+        }
         const activeBeat = section.querySelector('.mpp-beat.is-active');
         if (activeBeat) {
           const beatRect = activeBeat.getBoundingClientRect();
