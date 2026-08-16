@@ -3531,11 +3531,12 @@ html, body, .deck {
   .mpp-beat.is-active .mpp-kpi-value { color: var(--mpp-accent, #a9df82); }
   .mpp-case-stage, .mpp-case-media img, .mpp-hero-portrait img { will-change: transform, opacity; }
   #mobile-portfolio.mpp-reduced-motion .mpp-reveal { opacity: 1; transform: none; transition: none; }
-  #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i { transition: none; }
+  #mobile-portfolio.mpp-reduced-motion .mpp-beat, #mobile-portfolio.mpp-reduced-motion .mpp-timeline-item, #mobile-portfolio.mpp-reduced-motion .mpp-bars b i { opacity: 1 !important; transform: none !important; transition: none !important; }
   #mobile-portfolio.mpp-reduced-motion .mpp-hero-line, #mobile-portfolio.mpp-reduced-motion .mpp-data-flow, #mobile-portfolio.mpp-reduced-motion .mpp-before-after, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan, #mobile-portfolio.mpp-reduced-motion .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
     #mobile-portfolio.mpp-motion-ready .mpp-reveal { opacity: 1; transform: none; transition: none; }
-    .mpp-beat, .mpp-timeline-item, .mpp-bars b i, .mpp-scroll-progress-line::after, .mpp-kpi-value { transition: none; }
+    .mpp-beat, .mpp-timeline-item, .mpp-bars b i { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .mpp-scroll-progress-line::after, .mpp-kpi-value { transition: none; }
     .mpp-hero-line, .mpp-data-flow, .mpp-before-after, .mpp-meta-fan, .mpp-meta-fan span { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 }
