@@ -3362,7 +3362,7 @@ html, body, .deck {
   .mpp-hero { min-height: 190svh; display: flex; align-items: flex-start; padding-top: 4.8rem; padding-bottom: 3.2rem; border-top: 0; background: radial-gradient(circle at 86% 15%, rgba(242,122,26,.18), transparent 35%), #070a0b; }
   .mpp-hero .mpp-inner { width: 100%; position: sticky; top: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; }
   .mpp-brand { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3.1rem; color: rgba(247,244,238,.62); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; }
-  .mpp-brand strong { color: #f27a1a; font-weight: 700; }
+  .mpp-brand strong { color: #f27a1a; font-weight: 700; text-transform: none; }
   .mpp-hero-portrait { position: relative; width: min(62vw, 238px); margin: 2.3rem auto 2rem; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(242,122,26,.65); background: #121719; box-shadow: 0 0 0 7px rgba(242,122,26,.05), 0 18px 55px rgba(0,0,0,.5); }
   .mpp-hero-portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(155deg, transparent 46%, rgba(242,122,26,.22)); pointer-events: none; }
   .mpp-hero-portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; filter: saturate(.88) contrast(1.08); }
@@ -4455,7 +4455,7 @@ html, body, .deck {
   </div>
   <section class="mpp-section mpp-hero" id="mpp-hero" data-mpp-section="hero">
     <div class="mpp-inner">
-      <div class="mpp-brand mpp-reveal"><strong>EBU BEKİR PEKPEK</strong><span>PORTFÖY / 2026</span></div>
+      <div class="mpp-brand mpp-reveal"><strong>Ebubekir Sıddık Pekmez</strong><span>PORTFÖY / 2026</span></div>
       <div class="mpp-index mpp-reveal">01 / 09 · HERO</div>
       <p class="mpp-kicker mpp-reveal">PERFORMANCE MARKETING · E-COMMERCE</p>
       <p class="mpp-hero-name mpp-reveal">EBUBEKİR SIDDIK PEKMEZ</p>
@@ -4738,15 +4738,18 @@ let current  = 0;
       }
     });
     const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
-    addTween(performanceLine, { xPercent: -4, yPercent: -18, scale: .84, opacity: .74, letterSpacing: '-.04em', duration: .28 }, .12);
-    addTween(marketingLine, { xPercent: 7, yPercent: -10, scale: 1.35, letterSpacing: '-.06em', duration: .38 }, .18);
-    addTween(ecommerceLine, { xPercent: -4, yPercent: 10, scale: 1.12, opacity: .82, letterSpacing: '-.03em', duration: .38 }, .26);
-    addTween(specialistLine, { xPercent: 3, yPercent: 22, scale: .96, opacity: .58, duration: .32 }, .34);
+    addTween(performanceLine, { xPercent: -6, yPercent: -18, scale: .86, opacity: .78, letterSpacing: '-.04em', duration: .5 }, 0);
+    addTween(marketingLine, { xPercent: 6, yPercent: -10, scale: 1.34, letterSpacing: '-.06em', duration: .5 }, 0);
+    addTween(ecommerceLine, { xPercent: -3, yPercent: 9, scale: 1.1, opacity: .84, letterSpacing: '-.03em', duration: .52 }, 0);
+    addTween(specialistLine, { xPercent: 3, yPercent: 16, scale: .95, opacity: .72, duration: .5 }, 0);
     addTween(heroPortrait, { yPercent: 7, scale: 1.08, opacity: .92, duration: .62 }, .2);
     addTween(heroPortraitImage, { yPercent: -4, scale: 1.05, duration: .62 }, .2);
     addTween(heroCopy, { yPercent: -14, opacity: .62, duration: .42 }, .28);
     addTween(heroStats, { yPercent: -10, opacity: .55, duration: .42 }, .32);
     addTween(heroCta, { yPercent: -8, opacity: .42, duration: .38 }, .36);
+    addTween(performanceLine, { xPercent: -18, yPercent: -34, scale: .74, opacity: .18, letterSpacing: '-.07em', duration: .3 }, .72);
+    addTween(ecommerceLine, { xPercent: -12, yPercent: 22, scale: .82, opacity: .22, letterSpacing: '-.06em', duration: .3 }, .72);
+    addTween(specialistLine, { xPercent: 8, yPercent: 34, scale: .82, opacity: .12, duration: .3 }, .74);
     addTween(marketingLine, { xPercent: 28, yPercent: -35, scale: 2.75, opacity: .92, letterSpacing: '-.09em', duration: .34 }, .72);
     addTween(marketingLine, { xPercent: 54, yPercent: -50, scale: 4.2, opacity: .78, duration: .3 }, .98);
     root.dataset.gsapHero = 'true';
