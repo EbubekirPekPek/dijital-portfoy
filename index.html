@@ -15,7 +15,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="build-version" content="1786786674">
 <title>Ebubekir Sıddık Pekmez — Portföy</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <!-- Local fallback keeps the static portfolio testable when a browser blocks third-party CDNs. -->
@@ -3359,18 +3359,216 @@ html, body, .deck {
   .mpp-copy { margin: 0 0 1.35rem; color: rgba(247,244,238,.82); font-size: .95rem; line-height: 1.6; max-width: 32ch; }
   .mpp-rule { width: 100%; height: 1px; margin: 1.65rem 0; background: linear-gradient(90deg, rgba(242,122,26,.8), transparent); }
 
-  .mpp-hero { min-height: 190svh; display: flex; align-items: flex-start; padding-top: 3.6rem; padding-bottom: 2.8rem; border-top: 0; background: radial-gradient(circle at 86% 15%, rgba(242,122,26,.18), transparent 35%), #070a0b; }
-  .mpp-hero .mpp-inner { width: 100%; position: sticky; top: 0; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-start; }
-  .mpp-brand { display: flex; justify-content: space-between; align-items: center; padding-bottom: .85rem; margin-bottom: 1.4rem; border-bottom: 1px solid rgba(247,244,238,.08); color: rgba(247,244,238,.62); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; }
-  .mpp-brand strong { color: #f27a1a; font-size: .88rem; font-weight: 700; letter-spacing: .02em; text-transform: none; }
-  .mpp-brand span { font-size: .65rem; font-weight: 600; letter-spacing: .18em; color: rgba(247,244,238,.48); }
-  .mpp-hero-portrait { position: relative; width: min(58vw, 222px); margin: 0 auto 1.35rem; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid rgba(242,122,26,.65); background: #121719; box-shadow: 0 0 0 7px rgba(242,122,26,.05), 0 18px 55px rgba(0,0,0,.5); }
-  .mpp-hero-portrait::after { content: ''; position: absolute; inset: 0; background: linear-gradient(155deg, transparent 46%, rgba(242,122,26,.22)); pointer-events: none; }
-  .mpp-hero-portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center top; filter: saturate(.88) contrast(1.08); }
-  .mpp-hero-cta { display: inline-flex; align-items: center; gap: .8rem; margin-top: 1.25rem; padding: .9rem 1.15rem; border: 1px solid #f27a1a; color: #070a0b; background: #f27a1a; font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
-  .mpp-scroll-note { display: flex; align-items: center; gap: .6rem; margin-top: 1.4rem; color: rgba(247,244,238,.5); font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; }
-  .mpp-scroll-note::before { content: '↓'; color: #f27a1a; font-size: 1.05rem; }
-
+  /* EDITORIAL DIGITAL COVER / MAGAZINE POSTER HERO */
+  .mpp-hero {
+    position: relative;
+    min-height: 190svh;
+    background: #050607;
+    border-top: 0;
+    padding: 0 !important;
+    overflow: visible;
+  }
+  .mpp-hero .mpp-hero-editorial-inner {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.4rem 1.35rem 2.2rem;
+    box-sizing: border-box;
+    background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, 0.16), transparent 50%), #050607;
+    overflow: hidden;
+  }
+  .mpp-editorial-portrait {
+    position: absolute;
+    right: -18%;
+    bottom: 0;
+    top: 4%;
+    width: 95vw;
+    max-width: 440px;
+    height: 94%;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    will-change: transform, opacity;
+  }
+  .mpp-editorial-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 72% 16%;
+    filter: grayscale(100%) contrast(1.18) brightness(.92);
+    -webkit-mask-image: radial-gradient(ellipse 95% 85% at 75% 42%, black 46%, transparent 95%),
+                        linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 34%, black 100%),
+                        linear-gradient(to top, transparent 0%, black 20%, black 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: radial-gradient(ellipse 95% 85% at 75% 42%, black 46%, transparent 95%),
+                linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 34%, black 100%),
+                linear-gradient(to top, transparent 0%, black 20%, black 100%);
+    mask-composite: intersect;
+  }
+  .mpp-editorial-frame {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 1.15rem;
+    border-left: 1px solid rgba(224, 90, 30, 0.45);
+    box-sizing: border-box;
+  }
+  .mpp-editorial-frame::before {
+    content: '+';
+    position: absolute;
+    left: -5px;
+    top: 32%;
+    color: #e05a1e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mpp-editorial-frame::after {
+    content: '+';
+    position: absolute;
+    left: -5px;
+    bottom: 22%;
+    color: #e05a1e;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mpp-editorial-top-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: .1rem;
+  }
+  .mpp-editorial-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: .4rem;
+  }
+  .mpp-editorial-name-row {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .mpp-editorial-glyph {
+    color: #e05a1e;
+    font-size: .88rem;
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-1px);
+  }
+  .mpp-editorial-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: #f7f4ee;
+    letter-spacing: .02em;
+  }
+  .mpp-name-accent {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #e05a1e;
+  }
+  .mpp-editorial-notch {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: rgba(224, 90, 30, 0.48);
+  }
+  .mpp-editorial-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    margin-top: .75rem;
+    margin-bottom: .2rem;
+    padding-bottom: .4rem;
+    border-bottom: 1px solid rgba(247, 244, 238, 0.08);
+    width: fit-content;
+  }
+  .mpp-kicker-plus {
+    color: #e05a1e;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: .72rem;
+    line-height: 1;
+  }
+  .mpp-kicker-text {
+    font-family: 'DM Sans', 'Space Grotesk', sans-serif;
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: #e05a1e;
+    text-transform: uppercase;
+  }
+  .mpp-editorial-title {
+    margin: auto 0;
+    padding: .3rem 0;
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    width: max-content;
+    max-width: 72%;
+  }
+  .mpp-title-line {
+    display: block;
+    font-family: 'Barlow Condensed', 'Impact', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3.0rem, 13.2vw, 4.4rem);
+    line-height: .86;
+    letter-spacing: -.035em;
+    color: #f5f2eb;
+    white-space: nowrap;
+    transform-origin: left center;
+    will-change: transform, opacity;
+  }
+  .mpp-title-line--3,
+  .mpp-editorial-title .mpp-title-line--3,
+  .mpp-editorial-title .mpp-title-line--transition {
+    color: #e05a1e !important;
+    white-space: nowrap !important;
+  }
+  .mpp-editorial-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    margin-top: auto;
+    padding-bottom: .2rem;
+    width: 68%;
+    max-width: 250px;
+  }
+  .mpp-footer-plus {
+    color: #e05a1e;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: .75rem;
+    line-height: 1.2;
+    margin-top: .15rem;
+  }
+  .mpp-editorial-desc {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: .90rem;
+    line-height: 1.42;
+    color: rgba(245, 242, 235, 0.74);
+    margin: 0;
+  }
   .mpp-expertise { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: 1.6rem; }
   .mpp-expertise-item { padding: .85rem .65rem; border-top: 1px solid rgba(242,122,26,.6); background: rgba(255,255,255,.025); }
   .mpp-expertise-item strong { display: block; color: #f7f4ee; font-size: .63rem; line-height: 1.25; letter-spacing: .08em; text-transform: uppercase; }
@@ -4454,21 +4652,45 @@ html, body, .deck {
     <span class="mpp-scroll-progress-line"></span>
     <b>01</b><small>/09</small>
   </div>
-  <section class="mpp-section mpp-hero" id="mpp-hero" data-mpp-section="hero">
-    <div class="mpp-inner">
-      <div class="mpp-brand mpp-reveal"><strong>Ebubekir Sıddık Pekmez</strong><span>PORTFÖY / 2026</span></div>
-      <div class="mpp-index mpp-reveal">01 / 09 · HERO</div>
-      <p class="mpp-kicker mpp-reveal">PERFORMANCE MARKETING · E-COMMERCE</p>
-      <h1 class="mpp-title mpp-hero-title mpp-reveal"><span class="mpp-hero-line">Performance</span><span class="mpp-hero-line mpp-hero-line--transition">marketing</span><span class="mpp-hero-line accent">&amp; e-commerce</span><span class="mpp-hero-line">specialist</span></h1>
-      <p class="mpp-copy mpp-reveal">Veriyi, kreatifi ve stratejiyi ölçülebilir büyümeye dönüştürüyorum.</p>
-      <figure class="mpp-hero-portrait mpp-reveal" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
-        <img data-mobile-source="portrait" alt="Ebubekir Sıddık Pekmez">
+  <section class="mpp-section mpp-hero mpp-hero--editorial" id="mpp-hero" data-mpp-section="hero">
+    <div class="mpp-hero-editorial-inner">
+      <!-- Background Anchor Portrait (Monochrome Editorial Crop) -->
+      <figure class="mpp-editorial-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
+        <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
       </figure>
-      <div class="mpp-hero-stats mpp-reveal" aria-label="Portföy özeti">
-        <span><strong>6 yıl</strong> deneyim</span><span><strong>3+</strong> satış kanalı</span><span><strong>26</strong> araç</span>
+
+      <!-- Editorial Frame & Guidelines -->
+      <div class="mpp-editorial-frame">
+        <div class="mpp-editorial-top-block">
+          <!-- Top Editorial Name Header -->
+          <header class="mpp-editorial-header mpp-reveal">
+            <div class="mpp-editorial-name-row">
+              <span class="mpp-editorial-glyph">✶</span>
+              <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
+            </div>
+            <span class="mpp-editorial-notch" aria-hidden="true"></span>
+          </header>
+
+          <!-- Technical Kicker Tag -->
+          <div class="mpp-editorial-kicker mpp-reveal">
+            <span class="mpp-kicker-plus">+</span>
+            <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
+          </div>
+        </div>
+
+        <!-- Main Display Condensed Title -->
+        <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
+          <span class="mpp-hero-line mpp-title-line mpp-title-line--1">PERFORMANS</span>
+          <span class="mpp-hero-line mpp-title-line mpp-title-line--2">PAZARLAMA</span>
+          <span class="mpp-hero-line mpp-hero-line--transition mpp-title-line mpp-title-line--3 mpp-title-line--transition">&amp; E-TİCARET</span>
+        </h1>
+
+        <!-- Bottom Editorial Description -->
+        <div class="mpp-editorial-footer mpp-reveal">
+          <span class="mpp-footer-plus">+</span>
+          <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+        </div>
       </div>
-      <a class="mpp-hero-cta mpp-reveal" href="#mpp-trendyol">Projeleri incele <span aria-hidden="true">↗</span></a>
-      <div class="mpp-scroll-note mpp-reveal">Aşağı kaydır</div>
     </div>
   </section>
 
@@ -4596,6 +4818,8 @@ let current  = 0;
   root.dataset.scrolltriggerRuntime = scrollTriggerRuntime ? 'yes' : 'no';
   if (canUseGsapHero) window.gsap.registerPlugin(window.ScrollTrigger);
   root.classList.add('mpp-motion-ready');
+    // Ensure initial hero cover elements are visible on load
+    document.querySelectorAll('#mpp-hero .mpp-reveal').forEach(el => el.classList.add('is-visible'));
   if (reduceMotion) root.classList.add('mpp-reduced-motion');
 
   const revealObserver = new IntersectionObserver((entries) => {
@@ -4738,33 +4962,41 @@ let current  = 0;
       }
     });
     const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
-    // Synchronized initial morph on all typography lines starting at progress 0
-    addTween(performanceLine, { xPercent: -8, yPercent: -18, scale: .90, opacity: .82, letterSpacing: '-.04em', duration: .50 }, 0);
-    addTween(marketingLine, { xPercent: 6, yPercent: -8, scale: 1.38, letterSpacing: '-.06em', duration: .50 }, 0);
-    addTween(ecommerceLine, { xPercent: -3, yPercent: 10, scale: 1.06, opacity: .86, letterSpacing: '-.03em', duration: .50 }, 0);
-    addTween(specialistLine, { xPercent: 3, yPercent: 14, scale: .96, opacity: .76, duration: .50 }, 0);
-    // Portrait parallax: gentle depth
-    addTween(heroPortrait, { yPercent: 6, scale: 1.05, opacity: .95, duration: .50 }, 0);
-    addTween(heroPortraitImage, { yPercent: -4, scale: 1.03, duration: .50 }, 0);
-    // Supporting text, copy, photo caption & stats STAY READABLE & VISIBLE throughout the entire 0.00-0.50 window
-    const heroHeaderMeta = hero?.querySelectorAll('.mpp-index, .mpp-kicker, .mpp-brand span');
-    addTween(heroHeaderMeta, { opacity: .45, duration: .35 }, 0.30);
-    // Controlled text exit AFTER user has read (starts past 0.50)
-    addTween(heroCopy, { yPercent: -12, opacity: .18, duration: .24 }, 0.52);
-    addTween(heroStats, { yPercent: -10, opacity: .18, duration: .24 }, 0.54);
-    addTween(heroCta, { yPercent: -6, opacity: .15, duration: .22 }, 0.55);
-    // Mid-stage withdrawal & recomposition
-    addTween(performanceLine, { xPercent: -18, yPercent: -32, scale: .78, opacity: .26, letterSpacing: '-.06em', duration: .26 }, 0.50);
-    addTween(ecommerceLine, { xPercent: -10, yPercent: 22, scale: .84, opacity: .26, letterSpacing: '-.05em', duration: .26 }, 0.50);
-    addTween(specialistLine, { xPercent: 6, yPercent: 28, scale: .82, opacity: .16, duration: .26 }, 0.50);
-    addTween(marketingLine, { xPercent: 24, yPercent: -28, scale: 2.55, opacity: .95, letterSpacing: '-.08em', duration: .26 }, 0.50);
-    addTween(heroPortrait, { yPercent: 10, scale: 1.07, opacity: .80, duration: .26 }, 0.50);
-    // Final transition object expansion
-    addTween(marketingLine, { xPercent: 50, yPercent: -46, scale: 4.15, opacity: .80, duration: .24 }, 0.76);
-    addTween(performanceLine, { xPercent: -26, yPercent: -42, scale: .68, opacity: .05, duration: .24 }, 0.76);
-    addTween(ecommerceLine, { xPercent: -16, yPercent: 30, scale: .76, opacity: .05, duration: .24 }, 0.76);
-    addTween(specialistLine, { xPercent: 10, yPercent: 36, scale: .74, opacity: .02, duration: .24 }, 0.76);
-    addTween(heroPortrait, { opacity: .40, scale: 1.10, duration: .24 }, 0.76);
+
+    const perfLine = hero?.querySelector('.mpp-title-line--1');
+    const pazarLine = hero?.querySelector('.mpp-title-line--2');
+    const eticaretLine = hero?.querySelector('.mpp-title-line--transition');
+    const heroPortrait = hero?.querySelector('.mpp-editorial-portrait');
+    const heroPortraitImg = hero?.querySelector('.mpp-editorial-portrait img');
+    const heroHeader = hero?.querySelector('.mpp-editorial-header');
+    const heroKicker = hero?.querySelector('.mpp-editorial-kicker');
+    const heroFooter = hero?.querySelector('.mpp-editorial-footer');
+
+    // Stage 1 (0.00 -> 0.45): Cover composition in pristine stability + subtle typographic depth
+    // Portrait is anchor: very gentle depth parallax
+    addTween(heroPortrait, { yPercent: 4, scale: 1.02, duration: .48 }, 0);
+    addTween(heroPortraitImg, { yPercent: -2, duration: .48 }, 0);
+    // Subtle typographic breathing
+    addTween(perfLine, { xPercent: -5, yPercent: -8, scale: .94, letterSpacing: '-.04em', duration: .48 }, 0);
+    addTween(pazarLine, { xPercent: 3, yPercent: -4, scale: 1.04, letterSpacing: '-.04em', duration: .48 }, 0);
+    addTween(eticaretLine, { xPercent: 5, yPercent: 4, scale: 1.14, duration: .48 }, 0);
+
+    // Supporting editorial elements stay 100% visible & readable during 0.00 -> 0.48 window
+    // Stage 2 (0.48 -> 0.74): Controlled editorial motion & smooth text exit after reading
+    addTween(heroFooter, { yPercent: -12, opacity: .12, duration: .24 }, 0.48);
+    addTween(heroHeader, { opacity: .20, duration: .24 }, 0.48);
+    addTween(heroKicker, { opacity: .20, duration: .24 }, 0.48);
+
+    addTween(perfLine, { xPercent: -16, yPercent: -28, scale: .80, opacity: .22, letterSpacing: '-.06em', duration: .26 }, 0.48);
+    addTween(pazarLine, { xPercent: -10, yPercent: -14, scale: .86, opacity: .30, letterSpacing: '-.05em', duration: .26 }, 0.48);
+    addTween(eticaretLine, { xPercent: 20, yPercent: -18, scale: 2.35, opacity: .96, letterSpacing: '-.06em', duration: .26 }, 0.48);
+    addTween(heroPortrait, { yPercent: 8, scale: 1.05, opacity: .82, duration: .26 }, 0.48);
+
+    // Stage 3 (0.74 -> 1.00): Grand typographic transition mask into next scene
+    addTween(eticaretLine, { xPercent: 44, yPercent: -38, scale: 4.10, opacity: .75, duration: .26 }, 0.74);
+    addTween(perfLine, { xPercent: -24, yPercent: -42, scale: .68, opacity: .03, duration: .26 }, 0.74);
+    addTween(pazarLine, { xPercent: -18, yPercent: -24, scale: .72, opacity: .03, duration: .26 }, 0.74);
+    addTween(heroPortrait, { opacity: .35, scale: 1.08, duration: .26 }, 0.74);
     root.dataset.gsapHero = 'true';
     heroUsesGsap = true;
     window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
