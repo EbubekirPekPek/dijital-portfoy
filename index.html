@@ -3384,14 +3384,13 @@ html, body, .deck {
     position: relative;
     width: 100%;
     height: 100%;
-    padding: 2.3rem 1.35rem 2.0rem;
+    padding: 2.2rem 1.35rem 2.0rem;
     box-sizing: border-box;
     background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, 0.16), transparent 52%), #050607;
-    transform-origin: 38% 50%;
+    transform-origin: 36% 52%;
     will-change: transform;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow: hidden;
   }
   .mpp-depth-tunnel {
@@ -3400,7 +3399,7 @@ html, body, .deck {
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    background: radial-gradient(ellipse 65% 55% at 38% 50%, rgba(5,6,7,0.96) 0%, rgba(5,6,7,0.85) 45%, rgba(5,6,7,0.3) 80%, transparent 100%);
+    background: radial-gradient(ellipse 65% 55% at 36% 52%, rgba(5,6,7,0.96) 0%, rgba(5,6,7,0.85) 45%, rgba(5,6,7,0.3) 80%, transparent 100%);
     will-change: opacity, transform;
   }
   .mpp-editorial-portrait {
@@ -3444,7 +3443,6 @@ html, body, .deck {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding-left: 1.15rem;
     border-left: 1px solid rgba(224, 90, 30, 0.45);
     box-sizing: border-box;
@@ -3471,24 +3469,18 @@ html, body, .deck {
     font-weight: 700;
     line-height: 1;
   }
-  .mpp-upper-group {
-    position: relative;
-    z-index: 4;
-    display: flex;
-    flex-direction: column;
-    transform-origin: left bottom;
-    will-change: transform, opacity;
-  }
   .mpp-editorial-top-block {
     display: flex;
     flex-direction: column;
     margin-top: .1rem;
+    margin-bottom: .8rem;
+    will-change: transform, opacity;
   }
   .mpp-editorial-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: .4rem;
+    padding-bottom: .35rem;
   }
   .mpp-editorial-name-row {
     display: inline-flex;
@@ -3526,9 +3518,9 @@ html, body, .deck {
     display: inline-flex;
     align-items: center;
     gap: .45rem;
-    margin-top: .65rem;
-    margin-bottom: .4rem;
-    padding-bottom: .4rem;
+    margin-top: .55rem;
+    margin-bottom: .1rem;
+    padding-bottom: .35rem;
     border-bottom: 1px solid rgba(247, 244, 238, 0.08);
     width: fit-content;
   }
@@ -3547,14 +3539,28 @@ html, body, .deck {
     color: #e05a1e;
     text-transform: uppercase;
   }
+  .mpp-hero-typography-composition {
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    max-width: 78%;
+    position: relative;
+    z-index: 4;
+  }
+  .mpp-upper-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transform-origin: left bottom;
+    will-change: transform, opacity;
+  }
   .mpp-editorial-title {
-    margin: .35rem 0 0;
+    margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
     width: max-content;
-    max-width: 76%;
   }
   .mpp-title-line {
     display: block;
@@ -3566,7 +3572,7 @@ html, body, .deck {
   .mpp-title-line--condensed {
     font-family: 'Big Shoulders Display', 'Bebas Neue', 'Barlow Condensed', sans-serif;
     font-weight: 900;
-    font-size: clamp(3.3rem, 15vw, 4.6rem);
+    font-size: clamp(3.2rem, 14.5vw, 4.4rem);
     line-height: .84;
     letter-spacing: -.02em;
     color: #f7f4ee;
@@ -3575,23 +3581,23 @@ html, body, .deck {
   }
   .mpp-lower-group {
     position: relative;
-    z-index: 4;
     display: flex;
     flex-direction: column;
-    margin-top: auto;
+    margin-top: .45rem;
     transform-origin: left top;
     will-change: transform, opacity;
   }
   .mpp-lower-title-row {
-    margin-bottom: .85rem;
+    margin: 0;
+    padding: 0;
   }
   .mpp-title-line--serif,
   .mpp-title-line--3 {
     font-family: 'Playfair Display', Georgia, serif !important;
     font-style: italic !important;
     font-weight: 800 !important;
-    font-size: clamp(2.55rem, 11.2vw, 3.8rem) !important;
-    line-height: .96 !important;
+    font-size: clamp(2.45rem, 10.8vw, 3.6rem) !important;
+    line-height: .95 !important;
     letter-spacing: -.02em !important;
     color: #e05a1e !important;
     white-space: nowrap !important;
@@ -3603,8 +3609,8 @@ html, body, .deck {
     display: flex;
     align-items: flex-start;
     gap: .55rem;
-    padding-bottom: .2rem;
-    width: 70%;
+    margin-top: .75rem;
+    width: 85%;
     max-width: 255px;
     transform-origin: left center;
     will-change: transform, opacity;
@@ -3620,8 +3626,8 @@ html, body, .deck {
   .mpp-editorial-desc {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    font-size: .90rem;
-    line-height: 1.42;
+    font-size: .88rem;
+    line-height: 1.40;
     color: rgba(245, 242, 235, 0.76);
     margin: 0;
   }
@@ -4720,45 +4726,44 @@ html, body, .deck {
           <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
         </figure>
 
-        <!-- Editorial Frame & Two-Door Motion Structure -->
+        <!-- Editorial Frame -->
         <div class="mpp-editorial-frame">
-          <!-- UPPER TYPOGRAPHY GROUP (Door 1: Opens UPWARD) -->
-          <div class="mpp-upper-group">
-            <div class="mpp-editorial-top-block">
-              <!-- Top Editorial Name Header -->
-              <header class="mpp-editorial-header mpp-reveal">
-                <div class="mpp-editorial-name-row">
-                  <span class="mpp-editorial-glyph">✶</span>
-                  <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
-                </div>
-                <span class="mpp-editorial-notch" aria-hidden="true"></span>
-              </header>
-
-              <!-- Technical Kicker Tag -->
-              <div class="mpp-editorial-kicker mpp-reveal">
-                <span class="mpp-kicker-plus">+</span>
-                <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
+          <!-- Top Editorial Meta Header -->
+          <div class="mpp-editorial-top-block">
+            <header class="mpp-editorial-header mpp-reveal">
+              <div class="mpp-editorial-name-row">
+                <span class="mpp-editorial-glyph">✶</span>
+                <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
               </div>
-            </div>
+              <span class="mpp-editorial-notch" aria-hidden="true"></span>
+            </header>
 
-            <!-- Main Display Condensed Title (Upper Block: PERFORMANS / PAZARLAMA) -->
-            <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
-              <span class="mpp-hero-line mpp-title-line mpp-title-line--condensed mpp-title-line--1">PERFORMANS</span>
-              <span class="mpp-hero-line mpp-title-line mpp-title-line--condensed mpp-title-line--2">PAZARLAMA</span>
-            </h1>
+            <div class="mpp-editorial-kicker mpp-reveal">
+              <span class="mpp-kicker-plus">+</span>
+              <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
+            </div>
           </div>
 
-          <!-- LOWER TYPOGRAPHY GROUP (Door 2: Opens DOWNWARD) -->
-          <div class="mpp-lower-group">
-            <!-- Lower Title Row (& E-TİCARET: High-Contrast Luxury Serif) -->
-            <div class="mpp-lower-title-row mpp-reveal">
-              <span class="mpp-hero-line mpp-title-line mpp-title-line--serif mpp-title-line--3">&amp; E-TİCARET</span>
+          <!-- UNIFIED EDITORIAL TYPOGRAPHY COMPOSITION -->
+          <div class="mpp-hero-typography-composition">
+            <!-- UPPER GROUP (Door 1: Opens UPWARD on scroll) -->
+            <div class="mpp-upper-group">
+              <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
+                <span class="mpp-title-line mpp-title-line--condensed mpp-title-line--1">PERFORMANS</span>
+                <span class="mpp-title-line mpp-title-line--condensed mpp-title-line--2">PAZARLAMA</span>
+              </h1>
             </div>
 
-            <!-- Bottom Editorial Description -->
-            <div class="mpp-editorial-footer mpp-reveal">
-              <span class="mpp-footer-plus">+</span>
-              <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+            <!-- LOWER GROUP (Door 2: Opens DOWNWARD on scroll) -->
+            <div class="mpp-lower-group">
+              <div class="mpp-lower-title-row mpp-reveal">
+                <span class="mpp-title-line mpp-title-line--serif mpp-title-line--3">&amp; E-TİCARET</span>
+              </div>
+
+              <div class="mpp-editorial-footer mpp-reveal">
+                <span class="mpp-footer-plus">+</span>
+                <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -5030,8 +5035,8 @@ let current  = 0;
     const depthTunnel = hero.querySelector('.mpp-depth-tunnel');
     const upperGroup = hero.querySelector('.mpp-upper-group');
     const lowerGroup = hero.querySelector('.mpp-lower-group');
+    const topBlock = hero.querySelector('.mpp-editorial-top-block');
     const portrait = hero.querySelector('.mpp-editorial-portrait');
-    const portraitImg = hero.querySelector('.mpp-editorial-portrait img');
     const heroFooter = hero.querySelector('.mpp-editorial-footer');
 
     const heroTimeline = motionGsap.timeline({
@@ -5047,56 +5052,72 @@ let current  = 0;
     const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
 
     // =========================================================================
-    // CINEMATIC TWO-DOOR VERTICAL SPLIT & CAMERA DOLLY-IN REVEAL
-    // UPPER GROUP (PERFORMANS + PAZARLAMA + NAME): Opens UPWARD
-    // LOWER GROUP (& E-TİCARET + DESCRIPTION): Opens DOWNWARD
-    // CAMERA WORLD: Dolly-in zoom into central depth corridor
-    // PORTRAIT: Visual anchor (subtle dolly-in scaling with minimal shift)
+    // PROGRESSIVE SCROLL-DRIVEN SPLIT & CINEMATIC CAMERA REVEAL
+    // STAGE 1 (0.00 -> 0.15): FULL EDITORIAL COVER (Compact, pristine, cohesive)
+    // STAGE 2 (0.15 -> 0.30): SPLIT INCEPTION (Upper & Lower begin gentle separation)
+    // STAGE 3 (0.30 -> 0.55): REAL SPLIT (Corridor opens dynamically in center)
+    // STAGE 4 (0.55 -> 0.80): CAMERA PUSH-IN (World zooms into opening darkness)
+    // STAGE 5 (0.80 -> 1.00): PASS THROUGH & SCENE 02 REVEAL
     // =========================================================================
 
-    // CAMERA WORLD DOLLY-IN (Scale 1.0 -> 1.02 -> 1.08 -> 1.20 -> 1.30)
-    addTween(cameraWorld, { scale: 1.02, duration: .20 }, 0);
-    addTween(cameraWorld, { scale: 1.08, duration: .25 }, .20);
-    addTween(cameraWorld, { scale: 1.20, duration: .30 }, .45);
-    addTween(cameraWorld, { scale: 1.32, opacity: 0.15, duration: .25 }, .75);
+    // CAMERA WORLD DOLLY-IN (Scale 1.0 -> 1.0 -> 1.03 -> 1.10 -> 1.22 -> 1.30)
+    addTween(cameraWorld, { scale: 1.00, duration: .15 }, 0);
+    addTween(cameraWorld, { scale: 1.03, duration: .15 }, .15);
+    addTween(cameraWorld, { scale: 1.10, duration: .25 }, .30);
+    addTween(cameraWorld, { scale: 1.22, duration: .25 }, .55);
+    addTween(cameraWorld, { scale: 1.32, opacity: 0.10, duration: .20 }, .80);
 
-    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL (Opens & intensifies in center)
-    addTween(depthTunnel, { opacity: 0.10, duration: .20 }, 0);
-    addTween(depthTunnel, { opacity: 0.45, duration: .25 }, .20);
-    addTween(depthTunnel, { opacity: 0.85, duration: .30 }, .45);
-    addTween(depthTunnel, { opacity: 1.00, duration: .25 }, .75);
+    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL (Zero at 0-15%, opens during 30-80%)
+    addTween(depthTunnel, { opacity: 0.00, duration: .15 }, 0);
+    addTween(depthTunnel, { opacity: 0.15, duration: .15 }, .15);
+    addTween(depthTunnel, { opacity: 0.60, duration: .25 }, .30);
+    addTween(depthTunnel, { opacity: 0.90, duration: .25 }, .55);
+    addTween(depthTunnel, { opacity: 1.00, duration: .20 }, .80);
 
-    // PORTRAIT ANCHOR (Gentle depth feel inside camera layer)
-    addTween(portrait, { scale: 1.015, yPercent: 0.5, duration: .20 }, 0);
-    addTween(portrait, { scale: 1.035, yPercent: 1.2, duration: .25 }, .20);
-    addTween(portrait, { scale: 1.065, yPercent: 2.2, opacity: 0.75, duration: .30 }, .45);
-    addTween(portrait, { scale: 1.095, yPercent: 3.5, opacity: 0.10, duration: .25 }, .75);
+    // PORTRAIT ANCHOR (Steady background anchor with subtle depth)
+    addTween(portrait, { scale: 1.00, yPercent: 0, duration: .15 }, 0);
+    addTween(portrait, { scale: 1.02, yPercent: 0.8, duration: .15 }, .15);
+    addTween(portrait, { scale: 1.05, yPercent: 1.8, opacity: 0.90, duration: .25 }, .30);
+    addTween(portrait, { scale: 1.08, yPercent: 2.8, opacity: 0.45, duration: .25 }, .55);
+    addTween(portrait, { scale: 1.10, yPercent: 3.5, opacity: 0.05, duration: .20 }, .80);
 
-    // UPPER GROUP (DOOR 1: OPENS UPWARD)
-    // 0.00 -> 0.20: Initial micro reaction
-    addTween(upperGroup, { yPercent: -8, scale: 1.02, duration: .20 }, 0);
-    // 0.20 -> 0.45: Opens upward into upper corridor
-    addTween(upperGroup, { yPercent: -38, scale: 1.06, duration: .25 }, .20);
-    // 0.45 -> 0.75: Breaches top viewport
-    addTween(upperGroup, { yPercent: -95, scale: 1.10, opacity: 0.50, duration: .30 }, .45);
-    // 0.75 -> 1.00: Full exit above viewport
-    addTween(upperGroup, { yPercent: -145, scale: 1.14, opacity: 0, duration: .25 }, .75);
+    // TOP META BLOCK (Name & Kicker: Calm drift during split)
+    addTween(topBlock, { yPercent: 0, opacity: 1.0, duration: .15 }, 0);
+    addTween(topBlock, { yPercent: -8, opacity: 0.95, duration: .15 }, .15);
+    addTween(topBlock, { yPercent: -28, opacity: 0.60, duration: .25 }, .30);
+    addTween(topBlock, { yPercent: -65, opacity: 0.15, duration: .25 }, .55);
+    addTween(topBlock, { yPercent: -95, opacity: 0, duration: .20 }, .80);
 
-    // LOWER GROUP (DOOR 2: OPENS DOWNWARD)
-    // 0.00 -> 0.20: Initial micro reaction (Description 100% visible)
-    addTween(lowerGroup, { yPercent: 6, scale: 1.015, duration: .20 }, 0);
-    // 0.20 -> 0.45: Opens downward into lower corridor (Description remains visible)
-    addTween(lowerGroup, { yPercent: 32, scale: 1.045, duration: .25 }, .20);
-    // 0.45 -> 0.75: Breaches bottom viewport
-    addTween(lowerGroup, { yPercent: 88, scale: 1.08, opacity: 0.50, duration: .30 }, .45);
-    // 0.75 -> 1.00: Full exit below viewport
-    addTween(lowerGroup, { yPercent: 135, scale: 1.12, opacity: 0, duration: .25 }, .75);
+    // UPPER GROUP (DOOR 1: OPENS UPWARD ON SCROLL)
+    // 0.00 -> 0.15: Fully intact cover
+    addTween(upperGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
+    // 0.15 -> 0.30: Gentle split inception
+    addTween(upperGroup, { yPercent: -15, scale: 1.02, duration: .15 }, .15);
+    // 0.30 -> 0.55: Dynamic upward parting
+    addTween(upperGroup, { yPercent: -65, scale: 1.06, duration: .25 }, .30);
+    // 0.55 -> 0.80: Breaches top viewport
+    addTween(upperGroup, { yPercent: -130, scale: 1.10, opacity: 0.35, duration: .25 }, .55);
+    // 0.80 -> 1.00: Full exit above viewport
+    addTween(upperGroup, { yPercent: -170, scale: 1.14, opacity: 0, duration: .20 }, .80);
+
+    // LOWER GROUP (DOOR 2: OPENS DOWNWARD ON SCROLL)
+    // 0.00 -> 0.15: Fully intact cover
+    addTween(lowerGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
+    // 0.15 -> 0.30: Gentle split inception
+    addTween(lowerGroup, { yPercent: 14, scale: 1.015, duration: .15 }, .15);
+    // 0.30 -> 0.55: Dynamic downward parting
+    addTween(lowerGroup, { yPercent: 60, scale: 1.045, duration: .25 }, .30);
+    // 0.55 -> 0.80: Breaches bottom viewport
+    addTween(lowerGroup, { yPercent: 120, scale: 1.08, opacity: 0.35, duration: .25 }, .55);
+    // 0.80 -> 1.00: Full exit below viewport
+    addTween(lowerGroup, { yPercent: 155, scale: 1.12, opacity: 0, duration: .20 }, .80);
 
     // Supporting Description readability control
-    addTween(heroFooter, { opacity: 0.98, duration: .20 }, 0);
-    addTween(heroFooter, { opacity: 0.90, duration: .25 }, .20);
-    addTween(heroFooter, { opacity: 0.40, duration: .30 }, .45);
-    addTween(heroFooter, { opacity: 0, duration: .25 }, .75);
+    addTween(heroFooter, { opacity: 1.00, duration: .15 }, 0);
+    addTween(heroFooter, { opacity: 0.98, duration: .15 }, .15);
+    addTween(heroFooter, { opacity: 0.80, duration: .25 }, .30);
+    addTween(heroFooter, { opacity: 0.25, duration: .25 }, .55);
+    addTween(heroFooter, { opacity: 0.00, duration: .20 }, .80);
 
     root.dataset.gsapHero = 'true';
     heroUsesGsap = true;
