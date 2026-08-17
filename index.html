@@ -15,7 +15,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="build-version" content="1786786674">
 <title>Ebubekir Sıddık Pekmez — Portföy</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,500;1,600;1,700&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800;1,900&family=DM+Sans:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <!-- Local fallback keeps the static portfolio testable when a browser blocks third-party CDNs. -->
@@ -3362,7 +3362,7 @@ html, body, .deck {
   /* EDITORIAL DIGITAL COVER / MAGAZINE POSTER HERO */
   .mpp-hero {
     position: relative;
-    min-height: 190svh;
+    min-height: 220svh;
     background: #050607;
     border-top: 0;
     padding: 0 !important;
@@ -3375,13 +3375,33 @@ html, body, .deck {
     height: 100svh;
     min-height: 100svh;
     max-height: 100svh;
+    padding: 0;
+    box-sizing: border-box;
+    background: #050607;
+    overflow: hidden;
+  }
+  .mpp-camera-world {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2.3rem 1.35rem 2.0rem;
+    box-sizing: border-box;
+    background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, 0.16), transparent 52%), #050607;
+    transform-origin: 38% 50%;
+    will-change: transform;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2.4rem 1.35rem 2.2rem;
-    box-sizing: border-box;
-    background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, 0.16), transparent 50%), #050607;
     overflow: hidden;
+  }
+  .mpp-depth-tunnel {
+    position: absolute;
+    inset: -15%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(ellipse 65% 55% at 38% 50%, rgba(5,6,7,0.96) 0%, rgba(5,6,7,0.85) 45%, rgba(5,6,7,0.3) 80%, transparent 100%);
+    will-change: opacity, transform;
   }
   .mpp-editorial-portrait {
     position: absolute;
@@ -3399,6 +3419,7 @@ html, body, .deck {
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    transform-origin: 75% 45%;
     will-change: transform, opacity;
   }
   .mpp-editorial-portrait img {
@@ -3415,10 +3436,11 @@ html, body, .deck {
                 linear-gradient(to right, transparent 0%, rgba(0,0,0,0.85) 34%, black 100%),
                 linear-gradient(to top, transparent 0%, black 20%, black 100%);
     mask-composite: intersect;
+    will-change: transform;
   }
   .mpp-editorial-frame {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -3448,6 +3470,14 @@ html, body, .deck {
     font-size: .68rem;
     font-weight: 700;
     line-height: 1;
+  }
+  .mpp-upper-group {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    transform-origin: left bottom;
+    will-change: transform, opacity;
   }
   .mpp-editorial-top-block {
     display: flex;
@@ -3496,8 +3526,8 @@ html, body, .deck {
     display: inline-flex;
     align-items: center;
     gap: .45rem;
-    margin-top: .75rem;
-    margin-bottom: .2rem;
+    margin-top: .65rem;
+    margin-bottom: .4rem;
     padding-bottom: .4rem;
     border-bottom: 1px solid rgba(247, 244, 238, 0.08);
     width: fit-content;
@@ -3518,29 +3548,45 @@ html, body, .deck {
     text-transform: uppercase;
   }
   .mpp-editorial-title {
-    margin: auto 0;
-    padding: .3rem 0;
+    margin: .35rem 0 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
     width: max-content;
-    max-width: 72%;
+    max-width: 76%;
   }
   .mpp-title-line {
     display: block;
-    font-family: 'Barlow Condensed', 'Impact', sans-serif;
-    font-weight: 900;
-    font-size: clamp(3.0rem, 13.2vw, 4.4rem);
-    line-height: .86;
-    letter-spacing: -.035em;
-    color: #f5f2eb;
     white-space: nowrap;
-    transform-origin: left center;
+    opacity: 1 !important;
+    visibility: visible !important;
     will-change: transform, opacity;
   }
-  .mpp-title-line--3,
-  .mpp-editorial-title .mpp-title-line--3,
-  .mpp-editorial-title .mpp-title-line--transition {
+  .mpp-title-line--condensed {
+    font-family: 'Big Shoulders Display', 'Bebas Neue', 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3.3rem, 15vw, 4.6rem);
+    line-height: .84;
+    letter-spacing: -.02em;
+    color: #f7f4ee;
+    text-transform: uppercase;
+    transform-origin: left center;
+  }
+  .mpp-lower-group {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    transform-origin: left top;
+    will-change: transform, opacity;
+  }
+  .mpp-lower-title-row {
+    margin-bottom: .85rem;
+  }
+  .mpp-title-line--serif,
+  .mpp-title-line--3 {
     font-family: 'Playfair Display', Georgia, serif !important;
     font-style: italic !important;
     font-weight: 800 !important;
@@ -3550,16 +3596,18 @@ html, body, .deck {
     color: #e05a1e !important;
     white-space: nowrap !important;
     text-transform: uppercase !important;
-    margin-top: .12rem;
+    display: block;
+    transform-origin: left center;
   }
   .mpp-editorial-footer {
     display: flex;
     align-items: flex-start;
     gap: .55rem;
-    margin-top: auto;
     padding-bottom: .2rem;
-    width: 68%;
-    max-width: 250px;
+    width: 70%;
+    max-width: 255px;
+    transform-origin: left center;
+    will-change: transform, opacity;
   }
   .mpp-footer-plus {
     color: #e05a1e;
@@ -3574,7 +3622,7 @@ html, body, .deck {
     font-style: italic;
     font-size: .90rem;
     line-height: 1.42;
-    color: rgba(245, 242, 235, 0.74);
+    color: rgba(245, 242, 235, 0.76);
     margin: 0;
   }
   .mpp-expertise { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: 1.6rem; }
@@ -4662,41 +4710,57 @@ html, body, .deck {
   </div>
   <section class="mpp-section mpp-hero mpp-hero--editorial" id="mpp-hero" data-mpp-section="hero">
     <div class="mpp-hero-editorial-inner">
-      <!-- Background Anchor Portrait (Monochrome Editorial Crop) -->
-      <figure class="mpp-editorial-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
-        <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
-      </figure>
+      <!-- Camera World Layer (Dolly-In / Camera Zoom System) -->
+      <div class="mpp-camera-world">
+        <!-- Center Depth Corridor / Dark Tunnel Layer -->
+        <div class="mpp-depth-tunnel" aria-hidden="true"></div>
 
-      <!-- Editorial Frame & Guidelines -->
-      <div class="mpp-editorial-frame">
-        <div class="mpp-editorial-top-block">
-          <!-- Top Editorial Name Header -->
-          <header class="mpp-editorial-header mpp-reveal">
-            <div class="mpp-editorial-name-row">
-              <span class="mpp-editorial-glyph">✶</span>
-              <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
+        <!-- Background Anchor Portrait (Monochrome Editorial Crop) -->
+        <figure class="mpp-editorial-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
+          <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
+        </figure>
+
+        <!-- Editorial Frame & Two-Door Motion Structure -->
+        <div class="mpp-editorial-frame">
+          <!-- UPPER TYPOGRAPHY GROUP (Door 1: Opens UPWARD) -->
+          <div class="mpp-upper-group">
+            <div class="mpp-editorial-top-block">
+              <!-- Top Editorial Name Header -->
+              <header class="mpp-editorial-header mpp-reveal">
+                <div class="mpp-editorial-name-row">
+                  <span class="mpp-editorial-glyph">✶</span>
+                  <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
+                </div>
+                <span class="mpp-editorial-notch" aria-hidden="true"></span>
+              </header>
+
+              <!-- Technical Kicker Tag -->
+              <div class="mpp-editorial-kicker mpp-reveal">
+                <span class="mpp-kicker-plus">+</span>
+                <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
+              </div>
             </div>
-            <span class="mpp-editorial-notch" aria-hidden="true"></span>
-          </header>
 
-          <!-- Technical Kicker Tag -->
-          <div class="mpp-editorial-kicker mpp-reveal">
-            <span class="mpp-kicker-plus">+</span>
-            <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
+            <!-- Main Display Condensed Title (Upper Block: PERFORMANS / PAZARLAMA) -->
+            <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
+              <span class="mpp-hero-line mpp-title-line mpp-title-line--condensed mpp-title-line--1">PERFORMANS</span>
+              <span class="mpp-hero-line mpp-title-line mpp-title-line--condensed mpp-title-line--2">PAZARLAMA</span>
+            </h1>
           </div>
-        </div>
 
-        <!-- Main Display Condensed Title -->
-        <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
-          <span class="mpp-hero-line mpp-title-line mpp-title-line--1">PERFORMANS</span>
-          <span class="mpp-hero-line mpp-title-line mpp-title-line--2">PAZARLAMA</span>
-          <span class="mpp-hero-line mpp-hero-line--transition mpp-title-line mpp-title-line--3 mpp-title-line--transition">&amp; E-TİCARET</span>
-        </h1>
+          <!-- LOWER TYPOGRAPHY GROUP (Door 2: Opens DOWNWARD) -->
+          <div class="mpp-lower-group">
+            <!-- Lower Title Row (& E-TİCARET: High-Contrast Luxury Serif) -->
+            <div class="mpp-lower-title-row mpp-reveal">
+              <span class="mpp-hero-line mpp-title-line mpp-title-line--serif mpp-title-line--3">&amp; E-TİCARET</span>
+            </div>
 
-        <!-- Bottom Editorial Description -->
-        <div class="mpp-editorial-footer mpp-reveal">
-          <span class="mpp-footer-plus">+</span>
-          <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+            <!-- Bottom Editorial Description -->
+            <div class="mpp-editorial-footer mpp-reveal">
+              <span class="mpp-footer-plus">+</span>
+              <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -4953,12 +5017,23 @@ let current  = 0;
 
   // Scene 01 only: the sticky hero is the playback surface and the timeline
   // is scrubbed by ScrollTrigger, so every depth plane reverses naturally.
-  if (canUseGsapHero && hero && heroLines.length) {
+  if (canUseGsapHero && hero) {
     const motionGsap = window.gsap;
-    hero.querySelectorAll('.mpp-reveal').forEach((el) => { el.classList.add('is-visible'); el.style.opacity = '1'; });
+    hero.querySelectorAll('.mpp-reveal, .mpp-title-line, .mpp-upper-group, .mpp-lower-group').forEach((el) => {
+      el.classList.add('is-visible');
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    });
     hero.offsetHeight;
-    heroLines.forEach((line) => { line.style.transition = 'none'; line.style.setProperty('--line-y', '0px'); line.style.setProperty('--line-opacity', '1'); });
-    motionGsap.set(heroLines, { transformOrigin: 'left center' });
+
+    const cameraWorld = hero.querySelector('.mpp-camera-world');
+    const depthTunnel = hero.querySelector('.mpp-depth-tunnel');
+    const upperGroup = hero.querySelector('.mpp-upper-group');
+    const lowerGroup = hero.querySelector('.mpp-lower-group');
+    const portrait = hero.querySelector('.mpp-editorial-portrait');
+    const portraitImg = hero.querySelector('.mpp-editorial-portrait img');
+    const heroFooter = hero.querySelector('.mpp-editorial-footer');
+
     const heroTimeline = motionGsap.timeline({
       defaults: { ease: 'none' },
       scrollTrigger: {
@@ -4971,83 +5046,58 @@ let current  = 0;
     });
     const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
 
-    const perfLine = hero?.querySelector('.mpp-title-line--1');
-    const pazarLine = hero?.querySelector('.mpp-title-line--2');
-    const eticaretLine = hero?.querySelector('.mpp-title-line--transition');
-    const heroPortrait = hero?.querySelector('.mpp-editorial-portrait');
-    const heroPortraitImg = hero?.querySelector('.mpp-editorial-portrait img');
-    const heroHeader = hero?.querySelector('.mpp-editorial-header');
-    const heroKicker = hero?.querySelector('.mpp-editorial-kicker');
-    const heroFooter = hero?.querySelector('.mpp-editorial-footer');
-
     // =========================================================================
-    // GRAND SPLIT EDITORIAL HERO TIMELINE (REFERANS 3 CHOREOGRAPHY)
-    // PHOTO = ANCHOR (Calm, steady background depth throughout entire timeline)
-    // GROUP A (PERFORMANS + PAZARLAMA + NAME): Opens UPWARD
-    // GROUP B (& E-TICARET + DESCRIPTION): Opens DOWNWARD
-    // CENTER: Opens a cinematic dark depth corridor into Scene 02
+    // CINEMATIC TWO-DOOR VERTICAL SPLIT & CAMERA DOLLY-IN REVEAL
+    // UPPER GROUP (PERFORMANS + PAZARLAMA + NAME): Opens UPWARD
+    // LOWER GROUP (& E-TİCARET + DESCRIPTION): Opens DOWNWARD
+    // CAMERA WORLD: Dolly-in zoom into central depth corridor
+    // PORTRAIT: Visual anchor (subtle dolly-in scaling with minimal shift)
     // =========================================================================
 
-    // PHOTO ANCHOR: Gentle parallax & subtle camera depth
-    addTween(heroPortrait, { yPercent: 1.5, scale: 1.015, duration: .35 }, 0);
-    addTween(heroPortrait, { yPercent: 3.5, scale: 1.030, duration: .25 }, .35);
-    addTween(heroPortrait, { yPercent: 5.5, scale: 1.045, opacity: .65, duration: .25 }, .60);
-    addTween(heroPortrait, { yPercent: 7.5, scale: 1.060, opacity: .20, duration: .15 }, .85);
-    addTween(heroPortraitImg, { yPercent: -2, duration: .60 }, 0);
-    addTween(heroPortraitImg, { yPercent: -4, duration: .40 }, .60);
+    // CAMERA WORLD DOLLY-IN (Scale 1.0 -> 1.02 -> 1.08 -> 1.20 -> 1.30)
+    addTween(cameraWorld, { scale: 1.02, duration: .20 }, 0);
+    addTween(cameraWorld, { scale: 1.08, duration: .25 }, .20);
+    addTween(cameraWorld, { scale: 1.20, duration: .30 }, .45);
+    addTween(cameraWorld, { scale: 1.32, opacity: 0.15, duration: .25 }, .75);
 
-    // -------------------------------------------------------------------------
-    // STAGE 1 (0.00 -> 0.15): INITIAL COVER STATE (Pristine balanced magazine cover)
-    // STAGE 2 (0.15 -> 0.35): THE SPLIT INCEPTION (Opening begins as user scrolls)
-    // -------------------------------------------------------------------------
-    // GROUP A (UPWARD):
-    addTween(perfLine, { yPercent: -22, xPercent: -4, scale: .94, duration: .35 }, 0);
-    addTween(pazarLine, { yPercent: -14, xPercent: -2, scale: 1.02, duration: .35 }, 0);
-    addTween(heroHeader, { yPercent: -8, opacity: .88, duration: .35 }, 0);
-    addTween(heroKicker, { yPercent: -6, opacity: .88, duration: .35 }, 0);
+    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL (Opens & intensifies in center)
+    addTween(depthTunnel, { opacity: 0.10, duration: .20 }, 0);
+    addTween(depthTunnel, { opacity: 0.45, duration: .25 }, .20);
+    addTween(depthTunnel, { opacity: 0.85, duration: .30 }, .45);
+    addTween(depthTunnel, { opacity: 1.00, duration: .25 }, .75);
 
-    // GROUP B (DOWNWARD):
-    addTween(eticaretLine, { yPercent: 24, xPercent: 4, scale: 1.06, duration: .35 }, 0);
-    addTween(heroFooter, { yPercent: 18, opacity: .95, duration: .35 }, 0);
+    // PORTRAIT ANCHOR (Gentle depth feel inside camera layer)
+    addTween(portrait, { scale: 1.015, yPercent: 0.5, duration: .20 }, 0);
+    addTween(portrait, { scale: 1.035, yPercent: 1.2, duration: .25 }, .20);
+    addTween(portrait, { scale: 1.065, yPercent: 2.2, opacity: 0.75, duration: .30 }, .45);
+    addTween(portrait, { scale: 1.095, yPercent: 3.5, opacity: 0.10, duration: .25 }, .75);
 
-    // -------------------------------------------------------------------------
-    // STAGE 3 (0.35 -> 0.60): CORRIDOR WIDENS & CAMERA ZOOM-IN
-    // -------------------------------------------------------------------------
-    // GROUP A (UPWARD):
-    addTween(perfLine, { yPercent: -52, xPercent: -8, scale: .88, opacity: .55, duration: .25 }, .35);
-    addTween(pazarLine, { yPercent: -36, xPercent: -4, scale: 1.08, opacity: .85, duration: .25 }, .35);
-    addTween(heroHeader, { yPercent: -18, opacity: .45, duration: .25 }, .35);
-    addTween(heroKicker, { yPercent: -14, opacity: .45, duration: .25 }, .35);
+    // UPPER GROUP (DOOR 1: OPENS UPWARD)
+    // 0.00 -> 0.20: Initial micro reaction
+    addTween(upperGroup, { yPercent: -8, scale: 1.02, duration: .20 }, 0);
+    // 0.20 -> 0.45: Opens upward into upper corridor
+    addTween(upperGroup, { yPercent: -38, scale: 1.06, duration: .25 }, .20);
+    // 0.45 -> 0.75: Breaches top viewport
+    addTween(upperGroup, { yPercent: -95, scale: 1.10, opacity: 0.50, duration: .30 }, .45);
+    // 0.75 -> 1.00: Full exit above viewport
+    addTween(upperGroup, { yPercent: -145, scale: 1.14, opacity: 0, duration: .25 }, .75);
 
-    // GROUP B (DOWNWARD):
-    addTween(eticaretLine, { yPercent: 58, xPercent: 8, scale: 1.16, opacity: .85, duration: .25 }, .35);
-    addTween(heroFooter, { yPercent: 46, opacity: .55, duration: .25 }, .35);
+    // LOWER GROUP (DOOR 2: OPENS DOWNWARD)
+    // 0.00 -> 0.20: Initial micro reaction (Description 100% visible)
+    addTween(lowerGroup, { yPercent: 6, scale: 1.015, duration: .20 }, 0);
+    // 0.20 -> 0.45: Opens downward into lower corridor (Description remains visible)
+    addTween(lowerGroup, { yPercent: 32, scale: 1.045, duration: .25 }, .20);
+    // 0.45 -> 0.75: Breaches bottom viewport
+    addTween(lowerGroup, { yPercent: 88, scale: 1.08, opacity: 0.50, duration: .30 }, .45);
+    // 0.75 -> 1.00: Full exit below viewport
+    addTween(lowerGroup, { yPercent: 135, scale: 1.12, opacity: 0, duration: .25 }, .75);
 
-    // -------------------------------------------------------------------------
-    // STAGE 4 (0.60 -> 0.85): DEEP PASSAGE & SCENE 02 HORIZON
-    // -------------------------------------------------------------------------
-    // GROUP A (UPWARD):
-    addTween(perfLine, { yPercent: -92, xPercent: -14, scale: .78, opacity: .15, duration: .25 }, .60);
-    addTween(pazarLine, { yPercent: -68, xPercent: -6, scale: 1.15, opacity: .40, duration: .25 }, .60);
-    addTween(heroHeader, { yPercent: -28, opacity: .10, duration: .25 }, .60);
-    addTween(heroKicker, { yPercent: -22, opacity: .10, duration: .25 }, .60);
+    // Supporting Description readability control
+    addTween(heroFooter, { opacity: 0.98, duration: .20 }, 0);
+    addTween(heroFooter, { opacity: 0.90, duration: .25 }, .20);
+    addTween(heroFooter, { opacity: 0.40, duration: .30 }, .45);
+    addTween(heroFooter, { opacity: 0, duration: .25 }, .75);
 
-    // GROUP B (DOWNWARD):
-    addTween(eticaretLine, { yPercent: 96, xPercent: 12, scale: 1.26, opacity: .40, duration: .25 }, .60);
-    addTween(heroFooter, { yPercent: 82, opacity: .10, duration: .25 }, .60);
-
-    // -------------------------------------------------------------------------
-    // STAGE 5 (0.85 -> 1.00): CONTINUOUS EXIT & SCENE 02 GATEWAY
-    // -------------------------------------------------------------------------
-    // GROUP A clears top:
-    addTween(perfLine, { yPercent: -120, opacity: 0, duration: .15 }, .85);
-    addTween(pazarLine, { yPercent: -95, opacity: 0, duration: .15 }, .85);
-    addTween(heroHeader, { opacity: 0, duration: .15 }, .85);
-    addTween(heroKicker, { opacity: 0, duration: .15 }, .85);
-
-    // GROUP B clears bottom:
-    addTween(eticaretLine, { yPercent: 130, opacity: 0, duration: .15 }, .85);
-    addTween(heroFooter, { yPercent: 110, opacity: 0, duration: .15 }, .85);
     root.dataset.gsapHero = 'true';
     heroUsesGsap = true;
     window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
