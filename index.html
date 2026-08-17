@@ -4972,31 +4972,64 @@ let current  = 0;
     const heroKicker = hero?.querySelector('.mpp-editorial-kicker');
     const heroFooter = hero?.querySelector('.mpp-editorial-footer');
 
-    // Stage 1 (0.00 -> 0.45): Cover composition in pristine stability + subtle typographic depth
-    // Portrait is anchor: very gentle depth parallax
-    addTween(heroPortrait, { yPercent: 4, scale: 1.02, duration: .48 }, 0);
-    addTween(heroPortraitImg, { yPercent: -2, duration: .48 }, 0);
-    // Subtle typographic breathing
-    addTween(perfLine, { xPercent: -5, yPercent: -8, scale: .94, letterSpacing: '-.04em', duration: .48 }, 0);
-    addTween(pazarLine, { xPercent: 3, yPercent: -4, scale: 1.04, letterSpacing: '-.04em', duration: .48 }, 0);
-    addTween(eticaretLine, { xPercent: 5, yPercent: 4, scale: 1.14, duration: .48 }, 0);
+    // =========================================================================
+    // SYNCHRONIZED KINETIC EDITORIAL HERO TIMELINE
+    // PHOTO = ANCHOR (subtle 15-25% relative movement)
+    // TYPOGRAPHY = MULTI-LAYER KINETIC MOTION (starts at scroll inception 0.00->0.30)
+    // =========================================================================
 
-    // Supporting editorial elements stay 100% visible & readable during 0.00 -> 0.48 window
-    // Stage 2 (0.48 -> 0.74): Controlled editorial motion & smooth text exit after reading
-    addTween(heroFooter, { yPercent: -12, opacity: .12, duration: .24 }, 0.48);
-    addTween(heroHeader, { opacity: .20, duration: .24 }, 0.48);
-    addTween(heroKicker, { opacity: .20, duration: .24 }, 0.48);
+    // PHOTO ANCHOR: Calm, steady background depth throughout entire timeline
+    addTween(heroPortrait, { yPercent: 2, scale: 1.015, duration: .30 }, 0);
+    addTween(heroPortrait, { yPercent: 4, scale: 1.030, duration: .25 }, .30);
+    addTween(heroPortrait, { yPercent: 6, scale: 1.045, opacity: .75, duration: .25 }, .55);
+    addTween(heroPortrait, { yPercent: 8, scale: 1.060, opacity: .28, duration: .20 }, .80);
+    addTween(heroPortraitImg, { yPercent: -2, duration: .55 }, 0);
+    addTween(heroPortraitImg, { yPercent: -4, duration: .45 }, .55);
 
-    addTween(perfLine, { xPercent: -16, yPercent: -28, scale: .80, opacity: .22, letterSpacing: '-.06em', duration: .26 }, 0.48);
-    addTween(pazarLine, { xPercent: -10, yPercent: -14, scale: .86, opacity: .30, letterSpacing: '-.05em', duration: .26 }, 0.48);
-    addTween(eticaretLine, { xPercent: 20, yPercent: -18, scale: 2.35, opacity: .96, letterSpacing: '-.06em', duration: .26 }, 0.48);
-    addTween(heroPortrait, { yPercent: 8, scale: 1.05, opacity: .82, duration: .26 }, 0.48);
+    // STAGE 1 (0.00 -> 0.30): EARLY TYPOGRAPHY MOTION (Begins as soon as user scrolls)
+    // PERFORMANS: steps up and recedes into depth
+    addTween(perfLine, { xPercent: -6, yPercent: -14, scale: .90, opacity: .85, letterSpacing: '-.04em', duration: .30 }, 0);
+    // PAZARLAMA: steps forward into foreground
+    addTween(pazarLine, { xPercent: 5, yPercent: -4, scale: 1.12, opacity: .98, letterSpacing: '-.04em', duration: .30 }, 0);
+    // & E-TICARET: shifts in sync as vibrant burnt orange layer
+    addTween(eticaretLine, { xPercent: 6, yPercent: 6, scale: 1.08, opacity: .96, duration: .30 }, 0);
+    // Meta & Kicker: subtle calm motion
+    addTween(heroHeader, { opacity: .90, yPercent: -2, duration: .30 }, 0);
+    addTween(heroKicker, { opacity: .90, duration: .30 }, 0);
+    // Supporting description: remains 100% visible & readable during 0.00 -> 0.35
+    addTween(heroFooter, { opacity: 1.0, yPercent: 0, duration: .30 }, 0);
 
-    // Stage 3 (0.74 -> 1.00): Grand typographic transition mask into next scene
-    addTween(eticaretLine, { xPercent: 44, yPercent: -38, scale: 4.10, opacity: .75, duration: .26 }, 0.74);
-    addTween(perfLine, { xPercent: -24, yPercent: -42, scale: .68, opacity: .03, duration: .26 }, 0.74);
-    addTween(pazarLine, { xPercent: -18, yPercent: -24, scale: .72, opacity: .03, duration: .26 }, 0.74);
-    addTween(heroPortrait, { opacity: .35, scale: 1.08, duration: .26 }, 0.74);
+    // STAGE 2 (0.30 -> 0.55): EDITORIAL RECOMPOSITION
+    // PERFORMANS: recedes into background depth
+    addTween(perfLine, { xPercent: -14, yPercent: -28, scale: .80, opacity: .45, letterSpacing: '-.05em', duration: .25 }, .30);
+    // PAZARLAMA: becomes primary kinetic element
+    addTween(pazarLine, { xPercent: 14, yPercent: -12, scale: 1.48, opacity: 1.0, letterSpacing: '-.045em', duration: .25 }, .30);
+    // & E-TICARET: re-composes alongside/below PAZARLAMA
+    addTween(eticaretLine, { xPercent: 14, yPercent: 14, scale: 1.28, opacity: .90, duration: .25 }, .30);
+    // Meta elements start soft retreat
+    addTween(heroHeader, { opacity: .55, yPercent: -6, duration: .25 }, .30);
+    addTween(heroKicker, { opacity: .55, duration: .25 }, .30);
+    // Description starts gentle retreat after reading window (past 0.35)
+    addTween(heroFooter, { yPercent: -8, opacity: .45, duration: .20 }, .35);
+
+    // STAGE 3 (0.55 -> 0.80): TRANSITION BUILD-UP (All lines participate in transition)
+    // PERFORMANS: pulls back and up
+    addTween(perfLine, { xPercent: -22, yPercent: -45, scale: .70, opacity: .10, duration: .25 }, .55);
+    // PAZARLAMA: expands across viewport
+    addTween(pazarLine, { xPercent: 28, yPercent: -24, scale: 2.50, opacity: .92, letterSpacing: '-.06em', duration: .25 }, .55);
+    // & E-TICARET: moves dynamically as burnt orange contrast layer
+    addTween(eticaretLine, { xPercent: 24, yPercent: 20, scale: 1.85, opacity: .55, duration: .25 }, .55);
+    // Meta elements & description finish exit
+    addTween(heroHeader, { opacity: .10, yPercent: -10, duration: .25 }, .55);
+    addTween(heroKicker, { opacity: .10, duration: .25 }, .55);
+    addTween(heroFooter, { yPercent: -14, opacity: .05, duration: .20 }, .55);
+
+    // STAGE 4 (0.80 -> 1.00): EXIT & NEXT SCENE PREPARATION (Continuous transformational gateway)
+    // PAZARLAMA: expands as transition gateway into Scene 02
+    addTween(pazarLine, { xPercent: 44, yPercent: -36, scale: 3.80, opacity: .65, duration: .20 }, .80);
+    // PERFORMANS & & E-TICARET: complete exit
+    addTween(perfLine, { xPercent: -30, yPercent: -55, scale: .62, opacity: 0, duration: .20 }, .80);
+    addTween(eticaretLine, { xPercent: 32, yPercent: 26, scale: 2.10, opacity: 0, duration: .20 }, .80);
     root.dataset.gsapHero = 'true';
     heroUsesGsap = true;
     window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
