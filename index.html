@@ -3362,11 +3362,14 @@ html, body, .deck {
   /* EDITORIAL DIGITAL COVER / MAGAZINE POSTER HERO */
   .mpp-hero {
     position: relative;
-    min-height: 220svh;
-    background: #050607;
+    height: 195svh;
+    margin-bottom: -100svh;
+    background: transparent !important;
     border-top: 0;
     padding: 0 !important;
     overflow: visible;
+    z-index: 10;
+    pointer-events: none;
   }
   .mpp-hero .mpp-hero-editorial-inner {
     position: sticky;
@@ -3379,6 +3382,8 @@ html, body, .deck {
     box-sizing: border-box;
     background: #050607;
     overflow: hidden;
+    will-change: opacity, transform;
+    pointer-events: auto;
   }
   .mpp-camera-world {
     position: relative;
@@ -3388,7 +3393,7 @@ html, body, .deck {
     box-sizing: border-box;
     background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, 0.16), transparent 52%), #050607;
     transform-origin: 36% 52%;
-    will-change: transform;
+    will-change: transform, opacity;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -3399,7 +3404,7 @@ html, body, .deck {
     z-index: 2;
     pointer-events: none;
     opacity: 0;
-    background: radial-gradient(ellipse 65% 55% at 36% 52%, rgba(5,6,7,0.96) 0%, rgba(5,6,7,0.85) 45%, rgba(5,6,7,0.3) 80%, transparent 100%);
+    background: radial-gradient(ellipse 65% 55% at 36% 52%, rgba(5,6,7,0.98) 0%, rgba(5,6,7,0.88) 45%, rgba(5,6,7,0.3) 80%, transparent 100%);
     will-change: opacity, transform;
   }
   .mpp-editorial-portrait {
@@ -3630,6 +3635,16 @@ html, body, .deck {
     line-height: 1.40;
     color: rgba(245, 242, 235, 0.76);
     margin: 0;
+  }
+  .mpp-about {
+    position: relative;
+    z-index: 5;
+    padding-top: 4.0rem;
+    background: #070a0b;
+  }
+  .mpp-about .mpp-inner {
+    will-change: opacity, transform;
+    transform-origin: center top;
   }
   .mpp-expertise { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-top: 1.6rem; }
   .mpp-expertise-item { padding: .85rem .65rem; border-top: 1px solid rgba(242,122,26,.6); background: rgba(255,255,255,.025); }
@@ -5031,6 +5046,7 @@ let current  = 0;
     });
     hero.offsetHeight;
 
+    const heroInner = hero.querySelector('.mpp-hero-editorial-inner');
     const cameraWorld = hero.querySelector('.mpp-camera-world');
     const depthTunnel = hero.querySelector('.mpp-depth-tunnel');
     const upperGroup = hero.querySelector('.mpp-upper-group');
@@ -5038,6 +5054,16 @@ let current  = 0;
     const topBlock = hero.querySelector('.mpp-editorial-top-block');
     const portrait = hero.querySelector('.mpp-editorial-portrait');
     const heroFooter = hero.querySelector('.mpp-editorial-footer');
+    const whoSection = root.querySelector('#mpp-who');
+    const whoInner = whoSection?.querySelector('.mpp-inner');
+
+    // Ensure Scene 02 reveal elements are prepared for smooth emergence
+    if (whoSection) {
+      whoSection.querySelectorAll('.mpp-reveal').forEach((el) => el.classList.add('is-visible'));
+    }
+    if (whoInner) {
+      motionGsap.set(whoInner, { opacity: 0, scale: 0.94, y: 28 });
+    }
 
     const heroTimeline = motionGsap.timeline({
       defaults: { ease: 'none' },
@@ -5045,79 +5071,86 @@ let current  = 0;
         trigger: hero,
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1.15,
-        invalidateOnRefresh: true
+        scrub: 1.1,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          if (heroInner) {
+            heroInner.style.pointerEvents = self.progress > 0.82 ? 'none' : 'auto';
+          }
+        }
       }
     });
     const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
 
     // =========================================================================
-    // PROGRESSIVE SCROLL-DRIVEN SPLIT & CINEMATIC CAMERA REVEAL
-    // STAGE 1 (0.00 -> 0.15): FULL EDITORIAL COVER (Compact, pristine, cohesive)
-    // STAGE 2 (0.15 -> 0.30): SPLIT INCEPTION (Upper & Lower begin gentle separation)
-    // STAGE 3 (0.30 -> 0.55): REAL SPLIT (Corridor opens dynamically in center)
-    // STAGE 4 (0.55 -> 0.80): CAMERA PUSH-IN (World zooms into opening darkness)
-    // STAGE 5 (0.80 -> 1.00): PASS THROUGH & SCENE 02 REVEAL
+    // CONTINUOUS SCROLL PASS-THROUGH: HERO SPLIT -> DARK TUNNEL -> SCENE 02 REVEAL
+    // 0.00 -> 0.15: Pristine editorial cover (compact composition)
+    // 0.15 -> 0.35: Vertical split begins (upper UP, lower DOWN)
+    // 0.35 -> 0.60: Central corridor opens, camera pushes in
+    // 0.60 -> 0.80: Darkness tunnel peak, Hero exits, Scene 02 emerges from depth
+    // 0.80 -> 1.00: Scene 02 crystallizes in the same viewport without extra scroll
     // =========================================================================
 
-    // CAMERA WORLD DOLLY-IN (Scale 1.0 -> 1.0 -> 1.03 -> 1.10 -> 1.22 -> 1.30)
+    // CAMERA WORLD DOLLY-IN (Scale 1.00 -> 1.03 -> 1.12 -> 1.25 -> 1.35)
     addTween(cameraWorld, { scale: 1.00, duration: .15 }, 0);
-    addTween(cameraWorld, { scale: 1.03, duration: .15 }, .15);
-    addTween(cameraWorld, { scale: 1.10, duration: .25 }, .30);
-    addTween(cameraWorld, { scale: 1.22, duration: .25 }, .55);
-    addTween(cameraWorld, { scale: 1.32, opacity: 0.10, duration: .20 }, .80);
+    addTween(cameraWorld, { scale: 1.03, duration: .20 }, .15);
+    addTween(cameraWorld, { scale: 1.12, duration: .25 }, .35);
+    addTween(cameraWorld, { scale: 1.25, duration: .20 }, .60);
+    addTween(cameraWorld, { scale: 1.35, duration: .20 }, .80);
 
-    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL (Zero at 0-15%, opens during 30-80%)
+    // HERO INNER CONTAINER FADE-OUT (Passes view seamlessly to Scene 02 underneath)
+    addTween(heroInner, { opacity: 1.00, duration: .55 }, 0);
+    addTween(heroInner, { opacity: 0.50, duration: .25 }, .55);
+    addTween(heroInner, { opacity: 0.00, duration: .20 }, .80);
+
+    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL
     addTween(depthTunnel, { opacity: 0.00, duration: .15 }, 0);
-    addTween(depthTunnel, { opacity: 0.15, duration: .15 }, .15);
-    addTween(depthTunnel, { opacity: 0.60, duration: .25 }, .30);
-    addTween(depthTunnel, { opacity: 0.90, duration: .25 }, .55);
-    addTween(depthTunnel, { opacity: 1.00, duration: .20 }, .80);
+    addTween(depthTunnel, { opacity: 0.15, duration: .20 }, .15);
+    addTween(depthTunnel, { opacity: 0.70, duration: .25 }, .35);
+    addTween(depthTunnel, { opacity: 0.95, duration: .15 }, .60);
+    addTween(depthTunnel, { opacity: 0.00, duration: .25 }, .75);
 
-    // PORTRAIT ANCHOR (Steady background anchor with subtle depth)
+    // PORTRAIT ANCHOR
     addTween(portrait, { scale: 1.00, yPercent: 0, duration: .15 }, 0);
-    addTween(portrait, { scale: 1.02, yPercent: 0.8, duration: .15 }, .15);
-    addTween(portrait, { scale: 1.05, yPercent: 1.8, opacity: 0.90, duration: .25 }, .30);
-    addTween(portrait, { scale: 1.08, yPercent: 2.8, opacity: 0.45, duration: .25 }, .55);
-    addTween(portrait, { scale: 1.10, yPercent: 3.5, opacity: 0.05, duration: .20 }, .80);
+    addTween(portrait, { scale: 1.02, yPercent: 0.6, duration: .20 }, .15);
+    addTween(portrait, { scale: 1.05, yPercent: 1.5, opacity: 0.90, duration: .25 }, .35);
+    addTween(portrait, { scale: 1.08, yPercent: 2.5, opacity: 0.30, duration: .20 }, .60);
+    addTween(portrait, { scale: 1.10, yPercent: 3.2, opacity: 0.00, duration: .20 }, .80);
 
-    // TOP META BLOCK (Name & Kicker: Calm drift during split)
+    // TOP META BLOCK (Name & Kicker)
     addTween(topBlock, { yPercent: 0, opacity: 1.0, duration: .15 }, 0);
-    addTween(topBlock, { yPercent: -8, opacity: 0.95, duration: .15 }, .15);
-    addTween(topBlock, { yPercent: -28, opacity: 0.60, duration: .25 }, .30);
-    addTween(topBlock, { yPercent: -65, opacity: 0.15, duration: .25 }, .55);
-    addTween(topBlock, { yPercent: -95, opacity: 0, duration: .20 }, .80);
+    addTween(topBlock, { yPercent: -8, opacity: 0.95, duration: .20 }, .15);
+    addTween(topBlock, { yPercent: -35, opacity: 0.50, duration: .25 }, .35);
+    addTween(topBlock, { yPercent: -80, opacity: 0.10, duration: .20 }, .60);
+    addTween(topBlock, { yPercent: -110, opacity: 0, duration: .20 }, .80);
 
     // UPPER GROUP (DOOR 1: OPENS UPWARD ON SCROLL)
-    // 0.00 -> 0.15: Fully intact cover
     addTween(upperGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
-    // 0.15 -> 0.30: Gentle split inception
-    addTween(upperGroup, { yPercent: -15, scale: 1.02, duration: .15 }, .15);
-    // 0.30 -> 0.55: Dynamic upward parting
-    addTween(upperGroup, { yPercent: -65, scale: 1.06, duration: .25 }, .30);
-    // 0.55 -> 0.80: Breaches top viewport
-    addTween(upperGroup, { yPercent: -130, scale: 1.10, opacity: 0.35, duration: .25 }, .55);
-    // 0.80 -> 1.00: Full exit above viewport
-    addTween(upperGroup, { yPercent: -170, scale: 1.14, opacity: 0, duration: .20 }, .80);
+    addTween(upperGroup, { yPercent: -20, scale: 1.02, duration: .20 }, .15);
+    addTween(upperGroup, { yPercent: -75, scale: 1.06, duration: .25 }, .35);
+    addTween(upperGroup, { yPercent: -135, scale: 1.10, opacity: 0.25, duration: .20 }, .60);
+    addTween(upperGroup, { yPercent: -175, scale: 1.14, opacity: 0, duration: .20 }, .80);
 
     // LOWER GROUP (DOOR 2: OPENS DOWNWARD ON SCROLL)
-    // 0.00 -> 0.15: Fully intact cover
     addTween(lowerGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
-    // 0.15 -> 0.30: Gentle split inception
-    addTween(lowerGroup, { yPercent: 14, scale: 1.015, duration: .15 }, .15);
-    // 0.30 -> 0.55: Dynamic downward parting
-    addTween(lowerGroup, { yPercent: 60, scale: 1.045, duration: .25 }, .30);
-    // 0.55 -> 0.80: Breaches bottom viewport
-    addTween(lowerGroup, { yPercent: 120, scale: 1.08, opacity: 0.35, duration: .25 }, .55);
-    // 0.80 -> 1.00: Full exit below viewport
-    addTween(lowerGroup, { yPercent: 155, scale: 1.12, opacity: 0, duration: .20 }, .80);
+    addTween(lowerGroup, { yPercent: 18, scale: 1.015, duration: .20 }, .15);
+    addTween(lowerGroup, { yPercent: 68, scale: 1.045, duration: .25 }, .35);
+    addTween(lowerGroup, { yPercent: 125, scale: 1.08, opacity: 0.25, duration: .20 }, .60);
+    addTween(lowerGroup, { yPercent: 165, scale: 1.12, opacity: 0, duration: .20 }, .80);
 
-    // Supporting Description readability control
+    // Supporting Description
     addTween(heroFooter, { opacity: 1.00, duration: .15 }, 0);
-    addTween(heroFooter, { opacity: 0.98, duration: .15 }, .15);
-    addTween(heroFooter, { opacity: 0.80, duration: .25 }, .30);
-    addTween(heroFooter, { opacity: 0.25, duration: .25 }, .55);
+    addTween(heroFooter, { opacity: 0.98, duration: .20 }, .15);
+    addTween(heroFooter, { opacity: 0.75, duration: .25 }, .35);
+    addTween(heroFooter, { opacity: 0.15, duration: .20 }, .60);
     addTween(heroFooter, { opacity: 0.00, duration: .20 }, .80);
+
+    // SCENE 02 (KİMİM?): EMERGES SEAMLESSLY FROM DEPTH DURING THE HERO PASS-THROUGH
+    if (whoInner) {
+      addTween(whoInner, { opacity: 0.00, scale: 0.94, y: 28, duration: .55 }, 0);
+      addTween(whoInner, { opacity: 0.75, scale: 0.97, y: 10, duration: .25 }, .55);
+      addTween(whoInner, { opacity: 1.00, scale: 1.00, y: 0, duration: .20 }, .80);
+    }
 
     root.dataset.gsapHero = 'true';
     heroUsesGsap = true;
