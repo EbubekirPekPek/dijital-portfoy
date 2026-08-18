@@ -3366,7 +3366,7 @@ html, body, .deck {
   .mpp-hero-career-stage {
     position: relative;
     width: 100%;
-    height: 540svh;
+    height: 620svh;
     background: #050607;
     padding: 0 !important;
     border-top: 0;
@@ -3992,6 +3992,17 @@ html, body, .deck {
   .mpp-brand-img--ariko {
     height: 26px;
     max-width: 130px;
+  }
+  .mpp-brand-img--uludag {
+    height: 24px;
+    max-width: 32px;
+  }
+  .mpp-brand-img--domino {
+    height: 19px;
+    max-width: 95px;
+  }
+  .mpp-career-card--11.is-active::before {
+    box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.95), 0 0 32px rgba(224, 90, 30, 0.18);
   }
   .mpp-brand-img--vita {
     height: 26px;
@@ -5275,6 +5286,14 @@ html, body, .deck {
                     <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
                     <span class="mpp-node-arm"></span>
                   </div>
+                  <div class="mpp-career-node mpp-career-node--10" data-node-index="10">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--11" data-node-index="11">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
                 </div>
                 </div>
               </div>
@@ -5448,6 +5467,40 @@ html, body, .deck {
                   <img src="assets/logos/tnc.webp" alt="TNC Group" class="mpp-brand-img mpp-brand-img--tnc" height="19" width="86">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
                     <span class="mpp-evidence-tag">B2B Satış</span>
+                </div>
+              </div>
+            </article>
+            <!-- CARD 11 -->
+            <article class="mpp-career-card mpp-career-card--10" data-card-index="10">
+              <div class="mpp-card-num-col">
+                <span class="mpp-card-num">11</span>
+              </div>
+              <div class="mpp-card-content-col">
+                <div class="mpp-card-year">2026</div>
+                <h3 class="mpp-card-title">İŞLETME LİSANS MEZUNİYETİ · Bursa Uludağ Üniversitesi</h3>
+                <p class="mpp-card-desc">Pazarlama, yönetim ve ticari bakış açısını akademik temelle tamamlayan lisans mezuniyeti.</p>
+                <div class="mpp-card-divider" aria-hidden="true"></div>
+                <div class="mpp-card-logos">
+                  <img src="assets/logos/uludag.webp" alt="Bursa Uludağ Üniversitesi" class="mpp-brand-img mpp-brand-img--uludag" height="24" width="24">
+                  <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                  <span class="mpp-evidence-tag">Lisans Mezuniyeti</span>
+                </div>
+              </div>
+            </article>
+            <!-- CARD 12 -->
+            <article class="mpp-career-card mpp-career-card--11" data-card-index="11">
+              <div class="mpp-card-num-col">
+                <span class="mpp-card-num">12</span>
+              </div>
+              <div class="mpp-card-content-col">
+                <div class="mpp-card-year">2026</div>
+                <h3 class="mpp-card-title">META REKLAM YÖNETİCİLİĞİ · Domino Dijital Reklam Ajansı</h3>
+                <p class="mpp-card-desc">Ajans tarafında Meta reklam hesaplarının yönetimi; kampanya kurgusu, bütçe kontrolü, kreatif test ve performans optimizasyonu.</p>
+                <div class="mpp-card-divider" aria-hidden="true"></div>
+                <div class="mpp-card-logos">
+                  <img src="assets/logos/domino.webp" alt="Domino Dijital" class="mpp-brand-img mpp-brand-img--domino" height="19" width="90">
+                  <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                  <img src="assets/logos/meta.svg" alt="Meta Ads" class="mpp-brand-img" height="20" width="70">
                 </div>
               </div>
             </article>
@@ -5801,7 +5854,7 @@ let current  = 0;
       };
 
       const updateStageChoreography = (progress) => {
-        const transThreshold = 0.22; // First 22% of total scroll distance is the cinematic hero corridor pass
+        const transThreshold = 0.19; // First 22% of total scroll distance is the cinematic hero corridor pass
 
         if (progress <= transThreshold) {
           // =====================================================================
