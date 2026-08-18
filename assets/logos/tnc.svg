@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 145 32" fill="none" class="mpp-brand-logo" aria-label="TNC Group">
+  <rect x="0" y="2" width="28" height="28" rx="6" fill="#14181c" stroke="rgba(247,244,238,0.22)" stroke-width="1.2"/>
+  <path d="M7 9H21M14 9V23" stroke="#f7f4ee" stroke-width="2" stroke-linecap="round"/>
+  <text x="36" y="21" font-family="'DM Sans', sans-serif" font-weight="800" font-size="14.5" fill="#f7f4ee" letter-spacing="0.06em">TNC GROUP</text>
+</svg>
