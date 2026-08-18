@@ -3360,29 +3360,49 @@ html, body, .deck {
   .mpp-rule { width: 100%; height: 1px; margin: 1.65rem 0; background: linear-gradient(90deg, rgba(242,122,26,.8), transparent); }
 
   /* EDITORIAL DIGITAL COVER / MAGAZINE POSTER HERO */
-  .mpp-hero {
+  /* =========================================================================
+     UNIFIED PINNED STAGE: SCENE 01 (HERO) + SCENE 02 (CAREER JOURNEY)
+     ========================================================================= */
+  .mpp-hero-career-stage {
     position: relative;
-    height: 195svh;
-    margin-bottom: -100svh;
-    background: transparent !important;
-    z-index: 20;
-    pointer-events: none;
-    overflow: hidden;
+    width: 100%;
+    height: 540svh;
+    background: #050607;
+    padding: 0 !important;
+    border-top: 0;
+    overflow: visible;
+    z-index: 10;
   }
-  .mpp-hero .mpp-hero-editorial-inner {
+  .mpp-stage-viewport {
     position: sticky;
     top: 0;
     width: 100%;
     height: 100svh;
     min-height: 100svh;
     max-height: 100svh;
-    padding: 0;
-    box-sizing: border-box;
-    background: #050607;
     overflow: hidden;
-    will-change: opacity, transform;
+    background: #050607;
+    z-index: 10;
+  }
+  .mpp-scene01-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
     pointer-events: auto;
-    z-index: 20;
+    will-change: opacity;
+    background: transparent;
+  }
+  .mpp-scene02-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+    will-change: opacity, transform;
+    background: #050607;
   }
   .mpp-camera-world {
     position: relative;
@@ -3589,19 +3609,7 @@ html, body, .deck {
     margin-top: 0.15rem;
   }
 
-  /* =========================================================================
-     SCENE 02 — KARİYER YOLCULUĞUM (DEPTH-DRIVEN 10-STEP STACK)
-     ========================================================================= */
-  .mpp-scene-career {
-    position: relative;
-    width: 100%;
-    min-height: 520svh;
-    background: #050607 !important;
-    border-top: 0;
-    padding: 0 !important;
-    overflow: visible;
-    z-index: 10;
-  }
+  /* Scene 02 Layer Inside Unified Stage */
   .mpp-career-bg {
     position: absolute;
     inset: 0;
@@ -3611,19 +3619,14 @@ html, body, .deck {
                 radial-gradient(circle at 15% 80%, rgba(224, 90, 30, 0.06), transparent 48%);
   }
   .mpp-career-inner {
-    position: sticky;
-    top: 0;
+    position: relative;
     width: 100%;
-    height: 100svh;
-    min-height: 100svh;
-    max-height: 100svh;
+    height: 100%;
     padding: 2.2rem 1.25rem 1.8rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: #050607;
-    z-index: 10;
   }
   .mpp-career-shell {
     position: relative;
@@ -5049,94 +5052,104 @@ html, body, .deck {
     <span class="mpp-scroll-progress-line"></span>
     <b>01</b><small>/09</small>
   </div>
-  <section class="mpp-section mpp-hero mpp-hero--editorial" id="mpp-hero" data-mpp-section="hero">
-    <div class="mpp-hero-editorial-inner">
-      <!-- Camera World Layer (Dolly-In / Camera Zoom System) -->
-      <div class="mpp-camera-world">
-        <!-- Center Depth Corridor / Dark Tunnel Layer -->
-        <div class="mpp-depth-tunnel" aria-hidden="true"></div>
+  <section class="mpp-section mpp-hero-career-stage" id="mpp-hero-stage" data-mpp-section="hero">
+    <!-- Pinned Visual Stage Container (Remains locked at viewport top: 0 throughout the entire transition & career flow) -->
+    <div class="mpp-stage-viewport">
 
-        <!-- Background Anchor Portrait (Monochrome Editorial Crop) -->
-        <figure class="mpp-editorial-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
-          <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
-        </figure>
+      <!-- =========================================================================
+           LAYER 1: SCENE 01 (HERO EDITORIAL COVER & CAMERA WORLD)
+           ========================================================================= -->
+      <div class="mpp-scene01-layer" id="mpp-hero">
+        <div class="mpp-camera-world">
+          <!-- Center Depth Corridor / Dark Tunnel Layer -->
+          <div class="mpp-depth-tunnel" aria-hidden="true"></div>
 
-        <!-- Editorial Frame -->
-        <div class="mpp-editorial-frame">
-          <!-- Top Editorial Meta Header -->
-          <div class="mpp-editorial-top-block">
-            <header class="mpp-editorial-header mpp-reveal">
-              <div class="mpp-editorial-name-row">
-                <span class="mpp-editorial-glyph">✶</span>
-                <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
-              </div>
-              <span class="mpp-editorial-notch" aria-hidden="true"></span>
-            </header>
+          <!-- Background Anchor Portrait (Monochrome Editorial Crop) -->
+          <figure class="mpp-editorial-portrait" aria-label="Ebubekir Sıddık Pekmez portre fotoğrafı">
+            <img src="portrait-editorial.webp" alt="Ebubekir Sıddık Pekmez">
+          </figure>
 
-            <div class="mpp-editorial-kicker mpp-reveal">
-              <span class="mpp-kicker-plus">+</span>
-              <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
-            </div>
-          </div>
+          <!-- Editorial Frame -->
+          <div class="mpp-editorial-frame">
+            <!-- Top Editorial Meta Header -->
+            <div class="mpp-editorial-top-block">
+              <header class="mpp-editorial-header mpp-reveal">
+                <div class="mpp-editorial-name-row">
+                  <span class="mpp-editorial-glyph">✶</span>
+                  <span class="mpp-editorial-name">Ebubekir Sıddık <em class="mpp-name-accent">Pekmez</em></span>
+                </div>
+                <span class="mpp-editorial-notch" aria-hidden="true"></span>
+              </header>
 
-          <!-- UNIFIED EDITORIAL TYPOGRAPHY COMPOSITION -->
-          <div class="mpp-hero-typography-composition">
-            <!-- UPPER GROUP (Door 1: Opens UPWARD on scroll) -->
-            <div class="mpp-upper-group">
-              <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
-                <span class="mpp-title-line mpp-title-line--condensed mpp-title-line--1">PERFORMANS</span>
-                <span class="mpp-title-line mpp-title-line--condensed mpp-title-line--2">PAZARLAMA</span>
-              </h1>
-            </div>
-
-            <!-- LOWER GROUP (Door 2: Opens DOWNWARD on scroll) -->
-            <div class="mpp-lower-group">
-              <div class="mpp-lower-title-row mpp-reveal">
-                <span class="mpp-title-line mpp-title-line--serif mpp-title-line--3">&amp; E-TİCARET</span>
-              </div>
-
-              <div class="mpp-editorial-footer mpp-reveal">
-                <span class="mpp-footer-plus">+</span>
-                <p class="mpp-editorial-desc">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+              <div class="mpp-editorial-kicker mpp-reveal">
+                <span class="mpp-kicker-plus">+</span>
+                <span class="mpp-kicker-text">E-TİCARET &amp; REKLAM YÖNETİMİ</span>
               </div>
             </div>
+
+            <!-- UNIFIED EDITORIAL TYPOGRAPHY COMPOSITION -->
+            <div class="mpp-hero-typography-composition">
+              <!-- UPPER GROUP (Door 1: Opens UPWARD on scroll) -->
+              <div class="mpp-upper-group">
+                <h1 class="mpp-editorial-title mpp-reveal" aria-label="Performans Pazarlama & E-Ticaret">
+                  <span class="mpp-title-line--condensed">PERFORMANS</span>
+                  <span class="mpp-title-line--condensed">PAZARLAMA</span>
+                </h1>
+              </div>
+
+              <!-- LOWER GROUP (Door 2: Opens DOWNWARD on scroll) -->
+              <div class="mpp-lower-group">
+                <div class="mpp-title-line--accent-italic mpp-reveal">&amp; E-TİCARET</div>
+                <div class="mpp-editorial-desc mpp-reveal">
+                  <span class="mpp-desc-bullet">+</span>
+                  <p class="mpp-desc-text">Reklam yönetimi, performans pazarlama ve e-ticaret odağında uzmanlık.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom Editorial Footer Meta -->
+            <footer class="mpp-editorial-footer mpp-reveal">
+              <div class="mpp-editorial-counter">
+                <span class="mpp-counter-current">01</span>
+                <span class="mpp-counter-total">/09</span>
+              </div>
+            </footer>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="mpp-section mpp-about mpp-scene-career" id="mpp-who" data-mpp-section="about">
-    <!-- Subtle editorial background ambiance -->
-    <div class="mpp-career-bg" aria-hidden="true"></div>
+      <!-- =========================================================================
+           LAYER 2: SCENE 02 (CAREER JOURNEY) - STACKED DIRECTLY IN SAME PINNED STAGE
+           ========================================================================= -->
+      <div class="mpp-scene02-layer" id="mpp-who" data-mpp-section="about">
+        <div class="mpp-career-bg" aria-hidden="true"></div>
+        <div class="mpp-career-inner">
+          <div class="mpp-career-shell">
+            <!-- Scene Header -->
+            <header class="mpp-career-header">
+              <div class="mpp-career-meta">
+                <span class="mpp-career-index">02 / 09</span>
+                <span class="mpp-career-dash" aria-hidden="true"></span>
+              </div>
+              <p class="mpp-career-kicker">Dijital dönüm noktaları</p>
+              <h2 class="mpp-career-title" aria-label="Kariyer Yolculuğum.">
+                <span class="mpp-career-title-line mpp-career-title--1">KARİYER</span>
+                <span class="mpp-career-title-line mpp-career-title--2">YOLCULUĞUM.</span>
+              </h2>
+            </header>
 
-    <div class="mpp-career-inner">
-      <div class="mpp-career-shell">
-        <!-- Scene Header -->
-        <header class="mpp-career-header">
-          <div class="mpp-career-meta">
-            <span class="mpp-career-index">02 / 09</span>
-            <span class="mpp-career-dash" aria-hidden="true"></span>
-          </div>
-          <p class="mpp-career-kicker">Dijital dönüm noktaları</p>
-          <h2 class="mpp-career-title" aria-label="Kariyer Yolculuğum.">
-            <span class="mpp-career-title-line mpp-career-title--1">KARİYER</span>
-            <span class="mpp-career-title-line mpp-career-title--2">YOLCULUĞUM.</span>
-          </h2>
-        </header>
+            <!-- Right Side Scroll Indicator -->
+            <aside class="mpp-career-scroll-hint" aria-hidden="true">
+              <span class="mpp-hint-arrow">↓</span>
+              <span class="mpp-hint-text">Kaydır</span>
+            </aside>
 
-        <!-- Right Side Scroll Indicator -->
-        <aside class="mpp-career-scroll-hint" aria-hidden="true">
-          <span class="mpp-hint-arrow">↓</span>
-          <span class="mpp-hint-text">Kaydır</span>
-        </aside>
-
-        <!-- Career Stack Presentation Stage -->
-        <div class="mpp-career-stage">
-          <!-- Left Infographic Timeline Axis -->
-          <div class="mpp-career-axis" aria-hidden="true">
-            <div class="mpp-career-axis-line"></div>
-            <div class="mpp-career-nodes">
+            <!-- Career Stack Presentation Stage -->
+            <div class="mpp-career-stage">
+              <!-- Left Infographic Timeline Axis -->
+              <div class="mpp-career-axis" aria-hidden="true">
+                <div class="mpp-career-axis-line"></div>
+                <div class="mpp-career-nodes">
               <div class="mpp-career-node mpp-career-node--0 is-active" data-node-index="0">
                 <span class="mpp-node-ring"><i class="mpp-node-dot"></i></span>
                 <span class="mpp-node-arm"></span>
@@ -5177,11 +5190,11 @@ html, body, .deck {
                 <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
                 <span class="mpp-node-arm"></span>
               </div>
-            </div>
-          </div>
+                </div>
+              </div>
 
-          <!-- Right Career Cards Stack Container -->
-          <div class="mpp-career-stack" aria-label="Kariyer adımları listesi">
+              <!-- Right Career Cards Stack Container -->
+              <div class="mpp-career-stack" aria-label="Kariyer adımları listesi">
             <!-- CARD 01 -->
             <article class="mpp-career-card mpp-career-card--0 is-active" data-card-index="0">
               <div class="mpp-card-num-col">
@@ -5401,9 +5414,12 @@ html, body, .deck {
                 </div>
               </div>
             </article>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -5627,127 +5643,38 @@ let current  = 0;
 
   // Scene 01 only: the sticky hero is the playback surface and the timeline
   // is scrubbed by ScrollTrigger, so every depth plane reverses naturally.
-  if (canUseGsapHero && hero) {
-    const motionGsap = window.gsap;
-    hero.querySelectorAll('.mpp-reveal, .mpp-title-line, .mpp-upper-group, .mpp-lower-group').forEach((el) => {
-      el.classList.add('is-visible');
-      el.style.opacity = '1';
-      el.style.visibility = 'visible';
-    });
-    hero.offsetHeight;
+  if (canUseGsapHero) {
+    const stage = root.querySelector('#mpp-hero-stage');
+    if (stage) {
+      const motionGsap = window.gsap;
+      
+      stage.querySelectorAll('.mpp-reveal, .mpp-title-line, .mpp-upper-group, .mpp-lower-group').forEach((el) => {
+        el.classList.add('is-visible');
+        el.style.opacity = '1';
+        el.style.visibility = 'visible';
+      });
+      stage.offsetHeight;
 
-    const heroInner = hero.querySelector('.mpp-hero-editorial-inner');
-    const cameraWorld = hero.querySelector('.mpp-camera-world');
-    const depthTunnel = hero.querySelector('.mpp-depth-tunnel');
-    const upperGroup = hero.querySelector('.mpp-upper-group');
-    const lowerGroup = hero.querySelector('.mpp-lower-group');
-    const topBlock = hero.querySelector('.mpp-editorial-top-block');
-    const portrait = hero.querySelector('.mpp-editorial-portrait');
-    const heroFooter = hero.querySelector('.mpp-editorial-footer');
-    const careerSection = root.querySelector('#mpp-who');
-    const careerInner = careerSection?.querySelector('.mpp-career-inner');
+      const scene01Layer = stage.querySelector('.mpp-scene01-layer');
+      const scene02Layer = stage.querySelector('.mpp-scene02-layer');
+      const cameraWorld = stage.querySelector('.mpp-camera-world');
+      const depthTunnel = stage.querySelector('.mpp-depth-tunnel');
+      const upperGroup = stage.querySelector('.mpp-upper-group');
+      const lowerGroup = stage.querySelector('.mpp-lower-group');
+      const topBlock = stage.querySelector('.mpp-editorial-top-block');
+      const portrait = stage.querySelector('.mpp-editorial-portrait');
+      const heroFooter = stage.querySelector('.mpp-editorial-footer');
 
-    if (careerInner) {
-      motionGsap.set(careerInner, { opacity: 0, scale: 0.94, y: 28 });
-    }
-
-    const heroTimeline = motionGsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: hero,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1.1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          if (heroInner) {
-            heroInner.style.pointerEvents = self.progress > 0.82 ? 'none' : 'auto';
-            heroInner.style.visibility = self.progress >= 0.98 ? 'hidden' : 'visible';
-          }
-        }
-      }
-    });
-    const addTween = (target, vars, position) => { if (target) heroTimeline.to(target, vars, position); };
-
-    // =========================================================================
-    // CONTINUOUS SCROLL PASS-THROUGH: HERO SPLIT -> DARK TUNNEL -> SCENE 02 REVEAL
-    // (HERO STAGE REMAINS PINNED - CAMERA PUSHES FORWARD INTO DARKNESS)
-    // =========================================================================
-
-    // CAMERA WORLD DOLLY-IN (Scale 1.00 -> 1.03 -> 1.12 -> 1.25 -> 1.35)
-    addTween(cameraWorld, { scale: 1.00, duration: .15 }, 0);
-    addTween(cameraWorld, { scale: 1.04, duration: .20 }, .15);
-    addTween(cameraWorld, { scale: 1.14, duration: .25 }, .35);
-    addTween(cameraWorld, { scale: 1.26, duration: .20 }, .60);
-    addTween(cameraWorld, { scale: 1.36, duration: .20 }, .80);
-
-    // HERO INNER CONTAINER FADE-OUT (Passes view seamlessly to Scene 02 underneath)
-    addTween(heroInner, { opacity: 1.00, duration: .60 }, 0);
-    addTween(heroInner, { opacity: 0.50, duration: .20 }, .60);
-    addTween(heroInner, { opacity: 0.00, duration: .20 }, .80);
-
-    // CENTRAL DEPTH CORRIDOR / DARK TUNNEL
-    addTween(depthTunnel, { opacity: 0.00, duration: .15 }, 0);
-    addTween(depthTunnel, { opacity: 0.15, duration: .20 }, .15);
-    addTween(depthTunnel, { opacity: 0.70, duration: .25 }, .35);
-    addTween(depthTunnel, { opacity: 0.95, duration: .15 }, .60);
-    addTween(depthTunnel, { opacity: 0.00, duration: .25 }, .75);
-
-    // PORTRAIT ANCHOR
-    addTween(portrait, { scale: 1.00, yPercent: 0, duration: .15 }, 0);
-    addTween(portrait, { scale: 1.02, yPercent: 0.6, duration: .20 }, .15);
-    addTween(portrait, { scale: 1.05, yPercent: 1.5, opacity: 0.90, duration: .25 }, .35);
-    addTween(portrait, { scale: 1.08, yPercent: 2.5, opacity: 0.30, duration: .20 }, .60);
-    addTween(portrait, { scale: 1.10, yPercent: 3.2, opacity: 0.00, duration: .20 }, .80);
-
-    // TOP META BLOCK (Name & Kicker)
-    addTween(topBlock, { yPercent: 0, opacity: 1.0, duration: .15 }, 0);
-    addTween(topBlock, { yPercent: -8, opacity: 0.95, duration: .20 }, .15);
-    addTween(topBlock, { yPercent: -35, opacity: 0.50, duration: .25 }, .35);
-    addTween(topBlock, { yPercent: -80, opacity: 0.10, duration: .20 }, .60);
-    addTween(topBlock, { yPercent: -110, opacity: 0, duration: .20 }, .80);
-
-    // UPPER GROUP (DOOR 1: OPENS UPWARD ON SCROLL)
-    addTween(upperGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
-    addTween(upperGroup, { yPercent: -20, scale: 1.02, duration: .20 }, .15);
-    addTween(upperGroup, { yPercent: -75, scale: 1.06, duration: .25 }, .35);
-    addTween(upperGroup, { yPercent: -135, scale: 1.10, opacity: 0.25, duration: .20 }, .60);
-    addTween(upperGroup, { yPercent: -175, scale: 1.14, opacity: 0, duration: .20 }, .80);
-
-    // LOWER GROUP (DOOR 2: OPENS DOWNWARD ON SCROLL)
-    addTween(lowerGroup, { yPercent: 0, scale: 1.00, duration: .15 }, 0);
-    addTween(lowerGroup, { yPercent: 18, scale: 1.015, duration: .20 }, .15);
-    addTween(lowerGroup, { yPercent: 68, scale: 1.045, duration: .25 }, .35);
-    addTween(lowerGroup, { yPercent: 125, scale: 1.08, opacity: 0.25, duration: .20 }, .60);
-    addTween(lowerGroup, { yPercent: 165, scale: 1.12, opacity: 0, duration: .20 }, .80);
-
-    // Supporting Description
-    addTween(heroFooter, { opacity: 1.00, duration: .15 }, 0);
-    addTween(heroFooter, { opacity: 0.98, duration: .20 }, .15);
-    addTween(heroFooter, { opacity: 0.75, duration: .25 }, .35);
-    addTween(heroFooter, { opacity: 0.15, duration: .20 }, .60);
-    addTween(heroFooter, { opacity: 0.00, duration: .20 }, .80);
-
-    // SCENE 02: EMERGES SEAMLESSLY FROM DEPTH DURING THE HERO PASS-THROUGH
-    if (careerInner) {
-      addTween(careerInner, { opacity: 0.00, scale: 0.94, y: 28, duration: .55 }, 0);
-      addTween(careerInner, { opacity: 0.75, scale: 0.97, y: 10, duration: .25 }, .55);
-      addTween(careerInner, { opacity: 1.00, scale: 1.00, y: 0, duration: .20 }, .80);
-    }
-
-    root.dataset.gsapHero = 'true';
-    heroUsesGsap = true;
-
-    // =========================================================================
-    // SCENE 02 — KARİYER YOLCULUĞUM: DYNAMIC 10-STEP DEPTH STACK CONTROLLER
-    // =========================================================================
-    if (careerSection) {
-      const cards = Array.from(careerSection.querySelectorAll('.mpp-career-card'));
-      const nodes = Array.from(careerSection.querySelectorAll('.mpp-career-node'));
+      const cards = Array.from(stage.querySelectorAll('.mpp-career-card'));
+      const nodes = Array.from(stage.querySelectorAll('.mpp-career-node'));
       const numCards = cards.length;
 
-      const updateCardStack = (progress) => {
-        const activeFloat = progress * (numCards - 1);
+      // Initial states
+      motionGsap.set(scene01Layer, { opacity: 1, visibility: 'visible' });
+      motionGsap.set(scene02Layer, { opacity: 0, scale: 0.90, pointerEvents: 'none' });
+
+      const updateCardStack = (careerProgress) => {
+        const activeFloat = careerProgress * (numCards - 1);
         const activeIdx = Math.min(numCards - 1, Math.max(0, Math.round(activeFloat)));
 
         cards.forEach((card, i) => {
@@ -5768,7 +5695,7 @@ let current  = 0;
             // Next card (previews from below and approaches)
             y = delta * 135;
             scale = Math.max(0.78, 1.0 - delta * 0.12);
-            opacity = Math.max(0, 1.0 - delta * 0.72);
+            opacity = Math.max(0, 1.0 - delta * 0.70);
             zIndex = Math.round(10 - delta * 2);
           }
 
@@ -5795,23 +5722,129 @@ let current  = 0;
         });
       };
 
-      updateCardStack(0);
+      const updateStageChoreography = (progress) => {
+        const transThreshold = 0.22; // First 22% of total scroll distance is the cinematic hero corridor pass
+
+        if (progress <= transThreshold) {
+          // =====================================================================
+          // PHASE 1: HERO CORRIDOR TRANSITION (Viewport STAYS 100% PINNED & STATIC)
+          // =====================================================================
+          const tp = progress / transThreshold; // 0.0 -> 1.0 within phase 1
+
+          // 1. Camera World Forward Dolly (Scale 1.00 -> 1.35)
+          let camScale = 1.0;
+          if (tp > 0.15) {
+            const cp = (tp - 0.15) / 0.85;
+            camScale = 1.0 + cp * 0.35;
+          }
+          cameraWorld.style.transform = `scale(${camScale.toFixed(3)})`;
+
+          // 2. Upper Group (Doors UP: 0 -> -175%)
+          let upY = 0;
+          let upOp = 1.0;
+          if (tp > 0.15) {
+            const p = (tp - 0.15) / 0.65;
+            upY = Math.min(1.0, p) * -175;
+            upOp = Math.max(0, 1.0 - p * 1.2);
+          }
+          upperGroup.style.transform = `translate3d(0, ${upY.toFixed(1)}%, 0)`;
+          upperGroup.style.opacity = upOp.toFixed(3);
+
+          // 3. Lower Group (Doors DOWN: 0 -> +165%)
+          let lowY = 0;
+          let lowOp = 1.0;
+          if (tp > 0.15) {
+            const p = (tp - 0.15) / 0.65;
+            lowY = Math.min(1.0, p) * 165;
+            lowOp = Math.max(0, 1.0 - p * 1.2);
+          }
+          lowerGroup.style.transform = `translate3d(0, ${lowY.toFixed(1)}%, 0)`;
+          lowerGroup.style.opacity = lowOp.toFixed(3);
+
+          // 4. Top Block (Name & Kicker: 0 -> -110%)
+          let topY = 0;
+          let topOp = 1.0;
+          if (tp > 0.15) {
+            const p = (tp - 0.15) / 0.60;
+            topY = Math.min(1.0, p) * -110;
+            topOp = Math.max(0, 1.0 - p * 1.2);
+          }
+          topBlock.style.transform = `translate3d(0, ${topY.toFixed(1)}%, 0)`;
+          topBlock.style.opacity = topOp.toFixed(3);
+
+          // 5. Supporting Footer & Portrait
+          if (heroFooter) heroFooter.style.opacity = Math.max(0, 1.0 - (tp > 0.15 ? (tp - 0.15) / 0.50 : 0)).toFixed(3);
+          if (portrait) portrait.style.opacity = Math.max(0, 1.0 - (tp > 0.35 ? (tp - 0.35) / 0.45 : 0)).toFixed(3);
+
+          // 6. Central Depth Corridor / Darkness Tunnel (Peaks around tp 0.55 -> 0.75)
+          let darkOp = 0;
+          if (tp > 0.15 && tp < 0.90) {
+            const dp = (tp - 0.15) / 0.75;
+            darkOp = Math.sin(dp * Math.PI) * 0.96;
+          }
+          depthTunnel.style.opacity = darkOp.toFixed(3);
+
+          // 7. Scene 01 Layer Opacity & Visibility
+          const s1Op = Math.max(0, 1.0 - (tp > 0.65 ? (tp - 0.65) / 0.30 : 0));
+          scene01Layer.style.opacity = s1Op.toFixed(3);
+          scene01Layer.style.visibility = s1Op > 0.01 ? 'visible' : 'hidden';
+          scene01Layer.style.pointerEvents = s1Op > 0.20 ? 'auto' : 'none';
+
+          // 8. Scene 02 Layer Emergence From Depth (Starts during darkness at tp 0.45 -> 1.00)
+          let s2Op = 0;
+          let s2Scale = 0.90;
+          if (tp > 0.45) {
+            const p = (tp - 0.45) / 0.55;
+            s2Op = Math.min(1.0, p);
+            s2Scale = 0.90 + p * 0.10;
+          }
+          scene02Layer.style.opacity = s2Op.toFixed(3);
+          scene02Layer.style.transform = `scale(${s2Scale.toFixed(3)})`;
+          scene02Layer.style.visibility = s2Op > 0.01 ? 'visible' : 'hidden';
+          scene02Layer.style.pointerEvents = s2Op > 0.80 ? 'auto' : 'none';
+
+          // Career stack remains at step 0 (Card 01 Active) during phase 1
+          updateCardStack(0);
+
+        } else {
+          // =====================================================================
+          // PHASE 2: SCENE 02 CAREER STACK 10-STEP DEPTH PROGRESSION
+          // =====================================================================
+          // Hero is completely hidden
+          scene01Layer.style.opacity = '0';
+          scene01Layer.style.visibility = 'hidden';
+          scene01Layer.style.pointerEvents = 'none';
+
+          // Scene 02 is fully active and centered
+          scene02Layer.style.opacity = '1';
+          scene02Layer.style.transform = 'scale(1)';
+          scene02Layer.style.visibility = 'visible';
+          scene02Layer.style.pointerEvents = 'auto';
+
+          const careerP = (progress - transThreshold) / (1.0 - transThreshold); // 0.0 -> 1.0
+          updateCardStack(careerP);
+        }
+      };
+
+      updateStageChoreography(0);
 
       motionGsap.timeline({
         scrollTrigger: {
-          trigger: careerSection,
+          trigger: stage,
           start: 'top top',
           end: 'bottom bottom',
           scrub: 1.15,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            updateCardStack(self.progress);
+            updateStageChoreography(self.progress);
           }
         }
       });
-    }
 
-    window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
+      root.dataset.gsapHero = 'true';
+      heroUsesGsap = true;
+      window.addEventListener('load', () => window.ScrollTrigger.refresh(), { once: true });
+    }
   }
 
   const updateProgressRail = (viewport) => {
