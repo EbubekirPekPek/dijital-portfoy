@@ -3769,26 +3769,35 @@ html, body, .deck {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color .3s, box-shadow .3s, background .3s;
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
   .mpp-node-icon {
+    display: block;
     font-style: normal;
     font-family: 'DM Sans', sans-serif;
     font-size: .55rem;
     font-weight: 700;
     color: rgba(224, 90, 30, 0.6);
     line-height: 1;
+    pointer-events: none;
   }
   .mpp-node-dot {
-    display: block;
+    display: none;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #e05a1e;
+    pointer-events: none;
   }
   .mpp-career-node.is-active .mpp-node-ring {
     border-color: #e05a1e;
     box-shadow: 0 0 12px rgba(224, 90, 30, 0.7);
+  }
+  .mpp-career-node.is-active .mpp-node-icon {
+    display: none;
+  }
+  .mpp-career-node.is-active .mpp-node-dot {
+    display: block;
   }
   .mpp-node-arm {
     position: absolute;
@@ -3799,7 +3808,7 @@ html, body, .deck {
     background: #e05a1e;
     opacity: 0;
     transform: translateY(-50%);
-    transition: opacity .3s;
+    transition: opacity .2s ease;
   }
   .mpp-career-node.is-active .mpp-node-arm {
     opacity: 1;
@@ -3828,14 +3837,26 @@ html, body, .deck {
     display: flex;
     gap: 0.95rem;
     align-items: stretch;
-    will-change: transform, opacity, border-color, box-shadow;
+    will-change: transform, opacity;
     backface-visibility: hidden;
     transform-origin: center center;
-    transition: border-color .3s, box-shadow .3s;
+    contain: layout style;
   }
-  .mpp-career-card.is-active {
-    border-color: rgba(224, 90, 30, 0.85);
+  /* Composited Active Glow & Orange Border */
+  .mpp-career-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    border: 1px solid rgba(224, 90, 30, 0.85);
     box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.9), 0 0 26px rgba(224, 90, 30, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    will-change: opacity;
+  }
+  .mpp-career-card.is-active::before {
+    opacity: 1;
   }
   .mpp-card-num-col {
     display: flex;
@@ -3899,36 +3920,6 @@ html, body, .deck {
     background: rgba(224, 90, 30, 0.28);
   }
       @keyframes mppLogoFloatA {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    38% {
-      transform: translate3d(0.8px, -2.8px, 0) scale(1.004);
-    }
-    72% {
-      transform: translate3d(-0.6px, 1.2px, 0) scale(0.998);
-    }
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-  }
-
-  @keyframes mppLogoFloatB {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    34% {
-      transform: translate3d(-1.0px, -2.2px, 0) scale(1.003);
-    }
-    68% {
-      transform: translate3d(0.7px, 1.4px, 0) scale(0.997);
-    }
-    100% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-  }
-
-    @keyframes mppLogoFloatA {
     0% {
       transform: translate3d(0, 0, 0) scale(1);
     }
@@ -5232,46 +5223,47 @@ html, body, .deck {
               <div class="mpp-career-axis" aria-hidden="true">
                 <div class="mpp-career-axis-line"></div>
                 <div class="mpp-career-nodes">
-              <div class="mpp-career-node mpp-career-node--0 is-active" data-node-index="0">
-                <span class="mpp-node-ring"><i class="mpp-node-dot"></i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--1" data-node-index="1">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--2" data-node-index="2">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--3" data-node-index="3">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--4" data-node-index="4">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--5" data-node-index="5">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--6" data-node-index="6">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--7" data-node-index="7">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--8" data-node-index="8">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
-              <div class="mpp-career-node mpp-career-node--9" data-node-index="9">
-                <span class="mpp-node-ring"><i class="mpp-node-icon">+</i></span>
-                <span class="mpp-node-arm"></span>
-              </div>
+                  <div class="mpp-career-node mpp-career-node--0 is-active" data-node-index="0">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--1" data-node-index="1">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--2" data-node-index="2">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--3" data-node-index="3">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--4" data-node-index="4">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--5" data-node-index="5">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--6" data-node-index="6">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--7" data-node-index="7">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--8" data-node-index="8">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                  <div class="mpp-career-node mpp-career-node--9" data-node-index="9">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+                </div>
                 </div>
               </div>
 
@@ -5705,53 +5697,86 @@ let current  = 0;
       motionGsap.set(scene01Layer, { opacity: 1, visibility: 'visible' });
       motionGsap.set(scene02Layer, { opacity: 0, scale: 0.90, pointerEvents: 'none' });
 
+      // High-performance Active Window Card Stack Pipeline
+      const cardStates = cards.map(() => ({ visible: true, isActive: false }));
+      let lastActiveIdx = -1;
+
       const updateCardStack = (careerProgress) => {
         const activeFloat = careerProgress * (numCards - 1);
         const activeIdx = Math.min(numCards - 1, Math.max(0, Math.round(activeFloat)));
 
-        cards.forEach((card, i) => {
+        // 1. Efficient Node state update (zero innerHTML mutations)
+        if (activeIdx !== lastActiveIdx) {
+          if (lastActiveIdx >= 0 && lastActiveIdx < numCards) {
+            nodes[lastActiveIdx].classList.remove('is-active');
+          }
+          nodes[activeIdx].classList.add('is-active');
+          lastActiveIdx = activeIdx;
+        }
+
+        // 2. Active Window Depth Pipeline: only active, previous, next and immediate neighbors
+        for (let i = 0; i < numCards; i++) {
           const delta = i - activeFloat;
+          const absDelta = Math.abs(delta);
+          const card = cards[i];
+          const st = cardStates[i];
+
+          // Culling for far cards (|delta| > 2.3)
+          if (absDelta > 2.3) {
+            if (st.visible) {
+              card.style.transform = delta < 0 
+                ? 'translate3d(0, -320px, 0) scale(0.75)' 
+                : 'translate3d(0, 340px, 0) scale(0.75)';
+              card.style.opacity = '0';
+              card.style.visibility = 'hidden';
+              if (st.isActive) {
+                card.classList.remove('is-active');
+                st.isActive = false;
+              }
+              st.visible = false;
+            }
+            continue;
+          }
+
+          // Active & Nearby cards computation
           let y = 0;
           let scale = 1.0;
           let opacity = 1.0;
           let zIndex = 1;
-          let isActive = Math.abs(delta) < 0.40;
+          const isActive = absDelta < 0.40;
 
           if (delta <= 0) {
-            // Active or Previous card (moves up and recedes)
+            // Active or Previous card
             y = delta * 122;
             scale = Math.max(0.78, 1.0 + delta * 0.12);
             opacity = Math.max(0, 1.0 + delta * 0.70);
             zIndex = Math.round(10 + delta * 2);
           } else {
-            // Next card (previews from below and approaches)
+            // Next card
             y = delta * 135;
             scale = Math.max(0.78, 1.0 - delta * 0.12);
             opacity = Math.max(0, 1.0 - delta * 0.70);
             zIndex = Math.round(10 - delta * 2);
           }
 
+          if (!st.visible) {
+            card.style.visibility = 'visible';
+            st.visible = true;
+          }
+
           card.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
           card.style.opacity = Math.min(1, Math.max(0, opacity)).toFixed(3);
           card.style.zIndex = Math.max(1, zIndex);
-          
-          if (isActive) {
-            card.classList.add('is-active');
-          } else {
-            card.classList.remove('is-active');
-          }
-        });
 
-        nodes.forEach((node, i) => {
-          const ring = node.querySelector('.mpp-node-ring');
-          if (i === activeIdx) {
-            node.classList.add('is-active');
-            if (ring) ring.innerHTML = '<i class="mpp-node-dot"></i>';
-          } else {
-            node.classList.remove('is-active');
-            if (ring) ring.innerHTML = '<i class="mpp-node-icon">+</i>';
+          if (isActive !== st.isActive) {
+            if (isActive) {
+              card.classList.add('is-active');
+            } else {
+              card.classList.remove('is-active');
+            }
+            st.isActive = isActive;
           }
-        });
+        }
       };
 
       const updateStageChoreography = (progress) => {
@@ -5865,7 +5890,7 @@ let current  = 0;
           trigger: stage,
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 1.15,
+          scrub: 0.65,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             updateStageChoreography(self.progress);
