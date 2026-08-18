@@ -3928,6 +3928,36 @@ html, body, .deck {
     }
   }
 
+    @keyframes mppLogoFloatA {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    38% {
+      transform: translate3d(0.8px, -2.8px, 0) scale(1.004);
+    }
+    72% {
+      transform: translate3d(-0.6px, 1.2px, 0) scale(0.998);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
+  @keyframes mppLogoFloatB {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    34% {
+      transform: translate3d(-1.0px, -2.2px, 0) scale(1.003);
+    }
+    68% {
+      transform: translate3d(0.7px, 1.4px, 0) scale(0.997);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+
   .mpp-card-logos {
     display: flex;
     align-items: center;
@@ -3948,6 +3978,14 @@ html, body, .deck {
     filter: grayscale(0.25);
     will-change: transform;
     animation: none;
+  }
+  .mpp-brand-img--shopify {
+    height: 22px;
+    max-width: 26px;
+  }
+  .mpp-brand-img--tnc {
+    height: 19px;
+    max-width: 95px;
   }
   .mpp-brand-img--ariko {
     height: 26px;
@@ -5320,7 +5358,7 @@ html, body, .deck {
                 <div class="mpp-card-logos">
                   <img src="assets/logos/meta.webp" alt="Meta" class="mpp-brand-img" height="20" width="80">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <img src="assets/logos/shopify.svg" alt="Shopify" class="mpp-brand-img" height="20" width="76">
+                    <img src="assets/logos/shopify.webp" alt="Shopify" class="mpp-brand-img mpp-brand-img--shopify" height="22" width="20">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
                     <span class="mpp-evidence-tag">Vanilora</span>
                 </div>
@@ -5403,7 +5441,7 @@ html, body, .deck {
                 <p class="mpp-card-desc">Uzaktan 1 aylık yoğun staj programı — B2B satış stratejileri, müşteri ilişkileri yönetimi ve pazarlama operasyonlarında pratik deneyim.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/tnc.svg" alt="TNC Group" class="mpp-brand-img" height="22" width="105">
+                  <img src="assets/logos/tnc.webp" alt="TNC Group" class="mpp-brand-img mpp-brand-img--tnc" height="19" width="86">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
                     <span class="mpp-evidence-tag">B2B Satış</span>
                 </div>
