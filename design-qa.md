@@ -1,42 +1,41 @@
-# Design QA
+# Design QA — Trendyol mobile cover
 
-## Evidence
+## Source and implementation
 
-- Reference: `C:\Users\ebube\Downloads\ChatGPT Image 15 Ağu 2026 13_58_38.png`
-- Prototype captures: `design-qa-mobile-v6-top.png`, `design-qa-mobile-v6-case.png`
-- Viewport: 393 × 852 CSS pixels
+- Source visual truth: `C:\Users\ebube\Downloads\ChatGPT Image 22 Ağu 2026 16_16_57.png` (941 × 1672 px).
+- Secondary mood references: `C:\Users\ebube\Downloads\ChatGPT Image 22 Ağu 2026 16_19_14.png` and `C:\Users\ebube\Downloads\ChatGPT Image 22 Ağu 2026 16_19_07.png` (941 × 1672 px each).
+- Implementation screenshot: `C:\Users\ebube\Documents\Codex\2026-08-22\proje-devi-r-notu-di-ji\outputs\trendyol-cover-final-390x844.png` (375 × 812 px capture, 390 × 844 CSS viewport).
+- Comparison composite: `C:\Users\ebube\Documents\Codex\2026-08-22\proje-devi-r-notu-di-ji\outputs\trendyol-design-qa-comparison-final.png`.
+- Density normalization: source was resized to 812 px high for the full-view comparison; implementation was captured at device scale 1 from the 390 × 844 CSS viewport. The browser capture excludes the 15 px scrollbar content width and 32 px browser surface height, so the rendered capture is 375 × 812 px.
+- State: settled mobile Trendyol Page 1 cover, pinned at the cover reading position after the initial reveal; no downstream beat is active over the cover.
 
 ## Comparison
 
-- Preserved the reference direction: near-black editorial canvas, hot-orange accent system, green positive KPI treatment, compact uppercase labels, and a continuous vertical story.
-- Adapted the reference's phone presentation to the existing portfolio product by using the verified portrait and case-study logo assets already present in the project. This keeps the mobile view a real scrollable page instead of a static mockup.
-- Expanded the sequence to nine data-rich beats: Hero, Kimim/Kariyer, Trendyol, Hepsiburada, Shopify, Meta Ads, Konsolide Özet, Yetkinlikler, and İletişim / CTA.
-- Restored desktop-backed values: 10 career milestones, 6 Trendyol KPIs, 6 Hepsiburada KPIs, 6 Shopify KPIs, 8 Meta Ads KPIs, 6 consolidated KPIs, 12 certificates, and all 29 tools listed by the desktop source (including TradingView, Facebook, and TikTok).
-- Replaced the prior placeholder KPI treatment with the existing portfolio data and period/source labels.
-- Added a relationship infographic (performance → strategy → growth → e-commerce), Trendyol/Hepsiburada data-flow scenes, a Shopify before/after scene, Meta account fan cards, active-channel map, and the source disclaimer.
-- Added sticky case-study stages, beat-based reveals, line-by-line hero typography, active timeline states, KPI count-up/zoom, data bars, image parallax, a persistent section progress rail, and a self-contained reduced-motion/performance-safe scrub controller.
-- Reworked the desktop career timeline into a circular 3D wheel: the active milestone sits in the foreground, adjacent milestones orbit above/below with depth blur, and the gold ring rotates as the wheel advances.
-- Reworked mobile scrolling so `html/body` and the mobile root no longer create an intermediate `auto` scroll context; sticky stages now pin to the viewport in both directions.
-- Replaced threshold-only case beat activation with a viewport reading-line sync, preventing fast swipes and upward reversals from leaving the last beat active or skipping state updates.
-- Increased case beat dwell to `62svh` and clipped the case glow/media overflow; measured document, body, root, and case widths now match the 393px viewport content width.
+- Full view: black/charcoal poster field, orange technical grid, directional warm glow, right-edge luminous arc, editorial title stack, KPI card, three evidence blocks, and footer rhythm all match the supplied direction.
+- Focused regions: title/lede, KPI logo + `₺786K` card, evidence row, and arc edge were checked against the source composite. The verified cover data is limited to `₺786K` total gross revenue and `6 dönem toplam`; no invented percentage, chart, order count, or secondary KPI appears in the cover.
+- Real asset fidelity: the existing `assets/logos/trendyol.webp` asset is used directly. No reference screenshot is pasted into the page and no fake brand mark is generated.
 
-## Functional checks
+## Findings
 
-- `#mpp-hero` CTA anchors to `#mpp-trendyol`.
-- Contact links expose the existing phone, email, web, location, LinkedIn, and Instagram destinations.
-- Existing desktop deck remains active at the default viewport; `#mobile-portfolio` is hidden above 768px.
-- At 393px width, the page becomes vertically scrollable (`body.scrollHeight` 14892px after the data-scene additions), all five mobile image targets receive source images, and no horizontal overflow is introduced (`body`, `html`, mobile root, and case widths all 378px content width).
-- Responsive matrix passed at 320, 360, 375, 390, 414, and 430px: 9 sections, 29 tools, matching document/client widths, and zero horizontal overflow at every width.
-- Sticky case stages were verified inside each active section range; the mobile root remains visible/clip-safe without creating a competing scroll container.
-- Trendyol beat order was verified down and back up: `01 → 02 → 03 → 04` and `04 → 03 → 02 → 01`, with the stage pinned at `top: 0` while its section is active.
-- Motion no longer depends on a third-party runtime bundle; scroll parallax runs through a passive scroll listener and a single `requestAnimationFrame` loop.
-- Reduced-motion mode passed with `?motion=reduce`: all hero lines/scenes are visible, transforms and beat transitions are disabled, and vertical scrolling remains intact.
-- Desktop regression passed at 1280 × 720: original deck active (`s1`), `#mobile-portfolio` hidden, 18 desktop images present, 1280 × 720 deck geometry, and body overflow remains hidden.
-- Desktop career timeline now consumes one wheel gesture per milestone: after the automatic first item, downward gestures advance `01 → 02 → 03`, rapid wheel bursts are debounced, and upward gestures step back one item without jumping.
-- Desktop wheel motion passed at 1280 × 720: downward sequence `01 → 02 → 03 → 04`, upward reversal `04 → 03`, container overflow remains clipped, and no console warnings/errors were emitted.
-- Regression root causes fixed: `overflow:auto` on `html/body` was creating an intermediate scroll context, the mobile root had competing overflow behavior, and threshold-only beat observers could leave stale active content during fast/upward scroll.
-- Browser console check returned no warnings or errors during the mobile and desktop passes.
+- No actionable P0, P1, or P2 findings remain.
+- P3 follow-up only: the reference uses pictograms in the three evidence cards; the implementation uses restrained numbered evidence markers to keep the cover data-led without introducing substitute icon artwork.
 
-## Result
+## Comparison history
+
+1. Initial local comparison identified a smaller-than-reference title scale and an arc that entered too centrally. The title was switched to a taller condensed treatment, the vertical rhythm was expanded, and the arc was moved to the right edge.
+2. The enlarged pass exposed a 390 px right-edge title overflow. Font scale was reduced one step while preserving the condensed tracking.
+3. Final 390 × 844 capture above was rechecked together with the source composite; title, KPI, evidence row, and footer remain inside the viewport with no horizontal overflow.
+
+## Functional and regression checks
+
+- Responsive cover matrix passed at 375 × 812, 390 × 844, and 430 × 932 CSS viewports. Each settled stage fills the viewport, title scroll width equals its client width, all cover blocks stay inside the viewport, and the logo reports a non-zero natural width.
+- Trendyol cover data check passed: required copy is present; the cover contains `₺786K`, `6 DÖNEM`, `VERİ ODAKLI OKUMA`, and `GRAFİK GÖRÜNÜRLÜĞÜ`, with no unverified secondary KPI or percentage.
+- Trendyol motion matrix passed at 0/25/50/75/100% section progress; beat activation advanced through `01 → 02 → 03 → 04` and the stage pinned at `top: 0` until the section handoff.
+- Reverse scroll restored the cover and the first beat state.
+- Hero initial, corridor transition, Career stage, all 12 career cards, and reverse scroll were rechecked after the cover change; no regression observed.
+- Desktop regression passed at 1280 × 900: the existing desktop deck remains visible, `#mobile-portfolio` remains hidden, and document/client widths match.
+- Browser console returned zero errors and zero warnings in the final local pass. The known out-of-scope certificate 404 was not modified.
+
+## Final result
 
 final result: passed
