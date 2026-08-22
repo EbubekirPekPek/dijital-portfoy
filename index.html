@@ -4249,10 +4249,8 @@ html, body, .deck {
     display: grid;
     gap: 0;
     max-width: none;
-    font: 400 clamp(4.85rem, 26vw, 10rem)/.9 'Bebas Neue', 'Barlow Condensed', sans-serif;
-    letter-spacing: -.045em;
-    transform: scaleX(.78);
-    transform-origin: top left;
+    font: 400 clamp(4.35rem, 22.8vw, 8.5rem)/.84 'Bebas Neue', 'Barlow Condensed', sans-serif;
+    letter-spacing: -.035em;
   }
   .mpp-case--ty .mpp-ty-title span { display: block; white-space: nowrap; }
   .mpp-case--ty .mpp-ty-title .mpp-ty-brand { color: #f7f4ee; font-size: .86em; letter-spacing: .015em; }
@@ -4267,12 +4265,12 @@ html, body, .deck {
   .mpp-case--ty .mpp-ty-kpi {
     position: relative;
     display: grid;
-    grid-template-columns: 124px minmax(0, 1fr);
+    grid-template-columns: 104px minmax(0, 1fr);
     align-items: center;
-    gap: .75rem;
-    min-height: 160px;
+    gap: .65rem;
+    min-height: 146px;
     margin: 0;
-    padding: .72rem;
+    padding: .65rem;
     overflow: hidden;
     border: 1px solid rgba(242,122,26,.72);
     border-left-width: 1px;
@@ -4295,8 +4293,8 @@ html, body, .deck {
   .mpp-case--ty .mpp-ty-logo-frame {
     display: grid;
     place-items: center;
-    min-height: 124px;
-    padding: .7rem;
+    min-height: 108px;
+    padding: .55rem;
     border: 1px solid rgba(247,244,238,.38);
     border-radius: .85rem;
     background: rgba(2,4,5,.78);
@@ -4311,33 +4309,33 @@ html, body, .deck {
   .mpp-case--ty .mpp-ty-evidence { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin-top: .95rem; }
   .mpp-case--ty .mpp-ty-evidence > div {
     display: flex;
-    min-height: 126px;
+    min-height: 94px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: .48rem;
-    padding: .6rem .35rem;
+    gap: .3rem;
+    padding: .45rem .25rem;
     border: 1px solid rgba(242,122,26,.43);
     border-radius: .78rem;
     background: linear-gradient(160deg, rgba(4,7,8,.84), rgba(24,15,10,.56));
     text-align: center;
   }
-  .mpp-case--ty .mpp-ty-evidence-index { position: relative; display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid rgba(242,122,26,.9); border-radius: 50%; color: #f27a1a; font: 700 .68rem/1 'DM Sans', sans-serif; letter-spacing: .12em; box-shadow: 0 0 12px rgba(242,122,26,.12); }
-  .mpp-case--ty .mpp-ty-evidence-index::after { content: ''; display: block; position: absolute; left: 50%; top: calc(100% + .62rem); width: 1.7rem; height: 1px; margin: 0; background: #f27a1a; box-shadow: 0 0 8px rgba(242,122,26,.55); transform: translateX(-50%); }
+  .mpp-case--ty .mpp-ty-evidence-index { position: relative; display: grid; place-items: center; width: 1.55rem; height: 1.55rem; border: 1px solid rgba(242,122,26,.68); border-radius: 50%; color: #f27a1a; font: 700 .6rem/1 'DM Sans', sans-serif; letter-spacing: .1em; box-shadow: none; }
+  .mpp-case--ty .mpp-ty-evidence-index::after { content: ''; display: block; position: absolute; left: 50%; top: calc(100% + .18rem); width: 1.2rem; height: 1px; margin: 0; background: rgba(242,122,26,.65); box-shadow: none; transform: translateX(-50%); }
   .mpp-case--ty .mpp-ty-evidence strong { color: rgba(247,244,238,.84); font: 500 .62rem/1.2 'DM Sans', sans-serif; letter-spacing: .08em; text-transform: uppercase; }
   .mpp-case--ty .mpp-ty-footer { display: flex; align-items: center; gap: .46rem; margin-top: auto; padding-top: .72rem; border-top: 1px solid rgba(242,122,26,.4); color: rgba(247,244,238,.56); font-size: .57rem; letter-spacing: .15em; text-transform: uppercase; }
   .mpp-case--ty .mpp-ty-footer::before { content: ''; width: 2.8rem; height: 2px; margin-right: .15rem; background: #f27a1a; box-shadow: 0 0 10px rgba(242,122,26,.55); }
   .mpp-case--ty .mpp-ty-footer i { color: #f27a1a; font-style: normal; }
   .mpp-case--ty .mpp-case-dots { display: none; }
   @media (max-width: 380px) {
-    .mpp-case--ty .mpp-ty-title { font-size: clamp(4.65rem, 25.2vw, 6.1rem); }
+    .mpp-case--ty .mpp-ty-title { font-size: clamp(4.1rem, 22.5vw, 5.7rem); }
     .mpp-case--ty .mpp-ty-lede { max-width: 26ch; font-size: .85rem; }
-    .mpp-case--ty .mpp-ty-kpi { grid-template-columns: 112px minmax(0, 1fr); min-height: 158px; gap: .65rem; padding: .62rem; }
-    .mpp-case--ty .mpp-ty-logo-frame { min-height: 119px; }
+    .mpp-case--ty .mpp-ty-kpi { grid-template-columns: 98px minmax(0, 1fr); min-height: 144px; gap: .55rem; padding: .58rem; }
+    .mpp-case--ty .mpp-ty-logo-frame { min-height: 106px; }
     .mpp-case--ty .mpp-ty-kpi-copy > b { font-size: 2.95rem; }
     .mpp-case--ty .mpp-ty-kpi-copy > small { font-size: .57rem; }
-    .mpp-case--ty .mpp-ty-evidence > div { min-height: 120px; gap: .38rem; padding: .45rem .25rem; }
-    .mpp-case--ty .mpp-ty-evidence-index { width: 1.85rem; height: 1.85rem; }
+    .mpp-case--ty .mpp-ty-evidence > div { min-height: 90px; gap: .28rem; padding: .4rem .2rem; }
+    .mpp-case--ty .mpp-ty-evidence-index { width: 1.45rem; height: 1.45rem; }
     .mpp-case--ty .mpp-ty-evidence strong { font-size: .57rem; }
     .mpp-case--ty .mpp-ty-footer { font-size: .52rem; }
   }
