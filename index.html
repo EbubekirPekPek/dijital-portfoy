@@ -6202,7 +6202,7 @@ let current  = 0;
         const stage = section.querySelector('.mpp-case-stage');
         const media = section.querySelector('.mpp-case-media img');
         const liveKpi = section.querySelector('.mpp-case-live b');
-        if (stage) stage.style.opacity = String(1 - (progress * .08));
+        if (stage) stage.style.opacity = section.classList.contains('mpp-case--ty') ? '1' : String(1 - (progress * .08));
         if (media) media.style.transform = 'translate3d(0, ' + (progress * -10) + 'px, 0) scale(' + (1 + progress * .045) + ')';
         if (liveKpi) {
           const approach = Math.max(0, Math.min(1, (progress - .06) / .42));
