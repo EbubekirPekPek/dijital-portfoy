@@ -4332,7 +4332,7 @@ html, body, .deck {
       z-index: 4 !important;
       inset: 0;
       display: grid;
-      grid-template-rows: auto auto auto auto auto minmax(0, 1fr) auto;
+      grid-template-rows: auto auto auto auto minmax(0, 1fr) auto;
       gap: .48rem;
       padding: 2.05rem .05rem .72rem;
       overflow: clip;
@@ -4353,7 +4353,10 @@ html, body, .deck {
       line-height: 1;
       text-transform: uppercase;
     }
-    .mpp-case--ty .mpp-ty-page2-topline > span { white-space: nowrap; }
+    .mpp-case--ty .mpp-ty-page2 > :not(.mpp-ty-page2-ghost) { position: relative; z-index: 2; }
+    .mpp-case--ty .mpp-ty-page2-topline > span { display: grid; gap: .28rem; white-space: nowrap; }
+    .mpp-case--ty .mpp-ty-page2-topline > span strong { color: rgba(247,244,238,.72); font: inherit; font-weight: 500; }
+    .mpp-case--ty .mpp-ty-page2-topline > span em { color: #f27a1a; font-size: .51rem; font-style: normal; letter-spacing: .12em; }
     .mpp-case--ty .mpp-ty-page2-topline i { color: #f27a1a; font-style: normal; padding: 0 .15rem; }
     .mpp-case--ty .mpp-ty-page2-stamp {
       flex: 0 0 auto;
@@ -4369,12 +4372,12 @@ html, body, .deck {
     .mpp-case--ty .mpp-ty-page2-ghost {
       position: absolute;
       z-index: -1;
-      top: 11.2rem;
-      left: -.78rem;
-      color: rgba(242,122,26,.09);
-      font: 400 7rem/.72 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+      top: 11.5rem;
+      left: -1rem;
+      color: rgba(242,122,26,.055);
+      font: 400 6.4rem/.72 'Big Shoulders Display', 'Bebas Neue', sans-serif;
       letter-spacing: .01em;
-      opacity: .9;
+      opacity: .75;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       user-select: none;
@@ -4408,6 +4411,7 @@ html, body, .deck {
       justify-items: center;
       align-content: center;
       min-height: 7.15rem;
+      padding-top: .45rem;
       text-align: center;
     }
     .mpp-case--ty .mpp-ty-page2-value b {
@@ -4441,7 +4445,7 @@ html, body, .deck {
       overflow: hidden;
       border: 1px solid rgba(242,122,26,.72);
       border-radius: .95rem;
-      background: linear-gradient(108deg, rgba(8,11,12,.96), rgba(28,18,11,.72));
+      background: linear-gradient(108deg, rgba(8,11,12,.985), rgba(28,18,11,.9));
       box-shadow: 0 0 0 1px rgba(242,122,26,.08), 0 0 26px rgba(242,122,26,.13), inset 0 0 26px rgba(255,255,255,.03);
     }
     .mpp-case--ty .mpp-ty-page2-panel::before {
@@ -4485,34 +4489,12 @@ html, body, .deck {
       padding: .46rem .42rem;
       border: 1px solid rgba(242,122,26,.52);
       border-radius: .72rem;
-      background: linear-gradient(155deg, rgba(7,10,11,.93), rgba(27,17,10,.58));
+      background: linear-gradient(155deg, rgba(7,10,11,.98), rgba(27,17,10,.84));
       text-align: center;
     }
     .mpp-case--ty .mpp-ty-page2-module-index { color: #f27a1a; font: 700 .55rem/1 'DM Sans', sans-serif; letter-spacing: .14em; }
     .mpp-case--ty .mpp-ty-page2-module strong { display: block; margin-top: .36rem; color: rgba(247,244,238,.9); font-size: .62rem; line-height: 1.12; letter-spacing: .09em; text-transform: uppercase; }
-    .mpp-case--ty .mpp-ty-page2-module small { display: block; margin-top: .35rem; color: rgba(247,244,238,.52); font-size: .57rem; line-height: 1.25; }
-    .mpp-case--ty .mpp-ty-page2-trajectory {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      align-items: center;
-      min-height: 4rem;
-      padding: .35rem .42rem;
-      overflow: hidden;
-      border: 1px solid rgba(242,122,26,.45);
-      border-radius: .7rem;
-      background: linear-gradient(160deg, rgba(6,9,10,.78), rgba(27,17,10,.36));
-      opacity: .72;
-    }
-    .mpp-case--ty .mpp-ty-page2-trajectory::before {
-      content: '';
-      position: absolute;
-      inset: 30% 0 auto;
-      height: 1px;
-      background: rgba(242,122,26,.14);
-    }
-    .mpp-case--ty .mpp-ty-page2-trajectory svg { position: relative; z-index: 1; display: block; width: 100%; height: 100%; min-height: 3.1rem; }
-    .mpp-case--ty .mpp-ty-page2-trajectory path { fill: none; stroke: rgba(242,122,26,.92); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+    .mpp-case--ty .mpp-ty-page2-module small { display: block; margin-top: .35rem; color: rgba(247,244,238,.62); font-size: .57rem; line-height: 1.25; }
     .mpp-case--ty .mpp-ty-page2-footer {
       position: relative;
       z-index: 1;
@@ -5927,7 +5909,7 @@ html, body, .deck {
         </div>
         <div class="mpp-ty-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
         <div class="mpp-ty-page2" aria-label="Trendyol KPI odağı">
-          <div class="mpp-ty-page2-topline"><span>04 / 09 <i aria-hidden="true">•</i> KPI ODAĞI</span><b class="mpp-ty-page2-stamp">TRENDYOL CASE</b></div>
+          <div class="mpp-ty-page2-topline"><span><strong>03 / 09 <i aria-hidden="true">•</i> CASE STUDY</strong><em>02 <i aria-hidden="true">•</i> KPI ODAĞI</em></span><b class="mpp-ty-page2-stamp">TRENDYOL CASE</b></div>
           <div class="mpp-ty-page2-ghost" aria-hidden="true">KPI ODAĞI</div>
           <div class="mpp-ty-page2-head"><span>Toplam</span><strong>Brüt Ciro</strong></div>
           <div class="mpp-ty-page2-value"><b>₺786K</b><small>6 dönem toplam</small></div>
@@ -5940,9 +5922,6 @@ html, body, .deck {
             <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">02</span><strong>Veri odaklı okuma</strong><small>Karşılaştırmalı mağaza analizi</small></div>
             <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">03</span><strong>Mağaza görünümü</strong><small>Görünürlük ve dağılım perspektifi</small></div>
             <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">04</span><strong>Ciro odağı</strong><small>Ana değerlendirme metriği</small></div>
-          </div>
-          <div class="mpp-ty-page2-trajectory" aria-hidden="true">
-            <svg viewBox="0 0 320 52" preserveAspectRatio="none" focusable="false"><path d="M4 40 C30 34, 48 35, 70 29 S112 26, 138 30 S177 20, 205 23 S252 13, 316 10"></path></svg>
           </div>
           <div class="mpp-ty-page2-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
         </div>
@@ -6155,7 +6134,6 @@ let current  = 0;
     valueText: tyPage2?.querySelector('.mpp-ty-page2-value b'),
     panel: tyPage2?.querySelector('.mpp-ty-page2-panel'),
     modules: tyPage2?.querySelector('.mpp-ty-page2-modules'),
-    trajectory: tyPage2?.querySelector('.mpp-ty-page2-trajectory'),
     footer: tyPage2?.querySelector('.mpp-ty-page2-footer')
   };
   const tyPage1Refs = {
@@ -6463,6 +6441,7 @@ let current  = 0;
         const rect = section.getBoundingClientRect();
         const span = Math.max(rect.height - viewport, 1);
         const progress = Math.max(0, Math.min(1, -rect.top / span));
+        if (section === tyCaseSection && rect.bottom > 0 && rect.top < viewport && progressCurrent) progressCurrent.textContent = '03';
         const stage = section.querySelector('.mpp-case-stage');
         const media = section.querySelector('.mpp-case-media img');
         const liveKpi = section.querySelector('.mpp-case-live b');
@@ -6480,13 +6459,15 @@ let current  = 0;
           const hidePage1 = (element, amount, x = 0, y = 0, scale = 1) => {
             if (!element) return;
             element.style.opacity = String(1 - amount);
+            element.style.visibility = amount >= .995 ? 'hidden' : 'visible';
             element.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
           };
           hidePage1(tyPage1Refs.index, tySegment(progress, .08, .24), 0, -14);
           hidePage1(tyPage1Refs.tag, tySegment(progress, .14, .31), 0, -10);
           hidePage1(tyPage1Refs.title, tySegment(progress, .2, .46), -8, -18, 1 - (tySegment(progress, .2, .46) * .03));
           hidePage1(tyPage1Refs.lede, tySegment(progress, .13, .34), 0, 16);
-          hidePage1(tyPage1Refs.kpi, tySegment(progress, .28, .58), 0, -12, 1 + (tySegment(progress, .28, .58) * .08));
+          const sourceKpiProgress = tySegment(progress, .38, .6);
+          hidePage1(tyPage1Refs.kpi, sourceKpiProgress, 0, -12, 1 + (sourceKpiProgress * .08));
           hidePage1(tyPage1Refs.evidence, tySegment(progress, .22, .44), 0, 16);
           hidePage1(tyPage1Refs.footer, tySegment(progress, .28, .48), 0, 12);
           tyPage2.style.visibility = progress > .18 ? 'visible' : 'hidden';
@@ -6495,20 +6476,27 @@ let current  = 0;
           const setPage2Part = (element, amount, y = 0, scale = 1) => {
             if (!element) return;
             element.style.opacity = String(amount);
+            element.style.visibility = amount <= .005 ? 'hidden' : 'visible';
             element.style.transform = 'translate3d(0, ' + y + 'px, 0) scale(' + scale + ')';
           };
           setPage2Part(tyPage2Refs.top, tySegment(progress, .22, .42), -10);
           setPage2Part(tyPage2Refs.head, tySegment(progress, .28, .52), 18, .96 + (tySegment(progress, .28, .52) * .04));
-          const valueProgress = tySegment(progress, .26, .62);
+          const valueProgress = tySegment(progress, .57, .69);
           setPage2Part(tyPage2Refs.value, valueProgress, 14 - (valueProgress * 14));
           if (tyPage2Refs.valueText) tyPage2Refs.valueText.style.transform = 'translate3d(0, ' + ((1 - valueProgress) * 54) + 'px, 0) scale(' + (.58 + (valueProgress * .42)) + ')';
           setPage2Part(tyPage2Refs.panel, tySegment(progress, .48, .7), 22);
           setPage2Part(tyPage2Refs.modules, tySegment(progress, .58, .8), 20);
-          setPage2Part(tyPage2Refs.trajectory, tySegment(progress, .64, .82), 14);
           setPage2Part(tyPage2Refs.footer, tySegment(progress, .72, .86), 10);
           if (page2Final > 0) {
             tyPage2.style.opacity = '1';
             tyPage2.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            setPage2Part(tyPage2Refs.top, 1, 0);
+            setPage2Part(tyPage2Refs.head, 1, 0, 1);
+            setPage2Part(tyPage2Refs.value, 1, 0, 1);
+            setPage2Part(tyPage2Refs.panel, 1, 0, 1);
+            setPage2Part(tyPage2Refs.modules, 1, 0, 1);
+            setPage2Part(tyPage2Refs.footer, 1, 0, 1);
+            if (tyPage2Refs.valueText) tyPage2Refs.valueText.style.transform = 'none';
           }
         }
         const activeBeat = section.querySelector('.mpp-beat.is-active');
