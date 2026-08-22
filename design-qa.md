@@ -39,3 +39,17 @@
 ## Final result
 
 final result: passed
+
+## Static cover refinement — 2026-08-22
+
+- Source visual truth: `C:\Users\ebube\Downloads\ChatGPT Image 22 Ağu 2026 18_23_05.png` (941 × 1672 px).
+- Implementation screenshot: `C:\Users\ebube\Documents\Codex\2026-08-22\proje-devi-r-notu-di-ji\outputs\trendyol-static-refine-local-390x844.png` (375 × 812 px capture, 390 × 844 CSS viewport).
+- Comparison composite: `C:\Users\ebube\Documents\Codex\2026-08-22\proje-devi-r-notu-di-ji\outputs\trendyol-static-cover-qa-comparison.png`.
+- State: settled mobile Trendyol static cover, cover stage pinned at the top; no downstream beat interaction was exercised in this quick QA.
+- Fidelity surfaces checked: condensed title hierarchy and wrapping, right-edge arc placement, charcoal/orange tokens, KPI card proportions, real Trendyol logo asset, warm-ivory `₺786K`, evidence-card spacing, and required copy.
+- Responsive evidence: 375 × 812, 390 × 844, and 430 × 932 all had zero horizontal overflow and all cover blocks inside the viewport; logo loaded and verified KPI copy remained present.
+- Regression smoke: Hero visible, Career visible with 12 cards and active card 01; local console errors 0.
+- Scope evidence: current diff contains only `index.html` Trendyol cover CSS plus this QA record; no GSAP, scroll-timeline, Hero, Career, or Page 2+ source changes.
+- P3 follow-up only: source pictograms remain represented by restrained numbered markers because no matching local icon asset exists; no P0/P1/P2 issue remains.
+
+final result: passed
