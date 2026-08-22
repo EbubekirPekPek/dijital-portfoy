@@ -4327,7 +4327,224 @@ html, body, .deck {
   .mpp-case--ty .mpp-ty-footer::before { content: ''; width: 2.8rem; height: 2px; margin-right: .15rem; background: #f27a1a; box-shadow: 0 0 10px rgba(242,122,26,.55); }
   .mpp-case--ty .mpp-ty-footer i { color: #f27a1a; font-style: normal; }
   .mpp-case--ty .mpp-case-dots { display: none; }
+    .mpp-case--ty .mpp-ty-page2 {
+      position: absolute !important;
+      z-index: 4 !important;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto auto auto auto auto minmax(0, 1fr) auto;
+      gap: .48rem;
+      padding: 2.05rem .05rem .72rem;
+      overflow: clip;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(0, 1.1rem, 0) scale(.985);
+      transform-origin: center;
+      pointer-events: none;
+    }
+    .mpp-case--ty .mpp-ty-page2-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      color: rgba(247,244,238,.72);
+      font-size: .58rem;
+      letter-spacing: .15em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .mpp-case--ty .mpp-ty-page2-topline > span { white-space: nowrap; }
+    .mpp-case--ty .mpp-ty-page2-topline i { color: #f27a1a; font-style: normal; padding: 0 .15rem; }
+    .mpp-case--ty .mpp-ty-page2-stamp {
+      flex: 0 0 auto;
+      padding: .48rem .58rem .43rem;
+      border: 1px solid rgba(242,122,26,.82);
+      border-radius: .45rem;
+      color: #f27a1a;
+      font-size: .53rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      white-space: nowrap;
+    }
+    .mpp-case--ty .mpp-ty-page2-ghost {
+      position: absolute;
+      z-index: -1;
+      top: 11.2rem;
+      left: -.78rem;
+      color: rgba(242,122,26,.09);
+      font: 400 7rem/.72 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+      letter-spacing: .01em;
+      opacity: .9;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      user-select: none;
+    }
+    .mpp-case--ty .mpp-ty-page2-head {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      gap: .05rem;
+      min-height: 5.3rem;
+      padding-top: .35rem;
+      text-align: center;
+    }
+    .mpp-case--ty .mpp-ty-page2-head span,
+    .mpp-case--ty .mpp-ty-page2-head strong {
+      display: block;
+      font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      letter-spacing: -.015em;
+      line-height: .78;
+      text-transform: uppercase;
+    }
+    .mpp-case--ty .mpp-ty-page2-head span { color: #f7f4ee; font-size: clamp(3.05rem, 15.8vw, 4.5rem); }
+    .mpp-case--ty .mpp-ty-page2-head strong { color: #f27a1a; font-size: clamp(3.15rem, 16.2vw, 4.65rem); }
+    .mpp-case--ty .mpp-ty-page2-value {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      min-height: 7.15rem;
+      text-align: center;
+    }
+    .mpp-case--ty .mpp-ty-page2-value b {
+      color: #f8eddc;
+      background: linear-gradient(180deg, #fffdf7 0%, #f6e7d0 58%, #c28e54 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font: 900 clamp(5.25rem, 26.3vw, 8rem)/.78 'Big Shoulders Display', 'Bebas Neue', 'Barlow Condensed', sans-serif;
+      letter-spacing: -.045em;
+      text-shadow: 0 1px 0 rgba(255,255,255,.2), 0 12px 22px rgba(242,122,26,.16);
+      white-space: nowrap;
+      transform: translate3d(0, 3.4rem, 0) scale(.58);
+      transform-origin: center bottom;
+    }
+    .mpp-case--ty .mpp-ty-page2-value small {
+      margin-top: .32rem;
+      color: rgba(247,244,238,.58);
+      font-size: .78rem;
+      letter-spacing: .08em;
+    }
+    .mpp-case--ty .mpp-ty-page2-panel {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      align-items: center;
+      gap: .78rem;
+      min-height: 6.65rem;
+      padding: .58rem;
+      overflow: hidden;
+      border: 1px solid rgba(242,122,26,.72);
+      border-radius: .95rem;
+      background: linear-gradient(108deg, rgba(8,11,12,.96), rgba(28,18,11,.72));
+      box-shadow: 0 0 0 1px rgba(242,122,26,.08), 0 0 26px rgba(242,122,26,.13), inset 0 0 26px rgba(255,255,255,.03);
+    }
+    .mpp-case--ty .mpp-ty-page2-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 94px;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(242,122,26,.95), transparent);
+      box-shadow: 0 0 10px rgba(242,122,26,.7);
+    }
+    .mpp-case--ty .mpp-ty-page2-logo {
+      display: grid;
+      place-items: center;
+      min-height: 4.65rem;
+      padding: .42rem;
+      border: 1px solid rgba(247,244,238,.34);
+      border-radius: .72rem;
+      background: rgba(2,4,5,.82);
+      box-shadow: inset 0 0 18px rgba(255,255,255,.04);
+    }
+    .mpp-case--ty .mpp-ty-page2-logo img { display: block; width: 100%; height: auto; object-fit: contain; }
+    .mpp-case--ty .mpp-ty-page2-copy { display: grid; gap: .28rem; min-width: 0; }
+    .mpp-case--ty .mpp-ty-page2-copy p { margin: 0; color: rgba(247,244,238,.75); font-size: .67rem; line-height: 1.35; }
+    .mpp-case--ty .mpp-ty-page2-copy p:first-child { color: rgba(247,244,238,.92); }
+    .mpp-case--ty .mpp-ty-page2-copy strong { color: #f27a1a; font-weight: 700; }
+    .mpp-case--ty .mpp-ty-page2-modules {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: start;
+      gap: .42rem;
+      min-height: 0;
+    }
+    .mpp-case--ty .mpp-ty-page2-module {
+      display: grid;
+      align-content: center;
+      min-height: 5.65rem;
+      padding: .46rem .42rem;
+      border: 1px solid rgba(242,122,26,.52);
+      border-radius: .72rem;
+      background: linear-gradient(155deg, rgba(7,10,11,.93), rgba(27,17,10,.58));
+      text-align: center;
+    }
+    .mpp-case--ty .mpp-ty-page2-module-index { color: #f27a1a; font: 700 .55rem/1 'DM Sans', sans-serif; letter-spacing: .14em; }
+    .mpp-case--ty .mpp-ty-page2-module strong { display: block; margin-top: .36rem; color: rgba(247,244,238,.9); font-size: .62rem; line-height: 1.12; letter-spacing: .09em; text-transform: uppercase; }
+    .mpp-case--ty .mpp-ty-page2-module small { display: block; margin-top: .35rem; color: rgba(247,244,238,.52); font-size: .57rem; line-height: 1.25; }
+    .mpp-case--ty .mpp-ty-page2-trajectory {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      align-items: center;
+      min-height: 4rem;
+      padding: .35rem .42rem;
+      overflow: hidden;
+      border: 1px solid rgba(242,122,26,.45);
+      border-radius: .7rem;
+      background: linear-gradient(160deg, rgba(6,9,10,.78), rgba(27,17,10,.36));
+      opacity: .72;
+    }
+    .mpp-case--ty .mpp-ty-page2-trajectory::before {
+      content: '';
+      position: absolute;
+      inset: 30% 0 auto;
+      height: 1px;
+      background: rgba(242,122,26,.14);
+    }
+    .mpp-case--ty .mpp-ty-page2-trajectory svg { position: relative; z-index: 1; display: block; width: 100%; height: 100%; min-height: 3.1rem; }
+    .mpp-case--ty .mpp-ty-page2-trajectory path { fill: none; stroke: rgba(242,122,26,.92); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+    .mpp-case--ty .mpp-ty-page2-footer {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: .42rem;
+      padding-top: .58rem;
+      border-top: 1px solid rgba(242,122,26,.35);
+      color: rgba(247,244,238,.54);
+      font-size: .55rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .mpp-case--ty .mpp-ty-page2-footer::before { content: ''; width: 2.25rem; height: 2px; background: #f27a1a; box-shadow: 0 0 10px rgba(242,122,26,.55); }
+    .mpp-case--ty .mpp-ty-page2-footer i { color: #f27a1a; font-style: normal; }
+    .mpp-case--ty .mpp-ty-page2-static > :not(.mpp-ty-grid):not(.mpp-ty-page2) { opacity: 0 !important; visibility: hidden !important; }
+    .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2-value b { transform: none; }
+    .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2 { opacity: 1; visibility: visible; transform: none; }
   @media (max-width: 380px) {
+      .mpp-case--ty .mpp-ty-page2 { padding-top: 1.9rem; gap: .38rem; }
+      .mpp-case--ty .mpp-ty-page2-head { min-height: 4.9rem; }
+      .mpp-case--ty .mpp-ty-page2-head span { font-size: 2.9rem; }
+      .mpp-case--ty .mpp-ty-page2-head strong { font-size: 3rem; }
+      .mpp-case--ty .mpp-ty-page2-value { min-height: 6.7rem; }
+      .mpp-case--ty .mpp-ty-page2-value b { font-size: 5.05rem; }
+      .mpp-case--ty .mpp-ty-page2-panel { grid-template-columns: 72px minmax(0, 1fr); gap: .66rem; min-height: 6.3rem; }
+      .mpp-case--ty .mpp-ty-page2-panel::before { left: 87px; }
+      .mpp-case--ty .mpp-ty-page2-copy p { font-size: .62rem; }
+      .mpp-case--ty .mpp-ty-page2-module { min-height: 5.25rem; }
+      .mpp-case--ty .mpp-ty-page2-module strong { font-size: .57rem; }
+      .mpp-case--ty .mpp-ty-page2-module small { font-size: .53rem; }
+    }
     .mpp-case--ty .mpp-ty-title { font-size: clamp(4.1rem, 22.5vw, 5.7rem); }
     .mpp-case--ty .mpp-ty-lede { max-width: 26ch; font-size: .85rem; }
     .mpp-case--ty .mpp-ty-kpi { grid-template-columns: 98px minmax(0, 1fr); min-height: 144px; gap: .55rem; padding: .58rem; }
@@ -5709,6 +5926,26 @@ html, body, .deck {
           <div><span class="mpp-ty-evidence-index">03</span><strong>Grafik görünürlüğü</strong></div>
         </div>
         <div class="mpp-ty-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
+        <div class="mpp-ty-page2" aria-label="Trendyol KPI odağı">
+          <div class="mpp-ty-page2-topline"><span>04 / 09 <i aria-hidden="true">•</i> KPI ODAĞI</span><b class="mpp-ty-page2-stamp">TRENDYOL CASE</b></div>
+          <div class="mpp-ty-page2-ghost" aria-hidden="true">KPI ODAĞI</div>
+          <div class="mpp-ty-page2-head"><span>Toplam</span><strong>Brüt Ciro</strong></div>
+          <div class="mpp-ty-page2-value"><b>₺786K</b><small>6 dönem toplam</small></div>
+          <div class="mpp-ty-page2-panel">
+            <div class="mpp-ty-page2-logo"><img src="assets/logos/trendyol.webp" alt="Trendyol"></div>
+            <div class="mpp-ty-page2-copy"><p>6 dönemlik performansın toplam <strong>brüt cirosu.</strong></p><p>Mağaza verilerinin karşılaştırmalı analizi için ana referans KPI.</p></div>
+          </div>
+          <div class="mpp-ty-page2-modules">
+            <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">01</span><strong>6 dönem</strong><small>Dönemsel performans çerçevesi</small></div>
+            <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">02</span><strong>Veri odaklı okuma</strong><small>Karşılaştırmalı mağaza analizi</small></div>
+            <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">03</span><strong>Mağaza görünümü</strong><small>Görünürlük ve dağılım perspektifi</small></div>
+            <div class="mpp-ty-page2-module"><span class="mpp-ty-page2-module-index">04</span><strong>Ciro odağı</strong><small>Ana değerlendirme metriği</small></div>
+          </div>
+          <div class="mpp-ty-page2-trajectory" aria-hidden="true">
+            <svg viewBox="0 0 320 52" preserveAspectRatio="none" focusable="false"><path d="M4 40 C30 34, 48 35, 70 29 S112 26, 138 30 S177 20, 205 23 S252 13, 316 10"></path></svg>
+          </div>
+          <div class="mpp-ty-page2-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
+        </div>
         <div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
       </div>
       <div class="mpp-case-beats">
@@ -5907,6 +6144,33 @@ let current  = 0;
   const progressCurrent = progressRail?.querySelector('b');
   const mobileSections = Array.from(root.querySelectorAll('.mpp-section[data-mpp-section]'));
   const heroTitle = root.querySelector('.mpp-hero-title');
+  const tyStaticPreview = new URLSearchParams(window.location.search).get('trendyol-page2') === 'static';
+  const tyCaseSection = root.querySelector('.mpp-case--ty');
+  const tyCaseStage = tyCaseSection?.querySelector('.mpp-ty-cover');
+  const tyPage2 = tyCaseStage?.querySelector('.mpp-ty-page2');
+  const tyPage2Refs = {
+    top: tyPage2?.querySelector('.mpp-ty-page2-topline'),
+    head: tyPage2?.querySelector('.mpp-ty-page2-head'),
+    value: tyPage2?.querySelector('.mpp-ty-page2-value'),
+    valueText: tyPage2?.querySelector('.mpp-ty-page2-value b'),
+    panel: tyPage2?.querySelector('.mpp-ty-page2-panel'),
+    modules: tyPage2?.querySelector('.mpp-ty-page2-modules'),
+    trajectory: tyPage2?.querySelector('.mpp-ty-page2-trajectory'),
+    footer: tyPage2?.querySelector('.mpp-ty-page2-footer')
+  };
+  const tyPage1Refs = {
+    index: tyCaseStage?.querySelector('.mpp-ty-index'),
+    tag: tyCaseStage?.querySelector('.mpp-ty-tag'),
+    title: tyCaseStage?.querySelector('.mpp-ty-title'),
+    lede: tyCaseStage?.querySelector('.mpp-ty-lede'),
+    kpi: tyCaseStage?.querySelector('.mpp-ty-kpi'),
+    evidence: tyCaseStage?.querySelector('.mpp-ty-evidence'),
+    footer: tyCaseStage?.querySelector('.mpp-ty-footer')
+  };
+  if (tyStaticPreview) tyCaseStage?.classList.add('mpp-ty-page2-static');
+  const tyClamp = (value) => Math.max(0, Math.min(1, value));
+  const tyEase = (value) => { const p = tyClamp(value); return p * p * (3 - (2 * p)); };
+  const tySegment = (value, start, end) => tyEase((value - start) / (end - start));
   const heroLines = Array.from(root.querySelectorAll('.mpp-hero-line'));
   const hero = root.querySelector('#mpp-hero');
   const heroPortrait = hero?.querySelector('.mpp-hero-portrait');
@@ -6209,6 +6473,43 @@ let current  = 0;
           const retreat = Math.max(0, Math.min(1, (progress - .65) / .3));
           const kpiScale = .92 + (approach * .2) - (retreat * .1);
           liveKpi.style.setProperty('--mpp-kpi-scale', kpiScale.toFixed(3));
+        }
+        if (section === tyCaseSection && tyPage2 && !tyStaticPreview) {
+          const page2Master = tySegment(progress, .2, .58);
+          const page2Final = tySegment(progress, .7, .82);
+          const hidePage1 = (element, amount, x = 0, y = 0, scale = 1) => {
+            if (!element) return;
+            element.style.opacity = String(1 - amount);
+            element.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
+          };
+          hidePage1(tyPage1Refs.index, tySegment(progress, .08, .24), 0, -14);
+          hidePage1(tyPage1Refs.tag, tySegment(progress, .14, .31), 0, -10);
+          hidePage1(tyPage1Refs.title, tySegment(progress, .2, .46), -8, -18, 1 - (tySegment(progress, .2, .46) * .03));
+          hidePage1(tyPage1Refs.lede, tySegment(progress, .13, .34), 0, 16);
+          hidePage1(tyPage1Refs.kpi, tySegment(progress, .28, .58), 0, -12, 1 + (tySegment(progress, .28, .58) * .08));
+          hidePage1(tyPage1Refs.evidence, tySegment(progress, .22, .44), 0, 16);
+          hidePage1(tyPage1Refs.footer, tySegment(progress, .28, .48), 0, 12);
+          tyPage2.style.visibility = progress > .18 ? 'visible' : 'hidden';
+          tyPage2.style.opacity = String(page2Master);
+          tyPage2.style.transform = 'translate3d(0, ' + ((1 - page2Master) * 18) + 'px, 0) scale(' + (.985 + (page2Master * .015)) + ')';
+          const setPage2Part = (element, amount, y = 0, scale = 1) => {
+            if (!element) return;
+            element.style.opacity = String(amount);
+            element.style.transform = 'translate3d(0, ' + y + 'px, 0) scale(' + scale + ')';
+          };
+          setPage2Part(tyPage2Refs.top, tySegment(progress, .22, .42), -10);
+          setPage2Part(tyPage2Refs.head, tySegment(progress, .28, .52), 18, .96 + (tySegment(progress, .28, .52) * .04));
+          const valueProgress = tySegment(progress, .26, .62);
+          setPage2Part(tyPage2Refs.value, valueProgress, 14 - (valueProgress * 14));
+          if (tyPage2Refs.valueText) tyPage2Refs.valueText.style.transform = 'translate3d(0, ' + ((1 - valueProgress) * 54) + 'px, 0) scale(' + (.58 + (valueProgress * .42)) + ')';
+          setPage2Part(tyPage2Refs.panel, tySegment(progress, .48, .7), 22);
+          setPage2Part(tyPage2Refs.modules, tySegment(progress, .58, .8), 20);
+          setPage2Part(tyPage2Refs.trajectory, tySegment(progress, .64, .82), 14);
+          setPage2Part(tyPage2Refs.footer, tySegment(progress, .72, .86), 10);
+          if (page2Final > 0) {
+            tyPage2.style.opacity = '1';
+            tyPage2.style.transform = 'translate3d(0, 0, 0) scale(1)';
+          }
         }
         const activeBeat = section.querySelector('.mpp-beat.is-active');
         if (activeBeat) {
