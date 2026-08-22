@@ -4168,13 +4168,15 @@ html, body, .deck {
   .mpp-account-strip span { padding: .65rem .7rem; border-left: 1px solid var(--mpp-accent, #55a8ff); background: rgba(255,255,255,.035); }
   .mpp-account-strip b { display: block; color: #f7f4ee; font-size: .72rem; }
   .mpp-account-strip small { display: block; margin-top: .25rem; color: rgba(247,244,238,.55); font-size: .62rem; }
-  .mpp-case--ty { --mpp-accent: #f27a1a; }
+  .mpp-case--ty { --mpp-accent: #f27a1a; padding-left: 0; padding-right: 0; }
+  .mpp-case--ty > .mpp-inner { max-width: none; margin-left: 0; margin-right: 0; }
+  .mpp-case--ty .mpp-ty-content { position: relative; z-index: 1; display: flex; flex: 1 1 auto; min-height: 0; flex-direction: column; box-sizing: border-box; width: 100%; padding: 2.55rem 1.2rem .85rem; }
   .mpp-case--ty .mpp-ty-cover {
     position: sticky;
     min-height: 100svh;
     height: 100svh;
     justify-content: flex-start;
-    padding: 2.55rem .05rem .85rem;
+    padding: 0;
     overflow: clip;
     isolation: isolate;
     background: #060809;
@@ -4203,6 +4205,7 @@ html, body, .deck {
     opacity: .82;
   }
   .mpp-case--ty .mpp-ty-cover > :not(.mpp-ty-grid) { position: relative; z-index: 1; }
+  .mpp-case--ty .mpp-ty-content { height: 100%; }
   .mpp-case--ty .mpp-ty-grid {
     position: absolute;
     z-index: 0;
@@ -4332,9 +4335,10 @@ html, body, .deck {
       z-index: 4 !important;
       inset: 0;
       display: grid;
-      grid-template-rows: auto auto auto auto minmax(0, 1fr) auto;
-      gap: .48rem;
-      padding: 2.05rem .05rem .72rem;
+      grid-template-rows: auto auto auto auto auto auto;
+      align-content: start;
+      gap: .72rem;
+      padding: 2.05rem 1.2rem .72rem;
       overflow: clip;
       opacity: 0;
       visibility: hidden;
@@ -4499,6 +4503,7 @@ html, body, .deck {
       position: relative;
       z-index: 1;
       display: flex;
+      margin-top: .5rem;
       align-items: center;
       gap: .42rem;
       padding-top: .58rem;
@@ -4510,11 +4515,11 @@ html, body, .deck {
     }
     .mpp-case--ty .mpp-ty-page2-footer::before { content: ''; width: 2.25rem; height: 2px; background: #f27a1a; box-shadow: 0 0 10px rgba(242,122,26,.55); }
     .mpp-case--ty .mpp-ty-page2-footer i { color: #f27a1a; font-style: normal; }
-    .mpp-case--ty .mpp-ty-page2-static > :not(.mpp-ty-grid):not(.mpp-ty-page2) { opacity: 0 !important; visibility: hidden !important; }
+    .mpp-case--ty .mpp-ty-page2-static .mpp-ty-content > :not(.mpp-ty-page2) { opacity: 0 !important; visibility: hidden !important; }
     .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2-value b { transform: none; }
     .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2 { opacity: 1; visibility: visible; transform: none; }
   @media (max-width: 380px) {
-      .mpp-case--ty .mpp-ty-page2 { padding-top: 1.9rem; gap: .38rem; }
+      .mpp-case--ty .mpp-ty-page2 { padding-top: 1.9rem; gap: .52rem; }
       .mpp-case--ty .mpp-ty-page2-head { min-height: 4.9rem; }
       .mpp-case--ty .mpp-ty-page2-head span { font-size: 2.9rem; }
       .mpp-case--ty .mpp-ty-page2-head strong { font-size: 3rem; }
@@ -5892,6 +5897,7 @@ html, body, .deck {
     <div class="mpp-inner mpp-case-shell">
       <div class="mpp-case-stage mpp-ty-cover">
         <div class="mpp-ty-grid" aria-hidden="true"></div>
+        <div class="mpp-ty-content">
         <div class="mpp-index mpp-ty-index">03 / 09 <span class="mpp-ty-index-dot" aria-hidden="true">·</span> CASE STUDY</div>
         <div class="mpp-ty-intro">
           <span class="mpp-case-tag mpp-ty-tag">Pazaryeri</span>
@@ -5926,6 +5932,7 @@ html, body, .deck {
           <div class="mpp-ty-page2-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
         </div>
         <div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
+      </div>
       </div>
       <div class="mpp-case-beats">
         <article class="mpp-beat is-active"><small>01 · PROBLEM</small><h3>Mağaza verisini tek bir büyüme akışında okumak.</h3><p>Ürün, içerik, kampanya ve teslimat sinyallerini aynı karar döngüsünde topladım.</p></article>
