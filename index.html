@@ -4168,7 +4168,9 @@ html, body, .deck {
   .mpp-account-strip span { padding: .65rem .7rem; border-left: 1px solid var(--mpp-accent, #55a8ff); background: rgba(255,255,255,.035); }
   .mpp-account-strip b { display: block; color: #f7f4ee; font-size: .72rem; }
   .mpp-account-strip small { display: block; margin-top: .25rem; color: rgba(247,244,238,.55); font-size: .62rem; }
-  .mpp-case--ty { --mpp-accent: #f27a1a; padding-left: 0; padding-right: 0; }
+  .mpp-case--ty { --mpp-accent: #f27a1a; padding-top: 0; padding-left: 0; padding-right: 0; }
+  #mpp-trendyol.mpp-case--ty::after { content: none; }
+  .mpp-case--ty .mpp-ty-page2-ghost { display: none; }
   .mpp-case--ty > .mpp-inner { max-width: none; margin-left: 0; margin-right: 0; }
   .mpp-case--ty .mpp-ty-content { position: relative; z-index: 1; display: flex; flex: 1 1 auto; min-height: 0; flex-direction: column; box-sizing: border-box; width: 100%; padding: 2.55rem 1.2rem .85rem; }
   .mpp-case--ty .mpp-ty-cover {
