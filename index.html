@@ -4348,6 +4348,14 @@ html, body, .deck {
       transform-origin: center;
       pointer-events: none;
     }
+    .mpp-case--ty .mpp-ty-page2::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      inset: 0 18% 0 0;
+      background: #060809;
+      pointer-events: none;
+    }
     .mpp-case--ty .mpp-ty-page2-topline {
       display: flex;
       align-items: center;
@@ -6463,23 +6471,23 @@ let current  = 0;
           liveKpi.style.setProperty('--mpp-kpi-scale', kpiScale.toFixed(3));
         }
         if (section === tyCaseSection && tyPage2 && !tyStaticPreview) {
-          const page2Master = tySegment(progress, .2, .58);
-          const page2Final = tySegment(progress, .7, .82);
+          const page2Master = tySegment(progress, .28, .58);
+          const page2Final = tySegment(progress, .82, .92);
           const hidePage1 = (element, amount, x = 0, y = 0, scale = 1) => {
             if (!element) return;
             element.style.opacity = String(1 - amount);
             element.style.visibility = amount >= .995 ? 'hidden' : 'visible';
             element.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
           };
-          hidePage1(tyPage1Refs.index, tySegment(progress, .08, .24), 0, -14);
-          hidePage1(tyPage1Refs.tag, tySegment(progress, .14, .31), 0, -10);
-          hidePage1(tyPage1Refs.title, tySegment(progress, .2, .46), -8, -18, 1 - (tySegment(progress, .2, .46) * .03));
-          hidePage1(tyPage1Refs.lede, tySegment(progress, .13, .34), 0, 16);
-          const sourceKpiProgress = tySegment(progress, .38, .6);
+          hidePage1(tyPage1Refs.index, tySegment(progress, .04, .16), 0, -14);
+          hidePage1(tyPage1Refs.tag, tySegment(progress, .06, .2), 0, -10);
+          hidePage1(tyPage1Refs.title, tySegment(progress, .08, .26), -8, -18, 1 - (tySegment(progress, .08, .26) * .03));
+          hidePage1(tyPage1Refs.lede, tySegment(progress, .08, .22), 0, 16);
+          const sourceKpiProgress = tySegment(progress, .2, .34);
           hidePage1(tyPage1Refs.kpi, sourceKpiProgress, 0, -12, 1 + (sourceKpiProgress * .08));
-          hidePage1(tyPage1Refs.evidence, tySegment(progress, .22, .44), 0, 16);
-          hidePage1(tyPage1Refs.footer, tySegment(progress, .28, .48), 0, 12);
-          tyPage2.style.visibility = progress > .18 ? 'visible' : 'hidden';
+          hidePage1(tyPage1Refs.evidence, tySegment(progress, .12, .26), 0, 16);
+          hidePage1(tyPage1Refs.footer, tySegment(progress, .16, .3), 0, 12);
+          tyPage2.style.visibility = progress > .26 ? 'visible' : 'hidden';
           tyPage2.style.opacity = String(page2Master);
           tyPage2.style.transform = 'translate3d(0, ' + ((1 - page2Master) * 18) + 'px, 0) scale(' + (.985 + (page2Master * .015)) + ')';
           const setPage2Part = (element, amount, y = 0, scale = 1) => {
@@ -6488,14 +6496,14 @@ let current  = 0;
             element.style.visibility = amount <= .005 ? 'hidden' : 'visible';
             element.style.transform = 'translate3d(0, ' + y + 'px, 0) scale(' + scale + ')';
           };
-          setPage2Part(tyPage2Refs.top, tySegment(progress, .22, .42), -10);
-          setPage2Part(tyPage2Refs.head, tySegment(progress, .28, .52), 18, .96 + (tySegment(progress, .28, .52) * .04));
-          const valueProgress = tySegment(progress, .57, .69);
+          setPage2Part(tyPage2Refs.top, tySegment(progress, .28, .36), -10);
+          setPage2Part(tyPage2Refs.head, tySegment(progress, .3, .42), 18, .96 + (tySegment(progress, .3, .42) * .04));
+          const valueProgress = tySegment(progress, .4, .54);
           setPage2Part(tyPage2Refs.value, valueProgress, 14 - (valueProgress * 14));
           if (tyPage2Refs.valueText) tyPage2Refs.valueText.style.transform = 'translate3d(0, ' + ((1 - valueProgress) * 54) + 'px, 0) scale(' + (.58 + (valueProgress * .42)) + ')';
-          setPage2Part(tyPage2Refs.panel, tySegment(progress, .48, .7), 22);
-          setPage2Part(tyPage2Refs.modules, tySegment(progress, .58, .8), 20);
-          setPage2Part(tyPage2Refs.footer, tySegment(progress, .72, .86), 10);
+          setPage2Part(tyPage2Refs.panel, tySegment(progress, .48, .62), 22);
+          setPage2Part(tyPage2Refs.modules, tySegment(progress, .56, .7), 20);
+          setPage2Part(tyPage2Refs.footer, tySegment(progress, .68, .8), 10);
           if (page2Final > 0) {
             tyPage2.style.opacity = '1';
             tyPage2.style.transform = 'translate3d(0, 0, 0) scale(1)';
