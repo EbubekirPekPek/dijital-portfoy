@@ -4338,10 +4338,11 @@ html, body, .deck {
       inset: 0;
       display: grid;
       grid-template-rows: auto auto auto auto auto auto;
-      align-content: start;
+      align-content: space-between;
       gap: .72rem;
       padding: 2.05rem 1.2rem .72rem;
       overflow: clip;
+      background: #060809;
       opacity: 0;
       visibility: hidden;
       transform: translate3d(0, 1.1rem, 0) scale(.985);
@@ -4352,8 +4353,22 @@ html, body, .deck {
       content: '';
       position: absolute;
       z-index: 0;
-      inset: 0 18% 0 0;
+      inset: 0;
       background: #060809;
+      pointer-events: none;
+    }
+    .mpp-case--ty .mpp-ty-page2::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: -22%;
+      right: -124%;
+      width: 135%;
+      height: 147%;
+      border: 1px solid rgba(255,126,27,.9);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(255,126,27,.92), 0 0 34px rgba(242,122,26,.58), inset 0 0 20px rgba(242,122,26,.24);
+      transform: rotate(-9deg);
       pointer-events: none;
     }
     .mpp-case--ty .mpp-ty-page2-topline {
@@ -6496,14 +6511,14 @@ let current  = 0;
             element.style.visibility = amount <= .005 ? 'hidden' : 'visible';
             element.style.transform = 'translate3d(0, ' + y + 'px, 0) scale(' + scale + ')';
           };
-          setPage2Part(tyPage2Refs.top, tySegment(progress, .28, .36), -10);
-          setPage2Part(tyPage2Refs.head, tySegment(progress, .3, .42), 18, .96 + (tySegment(progress, .3, .42) * .04));
-          const valueProgress = tySegment(progress, .4, .54);
+          setPage2Part(tyPage2Refs.top, page2Master, -10);
+          setPage2Part(tyPage2Refs.head, page2Master, 18, .96 + (page2Master * .04));
+          const valueProgress = page2Master;
           setPage2Part(tyPage2Refs.value, valueProgress, 14 - (valueProgress * 14));
           if (tyPage2Refs.valueText) tyPage2Refs.valueText.style.transform = 'translate3d(0, ' + ((1 - valueProgress) * 54) + 'px, 0) scale(' + (.58 + (valueProgress * .42)) + ')';
-          setPage2Part(tyPage2Refs.panel, tySegment(progress, .48, .62), 22);
-          setPage2Part(tyPage2Refs.modules, tySegment(progress, .56, .7), 20);
-          setPage2Part(tyPage2Refs.footer, tySegment(progress, .68, .8), 10);
+          setPage2Part(tyPage2Refs.panel, page2Master, 22);
+          setPage2Part(tyPage2Refs.modules, page2Master, 20);
+          setPage2Part(tyPage2Refs.footer, page2Master, 10);
           if (page2Final > 0) {
             tyPage2.style.opacity = '1';
             tyPage2.style.transform = 'translate3d(0, 0, 0) scale(1)';
