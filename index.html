@@ -4168,25 +4168,49 @@ html, body, .deck {
   .mpp-account-strip span { padding: .65rem .7rem; border-left: 1px solid var(--mpp-accent, #55a8ff); background: rgba(255,255,255,.035); }
   .mpp-account-strip b { display: block; color: #f7f4ee; font-size: .72rem; }
   .mpp-account-strip small { display: block; margin-top: .25rem; color: rgba(247,244,238,.55); font-size: .62rem; }
-  .mpp-case--ty { --mpp-accent: #f27a1a; padding-top: 0; padding-left: 0; padding-right: 0; }
+  /* Trendyol owns a dedicated scroll runway. The section reserves the motion
+     distance; the only pinned visual surface is the opaque viewport stage. */
+  .mpp-case--ty {
+    --mpp-accent: #f27a1a;
+    box-sizing: border-box;
+    height: 360svh;
+    height: 360dvh;
+    min-height: 360svh;
+    padding: 0;
+    isolation: isolate;
+    background: #060809;
+  }
   #mpp-trendyol.mpp-case--ty::after { content: none; }
   .mpp-case--ty .mpp-ty-page2-ghost { display: none; }
-  .mpp-case--ty > .mpp-inner { max-width: none; margin-left: 0; margin-right: 0; }
-  .mpp-case--ty .mpp-ty-content { position: relative; z-index: 1; display: flex; flex: 1 1 auto; min-height: 0; flex-direction: column; box-sizing: border-box; width: 100%; padding: 2.55rem 1.2rem .85rem; }
+  .mpp-case--ty > .mpp-inner { height: 100%; max-width: none; margin-left: 0; margin-right: 0; }
+  .mpp-case--ty .mpp-ty-content { position: absolute; z-index: 2; inset: 0; box-sizing: border-box; width: 100%; height: 100%; }
+  .mpp-case--ty .mpp-ty-page1 { position: absolute; z-index: 3; inset: 0; display: flex; min-height: 0; flex-direction: column; box-sizing: border-box; width: 100%; padding: 2.55rem 1.2rem .85rem; }
+  .mpp-case--ty .mpp-ty-source-evidence[hidden] { display: none; }
   .mpp-case--ty .mpp-ty-cover {
     position: sticky;
+    top: 0;
     min-height: 100svh;
+    height: 100vh;
     height: 100svh;
+    height: 100dvh;
     justify-content: flex-start;
     padding: 0;
     overflow: clip;
     isolation: isolate;
     background: #060809;
   }
+  .mpp-case--ty .mpp-ty-backdrop {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: #060809;
+    opacity: 1;
+    pointer-events: none;
+  }
   .mpp-case--ty .mpp-ty-cover::before {
     content: '';
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     top: -22%;
     right: -124%;
     width: 135%;
@@ -4198,7 +4222,7 @@ html, body, .deck {
     pointer-events: none;
   }
   .mpp-case--ty .mpp-ty-cover::after {
-    z-index: 0;
+    z-index: 1;
     left: 30%;
     right: -48%;
     top: 0;
@@ -4206,11 +4230,9 @@ html, body, .deck {
     background: radial-gradient(ellipse at 64% 42%, rgba(242,122,26,.25), transparent 63%);
     opacity: .82;
   }
-  .mpp-case--ty .mpp-ty-cover > :not(.mpp-ty-grid) { position: relative; z-index: 1; }
-  .mpp-case--ty .mpp-ty-content { height: 100%; }
   .mpp-case--ty .mpp-ty-grid {
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     inset: 0;
     background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
     background-size: 38px 38px;
@@ -4540,7 +4562,7 @@ html, body, .deck {
     }
     .mpp-case--ty .mpp-ty-page2-footer::before { content: ''; width: 2.25rem; height: 2px; background: #f27a1a; box-shadow: 0 0 10px rgba(242,122,26,.55); }
     .mpp-case--ty .mpp-ty-page2-footer i { color: #f27a1a; font-style: normal; }
-    .mpp-case--ty .mpp-ty-page2-static .mpp-ty-content > :not(.mpp-ty-page2) { opacity: 0 !important; visibility: hidden !important; }
+    .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page1 { opacity: 0 !important; visibility: hidden !important; }
     .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2-value b { transform: none; }
     .mpp-case--ty .mpp-ty-page2-static .mpp-ty-page2 { opacity: 1; visibility: visible; transform: none; }
   @media (max-width: 380px) {
@@ -5921,8 +5943,10 @@ html, body, .deck {
   <section class="mpp-section mpp-case mpp-case--ty" id="mpp-trendyol" data-mpp-section="case" data-case-accent="#f27a1a">
     <div class="mpp-inner mpp-case-shell">
       <div class="mpp-case-stage mpp-ty-cover">
+        <div class="mpp-ty-backdrop" aria-hidden="true"></div>
         <div class="mpp-ty-grid" aria-hidden="true"></div>
         <div class="mpp-ty-content">
+        <div class="mpp-ty-page1">
         <div class="mpp-index mpp-ty-index">03 / 09 <span class="mpp-ty-index-dot" aria-hidden="true">·</span> CASE STUDY</div>
         <div class="mpp-ty-intro">
           <span class="mpp-case-tag mpp-ty-tag">Pazaryeri</span>
@@ -5939,6 +5963,7 @@ html, body, .deck {
           <div><span class="mpp-ty-evidence-index">03</span><strong>Grafik görünürlüğü</strong></div>
         </div>
         <div class="mpp-ty-footer" aria-hidden="true"><span>Veri</span><i>•</i><span>Analiz</span><i>•</i><span>Büyüme</span></div>
+        </div>
         <div class="mpp-ty-page2" aria-label="Trendyol KPI odağı">
           <div class="mpp-ty-page2-topline"><span><strong>03 / 09 <i aria-hidden="true">•</i> CASE STUDY</strong><em>02 <i aria-hidden="true">•</i> KPI ODAĞI</em></span><b class="mpp-ty-page2-stamp">TRENDYOL CASE</b></div>
           <div class="mpp-ty-page2-ghost" aria-hidden="true">KPI ODAĞI</div>
@@ -5959,7 +5984,9 @@ html, body, .deck {
         <div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div>
       </div>
       </div>
-      <div class="mpp-case-beats">
+      <!-- Source evidence is preserved for future case-study expansion, but it
+           is intentionally outside the Page 1 -> Page 2 visual/runway flow. -->
+      <div class="mpp-case-beats mpp-ty-source-evidence" hidden aria-hidden="true">
         <article class="mpp-beat is-active"><small>01 · PROBLEM</small><h3>Mağaza verisini tek bir büyüme akışında okumak.</h3><p>Ürün, içerik, kampanya ve teslimat sinyallerini aynı karar döngüsünde topladım.</p></article>
         <article class="mpp-beat"><small>02 · YAKLAŞIM</small><h3>Net ciroyu, siparişi ve gerçekleşme oranını birlikte izlemek.</h3><p>Brüt → net geçişi görünür tutarak performansı sadece ciroya indirgemedim.</p><div class="mpp-data-flow" aria-label="Trendyol veri akışı"><span>BRÜT CİRO<strong>₺786K</strong></span><i>→</i><span>NET CİRO<strong>₺740K</strong></span><i>→</i><span>NET SİPARİŞ<strong>1.544</strong></span><i>→</i><span>REALİZASYON<strong>%94.1</strong></span></div></article>
         <article class="mpp-beat"><small>03 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value" data-count-value="786">₺786K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">6 dönem toplam</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺740K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İndirim sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.544</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%94.1</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">84</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif listeleme</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺94K</span><span class="mpp-kpi-label">Komisyon</span><span class="mpp-kpi-note">Platform payı</span></div></div></article>
@@ -6113,7 +6140,8 @@ let current  = 0;
   // Pick the beat nearest the reading line instead of relying only on an
   // observer threshold. This keeps fast downward swipes and upward reversals
   // deterministic, so content cannot remain stuck on the last beat visited.
-  const syncCaseBeats = (viewport = window.innerHeight || 1) => {
+  const getMobileViewportHeight = () => Math.max(1, Math.round(window.visualViewport?.height || window.innerHeight || 1));
+  const syncCaseBeats = (viewport = getMobileViewportHeight()) => {
     const readingLine = viewport * .68;
     caseBeatStates.forEach((state) => {
       const sectionRect = state.section.getBoundingClientRect();
@@ -6142,7 +6170,7 @@ let current  = 0;
   caseSections.forEach((section) => {
     const state = {
       section,
-      beats: Array.from(section.querySelectorAll('.mpp-beat')),
+      beats: Array.from(section.querySelectorAll('.mpp-case-beats:not([hidden]) .mpp-beat')),
       dots: Array.from(section.querySelectorAll('.mpp-case-dots i')),
       activeIndex: -1
     };
@@ -6466,7 +6494,7 @@ let current  = 0;
     let framePending = false;
     const updateScrubMotion = () => {
       framePending = false;
-      const viewport = window.innerHeight || 1;
+      const viewport = getMobileViewportHeight();
       updateProgressRail(viewport);
       syncCaseBeats(viewport);
       root.querySelectorAll('.mpp-case').forEach((section) => {
@@ -6573,11 +6601,13 @@ let current  = 0;
     };
     window.addEventListener('scroll', requestScrubFrame, { passive: true });
     window.addEventListener('resize', requestScrubFrame, { passive: true });
+    window.visualViewport?.addEventListener('resize', requestScrubFrame, { passive: true });
     requestScrubFrame();
   } else {
-    const syncReducedMotionBeats = () => { const viewport = window.innerHeight || 1; syncCaseBeats(viewport); updateProgressRail(viewport); };
+    const syncReducedMotionBeats = () => { const viewport = getMobileViewportHeight(); syncCaseBeats(viewport); updateProgressRail(viewport); };
     window.addEventListener('scroll', syncReducedMotionBeats, { passive: true });
     window.addEventListener('resize', syncReducedMotionBeats, { passive: true });
+    window.visualViewport?.addEventListener('resize', syncReducedMotionBeats, { passive: true });
     syncReducedMotionBeats();
   }
 })();
