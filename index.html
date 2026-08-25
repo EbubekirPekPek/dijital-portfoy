@@ -4260,18 +4260,6 @@ html, body, .deck {
     font-size: .59rem;
     letter-spacing: .16em;
   }
-  .mpp-case--ty .mpp-ty-tag::before {
-    content: '';
-    position: absolute;
-    left: -1px;
-    top: 7px;
-    width: 8px;
-    height: calc(100% - 14px);
-    border-left: 1px solid #f27a1a;
-    border-top: 1px solid #f27a1a;
-    border-bottom: 1px solid #f27a1a;
-    transform: translateX(-1px);
-  }
   .mpp-case--ty .mpp-ty-title {
     display: grid;
     gap: 0;
@@ -4471,7 +4459,9 @@ html, body, .deck {
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font: 900 clamp(5.25rem, 26.3vw, 8rem)/.78 'Big Shoulders Display', 'Bebas Neue', 'Barlow Condensed', sans-serif;
+      margin-top: -.16em;
+      padding-top: .16em;
+      font: 900 clamp(5.25rem, 26.3vw, 8rem)/1 'Big Shoulders Display', 'Bebas Neue', 'Barlow Condensed', sans-serif;
       letter-spacing: -.045em;
       text-shadow: 0 1px 0 rgba(255,255,255,.2), 0 12px 22px rgba(242,122,26,.16);
       white-space: nowrap;
@@ -6520,7 +6510,7 @@ let current  = 0;
             if (!element) return;
             element.style.opacity = String(1 - amount);
             element.style.visibility = amount >= .995 ? 'hidden' : 'visible';
-            element.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
+            element.style.transform = 'translate3d(' + (x * amount) + 'px, ' + (y * amount) + 'px, 0) scale(' + scale + ')';
           };
           hidePage1(tyPage1Refs.index, tySegment(progress, .04, .16), 0, -14);
           hidePage1(tyPage1Refs.tag, tySegment(progress, .06, .2), 0, -10);
