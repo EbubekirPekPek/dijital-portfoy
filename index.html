@@ -4667,6 +4667,481 @@ html, body, .deck {
   #mobile-portfolio { display: none !important; }
 }
 
+/* SCENES:BEGIN — kaynak: _calisma/scenes.css (vaka sahnesi şablonu, yalnız mobil) */
+@media (max-width: 768px) {
+  .mpp-sc {
+    --a: #8b5cf6;
+    --ink: #f7f4ee;
+    --mute: rgba(247,244,238,.64);
+    --line: color-mix(in srgb, var(--a) 46%, transparent);
+    --p: 0; --o1: 0; --i2: 0; --o2: 0; --i3: 0; --k2: 0; --k3: 0;
+    position: relative;
+    box-sizing: border-box;
+    height: 400svh;
+    min-height: 400svh;
+    padding: 0;
+    border-top: 1px solid color-mix(in srgb, var(--a) 40%, transparent);
+    background: #060809;
+    isolation: isolate;
+  }
+  .mpp-sc::before, .mpp-sc::after { content: none !important; }
+
+  /* ── pinned viewport ─────────────────────────────── */
+  .mpp-sc-pin {
+    position: sticky; top: 0; z-index: 2;
+    height: 100svh; height: 100dvh;
+    overflow: clip;
+    background: #060809;
+    color: var(--ink);
+  }
+
+  /* ── background art: grid, glow, arcs, ghost numeral ── */
+  .mpp-sc-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .mpp-sc-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 38px 38px;
+    opacity: .26;
+    mask-image: linear-gradient(90deg, transparent 0, #000 12%, #000 76%, transparent 100%);
+  }
+  .mpp-sc-glow {
+    position: absolute; left: 6%; right: -40%; top: -4%; height: 86%;
+    background: radial-gradient(ellipse at 62% 40%, color-mix(in srgb, var(--a) 34%, transparent), transparent 64%);
+    opacity: .9;
+    transform: translate3d(calc(var(--i2) * -10%), calc(var(--i3) * 12%), 0);
+    will-change: transform;
+  }
+  .mpp-sc-arc {
+    position: absolute; top: -22%; right: -124%; width: 135%; height: 147%;
+    border: 1px solid color-mix(in srgb, var(--a) 92%, #fff 8%);
+    border-radius: 50%;
+    box-shadow: 0 0 8px color-mix(in srgb, var(--a) 90%, transparent), 0 0 34px color-mix(in srgb, var(--a) 58%, transparent), inset 0 0 22px color-mix(in srgb, var(--a) 26%, transparent);
+    transform: translate3d(calc(var(--p) * -9%), calc(var(--p) * 5%), 0) rotate(calc(-9deg + var(--p) * 16deg));
+    will-change: transform;
+  }
+  .mpp-sc-arc--2 {
+    top: -6%; right: -132%; width: 135%; height: 120%;
+    border-color: color-mix(in srgb, var(--a) 38%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--a) 20%, transparent);
+    transform: translate3d(calc(var(--p) * -13%), calc(var(--p) * -4%), 0) rotate(calc(-4deg + var(--p) * 10deg));
+    will-change: transform;
+  }
+  .mpp-sc-ghost {
+    position: absolute; right: -.04em; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    margin: 0; color: transparent;
+    font: 400 clamp(15rem, 82vw, 26rem)/.78 'Bebas Neue', 'Barlow Condensed', sans-serif;
+    letter-spacing: -.03em;
+    -webkit-text-stroke: 1px rgba(247,244,238,.085);
+    transform: translate3d(0, calc(var(--p) * -60px), 0);
+    user-select: none;
+    will-change: transform;
+  }
+
+  /* ── top line ─────────────────────────────────────── */
+  .mpp-sc-top {
+    position: absolute; z-index: 6; left: 0; right: 0; top: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+    padding: calc(env(safe-area-inset-top, 0px) + 1.9rem) 1.2rem 0;
+  }
+  .mpp-sc-idx { color: rgba(247,244,238,.78); font: 600 .69rem/1 'DM Sans', sans-serif; letter-spacing: .17em; text-transform: uppercase; white-space: nowrap; }
+  .mpp-sc-idx i { color: var(--a); font-style: normal; padding: 0 .12rem; }
+  .mpp-sc-stamp {
+    padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 2px;
+    color: color-mix(in srgb, var(--a) 70%, #fff 30%); font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+  }
+
+  /* ── scene frame ──────────────────────────────────── */
+  .mpp-sc-stage {
+    position: absolute; z-index: 4;
+    left: 1.2rem; right: 1.2rem;
+    top: calc(env(safe-area-inset-top, 0px) + 4.7rem);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 3.7rem);
+  }
+  .mpp-sc-scene { position: absolute; inset: 0; display: flex; flex-direction: column; will-change: opacity, transform; }
+  .mpp-sc-s1 { opacity: calc(1 - var(--o1)); transform: translate3d(0, calc(var(--o1) * -26px), 0); }
+  .mpp-sc-s2 { opacity: calc(var(--i2) * (1 - var(--o2))); transform: translate3d(0, calc((1 - var(--i2)) * 26px - var(--o2) * 26px), 0); }
+  .mpp-sc-s3 { opacity: var(--i3); transform: translate3d(0, calc((1 - var(--i3)) * 26px), 0); }
+
+  .mpp-sc-kicker { margin: 0 0 .7rem; color: var(--a); font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+  .mpp-sc-kicker { color: color-mix(in srgb, var(--a) 72%, #fff 28%); }
+  .mpp-sc-kicker::after { content: ''; display: inline-block; width: 2.2rem; height: 1px; margin-left: .7rem; vertical-align: middle; background: var(--line); }
+
+  /* ── scene 1 · cover ──────────────────────────────── */
+  .mpp-sc-title {
+    display: grid; gap: 0; margin: .2rem 0 0;
+    font: 400 clamp(3.6rem, min(22.4vw, 11.2svh), 8rem)/.84 'Bebas Neue', 'Barlow Condensed', sans-serif;
+    letter-spacing: -.03em; color: var(--ink);
+    text-transform: uppercase;
+  }
+  .mpp-sc-title span { display: block; white-space: nowrap; }
+  .mpp-sc-title .b { font-size: .8em; letter-spacing: .012em; }
+  .mpp-sc-title .a { color: color-mix(in srgb, var(--a) 78%, #fff 22%); text-shadow: 0 0 28px color-mix(in srgb, var(--a) 38%, transparent); }
+  .mpp-sc-lede {
+    max-width: 24ch; margin: 1.05rem 0 0;
+    color: rgba(247,244,238,.82);
+    font: italic 400 clamp(1rem, 4.4vw, 1.18rem)/1.4 'Playfair Display', Georgia, serif;
+  }
+  .mpp-sc-cardwrap { margin-top: auto; }
+  .mpp-sc-card {
+    position: relative; display: grid; grid-template-columns: clamp(92px, 27vw, 112px) minmax(0, 1fr); align-items: center; gap: .85rem;
+    min-height: clamp(122px, 17.5svh, 152px); padding: .7rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--a) 72%, transparent); border-radius: 1rem;
+    background: linear-gradient(108deg, rgba(12,15,16,.96), color-mix(in srgb, var(--a) 12%, rgba(10,10,14,.8)));
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--a) 10%, transparent), 0 0 34px color-mix(in srgb, var(--a) 22%, transparent), inset 0 0 38px rgba(255,255,255,.03);
+  }
+  .mpp-sc-card::after { content: ''; position: absolute; left: 8%; right: 8%; top: 0; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--a) 70%, #fff 30%), transparent); box-shadow: 0 0 12px var(--a); }
+  .mpp-sc-logo {
+    display: grid; place-items: center; align-self: stretch; padding: .5rem;
+    border-radius: .8rem; background: #fbfaf7;
+    box-shadow: 0 8px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(0,0,0,.05);
+  }
+  .mpp-sc-logo img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; }
+  .mpp-sc-card-copy { display: grid; min-width: 0; gap: .26rem; align-content: center; }
+  .mpp-sc-card-copy > span { color: rgba(247,244,238,.84); font: 600 .69rem/1.15 'DM Sans', sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+  .mpp-sc-card-copy > b {
+    font: 900 clamp(3.2rem, 16.4vw, 5.2rem)/.9 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.02em; white-space: nowrap;
+    background: linear-gradient(180deg, #fffdf9 0%, #efe9ff 52%, color-mix(in srgb, var(--a) 55%, #fff) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .mpp-sc-card-copy > small { color: var(--mute); font: 400 .72rem/1.2 'DM Sans', sans-serif; white-space: nowrap; }
+  .mpp-sc-card-copy > small i { color: var(--a); font-style: normal; padding: 0 .2rem; }
+
+  .mpp-sc-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin: .8rem 0 0; padding: 0; list-style: none; }
+  .mpp-sc-facts li {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .28rem;
+    min-height: clamp(78px, 11.4svh, 100px); padding: .5rem .3rem;
+    border: 1px solid color-mix(in srgb, var(--a) 44%, transparent); border-radius: .8rem; text-align: center;
+    background: linear-gradient(160deg, rgba(4,7,8,.84), color-mix(in srgb, var(--a) 9%, rgba(10,10,14,.6)));
+  }
+  .mpp-sc-facts b { color: var(--ink); font: 400 clamp(1.5rem, 7vw, 1.9rem)/.95 'Bebas Neue', sans-serif; letter-spacing: .02em; }
+  .mpp-sc-facts small { color: var(--mute); font: 500 .69rem/1.22 'DM Sans', sans-serif; letter-spacing: .03em; }
+
+  /* ── scene 2 · KPI focus ──────────────────────────── */
+  .mpp-sc-h {
+    margin: 0; font: 400 clamp(3.1rem, min(17vw, 8.6svh), 5.4rem)/.88 'Bebas Neue', sans-serif; letter-spacing: -.01em; text-transform: uppercase; color: var(--ink);
+  }
+  .mpp-sc-h em { font-style: italic; font-weight: 400; font-family: 'Playfair Display', Georgia, serif; text-transform: none; letter-spacing: -.02em; color: color-mix(in srgb, var(--a) 70%, #fff 30%); }
+  .mpp-sc-sub { max-width: 27ch; margin: .75rem 0 0; color: var(--mute); font: 400 .88rem/1.45 'DM Sans', sans-serif; }
+
+  .mpp-sc-dial {
+    --target: .919;
+    position: relative; align-self: center; margin: auto 0;
+    width: min(66vw, 37svh, 290px); aspect-ratio: 1;
+  }
+  .mpp-sc-dial-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .mpp-sc-dial-svg circle { fill: none; stroke-linecap: round; }
+  .mpp-sc-dial-svg .trk { stroke: rgba(247,244,238,.09); stroke-width: 9; }
+  .mpp-sc-dial-svg .val {
+    stroke: color-mix(in srgb, var(--a) 80%, #fff 20%); stroke-width: 9;
+    stroke-dasharray: 1000; stroke-dashoffset: calc(1000 - 1000 * var(--k2) * var(--target));
+    transform: rotate(-90deg); transform-origin: 100px 100px;
+  }
+  .mpp-sc-dial-svg .glow {
+    stroke: var(--a); stroke-width: 20; opacity: .26;
+    stroke-dasharray: 1000; stroke-dashoffset: calc(1000 - 1000 * var(--k2) * var(--target));
+    transform: rotate(-90deg); transform-origin: 100px 100px;
+  }
+  .mpp-sc-dial-ticks {
+    position: absolute; inset: -4%; border-radius: 50%;
+    background: repeating-conic-gradient(from -.45deg, rgba(247,244,238,.34) 0 .9deg, transparent .9deg 6deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+    opacity: .62;
+    transform: rotate(calc(var(--k2) * 12deg));
+    will-change: transform;
+  }
+  .mpp-sc-dial-orbit { position: absolute; inset: 0; transform: rotate(calc(var(--k2) * var(--target) * 360deg)); will-change: transform; }
+  .mpp-sc-dial-orbit::before {
+    content: ''; position: absolute; left: 50%; top: 7%; width: 15px; height: 15px; margin: -7.5px 0 0 -7.5px; border-radius: 50%;
+    background: #fff; box-shadow: 0 0 0 4px color-mix(in srgb, var(--a) 40%, transparent), 0 0 22px var(--a);
+  }
+  .mpp-sc-dial-copy { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: .3rem; text-align: center; }
+  .mpp-sc-dial-copy small { color: rgba(247,244,238,.82); font: 600 .69rem/1.1 'DM Sans', sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+  .mpp-sc-dial-copy b {
+    font: 900 clamp(3.7rem, min(19.6vw, 10.4svh), 5.9rem)/.9 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #fffdf9 0%, #efe9ff 56%, color-mix(in srgb, var(--a) 55%, #fff) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .mpp-sc-dial-copy::before { content: ''; position: absolute; left: 50%; top: 50%; width: 78%; height: 78%; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--a) 26%, transparent), transparent 68%); pointer-events: none; }
+  .mpp-sc-dial-copy > * { position: relative; }
+  .mpp-sc-dial-copy em { color: var(--mute); font: italic 400 .86rem/1.1 'Playfair Display', Georgia, serif; }
+
+  .mpp-sc-flow { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .8rem; padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--a) 36%, transparent); border-radius: .9rem; background: linear-gradient(160deg, rgba(4,7,8,.84), color-mix(in srgb, var(--a) 9%, rgba(10,10,14,.6))); }
+  .mpp-sc-flow div { display: grid; gap: .22rem; }
+  .mpp-sc-flow div:last-child { text-align: right; }
+  .mpp-sc-flow small { color: var(--mute); font: 600 .69rem/1 'DM Sans', sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+  .mpp-sc-flow b { color: var(--ink); font: 900 1.9rem/.95 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.01em; }
+  .mpp-sc-flow-line { position: relative; height: 1px; background: rgba(247,244,238,.14); }
+  .mpp-sc-flow-line i { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--a) 60%, transparent), var(--a)); box-shadow: 0 0 10px var(--a); transform-origin: left; transform: scaleX(var(--k2)); }
+  .mpp-sc-flow-line::after { content: ''; position: absolute; right: -1px; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--a); border-right: 1px solid var(--a); transform: rotate(45deg); opacity: var(--k2); }
+  .mpp-sc-note { margin: .65rem 0 0; color: var(--mute); font: italic 400 .86rem/1.3 'Playfair Display', Georgia, serif; text-align: center; }
+
+  /* ── scene 3 · evidence ───────────────────────────── */
+  .mpp-sc-s3 { justify-content: space-between; }
+  .mpp-sc-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin: 1rem 0 0; }
+  .mpp-sc-stat {
+    position: relative; display: grid; align-content: center; gap: .3rem; min-height: clamp(96px, 14svh, 122px); padding: .75rem .55rem .65rem; overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--a) 40%, transparent); border-radius: .85rem;
+    background: linear-gradient(160deg, rgba(4,7,8,.86), color-mix(in srgb, var(--a) 10%, rgba(10,10,14,.6)));
+    transform: translate3d(0, calc((1 - var(--k3)) * 14px), 0);
+  }
+  .mpp-sc-stat::after { content: ''; position: absolute; left: 14%; right: 14%; top: 0; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--a) 75%, #fff 25%), transparent); }
+  .mpp-sc-stat b { color: var(--ink); font: 900 clamp(2.1rem, 10.4vw, 2.7rem)/.9 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .mpp-sc-stat span { color: color-mix(in srgb, var(--a) 60%, #fff 40%); font: 700 .69rem/1.15 'DM Sans', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  .mpp-sc-stat small { color: var(--mute); font: 400 .72rem/1.2 'DM Sans', sans-serif; }
+
+  .mpp-sc-cats { padding: 1rem 1.05rem 1.15rem; border: 1px solid color-mix(in srgb, var(--a) 30%, transparent); border-radius: 1rem; background: linear-gradient(160deg, rgba(4,7,8,.78), rgba(10,10,14,.5)); }
+  .mpp-sc-cats-h { margin: 0 0 1rem; color: rgba(247,244,238,.86); font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+  .mpp-sc-leg { display: grid; gap: .95rem; margin: 0; padding: 0; list-style: none; }
+  .mpp-sc-leg li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .42rem .6rem; color: rgba(247,244,238,.88); font: 500 .88rem/1.1 'DM Sans', sans-serif; }
+  .mpp-sc-leg b { color: var(--ink); font: 700 .98rem/1 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; }
+  .mpp-sc-leg i { grid-column: 1 / -1; position: relative; display: block; height: 7px; border-radius: 99px; background: rgba(247,244,238,.08); overflow: hidden; }
+  .mpp-sc-leg i::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--c);
+    width: calc(var(--v) * 1%); transform-origin: left; transform: scaleX(clamp(0, var(--k3) * 1.7 - var(--d, 0), 1));
+    box-shadow: 0 0 12px color-mix(in srgb, var(--c) 60%, transparent);
+  }
+  .mpp-sc-close { margin: .8rem 0 0; color: var(--mute); font: italic 400 .88rem/1.4 'Playfair Display', Georgia, serif; }
+
+  /* ── footer steps ─────────────────────────────────── */
+  .mpp-sc-foot { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; padding: 0 1.2rem calc(env(safe-area-inset-bottom, 0px) + 1rem); }
+  .mpp-sc-meter { position: relative; height: 2px; margin-bottom: .7rem; background: rgba(247,244,238,.12); }
+  .mpp-sc-meter i { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--a) 50%, transparent), var(--a)); box-shadow: 0 0 10px var(--a); transform-origin: left; transform: scaleX(var(--p)); }
+  .mpp-sc-steps { display: flex; justify-content: space-between; margin: 0; padding: 0; list-style: none; }
+  .mpp-sc-steps li { color: rgba(247,244,238,.46); font: 600 .69rem/1 'DM Sans', sans-serif; letter-spacing: .16em; text-transform: uppercase; transition: color .3s ease; }
+  .mpp-sc-steps li b { margin-right: .4rem; color: inherit; font: inherit; opacity: .8; }
+  .mpp-sc[data-step="1"] .mpp-sc-steps li:nth-child(1),
+  .mpp-sc[data-step="2"] .mpp-sc-steps li:nth-child(2),
+  .mpp-sc[data-step="3"] .mpp-sc-steps li:nth-child(3) { color: color-mix(in srgb, var(--a) 62%, #fff 38%); }
+
+  /* sabit sayfa sayacı sahne sırasında gizlenir (kendi ilerleme çubuğu var) */
+  #mobile-portfolio .mpp-scroll-progress { transition: opacity .3s ease; }
+  #mobile-portfolio.mpp-sc-on .mpp-scroll-progress { opacity: 0; }
+
+  /* küçük ekran (360×640 gibi) */
+  @media (max-height: 700px) {
+    .mpp-sc-stage { top: calc(env(safe-area-inset-top, 0px) + 4.2rem); bottom: calc(env(safe-area-inset-bottom, 0px) + 3.3rem); }
+    .mpp-sc-top { padding-top: calc(env(safe-area-inset-top, 0px) + 1.4rem); }
+    .mpp-sc-lede { margin-top: .75rem; }
+    .mpp-sc-facts { margin-top: .55rem; }
+    .mpp-sc-sub { margin-top: .5rem; }
+    .mpp-sc-leg { gap: .7rem; }
+    .mpp-sc-cats { padding: .85rem .95rem .95rem; }
+    .mpp-sc-cats-h { margin-bottom: .75rem; }
+  }
+  @media (max-height: 680px) {
+    .mpp-sc-close { display: none; }
+  }
+
+  /* ══ canlı panel varyantı (.mpp-sc--live): gerçek arayüz + kayan bildirimler ══ */
+  .mpp-sc--live { --lv-top: 10.8rem; }
+  .mpp-sc--live .mpp-sc-scene { inset: 0 0 auto 0; }
+  .mpp-sc--live .mpp-sc-kicker { margin-bottom: .55rem; }
+  .mpp-sc--live .mpp-sc-h { font-size: clamp(2.5rem, min(13.4vw, 6.4svh), 4.3rem); line-height: .9; }
+  .mpp-sc--live .mpp-sc-s1 .mpp-sc-h em { display: block; margin-top: .12em; font-size: .56em; line-height: 1; }
+  .mpp-sc--live .mpp-sc-sub { margin-top: .6rem; }
+
+  .mpp-sc-live {
+    --p: 0; --k1: 0; --k2: 0; --k3: 0; --i2: 0; --i3: 0; --o1: 0; --o2: 0;
+    position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; top: var(--lv-top);
+    display: flex; flex-direction: column;
+  }
+  .lv-wrap { position: relative; z-index: 2; flex: none; width: 84%; align-self: center; }
+
+  /* satıcı paneli (açık arayüz) */
+  .lv-panel {
+    position: relative; overflow: hidden; border-radius: 18px; background: #fff; color: #17141f;
+    box-shadow: 0 26px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08), 0 0 54px color-mix(in srgb, var(--a) 36%, transparent);
+    transform: translate3d(calc((var(--p) - .5) * 18px), 0, 0);
+    will-change: transform;
+  }
+  .lv-bar { display: flex; align-items: center; gap: .55rem; padding: .62rem .8rem; border-bottom: 1px solid #efedf5; }
+  .lv-logo { display: block; width: auto; height: 21px; }
+  .lv-bar-t { color: #6c6879; font: 600 .69rem/1 'DM Sans', sans-serif; letter-spacing: .06em; }
+  .lv-live { display: inline-flex; align-items: center; gap: .35rem; margin-left: auto; padding: .26rem .55rem; border-radius: 99px; background: #e8f8f0; color: #138a58; font: 700 .69rem/1 'DM Sans', sans-serif; }
+  .lv-live i { width: 6px; height: 6px; border-radius: 50%; background: #1fb877; animation: lv-pulse 1.8s ease-in-out infinite; }
+  @keyframes lv-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+
+  .lv-tabs { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid #efedf5; }
+  .lv-tabs span { padding: .6rem 0 .55rem; text-align: center; color: #9a97a6; font: 600 .75rem/1 'DM Sans', sans-serif; transition: color .3s ease; }
+  .lv-tab-ind { position: absolute; left: 0; bottom: -1px; width: 33.333%; height: 2px; background: var(--a); transform: translate3d(calc((var(--i2) + var(--i3)) * 100%), 0, 0); will-change: transform; }
+  .mpp-sc[data-step="1"] .lv-tabs span:nth-child(1),
+  .mpp-sc[data-step="2"] .lv-tabs span:nth-child(2),
+  .mpp-sc[data-step="3"] .lv-tabs span:nth-child(3) { color: #5b32c8; }
+
+  .lv-sum { display: grid; grid-template-columns: 1fr 1fr; column-gap: .8rem; padding: .8rem .9rem .7rem; }
+  .lv-kpi small { display: block; color: #8a8795; font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  .lv-kpi b { display: block; margin-top: .3rem; color: #17141f; font: 900 clamp(1.85rem, 9vw, 2.2rem)/1 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.01em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .lv-kpi--net { text-align: right; opacity: calc(.3 + var(--i2) * .7); }
+  .lv-kpi--net b { color: color-mix(in srgb, #5b32c8 calc(var(--k2) * 100%), #17141f); }
+
+  .lv-meter { position: relative; grid-column: 1 / -1; height: 12px; margin-top: .72rem; }
+  .lv-meter::before { content: ''; position: absolute; inset: 0; border-radius: 99px; background: #efedf5; }
+  .lv-meter i { position: absolute; top: 0; bottom: 0; transform-origin: left center; will-change: transform; }
+  .lv-meter .net {
+    left: 0; width: 91.9%; border-radius: 99px 0 0 99px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--a) 70%, #fff), color-mix(in srgb, var(--a) 100%, #000 6%));
+    transform: scaleX(clamp(0, calc(var(--k1) / .919), 1));
+  }
+  .lv-meter .loss {
+    left: 91.9%; width: 8.1%; border-radius: 0 99px 99px 0;
+    background: color-mix(in srgb, #ff6a57 calc(var(--k2) * 100%), color-mix(in srgb, var(--a) 100%, #000 6%));
+    opacity: calc(1 - var(--k2) * .5);
+    transform: translate3d(0, calc(var(--k2) * 4px), 0) rotate(calc(var(--k2) * 5deg)) scaleX(clamp(0, calc((var(--k1) - .919) / .081), 1));
+  }
+  .lv-meter-l { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-top: .8rem; opacity: var(--i2); font: 700 .72rem/1 'DM Sans', sans-serif; }
+  .lv-meter-l .n { color: #5b32c8; }
+  .lv-meter-l .l { color: #e0483a; }
+
+  .lv-body { display: grid; padding: .35rem .9rem .5rem; border-top: 1px solid #efedf5; background: #faf9fc; }
+  .lv-rows, .lv-cats { grid-area: 1 / 1; margin: 0; padding: 0; list-style: none; }
+  .lv-rows { opacity: calc(1 - var(--i3)); transform: translate3d(0, calc(var(--i3) * -10px), 0); }
+  .lv-cats { opacity: var(--i3); transform: translate3d(0, calc((1 - var(--i3)) * 10px), 0); }
+
+  .lv-row {
+    --e: clamp(0, calc(var(--k1) * 4.4 - var(--n)), 1);
+    display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: .65rem;
+    padding: .42rem 0; border-bottom: 1px solid #f0eef5;
+    opacity: var(--e); transform: translate3d(0, calc((1 - var(--e)) * 14px), 0);
+  }
+  .lv-row:last-child { border-bottom: 0; }
+  .lv-ico { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, #ece6ff, #d9ccff); }
+  .lv-sk { position: relative; display: grid; gap: 5px; color: #17141f; }
+  .lv-sk s { display: block; height: 7px; border-radius: 4px; background: #e6e3ee; text-decoration: none; }
+  .lv-sk s:first-child { width: 72%; }
+  .lv-sk s:last-child { width: 42%; }
+  .lv-row--x .lv-sk { opacity: calc(1 - var(--k2) * .6); transform: translate3d(calc(var(--k2) * 8px), 0, 0); }
+  .lv-row--x .lv-sk::after { content: ''; position: absolute; left: 0; right: 14%; top: 50%; height: 2px; margin-top: -1px; border-radius: 2px; background: var(--kc); transform-origin: left center; transform: scaleX(var(--k2)); }
+  .lv-chip {
+    position: relative; display: block; min-width: 6.1rem; height: 22px; border-radius: 99px; overflow: hidden;
+    background: color-mix(in srgb, var(--kc) calc(var(--k2) * 100%), var(--a)); color: #fff; font-style: normal;
+  }
+  .lv-chip span { position: absolute; inset: 0; display: grid; place-items: center; font: 700 .69rem/1 'DM Sans', sans-serif; white-space: nowrap; }
+  .lv-chip .a { opacity: clamp(0, calc(1 - var(--k2) * 2), 1); }
+  .lv-chip .b { opacity: clamp(0, calc(var(--k2) * 2 - 1), 1); }
+
+  .lv-cats li { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .26rem .6rem; padding: .36rem 0; color: #2b2837; font: 600 .8rem/1.1 'DM Sans', sans-serif; }
+  .lv-cats b { color: #17141f; font: 700 .85rem/1 'DM Sans', sans-serif; font-variant-numeric: tabular-nums; }
+  .lv-cats i { grid-column: 1 / -1; position: relative; display: block; height: 6px; border-radius: 99px; background: #ebe8f3; overflow: hidden; }
+  .lv-cats i::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--v) * 1%); border-radius: 99px;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--a) 60%, #fff), var(--a));
+    transform-origin: left center; transform: scaleX(clamp(0, calc((var(--k3) - var(--d)) / .5), 1));
+  }
+  .lv-foot { margin: 0; padding: .4rem .9rem .6rem; text-align: right; background: #faf9fc; color: #8f8c9c; font: 500 .69rem/1.2 'DM Sans', sans-serif; }
+
+  /* panelin arkasından kayan sipariş biletleri: kenarlardan görünür, farklı hızda süzülür */
+  .lv-ghosts { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .lv-tk {
+    position: absolute; top: calc(var(--y) * 1%); display: flex; align-items: center; gap: .55rem; box-sizing: border-box;
+    width: 11.4rem; height: 3.3rem; padding: 0 .7rem; border: 1px solid rgba(255,255,255,.2); border-radius: 14px;
+    background: rgba(255,255,255,.09);
+    transform: translate3d(0, calc((var(--p) - .5) * var(--sy) * 1px), 0) rotate(var(--r, 0deg));
+    will-change: transform;
+  }
+  .lv-tk--l { left: -2.9rem; }
+  .lv-tk--r { right: -2.9rem; flex-direction: row-reverse; }
+  .lv-tk b { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--kc); box-shadow: 0 0 18px color-mix(in srgb, var(--kc) 60%, transparent); }
+  .lv-tk s {
+    flex: 1; height: 21px; text-decoration: none;
+    background: linear-gradient(rgba(255,255,255,.34), rgba(255,255,255,.34)) 0 0 / 72% 7px no-repeat, linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)) 0 14px / 44% 7px no-repeat;
+  }
+  .lv-tk--r s { background-position: 100% 0, 100% 14px; }
+
+  /* kayan bildirimler — panelin kenarında belirir, süzülür, kaybolur */
+  .lv-toast {
+    --vis: calc(clamp(0, (var(--p) - var(--s)) / .035, 1) * clamp(0, (var(--e) - var(--p)) / .035, 1));
+    --tc: var(--a);
+    position: absolute; z-index: 4; display: flex; align-items: center; gap: .6rem; width: 11.3rem; box-sizing: border-box;
+    padding: .5rem .7rem .5rem .55rem; border: 1px solid rgba(255,255,255,.16); border-radius: 14px;
+    background: rgba(20,15,36,.94); color: #f7f4ee; pointer-events: none;
+    box-shadow: 0 14px 34px rgba(0,0,0,.55), 0 0 26px color-mix(in srgb, var(--tc) 30%, transparent);
+    opacity: var(--vis);
+    transform: translate3d(0, calc((var(--p) - var(--s)) * var(--dr) * 1px), 0) scale(calc(.9 + .1 * clamp(0, (var(--p) - var(--s)) / .035, 1)));
+    will-change: transform, opacity;
+  }
+  .lv-toast--r { top: -.9rem; right: -1.1rem; }
+  .lv-toast--b { bottom: -1.2rem; left: -1.1rem; }
+  .lv-toast--cancel { --tc: #ff6a57; }
+  .lv-toast--return { --tc: #ffa94a; }
+  .lv-toast--ok { --tc: #36d399; }
+  .lv-toast i { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--tc); color: #fff; font: 800 .95rem/1 'DM Sans', sans-serif; font-style: normal; }
+  .lv-toast span { display: grid; gap: .22rem; min-width: 0; }
+  .lv-toast b { color: #f7f4ee; font: 700 .76rem/1.1 'DM Sans', sans-serif; white-space: nowrap; }
+  .lv-toast small { color: rgba(247,244,238,.62); font: 500 .69rem/1.1 'DM Sans', sans-serif; white-space: nowrap; }
+
+  /* alt veri satırı: kutusuz, panelin altında açık durur */
+  .lv-low { position: relative; flex: 1; display: grid; margin-top: 1.25rem; min-height: 0; }
+  .lv-g { grid-area: 1 / 1; align-content: start; margin: 0; padding: 0; list-style: none; will-change: opacity, transform; }
+  .lv-g1 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); opacity: calc(1 - var(--o1)); transform: translate3d(0, calc(var(--o1) * -16px), 0); }
+  .lv-g1 li { display: grid; gap: .34rem; align-content: start; padding: 0 .6rem; border-left: 1px solid rgba(247,244,238,.16); }
+  .lv-g1 li:first-child { padding-left: 0; border-left: 0; }
+  .lv-g1 b { color: var(--ink); font: 400 clamp(1.55rem, 7.4vw, 1.95rem)/.92 'Bebas Neue', sans-serif; letter-spacing: .02em; text-wrap: balance; }
+  .lv-g1 small { color: var(--mute); font: 500 .72rem/1.3 'DM Sans', sans-serif; }
+
+  .lv-g2 { display: grid; justify-items: center; gap: .3rem; text-align: center; opacity: calc(var(--i2) * (1 - var(--o2))); transform: translate3d(0, calc((1 - var(--i2)) * 16px - var(--o2) * 16px), 0); }
+  .lv-g2 small { color: rgba(247,244,238,.84); font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+  .lv-g2 b {
+    font: 900 clamp(3.9rem, 20vw, 5.2rem)/.9 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums;
+    background: linear-gradient(180deg, #fffdf9 0%, #efe9ff 52%, color-mix(in srgb, var(--a) 55%, #fff) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .lv-g2 em { color: var(--mute); font: italic 400 .9rem/1.1 'Playfair Display', Georgia, serif; }
+
+  .lv-g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); opacity: var(--i3); transform: translate3d(0, calc((1 - var(--i3)) * 16px), 0); }
+  .lv-g3 > div { display: grid; gap: .3rem; align-content: start; padding: 0 .6rem; border-left: 1px solid rgba(247,244,238,.16); }
+  .lv-g3 > div:first-child { padding-left: 0; border-left: 0; }
+  .lv-g3 b { color: var(--ink); font: 900 clamp(2.1rem, 10.2vw, 2.6rem)/.9 'Big Shoulders Display', 'Bebas Neue', sans-serif; letter-spacing: -.01em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .lv-g3 span { color: color-mix(in srgb, var(--a) 60%, #fff 40%); font: 700 .69rem/1.15 'DM Sans', sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+  .lv-g3 small { color: var(--mute); font: 400 .72rem/1.2 'DM Sans', sans-serif; white-space: nowrap; }
+
+  @media (max-height: 790px) {
+    .mpp-sc--live { --lv-top: 9.4rem; }
+    .mpp-sc--live .mpp-sc-sub { margin-top: .45rem; font-size: .82rem; }
+    .lv-bar { padding: .5rem .75rem; }
+    .lv-sum { padding: .62rem .85rem .55rem; }
+    .lv-meter { margin-top: .55rem; }
+    .lv-meter-l { margin-top: .42rem; }
+    .lv-row { padding: .3rem 0; }
+    .lv-cats li { padding: .24rem 0; }
+    .lv-foot { padding-top: .2rem; padding-bottom: .45rem; }
+    .lv-low { margin-top: 1rem; }
+  }
+  @media (max-height: 700px) {
+    .mpp-sc--live { --lv-top: 8.6rem; }
+    .lv-tabs span { padding: .48rem 0 .44rem; }
+    .lv-row:nth-child(4) { display: none; }
+    .lv-foot { display: none; }
+    .lv-bar { padding: .4rem .75rem; }
+    .lv-sum { padding: .5rem .85rem .45rem; }
+    .lv-kpi b { margin-top: .2rem; }
+    .lv-meter { margin-top: .45rem; }
+    .lv-meter-l { margin-top: .62rem; }
+    .lv-cats li { padding: .16rem 0; }
+    .lv-g2 em { display: none; }
+    .lv-g2 b { font-size: clamp(3rem, 15vw, 3.8rem); }
+    .lv-g3 span { letter-spacing: .06em; }
+    .lv-low { margin-top: .6rem; }
+  }
+
+  /* hareket azaltma: sahneler üst üste biner yerine alt alta okunur */
+  .mpp-reduced-motion .mpp-sc { height: auto; min-height: 0; }
+  .mpp-reduced-motion .mpp-sc-pin { position: relative; height: auto; overflow: visible; padding: 5.2rem 0 2.2rem; }
+  .mpp-reduced-motion .mpp-sc-bg { overflow: hidden; }
+  .mpp-reduced-motion .mpp-sc-top { top: 0; }
+  .mpp-reduced-motion .mpp-sc-stage { position: relative; inset: auto; display: grid; gap: 3rem; margin: 0 1.2rem; }
+  .mpp-reduced-motion .mpp-sc-scene { display: flex !important; position: relative; inset: auto; opacity: 1; visibility: visible; transform: none; will-change: auto; }
+  .mpp-reduced-motion .mpp-sc-cardwrap { margin-top: 1.5rem; }
+  .mpp-reduced-motion .mpp-sc-s2 { gap: 1.6rem; }
+  .mpp-reduced-motion .mpp-sc-s3 { gap: 1.2rem; }
+  .mpp-reduced-motion .mpp-sc-foot, .mpp-reduced-motion .mpp-sc-ghost { display: none; }
+  .mpp-reduced-motion .mpp-sc-live { position: relative; inset: auto; display: grid; gap: 1.6rem; margin-top: 1.6rem; }
+  .mpp-reduced-motion .lv-toast, .mpp-reduced-motion .lv-ghosts { display: none; }
+  .mpp-reduced-motion .lv-low { display: grid; gap: 1.6rem; margin-top: 0; }
+  .mpp-reduced-motion .lv-g { grid-area: auto; opacity: 1 !important; transform: none !important; will-change: auto; }
+  .mpp-reduced-motion .lv-panel { transform: none; will-change: auto; }
+  .mpp-reduced-motion .lv-live i { animation: none; }
+  .mpp-reduced-motion .mpp-sc--live .mpp-sc-scene { position: relative; inset: auto; }
+}
+/* SCENES:END */
 </style>
 </head>
 <body>
@@ -5985,12 +6460,118 @@ html, body, .deck {
     </div>
   </section>
 
-  <section class="mpp-section mpp-case mpp-case--hb" id="mpp-hepsiburada" data-mpp-section="case" data-case-accent="#8b5cf6">
-    <div class="mpp-inner mpp-case-shell">
-      <div class="mpp-case-stage"><div class="mpp-index">04 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Hepsiburada<br><span>performans analizi</span></h2><span class="mpp-case-tag">Pazaryeri</span></div><div class="mpp-case-media"><img data-mobile-source="hepsiburada" alt="Hepsiburada vaka analizi görseli"></div><div class="mpp-case-live"><span>PREZİSYONLU OPERASYON</span><b>₺139K</b><small>Brüt ciro · toplam dönem</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div>
-      <div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · YAKLAŞIM</small><h3>İptal ve iade sonrasını görünür kılan operasyon disiplini.</h3><p>2021'de açılan mağazada Predo Baby ürünlerini; teslimat, netleşme ve ürün satışlarıyla birlikte takip ettim.</p><div class="mpp-data-flow" aria-label="Hepsiburada veri akışı"><span>BRÜT<strong>₺139K</strong></span><i>→</i><span>NET<strong>₺128K</strong></span><i>→</i><span>REALİZASYON<strong>%91.9</strong></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">₺139K</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">Toplam dönem</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺128K</span><span class="mpp-kpi-label">Net Ciro</span><span class="mpp-kpi-note">İptal + iade sonrası</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">486</span><span class="mpp-kpi-label">Net Sipariş</span><span class="mpp-kpi-note">Teslim edilen</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%91.9</span><span class="mpp-kpi-label">Net Realizasyon</span><span class="mpp-kpi-note">Brüt / net oran</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">570</span><span class="mpp-kpi-label">Net Ürün Satışı</span><span class="mpp-kpi-note">621 brüt satıştan</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">₺264</span><span class="mpp-kpi-label">Ort. Sipariş</span><span class="mpp-kpi-note">Sipariş başına</span></div></div></article><article class="mpp-beat"><small>03 · KATEGORİ DAĞILIMI</small><div class="mpp-bars"><div><span>Bebek Bezi</span><b style="--bar:64.8%"><i></i></b><em>%64.8</em></div><div><span>Islak Mendil</span><b style="--bar:14%"><i></i></b><em>%14.0</em></div><div><span>Doğal Gıda</span><b style="--bar:13.4%"><i></i></b><em>%13.4</em></div><div><span>Diğer Kategoriler</span><b style="--bar:7.8%"><i></i></b><em>%7.8</em></div></div><p class="mpp-result">2021'de Hepsiburada'da mağazamı açarak <strong>Predo Baby bebek ürünleri ve Arıkovanı Gıda markasıyla 5 yıla yakın kesintisiz satış geçmişi</strong> oluşturdum. Bebek bezi, ıslak mendil ve doğal gıda odağında büyüyen bu kanal hâlâ aktif olarak yönettiğim temel gelir kaynaklarımdan biridir.</p></article></div>
+  <!-- SCENE:HB:BEGIN — kaynak: _calisma/scene_hb.html -->
+  <section class="mpp-section mpp-sc mpp-sc--live mpp-sc--hb" id="mpp-hepsiburada" data-mpp-section="scene" data-sc-cuts=".24,.6" data-sc-fade=".07" data-case-accent="#8b5cf6" style="--a:#8b5cf6">
+    <div class="mpp-sc-pin">
+      <div class="mpp-sc-bg" aria-hidden="true">
+        <i class="mpp-sc-grid"></i>
+        <i class="mpp-sc-glow"></i>
+        <i class="mpp-sc-arc"></i>
+        <i class="mpp-sc-arc mpp-sc-arc--2"></i>
+        <b class="mpp-sc-ghost">01</b>
+      </div>
+
+      <header class="mpp-sc-top">
+        <span class="mpp-sc-idx">04 / 09 <i>·</i> Case Study</span>
+        <span class="mpp-sc-stamp">Pazaryeri</span>
+      </header>
+
+      <div class="mpp-sc-stage">
+        <!-- Başlık katmanı: 01 kapak · 02 KPI · 03 kanıt -->
+        <div class="mpp-sc-scene mpp-sc-s1" aria-label="Hepsiburada kapak">
+          <p class="mpp-sc-kicker">01 · Sipariş akışı</p>
+          <h2 class="mpp-sc-h"><span>Hepsiburada</span> <em>performans analizi</em></h2>
+          <p class="mpp-sc-sub">İptal ve iade sonrasını görünür kılan operasyon disiplini.</p>
+        </div>
+        <div class="mpp-sc-scene mpp-sc-s2" aria-label="Hepsiburada KPI odağı">
+          <p class="mpp-sc-kicker">02 · KPI odağı</p>
+          <h3 class="mpp-sc-h">Brütten <em>nete</em></h3>
+          <p class="mpp-sc-sub">İptal ve iade sonrasında geriye kalan gerçek ciro.</p>
+        </div>
+        <div class="mpp-sc-scene mpp-sc-s3" aria-label="Hepsiburada kanıt">
+          <p class="mpp-sc-kicker">03 · Kanıt</p>
+          <h3 class="mpp-sc-h">Sipariş &amp; <em>kategori</em></h3>
+          <p class="mpp-sc-sub">Net sipariş, ürün ve kategori dağılımı.</p>
+        </div>
+
+        <!-- Canlı katman: satıcı paneli + bildirimler + alt veri satırı -->
+        <div class="mpp-sc-live">
+          <div class="lv-wrap">
+            <!-- Panelin arkasından kayan sipariş biletleri (dekoratif, kenarlardan görünür) -->
+            <div class="lv-ghosts" aria-hidden="true">
+              <i class="lv-tk lv-tk--l" style="--y:3;--sy:-70;--r:-4deg;--kc:#8b5cf6"><b></b><s></s></i>
+              <i class="lv-tk lv-tk--l" style="--y:48;--sy:-130;--r:3deg;--kc:#36d399"><b></b><s></s></i>
+              <i class="lv-tk lv-tk--r" style="--y:15;--sy:110;--r:4deg;--kc:#ff6a57"><b></b><s></s></i>
+              <i class="lv-tk lv-tk--r" style="--y:64;--sy:-90;--r:-3deg;--kc:#ffa94a"><b></b><s></s></i>
+            </div>
+            <div class="lv-panel">
+              <div class="lv-bar">
+                <img class="lv-logo" src="assets/logos/hepsiburada.webp" alt="Hepsiburada" width="288" height="68">
+                <span class="lv-bar-t">Satıcı Paneli</span>
+                <span class="lv-live"><i></i>Canlı</span>
+              </div>
+              <div class="lv-tabs" aria-hidden="true"><span>Siparişler</span><span>İptal &amp; İade</span><span>Finans</span><i class="lv-tab-ind"></i></div>
+
+              <div class="lv-sum">
+                <div class="lv-kpi"><small>Brüt ciro</small><b data-count="139" data-fmt="tryk" data-k="1">₺139K</b></div>
+                <div class="lv-kpi lv-kpi--net"><small>Net ciro</small><b data-count="128" data-fmt="tryk" data-k="2">₺128K</b></div>
+                <div class="lv-meter" aria-hidden="true"><i class="net"></i><i class="loss"></i></div>
+                <div class="lv-meter-l" aria-hidden="true"><span class="n">Net %91,9</span><span class="l">İptal + iade</span></div>
+              </div>
+
+              <div class="lv-body">
+                <ul class="lv-rows" aria-hidden="true">
+                  <li class="lv-row" style="--n:0;--kc:#1fb877"><i class="lv-ico"></i><span class="lv-sk"><s></s><s></s></span><em class="lv-chip"><span class="a">Yeni sipariş</span><span class="b">Teslim edildi</span></em></li>
+                  <li class="lv-row lv-row--x" style="--n:1;--kc:#f0534a"><i class="lv-ico"></i><span class="lv-sk"><s></s><s></s></span><em class="lv-chip"><span class="a">Yeni sipariş</span><span class="b">İptal</span></em></li>
+                  <li class="lv-row" style="--n:2;--kc:#1fb877"><i class="lv-ico"></i><span class="lv-sk"><s></s><s></s></span><em class="lv-chip"><span class="a">Yeni sipariş</span><span class="b">Teslim edildi</span></em></li>
+                  <li class="lv-row lv-row--x" style="--n:3;--kc:#f0933a"><i class="lv-ico"></i><span class="lv-sk"><s></s><s></s></span><em class="lv-chip"><span class="a">Yeni sipariş</span><span class="b">İade</span></em></li>
+                </ul>
+                <ul class="lv-cats">
+                  <li style="--v:64.8;--d:0"><span>Bebek bezi</span><b>%64,8</b><i></i></li>
+                  <li style="--v:14.0;--d:.12"><span>Islak mendil</span><b>%14,0</b><i></i></li>
+                  <li style="--v:13.4;--d:.24"><span>Doğal gıda</span><b>%13,4</b><i></i></li>
+                  <li style="--v:7.8;--d:.36"><span>Diğer kategoriler</span><b>%7,8</b><i></i></li>
+                </ul>
+              </div>
+              <p class="lv-foot">Temsili panel görünümü</p>
+            </div>
+
+            <!-- Kayan bildirimler: panelin kenarında beliren, süzülüp kaybolan katman -->
+            <div class="lv-toast lv-toast--r lv-toast--new" style="--s:.02;--e:.17;--dr:-70" aria-hidden="true"><i>+</i><span><b>Yeni sipariş</b><small>Hepsiburada · şimdi</small></span></div>
+            <div class="lv-toast lv-toast--b lv-toast--new" style="--s:.09;--e:.23;--dr:-60" aria-hidden="true"><i>+</i><span><b>Yeni sipariş</b><small>Hepsiburada · şimdi</small></span></div>
+            <div class="lv-toast lv-toast--r lv-toast--cancel" style="--s:.27;--e:.42;--dr:-70" aria-hidden="true"><i>×</i><span><b>Sipariş iptal edildi</b><small>Hepsiburada</small></span></div>
+            <div class="lv-toast lv-toast--b lv-toast--return" style="--s:.34;--e:.54;--dr:-60" aria-hidden="true"><i>↺</i><span><b>İade talebi alındı</b><small>Hepsiburada</small></span></div>
+            <div class="lv-toast lv-toast--r lv-toast--ok" style="--s:.63;--e:.78;--dr:-70" aria-hidden="true"><i>✓</i><span><b>Teslim edildi</b><small>Hepsiburada</small></span></div>
+            <div class="lv-toast lv-toast--r lv-toast--ok" style="--s:.8;--e:.98;--dr:-70" aria-hidden="true"><i>✓</i><span><b>Teslim edildi</b><small>Hepsiburada</small></span></div>
+          </div>
+
+          <div class="lv-low">
+            <ul class="lv-g lv-g1">
+              <li><b>2021</b><small>mağaza açılışı</small></li>
+              <li><b>2 marka</b><small>Predo Baby · Arıkovanı Gıda</small></li>
+              <li><b>5 yıla yakın</b><small>kesintisiz satış</small></li>
+            </ul>
+            <div class="lv-g lv-g2" aria-label="Net realizasyon yüzde 91,9">
+              <small>Net realizasyon</small>
+              <b data-count="91.9" data-fmt="pct1" data-k="2">%91,9</b>
+              <em>brüt / net oran</em>
+            </div>
+            <div class="lv-g lv-g3">
+              <div><b data-count="486" data-fmt="int" data-k="3">486</b><span>Net sipariş</span><small>Teslim edilen</small></div>
+              <div><b data-count="570" data-fmt="int" data-k="3">570</b><span>Net ürün satışı</span><small>621 brüt satıştan</small></div>
+              <div><b data-count="264" data-fmt="try0" data-k="3">₺264</b><span>Ort. sipariş</span><small>Sipariş başına</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mpp-sc-foot" aria-hidden="true">
+        <div class="mpp-sc-meter"><i></i></div>
+        <ol class="mpp-sc-steps"><li><b>01</b>Kapak</li><li><b>02</b>KPI</li><li><b>03</b>Kanıt</li></ol>
+      </footer>
     </div>
   </section>
+<!-- SCENE:HB:END -->
 
   <section class="mpp-section mpp-case mpp-case--shopify" id="mpp-shopify" data-mpp-section="case" data-case-accent="#96bf48">
     <div class="mpp-inner mpp-case-shell"><div class="mpp-case-stage"><div class="mpp-index">05 / 09 · CASE STUDY</div><div class="mpp-case-head"><h2 class="mpp-title">Shopify<br><span>performans analizi</span></h2><span class="mpp-case-tag">D2C</span></div><div class="mpp-case-media"><img data-mobile-source="shopify" alt="Shopify mağaza performansı görseli"></div><div class="mpp-case-live"><span>ARIKOVANISTORE.COM · 17+ AYLIK VERİ</span><b>839.6K ₺</b><small>Brüt ciro · 5 Ara 2024 – 7 May 2026</small></div><div class="mpp-case-dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i><i></i></div></div><div class="mpp-case-beats"><article class="mpp-beat is-active"><small>01 · D2C SİSTEMİ</small><h3>Mağaza deneyimini verinin merkezine taşıdım.</h3><p>Teklif, ürün çeşitliliği, sepet değeri ve il kapsamasını aynı büyüme sistemi içinde izledim.</p><div class="mpp-before-after" aria-label="Shopify D2C dönüşüm özeti"><span><small>ÖNCE</small><b>%1.12</b><em>Sepet dönüşümü</em></span><i>→</i><span><small>SONRA</small><b>%3.84</b><em>Sepet dönüşümü</em></span></div></article><article class="mpp-beat"><small>02 · KPI PANELİ</small><div class="mpp-kpis"><div class="mpp-kpi"><span class="mpp-kpi-value">839.6K ₺</span><span class="mpp-kpi-label">Brüt Ciro</span><span class="mpp-kpi-note">17+ aylık konsolide veri</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">1.009</span><span class="mpp-kpi-label">Toplam Sipariş</span><span class="mpp-kpi-note">Tekil sipariş</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">832 ₺</span><span class="mpp-kpi-label">Ort. Sepet</span><span class="mpp-kpi-note">Premium konumlanma</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">310</span><span class="mpp-kpi-label">Ürün Çeşidi</span><span class="mpp-kpi-note">Aktif varyasyon</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">56 / 81</span><span class="mpp-kpi-label">İl Kapsama</span><span class="mpp-kpi-note">Türkiye geneli</span></div><div class="mpp-kpi"><span class="mpp-kpi-value">%80.1</span><span class="mpp-kpi-label">Reçel Ciro Payı</span><span class="mpp-kpi-note">Lider kategori</span></div></div></article><article class="mpp-beat"><small>03 · CİRO DAĞILIMI</small><div class="mpp-bars"><div><span>Reçel &amp; Marmelat</span><b style="--bar:100%"><i></i></b><em>%80.1</em></div><div><span>Salça &amp; Meze</span><b style="--bar:55%"><i></i></b><em>%4.4</em></div><div><span>Bebek &amp; Hasta Bezi</span><b style="--bar:37%"><i></i></b><em>%3.0</em></div><div><span>Peynir Çeşitleri</span><b style="--bar:30%"><i></i></b><em>%2.4</em></div><div><span>Zeytin &amp; Yağlar</span><b style="--bar:22%"><i></i></b><em>%1.8</em></div></div><p class="mpp-result">Ocak 2025'te başlattığım arikovanistore.com, <strong>17+ ayda 56 ile ulaşarak 839.6K ₺ ciro elde etti.</strong> Reçel kategorisi gelirin %80.1'ini oluşturuyor; 310 ürün varyasyonu ile geniş portföy yönetimi. Hâlâ aktif olarak büyümeye devam eden bu kanal, D2C modelimin temel direğidir.</p></article></div></div>
@@ -6601,6 +7182,168 @@ let current  = 0;
     syncReducedMotionBeats();
   }
 })();
+
+/* SCENES-JS:BEGIN — kaynak: _calisma/scenes.js (vaka sahnesi motoru, yalnız mobil) */
+(function initCaseScenes() {
+  const root = document.getElementById('mobile-portfolio');
+  if (!root || !window.matchMedia('(max-width: 768px)').matches) return;
+  const scenes = Array.from(root.querySelectorAll('.mpp-sc'));
+  if (!scenes.length) return;
+
+  const reduce = root.classList.contains('mpp-reduced-motion')
+    || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    || new URLSearchParams(window.location.search).get('motion') === 'reduce';
+  const clamp = (v) => Math.max(0, Math.min(1, v));
+  const smooth = (v) => { v = clamp(v); return v * v * (3 - 2 * v); };
+  const tr = (n, d) => n.toLocaleString('tr-TR', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const FMT = {
+    pct1: (v) => '%' + tr(v, 1),
+    pct0: (v) => '%' + tr(v, 0),
+    int: (v) => tr(Math.round(v), 0),
+    try0: (v) => '₺' + tr(Math.round(v), 0),
+    tryk: (v) => (v < .5 ? '₺–' : '₺' + tr(Math.round(v), 0) + 'K')
+  };
+
+  // Her özel değişken yalnız onu kullanan alt ağaca yazılır (tüm bölüme değil):
+  // aksi halde her karede yüzlerce elemanın stili yeniden hesaplanır.
+  const memo = new WeakMap();
+  const setv = (node, name, value) => {
+    if (!node) return;
+    let m = memo.get(node);
+    if (!m) { m = {}; memo.set(node, m); }
+    if (m[name] === value) return;
+    m[name] = value;
+    node.style.setProperty(name, value);
+  };
+  const show = (node, on) => {
+    if (!node) return;
+    let m = memo.get(node);
+    if (!m) { m = {}; memo.set(node, m); }
+    if (m.shown === on) return;
+    m.shown = on;
+    node.style.display = on ? 'flex' : 'none';
+  };
+
+  const states = scenes.map((el) => {
+    const cuts = (el.dataset.scCuts || '.31,.66').split(',').map(Number);
+    return {
+      el,
+      c1: cuts[0], c2: cuts[1],
+      f: parseFloat(el.dataset.scFade || '.07'),
+      bg: el.querySelector('.mpp-sc-bg'),
+      foot: el.querySelector('.mpp-sc-foot'),
+      ghost: el.querySelector('.mpp-sc-ghost'),
+      live: el.querySelector('.mpp-sc-live'),
+      s: [null, el.querySelector('.mpp-sc-s1'), el.querySelector('.mpp-sc-s2'), el.querySelector('.mpp-sc-s3')],
+      nums: Array.from(el.querySelectorAll('[data-count]')).map((n) => ({
+        n, target: parseFloat(n.dataset.count), fmt: FMT[n.dataset.fmt] || FMT.int, k: n.dataset.k === '3' ? 3 : (n.dataset.k === '1' ? 1 : 2), shown: ''
+      })),
+      dial: el.querySelector('.mpp-sc-dial'),
+      step: ''
+    };
+  });
+
+  // Veri HTML'den okunur: kadran hedefi = ana rakam / 100.
+  states.forEach((st) => {
+    if (st.dial) {
+      const big = st.dial.querySelector('[data-count]');
+      if (big) st.dial.style.setProperty('--target', String(clamp(parseFloat(big.dataset.count) / 100)));
+    }
+  });
+
+  if (reduce) {
+    states.forEach((st) => {
+      st.nums.forEach((x) => { x.n.textContent = x.fmt(x.target); });
+      ['--k2', '--k3'].forEach((v) => st.el.style.setProperty(v, '1'));
+      if (st.live) {
+        ['--k1', '--k2', '--k3', '--i2', '--i3'].forEach((v) => st.live.style.setProperty(v, '1'));
+        st.live.style.setProperty('--p', '.5');
+      }
+    });
+    return;
+  }
+
+  const vhNow = () => Math.max(1, Math.round(window.visualViewport?.height || window.innerHeight || 1));
+  let pending = false;
+
+  const update = () => {
+    pending = false;
+    const vh = vhNow();
+    let pinned = false;
+    states.forEach((st) => {
+      const r = st.el.getBoundingClientRect();
+      if (r.bottom < -vh * .5 || r.top > vh * 1.5) return;
+      const span = Math.max(r.height - vh, 1);
+      const p = clamp(-r.top / span);
+      if (r.top <= 2 && r.bottom >= vh - 2) pinned = true;
+      const { c1, c2, f } = st;
+      // Ardışık geçiş: önce eski sahne söner, sonra yenisi gelir (üst üste binme yok).
+      const w = f * .75;
+      const o1 = smooth((p - (c1 - f)) / w);
+      const i2 = smooth((p - (c1 + f * .25)) / w);
+      const o2 = smooth((p - (c2 - f)) / w);
+      const i3 = smooth((p - (c2 + f * .25)) / w);
+      // 01 için ilerleme: bölüm ekrana girerken (sabitlenmeden önce) dolar, böylece sahne
+      // sabitlendiğinde panel zaten doludur (boş kapak karesi yok).
+      const pre = clamp(1 - r.top / vh);
+      const k1 = p > 0 ? 1 : smooth((pre - .25) / .7);
+      const k2 = smooth((p - (c1 + f * .25)) / Math.max((c2 - c1 - 2 * f) * .6, .01));
+      const k3 = smooth((p - (c2 + f * .25)) / Math.max((1 - c2 - f) * .6, .01));
+      const q = (v) => v.toFixed(3);
+
+      setv(st.bg, '--p', q(p));
+      setv(st.bg, '--i2', q(i2));
+      setv(st.bg, '--i3', q(i3));
+      setv(st.foot, '--p', q(p));
+      if (st.live) {
+        setv(st.live, '--p', q(p));
+        setv(st.live, '--k1', q(k1));
+        setv(st.live, '--k2', q(k2));
+        setv(st.live, '--k3', q(k3));
+        setv(st.live, '--i2', q(i2));
+        setv(st.live, '--i3', q(i3));
+        setv(st.live, '--o1', q(o1));
+        setv(st.live, '--o2', q(o2));
+      }
+
+      show(st.s[1], o1 < .999);
+      show(st.s[2], i2 > .001 && o2 < .999);
+      show(st.s[3], i3 > .001);
+      if (o1 < .999) setv(st.s[1], '--o1', q(o1));
+      if (i2 > .001 && o2 < .999) {
+        setv(st.s[2], '--i2', q(i2));
+        setv(st.s[2], '--o2', q(o2));
+        setv(st.s[2], '--k2', q(k2));
+      }
+      if (i3 > .001) {
+        setv(st.s[3], '--i3', q(i3));
+        setv(st.s[3], '--k3', q(k3));
+      }
+
+      const step = p < c1 ? '1' : (p < c2 ? '2' : '3');
+      if (st.step !== step) {
+        st.step = step;
+        st.el.dataset.step = step;
+        if (st.ghost) st.ghost.textContent = '0' + step;
+      }
+      st.nums.forEach((x) => {
+        const k = x.k === 3 ? k3 : (x.k === 1 ? k1 : k2);
+        const text = x.fmt(x.target * k);
+        if (text !== x.shown) { x.shown = text; x.n.textContent = text; }
+      });
+    });
+    root.classList.toggle('mpp-sc-on', pinned);
+  };
+  const request = () => { if (!pending) { pending = true; window.requestAnimationFrame(update); } };
+
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', request, { passive: true });
+  window.visualViewport?.addEventListener('resize', request, { passive: true });
+  window.addEventListener('load', request, { once: true });
+  request();
+})();
+/* SCENES-JS:END */
+
 
 // ── Timeline step logic ──
 const TL_SLIDE = 1; // index of s2 (0-based)
