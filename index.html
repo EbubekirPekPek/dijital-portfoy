@@ -5142,6 +5142,85 @@ html, body, .deck {
   .mpp-reduced-motion .mpp-sc--live .mpp-sc-scene { position: relative; inset: auto; }
 }
 /* SCENES:END */
+/* HERO-TOUCH:BEGIN — kaynak: _calisma/hero_touch.css (kapak dokunuşları, yalnız mobil) */
+@media (max-width: 768px) {
+  /* ── Alt satır: platformlar + kaydır ipucu (sayaç yerinde, sağ altta) ── */
+  /* Alt satır akışın dışında (mutlak): kapağın yazı bloğu ve sayaç eskiyle AYNI yerde kalır. */
+  #mobile-portfolio .mpp-editorial-footer { position: relative; }
+  #mobile-portfolio .hx-foot { position: absolute; left: 0; bottom: 0; display: flex; flex-direction: column; gap: .6rem; max-width: calc(100% - 3.2rem); }
+  #mobile-portfolio .hx-with {
+    margin: 0; font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(247, 244, 238, .5);
+  }
+  #mobile-portfolio .hx-logos { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 1.1rem; }
+  #mobile-portfolio .hx-logos li { display: flex; align-items: center; }
+  /* Renkli logolar tek renge çekilir: kapağın sakin editoryal tonunda kalsın. */
+  #mobile-portfolio .hx-logos img { display: block; height: .88rem; width: auto; filter: brightness(0) invert(1); opacity: .62; }
+  #mobile-portfolio .hx-logos .hx-sh img { height: 1.05rem; }
+  #mobile-portfolio .hx-cue { display: flex; align-items: center; gap: .65rem; margin-top: .2rem; }
+  #mobile-portfolio .hx-cue i { position: relative; display: block; width: 1px; height: 30px; overflow: hidden; background: rgba(247, 244, 238, .16); }
+  #mobile-portfolio .hx-cue i::after {
+    content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 12px; background: #e05a1e;
+    animation: hx-cue 2.3s cubic-bezier(.6, 0, .3, 1) infinite;
+  }
+  #mobile-portfolio .hx-cue span { font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .24em; text-transform: uppercase; color: rgba(247, 244, 238, .52); }
+
+  /* ── Yükleme sahnelemesi: son kare mevcut kapakla birebir aynı (backwards: bitişte stil değişmez) ── */
+  #mpp-hero .mpp-editorial-portrait { animation: hx-portrait 1.5s cubic-bezier(.2, .7, .2, 1) backwards; }
+  #mpp-hero .mpp-editorial-header,
+  #mpp-hero .mpp-editorial-kicker { animation: hx-rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  #mpp-hero .mpp-editorial-kicker { animation-delay: .08s; }
+  #mpp-hero .mpp-title-line--condensed { animation: hx-mask 1s cubic-bezier(.2, .75, .15, 1) backwards; }
+  #mpp-hero .mpp-title-line--condensed:nth-child(1) { animation-delay: .16s; }
+  #mpp-hero .mpp-title-line--condensed:nth-child(2) { animation-delay: .27s; }
+  #mpp-hero .mpp-title-line--accent-italic { animation: hx-rise .9s cubic-bezier(.2, .7, .2, 1) .46s backwards; }
+  #mpp-hero .mpp-editorial-desc { animation: hx-rise .9s cubic-bezier(.2, .7, .2, 1) .66s backwards; }
+  #mpp-hero .hx-with { animation: hx-rise .8s cubic-bezier(.2, .7, .2, 1) .9s backwards; }
+  #mpp-hero .hx-logos li { animation: hx-rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
+  #mpp-hero .hx-logos li:nth-child(1) { animation-delay: .98s; }
+  #mpp-hero .hx-logos li:nth-child(2) { animation-delay: 1.05s; }
+  #mpp-hero .hx-logos li:nth-child(3) { animation-delay: 1.12s; }
+  #mpp-hero .hx-logos li:nth-child(4) { animation-delay: 1.19s; }
+  #mpp-hero .hx-cue { animation: hx-rise .8s cubic-bezier(.2, .7, .2, 1) 1.35s backwards; }
+
+  /* Pozlama: portrenin arkasındaki turuncu ışık çok yavaş nefes alır (opaklık; ucuz, tek katman). */
+  #mpp-hero .mpp-camera-world::before {
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(circle at 84% 38%, rgba(224, 90, 30, .15), transparent 48%);
+    opacity: 0; animation: hx-breathe 7.5s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes hx-rise { from { opacity: 0; transform: translate3d(0, .85rem, 0); } }
+  @keyframes hx-mask {
+    from { opacity: 0; transform: translate3d(0, 38%, 0); clip-path: inset(0 -6% 100% -6%); }
+    to   { clip-path: inset(-25% -6% -25% -6%); }
+  }
+  @keyframes hx-portrait { from { opacity: 0; transform: scale(1.06) translate3d(0, .6rem, 0); } }
+  @keyframes hx-breathe { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+  @keyframes hx-cue { from { transform: translateY(-14px); } to { transform: translateY(32px); } }
+
+  /* ≤360 px: logolar sığsın */
+  @media (max-width: 370px) {
+    #mobile-portfolio .hx-logos { gap: .8rem; }
+    #mobile-portfolio .hx-logos img { height: .8rem; }
+    #mobile-portfolio .hx-logos .hx-sh img { height: .95rem; }
+  }
+  /* Kısa ekran: ipucu çizgisi alçalır */
+  @media (max-height: 700px) {
+    #mobile-portfolio .hx-cue i { height: 22px; }
+    #mobile-portfolio .hx-foot { gap: .45rem; }
+  }
+}
+
+/* Hareket azaltma: yükleme sahnelemesi ve nefes yok, her şey olduğu yerde. */
+@media (prefers-reduced-motion: reduce) {
+  #mpp-hero *, #mpp-hero *::before, #mpp-hero *::after { animation: none !important; }
+}
+#mobile-portfolio.mpp-reduced-motion #mpp-hero *,
+#mobile-portfolio.mpp-reduced-motion #mpp-hero *::before,
+#mobile-portfolio.mpp-reduced-motion #mpp-hero *::after { animation: none !important; }
+#mobile-portfolio.mpp-reduced-motion #mpp-hero .mpp-camera-world::before { opacity: .6; }
+/* HERO-TOUCH:END */
 </style>
 </head>
 <body>
@@ -6096,12 +6175,24 @@ html, body, .deck {
             </div>
 
             <!-- Bottom Editorial Footer Meta -->
+<!-- HERO-TOUCH:BEGIN — kaynak: _calisma/hero_touch.html (kapak alt satırı: platformlar + kaydır ipucu + sayaç) -->
             <footer class="mpp-editorial-footer mpp-reveal">
+              <div class="hx-foot">
+                <p class="hx-with">Çalıştığım platformlar</p>
+                <ul class="hx-logos" aria-label="Çalıştığım platformlar: Meta, Shopify, Trendyol, Hepsiburada">
+                  <li class="hx-meta"><img src="assets/logos/meta.webp" alt="Meta" width="256" height="51" decoding="async"></li>
+                  <li class="hx-sh"><img src="assets/logos/shopify.webp" alt="Shopify" width="310" height="351" decoding="async"></li>
+                  <li class="hx-ty"><img src="assets/logos/trendyol.webp" alt="Trendyol" width="1308" height="442" decoding="async"></li>
+                  <li class="hx-hb"><img src="assets/logos/hepsiburada.webp" alt="Hepsiburada" width="288" height="70" decoding="async"></li>
+                </ul>
+                <div class="hx-cue" aria-hidden="true"><i></i><span>Kaydır</span></div>
+              </div>
               <div class="mpp-editorial-counter">
                 <span class="mpp-counter-current">01</span>
                 <span class="mpp-counter-total">/09</span>
               </div>
             </footer>
+<!-- HERO-TOUCH:END -->
           </div>
         </div>
       </div>
