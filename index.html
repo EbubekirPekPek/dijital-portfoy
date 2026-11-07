@@ -5154,9 +5154,9 @@ html, body, .deck {
   }
   #mobile-portfolio .hx-logos { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 1.1rem; }
   #mobile-portfolio .hx-logos li { display: flex; align-items: center; }
-  /* Renkli logolar tek renge çekilir: kapağın sakin editoryal tonunda kalsın. */
-  #mobile-portfolio .hx-logos img { display: block; height: .88rem; width: auto; filter: brightness(0) invert(1); opacity: .62; }
-  #mobile-portfolio .hx-logos .hx-sh img { height: 1.05rem; }
+  /* Logolar kendi renklerinde (koyu zeminde okunur). */
+  #mobile-portfolio .hx-logos img { display: block; height: .95rem; width: auto; opacity: .96; }
+  #mobile-portfolio .hx-logos .hx-sh img { height: 1.15rem; }
   #mobile-portfolio .hx-cue { display: flex; align-items: center; gap: .65rem; margin-top: .2rem; }
   #mobile-portfolio .hx-cue i { position: relative; display: block; width: 1px; height: 30px; overflow: hidden; background: rgba(247, 244, 238, .16); }
   #mobile-portfolio .hx-cue i::after {
@@ -5186,9 +5186,21 @@ html, body, .deck {
   /* Pozlama: portrenin arkasındaki turuncu ışık çok yavaş nefes alır (opaklık; ucuz, tek katman). */
   #mpp-hero .mpp-camera-world::before {
     content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background: radial-gradient(circle at 84% 38%, rgba(224, 90, 30, .15), transparent 48%);
+    background: radial-gradient(ellipse at 60% 36%, rgba(255, 244, 232, .10), transparent 55%);
     opacity: 0; animation: hx-breathe 7.5s ease-in-out 1.2s infinite;
   }
+
+  /* ── Ton ayarı: turuncu azalır, portre belirginleşir (yerleşim değişmez) ── */
+  #mpp-hero .mpp-camera-world { background: radial-gradient(circle at 92% 35%, rgba(224, 90, 30, .06), transparent 50%), #050607; }
+  #mpp-hero .mpp-editorial-portrait { opacity: 1; }
+  #mpp-hero .mpp-editorial-portrait img {
+    filter: grayscale(100%) contrast(1.1) brightness(1.2);
+    -webkit-mask-image: radial-gradient(ellipse 52% 70% at 55% 42%, #000 54%, rgba(0, 0, 0, .86) 76%, transparent 100%);
+    mask-image: radial-gradient(ellipse 52% 70% at 55% 42%, #000 54%, rgba(0, 0, 0, .86) 76%, transparent 100%);
+  }
+  #mpp-hero .mpp-editorial-frame { border-left-color: rgba(224, 90, 30, .18); }
+  #mpp-hero .mpp-kicker-text { color: rgba(247, 244, 238, .78); }
+  #mpp-hero .mpp-editorial-notch { background: rgba(247, 244, 238, .3); }
 
   @keyframes hx-rise { from { opacity: 0; transform: translate3d(0, .85rem, 0); } }
   @keyframes hx-mask {
@@ -5202,8 +5214,8 @@ html, body, .deck {
   /* ≤360 px: logolar sığsın */
   @media (max-width: 370px) {
     #mobile-portfolio .hx-logos { gap: .8rem; }
-    #mobile-portfolio .hx-logos img { height: .8rem; }
-    #mobile-portfolio .hx-logos .hx-sh img { height: .95rem; }
+    #mobile-portfolio .hx-logos img { height: .85rem; }
+    #mobile-portfolio .hx-logos .hx-sh img { height: 1rem; }
   }
   /* Kısa ekran: ipucu çizgisi alçalır */
   @media (max-height: 700px) {
