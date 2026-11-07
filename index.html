@@ -5233,6 +5233,37 @@ html, body, .deck {
 #mobile-portfolio.mpp-reduced-motion #mpp-hero *::after { animation: none !important; }
 #mobile-portfolio.mpp-reduced-motion #mpp-hero .mpp-camera-world::before { opacity: .6; }
 /* HERO-TOUCH:END */
+/* CAREER-FLOW:BEGIN — kaynak: _calisma/career.css (Kariyer kartları: sürekli odak değişkeni --f, JS yazar) */
+@media (max-width: 768px) {
+  /* Yığının üst/alt kenarı yumuşakça söner: silik komşu kart başlığın arkasına taşmaz. */
+  #mobile-portfolio .mpp-career-stack {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 24%, #000 76%, transparent 100%);
+  }
+  /* Odak (0..1) sürekli: kenarlık, numara, ayraç, logo ve etiketler sınıf geçişi beklemeden akar. */
+  #mobile-portfolio .mpp-career-card::before,
+  #mobile-portfolio .mpp-career-card.is-active::before { opacity: var(--f, 0); transition: none; }
+  #mobile-portfolio .mpp-career-card .mpp-card-num,
+  #mobile-portfolio .mpp-career-card.is-active .mpp-card-num {
+    color: color-mix(in srgb, #e05a1e calc(var(--f, 0) * 100%), #36393d); transition: none;
+  }
+  #mobile-portfolio .mpp-career-card .mpp-card-divider,
+  #mobile-portfolio .mpp-career-card.is-active .mpp-card-divider {
+    background: color-mix(in srgb, rgba(224, 90, 30, .3) calc(var(--f, 0) * 100%), rgba(247, 244, 238, .07)); transition: none;
+  }
+  #mobile-portfolio .mpp-career-card .mpp-brand-img,
+  #mobile-portfolio .mpp-career-card.is-active .mpp-brand-img { opacity: calc(.34 + .62 * var(--f, 0)); transition: none; }
+  #mobile-portfolio .mpp-career-card .mpp-evidence-tag,
+  #mobile-portfolio .mpp-career-card.is-active .mpp-evidence-tag { opacity: calc(.45 + .5 * var(--f, 0)); transition: none; }
+  #mobile-portfolio .mpp-career-card .mpp-evidence-badge,
+  #mobile-portfolio .mpp-career-card.is-active .mpp-evidence-badge { opacity: calc(.4 + .55 * var(--f, 0)); transition: none; }
+  /* ≤340 px (çok dar): logo satırı sığsın */
+  @media (max-width: 340px) {
+    #mobile-portfolio .mpp-card-logos { gap: .4rem; }
+    #mobile-portfolio .mpp-card-logos .mpp-brand-img { height: 16px; max-width: 70px; }
+  }
+}
+/* CAREER-FLOW:END */
 </style>
 </head>
 <body>
@@ -6242,6 +6273,7 @@ html, body, .deck {
                 <div class="mpp-career-axis-track">
                   <div class="mpp-career-axis-line"></div>
                   <div class="mpp-career-nodes">
+<!-- CAREER-NODES:BEGIN — _calisma/patch_career.py CARDS listesinden üretilir -->
                   <div class="mpp-career-node mpp-career-node--0 is-active" data-node-index="0">
                     <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
                     <span class="mpp-node-arm"></span>
@@ -6290,12 +6322,18 @@ html, body, .deck {
                     <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
                     <span class="mpp-node-arm"></span>
                   </div>
+                  <div class="mpp-career-node mpp-career-node--12" data-node-index="12">
+                    <span class="mpp-node-ring"><i class="mpp-node-dot"></i><i class="mpp-node-icon">+</i></span>
+                    <span class="mpp-node-arm"></span>
+                  </div>
+<!-- CAREER-NODES:END -->
                 </div>
                 </div>
               </div>
 
               <!-- Right Career Cards Stack Container (side-by-side with timeline axis) -->
               <div class="mpp-career-stack" aria-label="Kariyer adımları listesi">
+            <!-- CAREER-CARDS:BEGIN — _calisma/patch_career.py CARDS listesinden üretilir -->
             <!-- CARD 01 -->
             <article class="mpp-career-card mpp-career-card--0 is-active" data-card-index="0">
               <div class="mpp-card-num-col">
@@ -6317,16 +6355,14 @@ html, body, .deck {
                 <span class="mpp-card-num">02</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">2020</div>
-                <h3 class="mpp-card-title">İLK E-TİCARET ADIMI · Trendyol</h3>
-                <p class="mpp-card-desc">Predo Baby ve Vita Margarin ile ilk mağazam — bu markaların e-ticaretteki ilk satışlarını gerçekleştiren firma olma gururu.</p>
+                <div class="mpp-card-year">2020 – 2023</div>
+                <h3 class="mpp-card-title">ÜNİVERSİTE · Abant İzzet Baysal &amp; Adnan Menderes</h3>
+                <p class="mpp-card-desc">Bolu Abant İzzet Baysal’da Kimya (2020–2022), ardından Aydın Adnan Menderes’te İşletme (2022–2023).</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/trendyol.webp" alt="Trendyol" class="mpp-brand-img" height="22" width="65">
+                  <span class="mpp-evidence-tag">Kimya</span>
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Predo Baby</span>
-                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Vita Margarin</span>
+                    <span class="mpp-evidence-tag">İşletme</span>
                 </div>
               </div>
             </article>
@@ -6336,14 +6372,14 @@ html, body, .deck {
                 <span class="mpp-card-num">03</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">2022</div>
-                <h3 class="mpp-card-title">PAZARYERİ GENİŞLEMESİ</h3>
-                <p class="mpp-card-desc">Hepsiburada ve Amazon TR ile çok kanallı yapıya geçiş; her platformun dinamiklerini bizzat analiz etme fırsatı.</p>
+                <div class="mpp-card-year">2021</div>
+                <h3 class="mpp-card-title">ARI KOVANI · Trendyol &amp; Hepsiburada mağazaları</h3>
+                <p class="mpp-card-desc">Trendyol ve Hepsiburada mağazalarının kurulumu; Amazon Türkiye dahil pazaryerlerinde doğal gıda, bebek ve hijyen ürünlerinin operasyonu.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/hepsiburada.webp" alt="Hepsiburada" class="mpp-brand-img" height="19" width="78">
+                  <img src="assets/logos/trendyol.webp" alt="Trendyol" class="mpp-brand-img" height="22" width="65">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <img src="assets/logos/amazon.webp" alt="Amazon" class="mpp-brand-img" height="20" width="66">
+                    <img src="assets/logos/hepsiburada.webp" alt="Hepsiburada" class="mpp-brand-img" height="19" width="78">
                 </div>
               </div>
             </article>
@@ -6353,14 +6389,14 @@ html, body, .deck {
                 <span class="mpp-card-num">04</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">2023</div>
-                <h3 class="mpp-card-title">KONSOLİDASYON VE OPERASYONEL GÜÇ</h3>
-                <p class="mpp-card-desc">Çift pazaryeri yönetimi, kriz anları ve operasyonel disiplin — sonraki adımlar için paha biçilemez bir okul.</p>
+                <div class="mpp-card-year">2023 – HAZİRAN 2026</div>
+                <h3 class="mpp-card-title">İŞLETME LİSANS · Bursa Uludağ Üniversitesi</h3>
+                <p class="mpp-card-desc">Pazarlama, yönetim ve ticari bakış açısını akademik temelle tamamlayan işletme lisansı; mezuniyet Haziran 2026.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <span class="mpp-evidence-tag">Pazaryeri Operasyonu</span>
+                  <img src="assets/logos/uludag.webp" alt="Bursa Uludağ Üniversitesi" class="mpp-brand-img mpp-brand-img--uludag" height="24" width="24">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Kriz Yönetimi</span>
+                    <span class="mpp-evidence-tag">Lisans Mezuniyeti</span>
                 </div>
               </div>
             </article>
@@ -6371,15 +6407,13 @@ html, body, .deck {
               </div>
               <div class="mpp-card-content-col">
                 <div class="mpp-card-year">2024</div>
-                <h3 class="mpp-card-title">DİJİTAL DÖNÜŞÜM · Meta Ads + Shopify</h3>
-                <p class="mpp-card-desc">Yoğun eğitim ve Vanilora markasıyla kendi ithalat operasyonuna geçiş; D2C modelinin ilk adımları.</p>
+                <h3 class="mpp-card-title">PREDO SAĞLIK · Gönüllü Stajyer</h3>
+                <p class="mpp-card-desc">1 aylık gönüllü staj: ürün geliştirme ve Ar-Ge süreçlerinde üretim aşamalarını yerinde gözlemledim, proje ekiplerine destek sağladım.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/meta.webp" alt="Meta" class="mpp-brand-img" height="20" width="80">
+                  <span class="mpp-evidence-tag">Ar-Ge</span>
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <img src="assets/logos/shopify.webp" alt="Shopify" class="mpp-brand-img mpp-brand-img--shopify" height="22" width="20">
-                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Vanilora</span>
+                    <span class="mpp-evidence-tag">1 ay</span>
                 </div>
               </div>
             </article>
@@ -6389,12 +6423,14 @@ html, body, .deck {
                 <span class="mpp-card-num">06</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">OCAK 2025</div>
-                <h3 class="mpp-card-title">KENDİ MARKA EKOSİSTEMİ · arikovanistore.com</h3>
-                <p class="mpp-card-desc">E-posta, WhatsApp, Instagram kanallarıyla 360° müşteri ekosistemi — pazaryerleri satış kanalı, site marka merkezi.</p>
+                <div class="mpp-card-year">2024</div>
+                <h3 class="mpp-card-title">SHOPIFY MAĞAZASI · arikovanistore.com</h3>
+                <p class="mpp-card-desc">Shopify mağazasının kurulumu: mağaza tasarımı ve ürün entegrasyonu; Meta Pixel ve Conversions API entegrasyonlarının kurulumu.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/arikovani.webp" alt="Arıkovanı Store" class="mpp-brand-img mpp-brand-img--ariko" height="28" width="105">
+                  <img src="assets/logos/shopify.webp" alt="Shopify" class="mpp-brand-img mpp-brand-img--shopify" height="22" width="20">
+                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                    <span class="mpp-evidence-tag">Pixel + CAPI</span>
                 </div>
               </div>
             </article>
@@ -6404,14 +6440,14 @@ html, body, .deck {
                 <span class="mpp-card-num">07</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">EYLÜL 2025</div>
-                <h3 class="mpp-card-title">JTI · Saha & Kurumsal Tecrübe</h3>
-                <p class="mpp-card-desc">Sahada tüketici davranışları analizi; girişimci esnekliği ile kurumsal disiplini birlikte yaşama deneyimi.</p>
+                <div class="mpp-card-year">2025</div>
+                <h3 class="mpp-card-title">META ADS &amp; CİRO · Arı Kovanı Store</h3>
+                <p class="mpp-card-desc">150.000 TL Meta reklam harcamasıyla Shopify, Trendyol ve Hepsiburada’da toplam 1 milyon TL ciro hacmi.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/jti.webp" alt="JTI" class="mpp-brand-img" height="23" width="31">
+                  <img src="assets/logos/meta.webp" alt="Meta" class="mpp-brand-img" height="20" width="80">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Saha Analitiği</span>
+                    <span class="mpp-evidence-tag">Ciro hacmi</span>
                 </div>
               </div>
             </article>
@@ -6421,14 +6457,14 @@ html, body, .deck {
                 <span class="mpp-card-num">08</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">KASIM 2025 – OCAK 2026</div>
-                <h3 class="mpp-card-title">SOSYAL MEDYA YÖNETİCİLİĞİ · Vita Margarin</h3>
-                <p class="mpp-card-desc">İçerik üretimi ve marka kimliği yönetimi — köklü bir markanın dijitalde güven inşasını uçtan uca deneyimleme.</p>
+                <div class="mpp-card-year">EYLÜL – EKİM 2025</div>
+                <h3 class="mpp-card-title">SATIŞ DESTEK STAJYERİ · JTI</h3>
+                <p class="mpp-card-desc">Belirlenen rut üzerindeki satış noktalarında ürünlerin tanzim-teşhir, stok takibi ve marka görünürlüğü görevleri.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/vita.webp" alt="Vita Margarin" class="mpp-brand-img mpp-brand-img--vita" height="28" width="30">
+                  <img src="assets/logos/jti.webp" alt="JTI" class="mpp-brand-img" height="23" width="31">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Marka Kimliği</span>
+                    <span class="mpp-evidence-tag">Merchandiser</span>
                 </div>
               </div>
             </article>
@@ -6438,14 +6474,14 @@ html, body, .deck {
                 <span class="mpp-card-num">09</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">NİSAN 2026</div>
-                <h3 class="mpp-card-title">3. PAZARYERİ · Temu Türkiye</h3>
-                <p class="mpp-card-desc">3 pazaryeri + öz site + ithalat operasyonunu entegre sistemle yönetme özgüveni ve global vizyon.</p>
+                <div class="mpp-card-year">KASIM 2025 – OCAK 2026</div>
+                <h3 class="mpp-card-title">SOSYAL MEDYA YÖNETİCİSİ · Vita Margarin – Aymar Yağ</h3>
+                <p class="mpp-card-desc">Marka kimliğine uygun görsel içerikler ve paylaşım takvimi; müşteri iletişimi ve topluluk yönetimi.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/temu.webp" alt="Temu" class="mpp-brand-img" height="20" width="82">
+                  <img src="assets/logos/vita.webp" alt="Vita Margarin" class="mpp-brand-img mpp-brand-img--vita" height="28" width="30">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">Global E-Ticaret</span>
+                    <span class="mpp-evidence-tag">İçerik &amp; Topluluk</span>
                 </div>
               </div>
             </article>
@@ -6455,14 +6491,14 @@ html, body, .deck {
                 <span class="mpp-card-num">10</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">MAYIS – 22 HAZİRAN 2026</div>
-                <h3 class="mpp-card-title">SATIŞ & PAZARLAMA STAJI (REMOTE) · TNC Group</h3>
-                <p class="mpp-card-desc">Uzaktan 1 aylık yoğun staj programı — B2B satış stratejileri, müşteri ilişkileri yönetimi ve pazarlama operasyonlarında pratik deneyim.</p>
+                <div class="mpp-card-year">NİSAN 2026</div>
+                <h3 class="mpp-card-title">PAZARYERİ · Temu Türkiye</h3>
+                <p class="mpp-card-desc">Trendyol, Hepsiburada ve Amazon’un yanında Temu pazaryerinin kurulumu ve yönetimi.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/tnc.webp" alt="TNC Group" class="mpp-brand-img mpp-brand-img--tnc" height="19" width="86">
+                  <img src="assets/logos/temu.webp" alt="Temu" class="mpp-brand-img" height="20" width="82">
                     <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                    <span class="mpp-evidence-tag">B2B Satış</span>
+                    <span class="mpp-evidence-tag">Pazaryeri</span>
                 </div>
               </div>
             </article>
@@ -6472,14 +6508,14 @@ html, body, .deck {
                 <span class="mpp-card-num">11</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">2026</div>
-                <h3 class="mpp-card-title">İŞLETME LİSANS MEZUNİYETİ · Bursa Uludağ Üniversitesi</h3>
-                <p class="mpp-card-desc">Pazarlama, yönetim ve ticari bakış açısını akademik temelle tamamlayan lisans mezuniyeti.</p>
+                <div class="mpp-card-year">MAYIS – 22 HAZİRAN 2026</div>
+                <h3 class="mpp-card-title">SATIŞ &amp; PAZARLAMA STAJYERİ · TNC Group</h3>
+                <p class="mpp-card-desc">Mesleki Gelişim Programı: pazarlama, sosyal medya ve satış eğitimleri; hedef kitle analizi, marka iletişimi ve kurumsal sunum çalışmaları.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
-                  <img src="assets/logos/uludag.webp" alt="Bursa Uludağ Üniversitesi" class="mpp-brand-img mpp-brand-img--uludag" height="24" width="24">
-                  <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                  <span class="mpp-evidence-tag">Lisans Mezuniyeti</span>
+                  <img src="assets/logos/tnc.webp" alt="TNC Group" class="mpp-brand-img mpp-brand-img--tnc" height="19" width="86">
+                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                    <span class="mpp-evidence-tag">Staj</span>
                 </div>
               </div>
             </article>
@@ -6489,17 +6525,35 @@ html, body, .deck {
                 <span class="mpp-card-num">12</span>
               </div>
               <div class="mpp-card-content-col">
-                <div class="mpp-card-year">2026</div>
-                <h3 class="mpp-card-title">META REKLAM YÖNETİCİLİĞİ · Domino Dijital Reklam Ajansı</h3>
-                <p class="mpp-card-desc">Ajans tarafında Meta reklam hesaplarının yönetimi; kampanya kurgusu, bütçe kontrolü, kreatif test ve performans optimizasyonu.</p>
+                <div class="mpp-card-year">HAZİRAN – EKİM 2026</div>
+                <h3 class="mpp-card-title">META REKLAM YÖNETİCİSİ · Domino Dijital</h3>
+                <p class="mpp-card-desc">İlk 4 ay: eğitim ve e-ticaret ağırlıklı 25 farklı markanın Meta kampanyaları; 4 ayda toplam 750.000 TL reklam bütçesi, ROAS · CPA · CTR takibi.</p>
                 <div class="mpp-card-divider" aria-hidden="true"></div>
                 <div class="mpp-card-logos">
                   <img src="assets/logos/domino.webp" alt="Domino Dijital" class="mpp-brand-img mpp-brand-img--domino" height="19" width="90">
-                  <span class="mpp-logo-pipe" aria-hidden="true">|</span>
-                  <img src="assets/logos/meta-icon.webp" alt="Meta" class="mpp-brand-img mpp-brand-img--meta-loop" height="18" width="27">
+                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                    <img src="assets/logos/meta-icon.webp" alt="Meta" class="mpp-brand-img mpp-brand-img--meta-loop" height="18" width="27">
                 </div>
               </div>
             </article>
+            <!-- CARD 13 -->
+            <article class="mpp-career-card mpp-career-card--12" data-card-index="12">
+              <div class="mpp-card-num-col">
+                <span class="mpp-card-num">13</span>
+              </div>
+              <div class="mpp-card-content-col">
+                <div class="mpp-card-year">SON 1 AY</div>
+                <h3 class="mpp-card-title">B2B SATIŞ &amp; PAZARLAMA · Domino Dijital</h3>
+                <p class="mpp-card-desc">Müşteri kazanımı, satış görüşmeleri, teklif ve takip süreçleri; 20 günde 150.000 TL değerinde yeni marka (müşteri) kazanımı.</p>
+                <div class="mpp-card-divider" aria-hidden="true"></div>
+                <div class="mpp-card-logos">
+                  <img src="assets/logos/domino.webp" alt="Domino Dijital" class="mpp-brand-img mpp-brand-img--domino" height="19" width="90">
+                    <span class="mpp-logo-pipe" aria-hidden="true">|</span>
+                    <span class="mpp-evidence-tag">B2B Satış</span>
+                </div>
+              </div>
+            </article>
+<!-- CAREER-CARDS:END -->
           </div>
           </div>
         </div>
@@ -6928,96 +6982,102 @@ let current  = 0;
       motionGsap.set(scene01Layer, { opacity: 1, visibility: 'visible' });
       motionGsap.set(scene02Layer, { opacity: 0, scale: 0.90, pointerEvents: 'none' });
 
-      // High-performance Active Window Card Stack Pipeline
+      /* CAREER-FLOW-JS:BEGIN — kaynak: _calisma/career_flow.js (Kariyer kart yığını: sabit aralık, adım içi dinlenme, yumuşatma) */
+      // Kartlar aynı aralıkla (ölçülen en uzun kart + boşluk) dizilir: hiçbir anda üst üste binmez.
+      // Her adımın başında/sonunda kısa bir "dinlenme" payı vardır (kart ortada okunur); geçiş adımın ortasında olur.
+      // Gösterilen ilerleme hedefe üstel olarak yaklaşır: parmak sıçrasa bile hareket tek parça akar.
       const cardStates = cards.map(() => ({ visible: true, isActive: false }));
       const axisTrack = stage.querySelector('.mpp-career-axis-track');
       let lastActiveIdx = -1;
-      const nodeStep = 40; // 18px node height + 22px gap = 40px pitch
+      const nodeStep = 40; // 18px düğüm + 22px boşluk
+      let cardPitch = 200;
+      const measurePitch = () => {
+        let tallest = 0;
+        cards.forEach((c) => { tallest = Math.max(tallest, c.offsetHeight); });
+        if (tallest > 0) cardPitch = tallest + 18;
+      };
+      measurePitch();
+      window.addEventListener('resize', measurePitch, { passive: true });
+      window.addEventListener('load', measurePitch, { once: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measurePitch);
 
-      const updateCardStack = (careerProgress) => {
-        const activeFloat = careerProgress * (numCards - 1);
-        const activeIdx = Math.min(numCards - 1, Math.max(0, Math.round(activeFloat)));
+      const careerSmooth = (v) => { v = Math.max(0, Math.min(1, v)); return v * v * (3 - 2 * v); };
+      const careerShape = (f) => { const i = Math.floor(f); return i + careerSmooth((f - i - 0.18) / 0.64); };
 
-        // 1. Move axis track so active node is ALWAYS aligned horizontally with card center
+      const renderCards = (careerProgress) => {
+        const maxIdx = numCards - 1;
+        const activeFloat = Math.min(maxIdx, careerShape(Math.max(0, Math.min(1, careerProgress)) * maxIdx));
+        const activeIdx = Math.min(maxIdx, Math.max(0, Math.round(activeFloat)));
+
+        // 1. Eksen: etkin düğüm her zaman kartın yatay ortasında
         if (axisTrack) {
-          const trackCenterOffset = ((numCards - 1) * 0.5) * nodeStep;
-          const trackY = trackCenterOffset - (activeFloat * nodeStep);
+          const trackY = (maxIdx * 0.5 * nodeStep) - (activeFloat * nodeStep);
           axisTrack.style.transform = `translate3d(0, ${trackY.toFixed(1)}px, 0)`;
         }
-
-        // 2. Efficient Node state update
+        // 2. Düğüm durumu
         if (activeIdx !== lastActiveIdx) {
-          if (lastActiveIdx >= 0 && lastActiveIdx < numCards) {
-            nodes[lastActiveIdx].classList.remove('is-active');
-          }
+          if (lastActiveIdx >= 0 && lastActiveIdx < numCards) nodes[lastActiveIdx].classList.remove('is-active');
           nodes[activeIdx].classList.add('is-active');
           lastActiveIdx = activeIdx;
         }
-
-        // 3. Active Window Depth Pipeline: only active, previous, next and immediate neighbors
+        // 3. Kartlar: yalnız etkin pencere (|delta| < 1.7) çizilir
         for (let i = 0; i < numCards; i++) {
           const delta = i - activeFloat;
-          const absDelta = Math.abs(delta);
+          const ad = Math.abs(delta);
           const card = cards[i];
           const st = cardStates[i];
 
-          // Culling for far cards (|delta| > 2.3)
-          if (absDelta > 2.3) {
+          if (ad > 1.7) {
             if (st.visible) {
-              card.style.transform = delta < 0 
-                ? 'translate3d(0, -320px, 0) scale(0.75)' 
-                : 'translate3d(0, 340px, 0) scale(0.75)';
+              card.style.transform = delta < 0 ? 'translate3d(0, -360px, 0) scale(0.9)' : 'translate3d(0, 360px, 0) scale(0.9)';
               card.style.opacity = '0';
               card.style.visibility = 'hidden';
-              if (st.isActive) {
-                card.classList.remove('is-active');
-                st.isActive = false;
-              }
+              if (st.isActive) { card.classList.remove('is-active'); st.isActive = false; }
               st.visible = false;
             }
             continue;
           }
+          if (!st.visible) { card.style.visibility = 'visible'; st.visible = true; }
 
-          // Active & Nearby cards computation
-          let y = 0;
-          let scale = 1.0;
-          let opacity = 1.0;
-          let zIndex = 1;
-          const isActive = absDelta < 0.40;
-
-          if (delta <= 0) {
-            // Active or Previous card
-            y = delta * 122;
-            scale = Math.max(0.78, 1.0 + delta * 0.12);
-            opacity = Math.max(0, 1.0 + delta * 0.70);
-            zIndex = Math.round(10 + delta * 2);
-          } else {
-            // Next card
-            y = delta * 135;
-            scale = Math.max(0.78, 1.0 - delta * 0.12);
-            opacity = Math.max(0, 1.0 - delta * 0.70);
-            zIndex = Math.round(10 - delta * 2);
-          }
-
-          if (!st.visible) {
-            card.style.visibility = 'visible';
-            st.visible = true;
-          }
+          const y = delta * cardPitch;
+          const scale = 1 - 0.07 * Math.min(ad, 1.4);
+          // komşu kartlar silik ama okunur; 1.6'da tamamen söner (başlığa taşmaz)
+          const opacity = ad <= 1 ? 1 - 0.74 * careerSmooth(ad) : Math.max(0, 0.26 * (1 - (ad - 1) / 0.6));
+          const focus = 1 - careerSmooth(ad / 0.55);
 
           card.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0) scale(${scale.toFixed(3)})`;
-          card.style.opacity = Math.min(1, Math.max(0, opacity)).toFixed(3);
-          card.style.zIndex = Math.max(1, zIndex);
+          card.style.opacity = opacity.toFixed(3);
+          card.style.zIndex = String(20 - Math.round(ad * 4));
+          card.style.setProperty('--f', focus.toFixed(3));
 
+          const isActive = ad < 0.5;
           if (isActive !== st.isActive) {
-            if (isActive) {
-              card.classList.add('is-active');
-            } else {
-              card.classList.remove('is-active');
-            }
+            card.classList.toggle('is-active', isActive);
             st.isActive = isActive;
           }
         }
       };
+
+      let careerTarget = 0;
+      let careerShown = -1;
+      let careerRaf = 0;
+      let careerLast = 0;
+      const careerPaint = (now) => {
+        careerRaf = 0;
+        const dt = careerLast ? Math.min(64, now - careerLast) : 16;
+        careerLast = now;
+        careerShown += (careerTarget - careerShown) * (1 - Math.exp(-dt / 70));
+        if (Math.abs(careerTarget - careerShown) < 0.0004) careerShown = careerTarget;
+        renderCards(careerShown);
+        if (careerShown !== careerTarget) careerRaf = window.requestAnimationFrame(careerPaint);
+        else careerLast = 0;
+      };
+      const updateCardStack = (careerProgress) => {
+        careerTarget = careerProgress;
+        if (careerShown < 0) { careerShown = careerProgress; renderCards(careerShown); return; }
+        if (!careerRaf && careerShown !== careerTarget) careerRaf = window.requestAnimationFrame(careerPaint);
+      };
+      /* CAREER-FLOW-JS:END */
 
       const updateStageChoreography = (progress) => {
         const transThreshold = 0.19; // First 22% of total scroll distance is the cinematic hero corridor pass
