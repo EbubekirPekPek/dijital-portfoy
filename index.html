@@ -5166,7 +5166,7 @@ html, body, .deck {
   #mobile-portfolio .hx-cue span { font: 700 .69rem/1 'DM Sans', sans-serif; letter-spacing: .24em; text-transform: uppercase; color: rgba(247, 244, 238, .52); }
 
   /* ── Yükleme sahnelemesi: son kare mevcut kapakla birebir aynı (backwards: bitişte stil değişmez) ── */
-  #mpp-hero .mpp-editorial-portrait { animation: hx-portrait 1.5s cubic-bezier(.2, .7, .2, 1) backwards; }
+  #mpp-hero .mpp-editorial-portrait { animation: hx-portrait 1.3s ease-out backwards; }
   #mpp-hero .mpp-editorial-header,
   #mpp-hero .mpp-editorial-kicker { animation: hx-rise .8s cubic-bezier(.2, .7, .2, 1) backwards; }
   #mpp-hero .mpp-editorial-kicker { animation-delay: .08s; }
@@ -5207,7 +5207,7 @@ html, body, .deck {
     from { opacity: 0; transform: translate3d(0, 38%, 0); clip-path: inset(0 -6% 100% -6%); }
     to   { clip-path: inset(-25% -6% -25% -6%); }
   }
-  @keyframes hx-portrait { from { opacity: 0; transform: scale(1.06) translate3d(0, .6rem, 0); } }
+  @keyframes hx-portrait { from { opacity: 0; } }   /* yalnız belirme: ölçek/kaydırma yüzü aşağı kaydırıyordu */
   @keyframes hx-breathe { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
   @keyframes hx-cue { from { transform: translateY(-14px); } to { transform: translateY(32px); } }
 
